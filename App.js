@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 function App() {
   return (
     <View>
-      <Text>Project</Text>
+      <Text>Project 2</Text>
     </View>
   );
 }
