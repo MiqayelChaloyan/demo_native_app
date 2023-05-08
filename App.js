@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import LoginScreen from './screens/authentication/login/LoginScreen';
 
 function App() {
   return (
-    <View>
-      <Text>Project 2</Text>
-    </View>
+    
+      <LoginScreen/>
+    
   );
 }
 
