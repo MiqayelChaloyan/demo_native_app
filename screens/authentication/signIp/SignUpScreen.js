@@ -1,12 +1,17 @@
-import React from 'react'
-import { Text, View, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+import React from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 // import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { Formik, useFormik } from 'formik';
-import { signUpValidationSchema } from './signUpValidationSchema';
-
+import {Formik, useFormik} from 'formik';
+import {signUpValidationSchema} from './signUpValidationSchema';
 
 const SignUpScreen = () => {
-
   const {
     values,
     handleChange,
@@ -21,7 +26,7 @@ const SignUpScreen = () => {
       email: '',
       password: '',
     },
-    signUpValidationSchema,
+    validationSchema: signUpValidationSchema,
     onSubmit: data => {
       console.log(data);
     },
@@ -44,9 +49,12 @@ const SignUpScreen = () => {
       </View>
 
       <Formik>
-        <View style={{
-          justifyContent: 'center', alignItems: 'center', gap: 15
-        }}>
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 15,
+          }}>
           <TextInput
             name="name"
             placeholder="Name"
@@ -67,7 +75,7 @@ const SignUpScreen = () => {
             onChangeText={handleChange('email')}
             onBlur={() => setFieldTouched('email')}
             value={values.email}
-          // keyboardType="email-address"
+            // keyboardType="email-address"
           />
           {touched.email && errors.email && (
             <Text style={styles.inputError}>{errors.email}</Text>
@@ -88,25 +96,26 @@ const SignUpScreen = () => {
         </View>
       </Formik>
 
-      <View style={{ alignItems: 'center' }}>
+      <View style={{alignItems: 'center'}}>
         <View style={styles.button}>
-          <TouchableOpacity
-            disabled={!isValid}
-            onPress={() => handleSubmit()}>
+          <TouchableOpacity disabled={!isValid} onPress={() => handleSubmit()}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      <View style={{ alignItems: 'center', height: '100%' }}>
+      <View style={{alignItems: 'center', height: '100%'}}>
         <TouchableOpacity>
-          <Text style={{
-            fontSize: 20, color: '#5DB075',
-          }}>Forgot your password?</Text>
+          <Text
+            style={{
+              fontSize: 20,
+              color: '#5DB075',
+            }}>
+            Forgot your password?
+          </Text>
         </TouchableOpacity>
       </View>
-
-    </SafeAreaView >
+    </SafeAreaView>
   );
 };
 
@@ -179,12 +188,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 10,
     elevation: 10,
-    backgroundColor: '#e6e6e6'
+    backgroundColor: '#e6e6e6',
   },
 
   inputError: {
     color: 'blue',
-    fontSize: 50
+    fontSize: 50,
   },
   button: {
     marginTop: '21%',
@@ -198,7 +207,7 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontSize: 16,
-    color: "white"
+    color: 'white',
   },
 });
 
