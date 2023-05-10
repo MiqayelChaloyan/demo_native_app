@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     },
     aboutContentDate: {
         fontSize: 14,
-        fontWeight: 4,
+        fontWeight: 400,
         color: '#BDBDBD'
     },
     feedTextContainer: {
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
 
     feedText: {
         fontSize: 14,
-        fontWeight: 4,
+        fontWeight: 400,
         color: 'black',
         marginVertical: 8,
     },
