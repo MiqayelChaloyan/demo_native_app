@@ -1,11 +1,15 @@
 import React from 'react';
 import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import FeedItem from './FeedItem';
+// import { useNavigation } from '@react-navigation/native';
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const FeedScreen = () => {
+
+
 
 
     return (

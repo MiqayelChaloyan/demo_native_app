@@ -4,7 +4,7 @@ import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const ContentScreen = () => {
+const ContentScreen = ({ navigation }) => {
 
 
     return (
@@ -13,7 +13,7 @@ const ContentScreen = () => {
                 <View style={styles.headerContainer}>
 
                     <View style={styles.headerButtonContainer}>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={() => navigation.navigate("Feed")}>
                             <Text style={styles.headerButtonText}>
                                 Back
                             </Text>
@@ -25,7 +25,7 @@ const ContentScreen = () => {
                     </View>
 
                     <View style={styles.headerButtonContainer}>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={() => navigation.navigate("Market")}>
                             <Text style={styles.headerButtonText}>
                                 Filter
                             </Text>
