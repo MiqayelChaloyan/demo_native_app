@@ -1,12 +1,9 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
+import SignUpScreen from './screens/authentication/signIp/SignUpScreen';
 
 function App() {
-  return (
-    <View>
-      <Text>Project 2</Text>
-    </View>
-  );
+  return <SignUpScreen />;
 }
 
 export default App;
