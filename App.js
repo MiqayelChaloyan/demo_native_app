@@ -7,6 +7,7 @@ import FeedScreen from './screens/Feed/FeedScreen';
 
 import {SafeAreaView,StatusBar} from 'react-native';
 import StackNavigation from './navigation/StackNavigation';
+import DNAdata from './Data/data';
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
 
         <StatusBar/>
 
-        <StackNavigation />       
+        <DNAdata>
+           <StackNavigation />   
+        </DNAdata>
+            
               
     </SafeAreaView>
   ); 
