@@ -1,36 +1,44 @@
 import React from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const FeedItem = () => {
+const FeedItem = ({ item }) => {
 
+    const todaysDate = new Date();
+
+    const createdDate = item.createdData
+
+    const diffMonths = (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 + (todaysDate.getMonth() - createdDate.getMonth());
 
     return (
         <ScrollView >
             <View style={styles.contentContainer}>
 
-                <View style={styles.contentBlock}>
+                {console.log("ttttttttttttt", item)}
 
+
+                <View style={styles.contentBlock}>
+                    <Image source={{ uri: item.imageUri }} style={{ width: 50, height: 50, borderRadius: 8, }} />
 
                 </View >
 
                 <View style={styles.contentInfo}>
                     <View style={styles.headerContent}>
-                        <Text style={styles.headerText}>Header</Text>
-                        <Text style={styles.aboutContentDate}>8m ago</Text>
+                        <Text style={styles.headerText}>{item.title}</Text>
+                        <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
                     </View>
                     <View style={styles.feedTextContainer}>
                         <Text style={styles.feedText}>
-                            He'll want to use your yacht,
-                            and I don't want this thing smelling like fish.
+                            {item.message}
                         </Text>
                     </View>
                     <View style={styles.bottomBorder}>
 
                     </View>
                 </View>
+
 
             </View>
         </ScrollView>
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
         // left: 0,
         // top: 0,
         backgroundColor: '#F6F6F6',
-        borderRadius: 8,
+
     },
     contentInfo: {
         width: windowWidth * 0.74,
@@ -83,7 +91,7 @@ const styles = StyleSheet.create({
     },
     aboutContentDate: {
         fontSize: 14,
-        fontWeight: 4,
+        fontWeight: 400,
         color: '#BDBDBD'
     },
     feedTextContainer: {
@@ -91,7 +99,7 @@ const styles = StyleSheet.create({
     },
     feedText: {
         fontSize: 14,
-        fontWeight: 4,
+        fontWeight: 400,
         color: 'black'
     },
     bottomBorder: {

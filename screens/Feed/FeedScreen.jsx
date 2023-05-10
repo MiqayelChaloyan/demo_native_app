@@ -1,15 +1,16 @@
-import React from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useContext } from 'react';
+import { Dimensions, ScrollView, StyleSheet, FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import FeedItem from './FeedItem';
-// import { useNavigation } from '@react-navigation/native';
+import { DNAdataContext } from '../../Data/data';
+
 
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const FeedScreen = () => {
+const FeedScreen = ({ navigation }) => {
 
-
+    const { feedData } = useContext(DNAdataContext);
 
 
     return (
@@ -18,7 +19,7 @@ const FeedScreen = () => {
                 <View style={styles.headerContainer}>
 
                     <View style={styles.headerButtonContainer}>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={() => navigation.navigate("Auth")}>
                             <Text style={styles.headerButtonText}>
                                 Back
                             </Text>
@@ -50,10 +51,23 @@ const FeedScreen = () => {
 
                 <View style={styles.contentsBlockContainer}>
 
-                    <FeedItem />
-                    <FeedItem />
-                    <FeedItem />
-                    <FeedItem />
+                    <FlatList
+                        data={feedData}
+                        key={(item) => item.id}
+
+                        keyExtractor={(item) => item.id}
+                        renderItem={({ item, index }) => {
+                            return (
+
+                                <FeedItem
+                                    item={item}
+                                />
+                            )
+
+                        }}
+
+                    />
+
 
                 </View>
 
