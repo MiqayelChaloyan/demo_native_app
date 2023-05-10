@@ -1,6 +1,9 @@
-import {SafeAreaView, StyleSheet, Text,TextInput,TouchableOpacity,View} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text,TextInput,TouchableOpacity,View} from 'react-native';
 
 const LoginScreen = () => {
+
+  
   return (
     <View style={{flex:1,alignItems:'center',}}>
       <View style={styles.headerContainer}>
@@ -10,12 +13,11 @@ const LoginScreen = () => {
       <View style={styles.textInputContainer}> 
 
         <TextInput style={styles.input}
-                        placeholder="Placeholder"
-                        editable={true}
+                        placeholder="Email"
                         multiline={false}/>
 
         <TextInput style={styles.input}
-                        placeholder="Placeholder"
+                        placeholder="Password"
                         editable={true}
                         multiline={false} />
 
@@ -55,7 +57,18 @@ const styles = StyleSheet.create({
   textInputContainer:{
     marginTop:'4%',
     height:'15%',
-    backgroundColor:'grey',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 15,
+  },
+  input: {
+    width: 343,
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#E8E8E8',
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: '#F6F6F6',
   },
   button:{
     marginTop:'21%',
@@ -83,7 +96,8 @@ const styles = StyleSheet.create({
     fontWeight:600,
     color:'#5DB075',
     textAlign:'center'
-  }
+  },
+ 
     
   
 
