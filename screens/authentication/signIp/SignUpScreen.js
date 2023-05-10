@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -6,12 +6,20 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native';
-// import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import CheckBox from 'react-native-check-box';
 import {Formik, useFormik} from 'formik';
 import {signUpValidationSchema} from './signUpValidationSchema';
 
 const SignUpScreen = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const [hidePassword, setHidePassword] = useState(false);
+
+  useEffect(() => {
+    values.isChecked = isChecked;
+  }, [isChecked]);
+
   const {
     values,
     handleChange,
@@ -25,9 +33,11 @@ const SignUpScreen = () => {
       name: '',
       email: '',
       password: '',
+      isChecked,
     },
     validationSchema: signUpValidationSchema,
     onSubmit: data => {
+      // Keyboard.dismiss();
       console.log(data);
     },
   });
@@ -88,11 +98,35 @@ const SignUpScreen = () => {
             onChangeText={handleChange('password')}
             onBlur={() => setFieldTouched('password')}
             value={values.password}
-            secureTextEntry
+            secureTextEntry={hidePassword}
           />
           {touched.password && errors.password && (
             <Text style={styles.inputError}>{errors.password}</Text>
           )}
+          <CheckBox
+            style={{
+              padding: 15,
+              justifyContent: 'flex-start',
+              margin: 5,
+            }}
+            isChecked={isChecked}
+            checkedCheckBoxColor="#E8E8E8"
+            checkBoxColor="#E8E8E8"
+            uncheckedCheckBoxColor="#E8E8E8"
+            onClick={() => setIsChecked(!isChecked)}
+            rightTextView={
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#666666',
+                  left: '15%',
+                }}>
+                I would like to receive your newsletter and other promotional
+                information.
+              </Text>
+            }
+            // rightTextStyle={{fontSize: 20, color: '#E8E8E8'}}
+          />
         </View>
       </Formik>
 
@@ -169,7 +203,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '90%',
-    height: '15%',
+    height: '13%',
     // margin: 5,
     borderWidth: 1,
     borderColor: '#E8E8E8',
@@ -180,7 +214,6 @@ const styles = StyleSheet.create({
   checkbox: {
     alignSelf: 'center',
   },
-
   loginContainer: {
     width: '80%',
     height: 400,
@@ -190,15 +223,14 @@ const styles = StyleSheet.create({
     elevation: 10,
     backgroundColor: '#e6e6e6',
   },
-
   inputError: {
-    color: 'blue',
-    fontSize: 50,
+    color: 'red',
+    fontSize: 12,
   },
   button: {
-    marginTop: '21%',
+    marginTop: '5%',
     width: '90%',
-    height: '20%',
+    height: '25%',
     backgroundColor: '#5DB075',
     alignItems: 'center',
     justifyContent: 'center',
