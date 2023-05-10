@@ -1,26 +1,15 @@
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
 import LoginScreen from './screens/authentication/login/LoginScreen';
-import FeedScreen from './screens/Feed/FeedScreen';
-import ContentScreen from './screens/Content/ContentScreen';
-import MarketScreen from './screens/Market/MarketScreen';
-import LongContentScreen from './screens/Market/TTTTT';
+// import FeedScreen from './screens/Feed/FeedScreen';
+// import ContentScreen from './screens/Content/ContentScreen';
+// import MarketScreen from './screens/Market/MarketScreen';
+// import LongContentScreen from './screens/Market/TTTTT';
+
+import {View} from 'react-native';
+import SignUpScreen from './screens/authentication/signIp/SignUpScreen';
 
 function App() {
-  return (
-    <SafeAreaView style={{
-      flex:1 ,
-       }}  >
-        <MarketScreen/>
-        {/* <ContentScreen/> */}
-        {/* <FeedScreen/> */}
-        {/* <LoginScreen/> */}
-        
-
-    </SafeAreaView>
-      
-
-  );
+  return <SignUpScreen />;
 }
 
 export default App;
