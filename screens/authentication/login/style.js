@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: '100%',
     height: '2%',
-    // marginTop: '4%',
     marginBottom: '6%',
   },
   header: {
@@ -56,7 +55,6 @@ const styles = StyleSheet.create({
   input: {
     width: '90%',
     height: '20%',
-    // margin: 5,
     borderWidth: 1,
     borderColor: '#E8E8E8',
     padding: 10,
