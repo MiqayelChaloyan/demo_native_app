@@ -11,17 +11,17 @@ import SignUpScreen from './screens/authentication/signUp/SignUpScreen';
 
 function App() {
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-      }}>
-      <StatusBar />
+    // <SafeAreaView
+    //   style={{
+    //     flex: 1,
+    //   }}>
+    //   <StatusBar />
 
-      <StackNavigation />
-    </SafeAreaView>
+    //   <StackNavigation />
+    // </SafeAreaView>
 
     // <LoginScreen />
-    // <SignUpScreen />
+    <SignUpScreen />
   );
 }
 
