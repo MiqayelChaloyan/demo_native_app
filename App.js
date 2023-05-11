@@ -7,21 +7,20 @@ import FeedScreen from './screens/Feed/FeedScreen';
 
 import {SafeAreaView, StatusBar} from 'react-native';
 import StackNavigation from './navigation/StackNavigation';
+import DNAdata from './Data/data';
 import SignUpScreen from './screens/authentication/signUp/SignUpScreen';
 
 function App() {
   return (
-    // <SafeAreaView
-    //   style={{
-    //     flex: 1,
-    //   }}>
-    //   <StatusBar />
-
-    //   <StackNavigation />
-    // </SafeAreaView>
-
-    // <LoginScreen />
-    <SignUpScreen />
+    <SafeAreaView
+      style={{
+        flex: 1,
+      }}>
+      <StatusBar />
+      <DNAdata>
+        <StackNavigation />
+      </DNAdata>
+    </SafeAreaView>
   );
 }
 

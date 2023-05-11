@@ -3,39 +3,35 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   root: {
     width: '100%',
-    height: '100%',
-    paddingTop: 20,
   },
   headerContainer: {
     width: '100%',
     height: '2%',
-    marginTop: '2%',
+    // marginTop: '4%',
+    marginBottom: '6%',
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'stretch',
     marginTop: '4%',
     marginHorizontal: 20,
   },
-  cancel: {
-    top: '4%',
+  loginContainer: {
     height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 36,
   },
-  logIn: {
+  login: {
     fontSize: 30,
     fontWeight: 600,
     color: '#000000',
-    textAlign: 'center',
-    marginLeft: '37%',
-  },
-  login: {
-    fontSize: 16,
-    color: '#5DB075',
     lineHeight: 36.31,
-    textAlign: 'right',
-    fontWeight: 500,
+    textAlign: 'center',
   },
+
   form: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -57,43 +53,24 @@ const styles = StyleSheet.create({
     left: '15%',
     top: '2.2%',
   },
-  inputsContainer: {
-    width: '100%',
-    marginTop: '20%',
-    gap: 15,
-  },
-  emailInputStyle: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  passwordInputStyle: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-  },
   input: {
     width: '90%',
-    height: 51,
+    height: '20%',
+    // margin: 5,
     borderWidth: 1,
     borderColor: '#E8E8E8',
     padding: 10,
     borderRadius: 8,
     backgroundColor: '#F6F6F6',
-    paddingHorizontal: 15,
-    paddingVertical: 7,
-    fontSize: 15,
   },
   inputError: {
     color: 'red',
-    fontSize: 12.5,
-    marginTop: '1%',
+    fontSize: 12,
   },
   button: {
     marginTop: '5%',
     width: '90%',
-    height: 60,
+    height: '27%',
     backgroundColor: '#5DB075',
     alignItems: 'center',
     justifyContent: 'center',
@@ -110,7 +87,8 @@ const styles = StyleSheet.create({
     height: 25,
     width: 50,
     padding: 0,
-    marginTop: 15,
+    marginTop: 21,
+    bottom: '32%',
   },
 });
 

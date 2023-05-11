@@ -3,13 +3,11 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   root: {
     width: '100%',
-    height: '100%',
-    paddingTop: 20,
   },
   headerContainer: {
     width: '100%',
     height: '2%',
-    marginTop: '2%',
+    marginTop: '4%',
   },
   header: {
     flexDirection: 'row',
@@ -26,6 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 600,
     color: '#000000',
+    // lineHeight: 36.31,
     textAlign: 'center',
   },
   login: {
@@ -55,56 +54,25 @@ const styles = StyleSheet.create({
     color: '#666666',
     left: '15%',
     top: '2.2%',
-    fontWeight: 400,
-  },
-  inputsContainer: {
-    width: '100%',
-    marginTop: '20%',
-    gap: 15,
-  },
-  nameInputStyle: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  emailInputStyle: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  passwordInputStyle: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-  },
-  checkBoxStyle: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '15%',
   },
   input: {
     width: '90%',
-    height: 51,
+    height: '13%',
+    // margin: 5,
     borderWidth: 1,
     borderColor: '#E8E8E8',
     padding: 10,
     borderRadius: 8,
     backgroundColor: '#F6F6F6',
-    paddingHorizontal: 15,
-    paddingVertical: 7,
-    fontSize: 15,
   },
   inputError: {
     color: 'red',
-    fontSize: 12.5,
-    marginTop: '1%',
+    fontSize: 12,
   },
   button: {
     marginTop: '5%',
     width: '90%',
-    height: 60,
+    height: '27%',
     backgroundColor: '#5DB075',
     alignItems: 'center',
     justifyContent: 'center',
@@ -121,7 +89,8 @@ const styles = StyleSheet.create({
     height: 25,
     width: 50,
     padding: 0,
-    marginTop: 15,
+    marginTop: 21,
+    bottom: '42%',
   },
 });
 

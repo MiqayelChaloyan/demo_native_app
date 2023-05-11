@@ -68,94 +68,67 @@ const SignUpScreen = () => {
           </View>
 
           <Formik>
-            <View style={styles.inputsContainer}>
-              <View style={styles.nameInputStyle}>
-                <TextInput
-                  name="name"
-                  placeholder="Name"
-                  placeholderTextColor="#BDBDBD"
-                  style={styles.input}
-                  variant="standard"
-                  onChangeText={handleChange('name')}
-                  onBlur={() => setFieldTouched('name')}
-                  value={values.name}
-                  keyboardType="default"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  secureTextEntry={false}
-                />
-                {touched.name && errors.name && (
-                  <Text style={styles.inputError}>{errors.name}</Text>
-                )}
-              </View>
-              <View style={styles.emailInputStyle}>
-                <TextInput
-                  name="email"
-                  placeholder="Email Address"
-                  placeholderTextColor="#BDBDBD"
-                  style={styles.input}
-                  variant="standard"
-                  onChangeText={handleChange('email')}
-                  onBlur={() => setFieldTouched('email')}
-                  value={values.email}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  secureTextEntry={false}
-                />
-                {touched.email && errors.email && (
-                  <Text style={styles.inputError}>{errors.email}</Text>
-                )}
-              </View>
-              <View>
-                <View style={styles.passwordInputStyle}>
-                  <TextInput
-                    name="password"
-                    secureTextEntry={hidePassword}
-                    placeholder="Password"
-                    placeholderTextColor="#BDBDBD"
-                    style={styles.input}
-                    variant="standard"
-                    onChangeText={handleChange('password')}
-                    onBlur={() => setFieldTouched('password')}
-                    value={values.password}
-                    keyboardType="password"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                  />
-                  {touched.password && errors.password && (
-                    <Text style={styles.inputError}>{errors.password}</Text>
-                  )}
-                </View>
-
-                <View style={{position: 'relative'}}>
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    style={styles.visibilityBtn}
-                    onPress={() => setHidePassword(!hidePassword)}>
-                    <Text style={styles.hidePassword}>
-                      {hidePassword ? 'Show' : 'Hide'}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <View style={styles.checkBoxStyle}>
-                <CheckBox
-                  style={styles.checkBox}
-                  isChecked={isChecked}
-                  checkedCheckBoxColor="#E8E8E8"
-                  checkBoxColor="#E8E8E8"
-                  uncheckedCheckBoxColor="#E8E8E8"
-                  onClick={() => setIsChecked(!isChecked)}
-                  rightTextView={
-                    <Text style={styles.checkBoxText}>
-                      I would like to receive your newsletter and other
-                      promotional information.
-                    </Text>
-                  }
-                />
-              </View>
+            <View style={styles.form}>
+              <TextInput
+                name="name"
+                placeholder="Name"
+                style={styles.input}
+                variant="standard"
+                onChangeText={handleChange('name')}
+                onBlur={() => setFieldTouched('name')}
+                value={values.name}
+              />
+              {touched.name && errors.name && (
+                <Text style={styles.inputError}>{errors.name}</Text>
+              )}
+              <TextInput
+                name="email"
+                placeholder="Email Address"
+                style={styles.input}
+                variant="standard"
+                onChangeText={handleChange('email')}
+                onBlur={() => setFieldTouched('email')}
+                value={values.email}
+                // keyboardType="email-address"
+              />
+              {touched.email && errors.email && (
+                <Text style={styles.inputError}>{errors.email}</Text>
+              )}
+              <TextInput
+                name="password"
+                secureTextEntry={hidePassword}
+                placeholder="Password"
+                style={styles.input}
+                variant="standard"
+                onChangeText={handleChange('password')}
+                onBlur={() => setFieldTouched('password')}
+                value={values.password}
+              />
+              {touched.password && errors.password && (
+                <Text style={styles.inputError}>{errors.password}</Text>
+              )}
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={styles.visibilityBtn}
+                onPress={() => setHidePassword(!hidePassword)}>
+                <Text style={styles.hidePassword}>
+                  {hidePassword ? 'Show' : 'Hide'}
+                </Text>
+              </TouchableOpacity>
+              <CheckBox
+                style={styles.checkBox}
+                isChecked={isChecked}
+                checkedCheckBoxColor="#E8E8E8"
+                checkBoxColor="#E8E8E8"
+                uncheckedCheckBoxColor="#E8E8E8"
+                onClick={() => setIsChecked(!isChecked)}
+                rightTextView={
+                  <Text style={styles.checkBoxText}>
+                    I would like to receive your newsletter and other
+                    promotional information.
+                  </Text>
+                }
+              />
             </View>
           </Formik>
 
@@ -167,17 +140,18 @@ const SignUpScreen = () => {
                 <Text style={styles.buttonText}>Sign Up</Text>
               </TouchableOpacity>
             </View>
-            <View style={{alignItems: 'center', marginTop: '2%'}}>
-              <TouchableOpacity>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: '#5DB075',
-                  }}>
-                  Forgot your password?
-                </Text>
-              </TouchableOpacity>
-            </View>
+          </View>
+
+          <View style={{alignItems: 'center'}}>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: '#5DB075',
+                }}>
+                Forgot your password?
+              </Text>
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
       </TouchableWithoutFeedback>
