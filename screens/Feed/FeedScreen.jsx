@@ -1,58 +1,81 @@
-import React from 'react';
-import {
-  Dimensions,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, { useContext } from 'react';
+import { Dimensions, ScrollView, StyleSheet, FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import FeedItem from './FeedItem';
-// import { useNavigation } from '@react-navigation/native';
+import { DNAdataContext } from '../../Data/data';
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const FeedScreen = () => {
-  return (
-    <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-      <View style={{flex: 1, alignItems: 'center'}}>
-        <View style={styles.headerContainer}>
-          <View style={styles.headerButtonContainer}>
-            <TouchableOpacity>
-              <Text style={styles.headerButtonText}>Back</Text>
-            </TouchableOpacity>
-          </View>
+const FeedScreen = ({ navigation }) => {
 
-          <View style={styles.headerTextContainer}>
-            <Text style={styles.headerText}>Feed</Text>
-          </View>
+    const { feedData } = useContext(DNAdataContext);
 
-          <View style={styles.headerButtonContainer}>
-            <TouchableOpacity>
-              <Text style={styles.headerButtonText}>Filter</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
 
-        <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search"
-            multiline={false}
-          />
-        </View>
+    return (
+        <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+            <View style={{ flex: 1, alignItems: 'center', }} >
+                <View style={styles.headerContainer}>
 
-        <View style={styles.contentsBlockContainer}>
-          <FeedItem />
-          <FeedItem />
-          <FeedItem />
-          <FeedItem />
-        </View>
-      </View>
-    </ScrollView>
-  );
+                    <View style={styles.headerButtonContainer}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Auth")}>
+                            <Text style={styles.headerButtonText}>
+                                Back
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.headerTextContainer}>
+                        <Text style={styles.headerText}>Feed</Text>
+                    </View>
+
+                    <View style={styles.headerButtonContainer}>
+                        <TouchableOpacity >
+                            <Text style={styles.headerButtonText}>
+                                Filter
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+
+                </View>
+
+                <View style={styles.searchContainer}>
+
+                    <TextInput style={styles.searchInput}
+                        placeholder="Search"
+                        multiline={false} />
+
+                </View>
+
+                <View style={styles.contentsBlockContainer}>
+
+                    <FlatList
+                        data={feedData}
+                        key={(item) => item.id}
+
+                        keyExtractor={(item) => item.id}
+                        renderItem={({ item, index }) => {
+                            return (
+
+                                <FeedItem
+                                    item={item}
+                                />
+                            )
+
+                        }}
+
+                    />
+
+
+                </View>
+
+
+            </View>
+
+        </ScrollView>
+
+    )
 };
 
 const styles = StyleSheet.create({

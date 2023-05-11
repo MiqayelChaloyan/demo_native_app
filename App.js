@@ -7,6 +7,7 @@ import FeedScreen from './screens/Feed/FeedScreen';
 
 import {SafeAreaView, StatusBar} from 'react-native';
 import StackNavigation from './navigation/StackNavigation';
+import DNAdata from './Data/data';
 import SignUpScreen from './screens/authentication/signUp/SignUpScreen';
 
 function App() {
@@ -16,12 +17,10 @@ function App() {
         flex: 1,
       }}>
       <StatusBar />
-
-      <StackNavigation />
+        <DNAdata>
+           <StackNavigation />   
+        </DNAdata>           
     </SafeAreaView>
-
-    // <LoginScreen />
-    // <SignUpScreen />
   );
 }
 
