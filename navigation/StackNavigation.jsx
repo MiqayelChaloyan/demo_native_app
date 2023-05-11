@@ -1,29 +1,30 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ContentScreen from '../screens/Content/ContentScreen';
 import FeedScreen from '../screens/Feed/FeedScreen';
 import MarketScreen from '../screens/Market/MarketScreen';
 import AuthNavigation from './AuthNavigation';
 
 
-
-
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigation() {
 
-
     return (
-        <>
-
-
             <NavigationContainer>
 
 
                 <Stack.Navigator >
 
 
+
+                    <Stack.Screen
+                        name="Feed"
+                        component={FeedScreen}
+                        options={{
+                            headerStyle: { backgroundColor: 'coral' }
+                        }} />
 
                     <Stack.Screen
                         name="Content"
@@ -40,14 +41,6 @@ export default function StackNavigation() {
                     />
 
 
-
-                    <Stack.Screen
-                        name="Feed"
-                        component={FeedScreen}
-                        options={{
-                            headerStyle: { backgroundColor: 'coral' }
-                        }} />
-
                     <Stack.Screen
                         name="Market"
                         component={MarketScreen}
@@ -60,9 +53,6 @@ export default function StackNavigation() {
                 </Stack.Navigator>
 
             </NavigationContainer>
-
-        </>
     );
+
 }
-
-

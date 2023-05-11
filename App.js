@@ -5,25 +5,23 @@ import FeedScreen from './screens/Feed/FeedScreen';
 // import MarketScreen from './screens/Market/MarketScreen';
 // import LongContentScreen from './screens/Market/TTTTT';
 
-import {SafeAreaView,StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import StackNavigation from './navigation/StackNavigation';
 import DNAdata from './Data/data';
+import SignUpScreen from './screens/authentication/signUp/SignUpScreen';
 
 function App() {
   return (
-    <SafeAreaView style={{
-      flex:1 ,
-       }}  >
-
-        <StatusBar/>
-
+    <SafeAreaView
+      style={{
+        flex: 1,
+      }}>
+      <StatusBar />
         <DNAdata>
            <StackNavigation />   
-        </DNAdata>
-            
-              
+        </DNAdata>           
     </SafeAreaView>
-  ); 
+  );
 }
 
 export default App;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dimensions, ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -48,7 +49,6 @@ const FeedItem = ({ item }) => {
 };
 
 const styles = StyleSheet.create({
-
     contentContainer: {
         width: windowWidth * 0.9,
         height: windowHeight * 0.1,
@@ -105,7 +105,6 @@ const styles = StyleSheet.create({
     bottomBorder: {
 
     },
-
 });
 
 export default FeedItem;
