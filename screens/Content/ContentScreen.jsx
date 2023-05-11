@@ -1,74 +1,63 @@
 import React from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const ContentScreen = ({ navigation }) => {
+const ContentScreen = ({navigation}) => {
+  return (
+    <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{flex: 1, alignItems: 'center'}}>
+        <View style={styles.headerContainer}>
+          <View style={styles.headerButtonContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
+              <Text style={styles.headerButtonText}>Back</Text>
+            </TouchableOpacity>
+          </View>
 
+          <View style={styles.headerTextContainer}>
+            <Text style={styles.headerText}>Content</Text>
+          </View>
 
-    return (
-        <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={{ flex: 1, alignItems: 'center', }} >
-                <View style={styles.headerContainer}>
+          <View style={styles.headerButtonContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('Market')}>
+              <Text style={styles.headerButtonText}>Filter</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
 
-                    <View style={styles.headerButtonContainer}>
-                        <TouchableOpacity onPress={() => navigation.navigate("Feed")}>
-                            <Text style={styles.headerButtonText}>
-                                Back
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search"
+            multiline={false}
+          />
+        </View>
 
-                    <View style={styles.headerTextContainer}>
-                        <Text style={styles.headerText}>Content</Text>
-                    </View>
+        <View style={styles.contentsBlockContainer}></View>
 
-                    <View style={styles.headerButtonContainer}>
-                        <TouchableOpacity onPress={() => navigation.navigate("Market")}>
-                            <Text style={styles.headerButtonText}>
-                                Filter
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+        <View style={styles.contentInfo}>
+          <Text style={styles.headerText}>Header</Text>
+          <View style={styles.feedTextContainer}>
+            <Text style={styles.feedText}>
+              He'll want to use your yacht, and I don't want this thing smelling
+              like fish.
+            </Text>
+          </View>
 
-
-                </View>
-
-                <View style={styles.searchContainer}>
-
-                    <TextInput style={styles.searchInput}
-                        placeholder="Search"
-                        multiline={false} />
-
-                </View>
-
-                <View style={styles.contentsBlockContainer}>
-
-
-                </View >
-
-                <View style={styles.contentInfo}>
-                    <Text style={styles.headerText}>Header</Text>
-                    <View style={styles.feedTextContainer}>
-                        <Text style={styles.feedText}>
-                            He'll want to use your yacht,
-                            and I don't want this thing smelling like fish.
-                        </Text>
-                    </View>
-
-
-                    <Text style={styles.aboutContentDate}>8m ago</Text>
-
-                </View>
-
-
-            </View>
-
-        </ScrollView>
-
-    )
-
+          <Text style={styles.aboutContentDate}>8m ago</Text>
+        </View>
+      </View>
+    </ScrollView>
+  );
 };
 
 const styles = StyleSheet.create({

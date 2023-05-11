@@ -4,7 +4,6 @@ import FeedItem from './FeedItem';
 import { DNAdataContext } from '../../Data/data';
 
 
-
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -77,7 +76,6 @@ const FeedScreen = ({ navigation }) => {
         </ScrollView>
 
     )
-
 };
 
 const styles = StyleSheet.create({
@@ -90,9 +88,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         // backgroundColor: 'red'
     },
-    headerTextContainer: {
-
-    },
+    headerTextContainer: {},
     headerText: {
         fontSize: 30,
         fontWeight: 600,
@@ -109,7 +105,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 500,
         color: '#5DB075',
-        position: 'absolute'
+        position: 'absolute',
     },
     searchContainer: {
         width: windowWidth * 0.9,
@@ -117,13 +113,11 @@ const styles = StyleSheet.create({
         marginHorizontal: windowWidth * 0.05,
     },
     searchInput: {
-
         borderWidth: 1,
         borderColor: '#E8E8E8',
         borderRadius: 100,
         padding: 10,
         backgroundColor: '#F6F6F6',
-
     },
     contentsBlockContainer: {
         width: windowWidth * 0.9,
@@ -131,10 +125,8 @@ const styles = StyleSheet.create({
         // backgroundColor: 'pink',
         marginVertical: windowHeight * 0.02,
         marginHorizontal: windowWidth * 0.05,
-        justifyContent: 'space-between'
-    }
-    ,
-
+        justifyContent: 'space-between',
+    },
 });
 
 export default FeedScreen;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -9,12 +9,20 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
+import CheckBox from 'react-native-check-box';
 import {Formik, useFormik} from 'formik';
-import {loginValidationSchema} from './loginValidationSchema';
+import {signUpValidationSchema} from './signUpValidationSchema';
+// import in icons
+import CancelIcon from '../../../assets/icons/Cancel.svg';
 import styles from './style';
 
-const LoginScreen = () => {
-  const [hidePassword, setHidePassword] = useState(false);
+const SignUpScreen = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const [hidePassword, setHidePassword] = useState(true);
+
+  useEffect(() => {
+    values.isChecked = isChecked;
+  }, [isChecked]);
 
   const {
     values,
@@ -26,10 +34,12 @@ const LoginScreen = () => {
     handleSubmit,
   } = useFormik({
     initialValues: {
+      name: '',
       email: '',
       password: '',
+      isChecked,
     },
-    validationSchema: loginValidationSchema,
+    validationSchema: signUpValidationSchema,
     onSubmit: data => {
       console.log(data);
     },
@@ -43,8 +53,16 @@ const LoginScreen = () => {
         <SafeAreaView style={styles.root}>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
-              <View style={styles.loginContainer}>
-                <Text style={styles.login}>Log In</Text>
+              <View style={styles.cancel}>
+                <CancelIcon width={20} height={20} fill="#BDBDBD" />
+              </View>
+              <View style={{height: 50}}>
+                <Text style={styles.signUp}>Sign Up</Text>
+              </View>
+              <View style={{height: 50}}>
+                <TouchableOpacity>
+                  <Text style={styles.login}>Login</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -52,9 +70,20 @@ const LoginScreen = () => {
           <Formik>
             <View style={styles.form}>
               <TextInput
+                name="name"
+                placeholder="Name"
+                style={styles.input}
+                variant="standard"
+                onChangeText={handleChange('name')}
+                onBlur={() => setFieldTouched('name')}
+                value={values.name}
+              />
+              {touched.name && errors.name && (
+                <Text style={styles.inputError}>{errors.name}</Text>
+              )}
+              <TextInput
                 name="email"
                 placeholder="Email Address"
-                placeholderTextColor="#BDBDBD"
                 style={styles.input}
                 variant="standard"
                 onChangeText={handleChange('email')}
@@ -69,7 +98,6 @@ const LoginScreen = () => {
                 name="password"
                 secureTextEntry={hidePassword}
                 placeholder="Password"
-                placeholderTextColor="#BDBDBD"
                 style={styles.input}
                 variant="standard"
                 onChangeText={handleChange('password')}
@@ -87,6 +115,20 @@ const LoginScreen = () => {
                   {hidePassword ? 'Show' : 'Hide'}
                 </Text>
               </TouchableOpacity>
+              <CheckBox
+                style={styles.checkBox}
+                isChecked={isChecked}
+                checkedCheckBoxColor="#E8E8E8"
+                checkBoxColor="#E8E8E8"
+                uncheckedCheckBoxColor="#E8E8E8"
+                onClick={() => setIsChecked(!isChecked)}
+                rightTextView={
+                  <Text style={styles.checkBoxText}>
+                    I would like to receive your newsletter and other
+                    promotional information.
+                  </Text>
+                }
+              />
             </View>
           </Formik>
 
@@ -95,12 +137,12 @@ const LoginScreen = () => {
               <TouchableOpacity
                 disabled={!isValid}
                 onPress={() => handleSubmit()}>
-                <Text style={styles.buttonText}>Log In</Text>
+                <Text style={styles.buttonText}>Sign Up</Text>
               </TouchableOpacity>
             </View>
           </View>
 
-          <View style={{alignItems: 'center', top: '30%'}}>
+          <View style={{alignItems: 'center'}}>
             <TouchableOpacity>
               <Text
                 style={{
@@ -117,4 +159,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;
