@@ -11,7 +11,9 @@ function App() {
       }}>
       <StatusBar />
 
-      <StackNavigation />
+      <DNAdata>
+        <StackNavigation />
+      </DNAdata>
     </SafeAreaView>
   );
 }

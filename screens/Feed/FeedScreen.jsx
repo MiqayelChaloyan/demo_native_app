@@ -18,9 +18,9 @@ const FeedScreen = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
 
-          <View style={styles.headerTextContainer}>
-            <Text style={styles.headerText}>Feed</Text>
-          </View>
+                    <View style={styles.headerTextContainer}>
+                        <Text style={styles.headerText}>Feed</Text>
+                    </View>
 
                     <View style={styles.headerButtonContainer}>
                         <TouchableOpacity onPress={() => navigation.navigate('Market')}>
@@ -29,13 +29,6 @@ const FeedScreen = ({ navigation }) => {
                     </View>
                 </View>
 
-        <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search"
-            multiline={false}
-          />
-        </View>
                 <View style={styles.searchContainer}>
                     <TextInput
                         style={styles.searchInput}
