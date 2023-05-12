@@ -10,9 +10,10 @@ function App() {
         flex: 1,
       }}>
       <StatusBar />
-        <DNAdata>
-           <StackNavigation />   
-        </DNAdata>           
+
+      <DNAdata>
+        <StackNavigation />
+      </DNAdata>
     </SafeAreaView>
   );
 }

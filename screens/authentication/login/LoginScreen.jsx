@@ -11,10 +11,12 @@ import {
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {loginValidationSchema} from './loginValidationSchema';
+// import in icons
+import CancelIcon from '../../../assets/icons/Cancel.svg';
 import styles from './style';
 
-const LoginScreen = () => {
-  const [hidePassword, setHidePassword] = useState(false);
+const LogInScreen = ({navigation}) => {
+  const [hidePassword, setHidePassword] = useState(true);
 
   const {
     values,
@@ -31,66 +33,81 @@ const LoginScreen = () => {
     },
     validationSchema: loginValidationSchema,
     onSubmit: data => {
-      console.log(data);
+      // Here we get the user already registered trial
     },
   });
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{flex: 1}}>
+      style={styles.loginRoot}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView style={styles.root}>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
-              <View style={styles.loginContainer}>
-                <Text style={styles.login}>Log In</Text>
+              <View style={styles.cancel}>
+                <CancelIcon width={20} height={20} fill="#BDBDBD" />
+              </View>
+              <View style={styles.headerBox}>
+                <Text style={styles.logIn}>Log In</Text>
               </View>
             </View>
           </View>
-
           <Formik>
-            <View style={styles.form}>
-              <TextInput
-                name="email"
-                placeholder="Email Address"
-                placeholderTextColor="#BDBDBD"
-                style={styles.input}
-                variant="standard"
-                onChangeText={handleChange('email')}
-                onBlur={() => setFieldTouched('email')}
-                value={values.email}
-                // keyboardType="email-address"
-              />
-              {touched.email && errors.email && (
-                <Text style={styles.inputError}>{errors.email}</Text>
-              )}
-              <TextInput
-                name="password"
-                secureTextEntry={hidePassword}
-                placeholder="Password"
-                placeholderTextColor="#BDBDBD"
-                style={styles.input}
-                variant="standard"
-                onChangeText={handleChange('password')}
-                onBlur={() => setFieldTouched('password')}
-                value={values.password}
-              />
-              {touched.password && errors.password && (
-                <Text style={styles.inputError}>{errors.password}</Text>
-              )}
-              <TouchableOpacity
-                activeOpacity={0.8}
-                style={styles.visibilityBtn}
-                onPress={() => setHidePassword(!hidePassword)}>
-                <Text style={styles.hidePassword}>
-                  {hidePassword ? 'Show' : 'Hide'}
-                </Text>
-              </TouchableOpacity>
+            <View style={styles.inputsContainer}>
+              <View style={styles.emailInputStyle}>
+                <TextInput
+                  name="email"
+                  placeholder="Email Address"
+                  placeholderTextColor="#BDBDBD"
+                  style={styles.input}
+                  variant="standard"
+                  onChangeText={handleChange('email')}
+                  onBlur={() => setFieldTouched('email')}
+                  value={values.email}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  secureTextEntry={false}
+                />
+                {touched.email && errors.email && (
+                  <Text style={styles.inputError}>{errors.email}</Text>
+                )}
+              </View>
+              <View style={styles.passworddBox}>
+                <View style={styles.passwordInputStyle}>
+                  <TextInput
+                    name="password"
+                    secureTextEntry={hidePassword}
+                    placeholder="Password"
+                    placeholderTextColor="#BDBDBD"
+                    style={styles.input}
+                    variant="standard"
+                    onChangeText={handleChange('password')}
+                    onBlur={() => setFieldTouched('password')}
+                    value={values.password}
+                    keyboardType="password"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                  />
+                  {touched.password && errors.password && (
+                    <Text style={styles.inputError}>{errors.password}</Text>
+                  )}
+                </View>
+                <View style={styles.passHide}>
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    style={styles.visibilityBtn}
+                    onPress={() => setHidePassword(!hidePassword)}>
+                    <Text style={styles.hidePassword}>
+                      {hidePassword ? 'Show' : 'Hide'}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
           </Formik>
-
-          <View style={{alignItems: 'center'}}>
+          <View style={styles.loginFooter}>
             <View style={styles.button}>
               <TouchableOpacity
                 disabled={!isValid}
@@ -98,18 +115,24 @@ const LoginScreen = () => {
                 <Text style={styles.buttonText}>Log In</Text>
               </TouchableOpacity>
             </View>
-          </View>
-
-          <View style={{alignItems: 'center', top: '30%'}}>
-            <TouchableOpacity>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: '#5DB075',
-                }}>
-                Forgot your password?
-              </Text>
-            </TouchableOpacity>
+            <View style={styles.forgotPass}>
+              <TouchableOpacity>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    color: '#5DB075',
+                  }}>
+                  Forgot your password?
+                </Text>
+              </TouchableOpacity>
+              <View style={styles.navigateSignUp}>
+                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                  <Text style={styles.forgotPassText}>
+                    If you haven't registered yet, click here
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
         </SafeAreaView>
       </TouchableWithoutFeedback>
@@ -117,4 +140,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default LogInScreen;
