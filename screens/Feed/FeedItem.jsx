@@ -1,110 +1,50 @@
 import React from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, View, Image } from 'react-native';
-
+import { Dimensions, Text, View, Image, TouchableOpacity, } from 'react-native';
+import styles from './style';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
-const FeedItem = ({ item }) => {
-
+const FeedItem = ({ item, navigation }) => {
     const todaysDate = new Date();
 
-    const createdDate = item.createdData
+    const createdDate = item.createdData;
 
-    const diffMonths = (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 + (todaysDate.getMonth() - createdDate.getMonth());
+    const diffMonths =
+        (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
+        (todaysDate.getMonth() - createdDate.getMonth());
 
     return (
-        <ScrollView >
-            <View style={styles.contentContainer}>
+        <View>
 
-                {console.log("ttttttttttttt", item)}
-
-
-                <View style={styles.contentBlock}>
-                    <Image source={{ uri: item.imageUri }} style={{ width: 50, height: 50, borderRadius: 8, }} />
-
-                </View >
-
-                <View style={styles.contentInfo}>
-                    <View style={styles.headerContent}>
-                        <Text style={styles.headerText}>{item.title}</Text>
-                        <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
+            <TouchableOpacity onPress={() => navigation.navigate({
+                name: 'Content',
+                params: { item, diffMonths },
+                merge: true,
+            })}>
+                <View style={styles.contentContainer}>
+                    <View style={styles.contentBlock}>
+                        <Image
+                            source={{ uri: item.imageUri }}
+                            style={{ width: windowWidth * 0.133, height: windowWidth * 0.133, borderRadius: 8 }}
+                        />
                     </View>
-                    <View style={styles.feedTextContainer}>
-                        <Text style={styles.feedText}>
-                            {item.message}
-                        </Text>
-                    </View>
-                    <View style={styles.bottomBorder}>
 
+                    <View style={styles.contentInfo}>
+                        <View style={styles.headerContent}>
+                            <Text style={styles.headerText}>{item.title}</Text>
+                            <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
+                        </View>
+                        <View style={styles.feedTextContainer}>
+                            <Text style={styles.feedText}>{item.message}</Text>
+                        </View>
+                        <View style={styles.bottomBorder}></View>
                     </View>
                 </View>
-
-
-            </View>
-        </ScrollView>
-
-    )
-
+            </TouchableOpacity>
+        </View>
+    );
 };
 
-const styles = StyleSheet.create({
-    contentContainer: {
-        width: windowWidth * 0.9,
-        height: windowHeight * 0.1,
-        // backgroundColor: 'khaki',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
 
-
-    },
-    contentBlock: {
-        // position: 'absolute',
-        width: 50,
-        height: 50,
-        // left: 0,
-        // top: 0,
-        backgroundColor: '#F6F6F6',
-
-    },
-    contentInfo: {
-        width: windowWidth * 0.74,
-        height: windowHeight * 0.1,
-        borderBottomWidth: 1,
-        borderBottomColor: '#E8E8E8',
-
-        flexDirection: 'column',
-        // justifyContent: 'space-between',
-        // alignItems: 'flex-start'
-    },
-    headerContent: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        marginBottom: 8
-    },
-    headerText: {
-        fontSize: 16,
-        fontWeight: 600,
-        color: 'black'
-    },
-    aboutContentDate: {
-        fontSize: 14,
-        fontWeight: 400,
-        color: '#BDBDBD'
-    },
-    feedTextContainer: {
-        paddingRight: 24
-    },
-    feedText: {
-        fontSize: 14,
-        fontWeight: 400,
-        color: 'black'
-    },
-    bottomBorder: {
-
-    },
-});
 
 export default FeedItem;
