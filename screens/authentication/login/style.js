@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '2%',
     marginTop: '2%',
+    marginBottom: '6%',
   },
   header: {
     flexDirection: 'row',
