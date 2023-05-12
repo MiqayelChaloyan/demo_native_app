@@ -1,10 +1,17 @@
 import React from 'react';
-import {Dimensions, Text, View, Image, TouchableOpacity} from 'react-native';
+import {
+  Dimensions,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import styles from './style';
 
 const windowWidth = Dimensions.get('window').width;
 
-const FeedItem = ({item, navigation}) => {
+const Posts = ({item}) => {
   const todaysDate = new Date();
 
   const createdDate = item.createdData;
@@ -12,17 +19,9 @@ const FeedItem = ({item, navigation}) => {
   const diffMonths =
     (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
     (todaysDate.getMonth() - createdDate.getMonth());
-
   return (
     <View>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate({
-            name: 'Content',
-            params: {item, diffMonths},
-            merge: true,
-          })
-        }>
+      <TouchableOpacity>
         <View style={styles.contentContainer}>
           <View style={styles.contentBlock}>
             <Image
@@ -34,16 +33,15 @@ const FeedItem = ({item, navigation}) => {
               }}
             />
           </View>
-
           <View style={styles.contentInfo}>
             <View style={styles.headerContent}>
               <Text style={styles.headerText}>{item.title}</Text>
               <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
             </View>
             <View style={styles.feedTextContainer}>
-              <Text style={styles.feedText}>{item.message}</Text>
+              <Text style={styles.feedText} numberOfLines={2} ellipsizeMode='tail'>{item.message}</Text>
             </View>
-            <View style={styles.bottomBorder}/>
+            <View style={styles.bottomBorder} />
           </View>
         </View>
       </TouchableOpacity>
@@ -51,4 +49,4 @@ const FeedItem = ({item, navigation}) => {
   );
 };
 
-export default FeedItem;
+export default Posts;

@@ -7,7 +7,6 @@ const Stack = createNativeStackNavigator();
 
 export default function AuthNavigation() {
   return (
-    <>
       <Stack.Navigator>
         <Stack.Screen
           name="LogIn"
@@ -20,6 +19,5 @@ export default function AuthNavigation() {
           options={{headerShown: false}}
         />
       </Stack.Navigator>
-    </>
   );
 }
