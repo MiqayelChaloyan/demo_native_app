@@ -37,7 +37,7 @@ const ContentScreen = ({ navigation, item, diffMonths }) => {
           />
         </View>
 
-        <View style={styles.slideItemContainer}>
+        <View >
           <Swiper
               onMomentumScrollEnd={(e, state, context) =>
               console.log("index:", state.index)
