@@ -4,10 +4,10 @@ import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 
 const windowWidth = Dimensions.get("window").width;
 
-const MarketSkeleton = () => {
-  const data = Array.from({ length: 3 });
+const MarketSkeletonItem = () => {
+  
 
-  const renderItem = ({ item }) => (
+  return (
     <SkeletonPlaceholder flexDirection="row" speed={1500} backgroundColor={'#b2cdcf'} highlightColor={'#F2F8FC'}>
       <SkeletonPlaceholder.Item flexDirection="row">
 
@@ -21,17 +21,10 @@ const MarketSkeleton = () => {
     </SkeletonPlaceholder>
   );
 
-  return (
-    <FlatList
-      data={data}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={renderItem}
-      horizontal
-    />
-  );
+  
 };
 
-export default MarketSkeleton;
+export default MarketSkeletonItem;
 
 
 

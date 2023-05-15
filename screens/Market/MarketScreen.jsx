@@ -3,7 +3,7 @@ import { Text, FlatList, TextInput, TouchableOpacity, View, ScrollView, } from '
 import Item from './Item';
 import { DNAdataContext } from '../../Data/data';
 import styles from './style';
-import MarketSkeleton from "../../components/MarketSkeleton";
+import MarketSkeletonItem from "../../components/MarketSkeleton";
 
 const MarketScreen = ({ navigation }) => {
   const { marketData } = useContext(DNAdataContext);
@@ -51,18 +51,19 @@ const MarketScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.itemsContainer}>
-        { isLoading ?
-          <MarketSkeleton/> :
+
           <FlatList
             numColumns={3}
             data={marketData}
             key={item => item.id}
             keyExtractor={item => item.id}
             renderItem={({ item }) => {
-              return <Item item={item} navigation={navigation} />;
+              return  isLoading ? <MarketSkeletonItem/>
+                 : <Item item={item} navigation={navigation} />
+              ;
             }}
           />
-        }
+
       </View>
 
       <View style={styles.hotDealsContainer}>
@@ -70,18 +71,17 @@ const MarketScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.itemsContainer}>
-        { isLoading ?
-          <MarketSkeleton/> :
-          <FlatList
-            numColumns={3}
-            data={marketData}
-            key={item => item.id}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => {
-              return <Item item={item} navigation={navigation} />;
-            }}
-          />
-        }
+        <FlatList
+          numColumns={3}
+          data={marketData}
+          key={item => item.id}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => {
+            return  isLoading ? <MarketSkeletonItem/>
+              : <Item item={item} navigation={navigation} />
+              ;
+          }}
+        />
       </View>
 
       <View style={styles.hotDealsContainer}>
@@ -89,18 +89,17 @@ const MarketScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.itemsContainer}>
-        { isLoading ?
-          <MarketSkeleton/> :
-          <FlatList
-            numColumns={3}
-            data={marketData}
-            key={item => item.id}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => {
-              return <Item item={item} navigation={navigation} />;
-            }}
-          />
-        }
+        <FlatList
+          numColumns={3}
+          data={marketData}
+          key={item => item.id}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => {
+            return  isLoading ? <MarketSkeletonItem/>
+              : <Item item={item} navigation={navigation} />
+              ;
+          }}
+        />
 
       </View>
     </ScrollView>
