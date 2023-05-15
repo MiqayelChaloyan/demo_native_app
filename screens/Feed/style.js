@@ -5,6 +5,14 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+  feedScreen: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  feedScreenContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
   headerContainer: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.046,
@@ -43,7 +51,7 @@ const styles = StyleSheet.create({
   },
   contentsBlockContainer: {
     width: windowWidth * 0.9,
-    height: windowHeight * 0.45,
+    height: windowHeight * 0.5,
     marginHorizontal: windowWidth * 0.05,
     justifyContent: 'space-between',
   },

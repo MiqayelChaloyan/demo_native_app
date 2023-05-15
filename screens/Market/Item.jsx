@@ -10,11 +10,7 @@ const Item = ({ item }) => {
       <View style={styles.itemImageContainer}>
         <Image
           source={{ uri: item.imageUri }}
-          style={{
-            width: windowWidth * 0.29,
-            height: windowWidth * 0.29,
-            borderRadius: 8,
-          }}
+          style={styles.itemImageContainer}
         />
       </View>
       <View style={styles.itemNameContainer}>

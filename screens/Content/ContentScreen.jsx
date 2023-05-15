@@ -42,7 +42,7 @@ const ContentScreen = ({ navigation, route }) => {
         <View style={styles.swiperItem}>
 
           <SwiperFlatList
-            autoplay={false}
+            autoplay={true}
             autoplayDelay={3}
             autoplayLoop
             index={itemIndex}
