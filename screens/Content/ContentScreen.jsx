@@ -1,13 +1,10 @@
 import { useContext } from "react";
-import { Dimensions, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./style";
 import { SwiperFlatList } from "react-native-swiper-flatlist";
 import { DNAdataContext } from "../../Data/data";
 import { renderItem } from "./renderItem";
 
-const windowWidth = Dimensions.get("window").width;
-
-const windowHeight = Dimensions.get("window").height;
 const ContentScreen = ({ navigation, route }) => {
   const { feedData } = useContext(DNAdataContext);
   const { itemIndex } = route.params;

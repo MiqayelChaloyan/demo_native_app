@@ -27,11 +27,7 @@ const FeedItem = ({ item, itemIndex, navigation }) => {
           <View style={styles.contentBlock}>
             <Image
               source={{ uri: item.imageUri }}
-              style={{
-                width: windowWidth * 0.133,
-                height: windowWidth * 0.133,
-                borderRadius: 8,
-              }}
+              style={styles.feedItemImage}
             />
           </View>
 

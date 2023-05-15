@@ -91,6 +91,12 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     color: 'black',
   },
+  // todo:need to add
+  feedItemImage: {
+    width: windowWidth * 0.133,
+    height: windowWidth * 0.133,
+    borderRadius: 8,
+  },
 });
 
 export default styles;
