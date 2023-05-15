@@ -1,49 +1,18 @@
 import {useContext, useState} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  PermissionsAndroid,
-  FlatList,
-  ScrollView,
-} from 'react-native';
+import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
-import {launchImageLibrary} from 'react-native-image-picker';
 import AddProfileIcon from '../../assets/icons/AddProfileImage.svg';
-import styles from './style';
 import {DNAdataContext} from '../../Data/data';
 import Posts from './page/Posts/Posts';
+import requestCameraPermission from '../../utils/CameraPermissionUtils';
+import {launchImageLibrary} from 'react-native-image-picker';
+import styles from './style';
+
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const {feedData} = useContext(DNAdataContext);
-
-  const requestCameraPermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-        {
-          title: 'Cool Photo App Camera Permission',
-          message:
-            'Cool Photo App needs access to your camera ' +
-            'so you can take awesome pictures.',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        selectFile();
-        console.log('You can use the camera');
-      } else {
-        console.log('Camera permission denied');
-      }
-    } catch (err) {
-      console.warn(err);
-    }
-  };
 
   const selectFile = () => {
     const options = {
@@ -57,6 +26,8 @@ const Profile = ({navigation}) => {
       setImageUrl(url);
     });
   };
+
+  const accessCamera = async () => await requestCameraPermission(selectFile);
 
   return (
     <View style={{flex: 1}}>
@@ -84,7 +55,7 @@ const Profile = ({navigation}) => {
               </View>
             ) : (
               <View style={styles.addImageContainer}>
-                <TouchableOpacity onPress={requestCameraPermission}>
+                <TouchableOpacity onPress={accessCamera}>
                   <AddProfileIcon width={170} height={170} fill="#5DB075" />
                 </TouchableOpacity>
               </View>
