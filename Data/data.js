@@ -1,4 +1,4 @@
-import React, {useState, createContext} from 'react';
+import React, {createContext, useState} from 'react';
 
 export const DNAdataContext = createContext(undefined);
 
@@ -24,8 +24,8 @@ function DNAdata({children}) {
     },
     {
       title: 'FORUM LOW CL X',
-      message:'Clearly retro and undeniably fresh. Make an impression in these adidas Forum shoes that mix `80s hoops heritage with modern energy. They may have roots on the hardwood, but these sneakers are poised to make new moves. So lace in and look good while you get after your day.',
-
+      message:
+        'Clearly retro and undeniably fresh. Make an impression in these adidas Forum shoes that mix `80s hoops heritage with modern energy. They may have roots on the hardwood, but these sneakers are poised to make new moves. So lace in and look good while you get after your day.',
 
       imageUri:
         'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/94c39d2867404df293a7af5b0105eef2_9366/Forum_Low_CL_x_Indigo_Herz_Shoes_White_IE1855_HM1.jpg',
@@ -66,7 +66,6 @@ function DNAdata({children}) {
       id: '3',
     },
   ]);
-
   return (
     <DNAdataContext.Provider
       value={{

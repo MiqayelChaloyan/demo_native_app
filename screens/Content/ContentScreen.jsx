@@ -1,12 +1,47 @@
-import React, { useContext } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useContext } from "react";
+import { Dimensions, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./style";
-import Swiper from "react-native-swiper";
+import { SwiperFlatList } from "react-native-swiper-flatlist";
 import { DNAdataContext } from "../../Data/data";
 
-const ContentScreen = ({ navigation, item, diffMonths }) => {
+const windowWidth = Dimensions.get("window").width;
 
+const windowHeight = Dimensions.get("window").height;
+const ContentScreen = ({ navigation, route }) => {
   const { feedData } = useContext(DNAdataContext);
+  const { itemIndex } = route.params;
+
+  const diffMonths = (item) => {
+    const todaysDate = new Date();
+    const createdDate = new Date(item.createdData);
+    return (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
+      (todaysDate.getMonth() - createdDate.getMonth());
+  };
+
+
+  const renderItem = ({ item }) => {
+  const monthsAgo = diffMonths(item);
+  return (
+    <View style={{ width: windowWidth, height: windowHeight * 0.42 }}>
+      <Image
+        resizeMode="stretch"
+        style={styles.image}
+        source={{ uri: item.imageUri }}
+      />
+      <Text style={styles.titleStyle}>{item.title}</Text>
+      <View style={{ width: windowWidth * 0.9, height: 34 }}>
+
+        <Text style={styles.postMessage} numberOfLines={2} ellipsizeMode="tail">{item.message}</Text>
+
+        <Text style={styles.dateStyle}>{monthsAgo}m ago</Text>
+
+      </View>
+
+    </View>
+  )
+
+  };
+
 
   return (
     <View style={{ flex: 1 }}>
@@ -37,101 +72,22 @@ const ContentScreen = ({ navigation, item, diffMonths }) => {
           />
         </View>
 
-        <View >
-          <Swiper
-              onMomentumScrollEnd={(e, state, context) =>
-              console.log("index:", state.index)
-            }
-            dotStyle={styles.dotStyle}
-            activeDotStyle={styles.activeDotStyle}
-            paginationStyle={styles.paginationStyle}
-            loop
-          >
-            <View
-              title={
-                <>
-                  <Text style={styles.titleStyle}>
-                    {feedData[0].title}
-                  </Text>
-                  <Text style={styles.postMessage}>
-                    {feedData[0].message}
-                  </Text>
-                  <Text style={styles.dateStyle}>
-                    1m ago
-                  </Text>
-                </>
-              }>
-              <Image
-                resizeMode="stretch"
-                style={styles.image}
-                source={require("./1.jpg")}
-              />
-            </View>
+        <View style={{ width: windowWidth * 0.9, marginTop: 16 }}>
 
-            <View
-              title={
-                <>
-                  <Text style={styles.titleStyle}>
-                    {feedData[1].title}
-                  </Text>
-                  <Text style={styles.postMessage}>
-                    {feedData[1].message}
-                  </Text>
-                  <Text style={styles.dateStyle}>
-                    1m ago
-                  </Text>
-                </>
-              }>
-              <Image
-                resizeMode="stretch"
-                style={styles.image}
-                source={require("./2.jpg")}
-              />
-            </View>
+          <SwiperFlatList
+            autoplay={true}
+            autoplayDelay={3}
+            autoplayLoop
+            index={itemIndex}
+            showPagination
+            paginationStyle={{ paddingLeft: windowWidth * 0.78, marginBottom: -16 }}
+            paginationStyleItem={styles.dotStyle}
+            paginationStyleItemActive={styles.activeDotStyle}
+            data={feedData}
+            renderItem={renderItem}
+          />
 
-            <View
-              title={
-                <>
-                  <Text style={styles.titleStyle}>
-                    {feedData[2].title}
-                  </Text>
-                  <Text style={styles.postMessage}>
-                    {feedData[2].message}
-                  </Text>
-                  <Text style={styles.dateStyle}>
-                    1m ago
-                  </Text>
-                </>
-              }>
-              <Image
-                resizeMode="stretch"
-                style={styles.image}
-                source={require("./3.jpg")}
-              />
-            </View>
 
-            <View
-              title={
-                <>
-                  <Text style={styles.titleStyle}>
-                    {feedData[3].title}
-                  </Text>
-                  <Text style={styles.postMessage}>
-                    {feedData[3].message}
-                  </Text>
-                  <Text style={styles.dateStyle}>
-                    1m ago
-                  </Text>
-                </>
-              }>
-              <Image
-                resizeMode="stretch"
-                style={styles.image}
-                source={require("./4.jpg")}
-              />
-            </View>
-
-          </Swiper>
         </View>
 
       </View>

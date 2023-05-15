@@ -43,7 +43,7 @@ const FeedScreen = ({ navigation }) => {
             key={item => item.id}
             keyExtractor={item => item.id}
             renderItem={({ item, index }) => {
-              return <FeedItem item={item} navigation={navigation} />;
+              return <FeedItem item={item} itemIndex={index} navigation={navigation} />;
             }}
           />
         </View>

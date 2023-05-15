@@ -4,7 +4,7 @@ import styles from "./style";
 
 const windowWidth = Dimensions.get("window").width;
 
-const FeedItem = ({ item, navigation }) => {
+const FeedItem = ({ item, itemIndex, navigation }) => {
   const todaysDate = new Date();
 
   const createdDate = item.createdData;
@@ -16,13 +16,13 @@ const FeedItem = ({ item, navigation }) => {
   return (
     <View>
       <TouchableOpacity
-        onPress={() =>
+        onPress={() => {
           navigation.navigate({
             name: "Content",
-            params: { item, diffMonths },
+            params: { itemIndex },
             merge: true,
-          })
-        }>
+          });
+        }}>
         <View style={styles.contentContainer}>
           <View style={styles.contentBlock}>
             <Image

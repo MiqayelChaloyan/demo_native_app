@@ -45,8 +45,7 @@ const styles = StyleSheet.create({
   titleStyle: {
     width: windowWidth * 0.9,
     height: 19,
-    marginLeft: -10,
-    marginTop: 90,
+    marginTop: 8,
     fontSize: 16,
     color: 'black',
     fontWeight: 600,
@@ -54,16 +53,14 @@ const styles = StyleSheet.create({
   postMessage: {
     width: windowWidth * 0.9,
     height: 34,
-    marginLeft: -10,
-    marginVertical: 8,
     fontSize: 14,
     color: 'black',
     fontWeight: 400,
+    marginVertical: 8,
   },
   dateStyle: {
     width: windowWidth * 0.3,
     height: 17,
-    marginLeft: -10,
     fontSize: 14,
     color: '#BDBDBD',
     fontWeight: 400,

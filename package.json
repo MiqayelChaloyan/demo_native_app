@@ -22,7 +22,7 @@
     "react-native-screens": "^3.20.0",
     "react-native-svg": "^13.9.0",
     "react-native-svg-transformer": "^1.0.0",
-    "react-native-swiper": "^1.6.0",
+    "react-native-swiper-flatlist": "^3.2.2",
     "yup": "^1.1.1"
   },
   "devDependencies": {
