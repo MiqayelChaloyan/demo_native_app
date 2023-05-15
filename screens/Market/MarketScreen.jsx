@@ -17,7 +17,7 @@ const MarketScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.headerTextContainer}>
+          <View >
             <Text style={styles.headerText}>Market</Text>
           </View>
 

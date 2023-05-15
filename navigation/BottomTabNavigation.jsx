@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FeedScreen from '../screens/Feed/FeedScreen';
 import Profile from '../screens/Profile/Profile';
 
@@ -28,7 +28,7 @@ export default function BottomTabNavigation() {
         component={StackNavigation}
         options={{
           title: '',
-          tabBarIcon: ({ tabInfo, focused }) => (
+          tabBarIcon: ({tabInfo, focused}) => (
             <FeedIcon
               width={28}
               height={28}
@@ -56,7 +56,7 @@ export default function BottomTabNavigation() {
         component={Profile}
         options={{
           title: '',
-          tabBarIcon: ({ tabInfo, focused }) => (
+          tabBarIcon: ({tabInfo, focused}) => (
             <ProfileIcon
               width={28}
               height={28}
