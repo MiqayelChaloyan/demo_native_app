@@ -59,8 +59,6 @@ const styles = StyleSheet.create({
     width: 170,
     height: 170,
     borderRadius: 100,
-    bottom: '10%',
-    right: '1%',
   },
   informationContainer: {
     marginTop: '15%',

@@ -6,7 +6,10 @@ import Profile from '../screens/Profile/Profile';
 // icons tabs
 import FeedIcon from '../assets/icons/Feed.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
+import MessagesIcon from '../assets/icons/Messages.svg';
+
 import StackNavigation from './StackNavigation';
+import MessagesList from '../screens/Messages/MessagesList';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,6 +30,20 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({tabInfo, focused}) => (
             <FeedIcon
+              width={28}
+              height={28}
+              fill={focused ? '#5DB075' : '#BDBDBD'}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Messages"
+        component={MessagesList}
+        options={{
+          title: '',
+          tabBarIcon: ({ tabInfo, focused }) => (
+            <MessagesIcon
               width={28}
               height={28}
               fill={focused ? '#5DB075' : '#BDBDBD'}
