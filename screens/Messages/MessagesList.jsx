@@ -13,6 +13,7 @@ import styles from './style';
 
 const MessagesList = () => {
   const [value, setValue] = useState('');
+  const [sendMessages, setSendMessages] = useState(false);
   const user = useRef(0);
   const scrollWiew = useRef();
   const [messages, setMessages] = useState([
@@ -37,17 +38,24 @@ const MessagesList = () => {
   ]);
 
   useEffect(() => {
-    setValue('');
-  }, [messages.length]);
+    if (value.length > 0 && value.trim() !== '') {
+      setSendMessages(true);
+    } else {
+        setSendMessages(false)
+    }
+  }, [value.length]);
 
   const getMessage = () => {
-    setMessages([
-      ...messages,
-      {
-        user: 0,
-        content: value,
-      },
-    ]);
+    if (value.length && value.trim() !== '') {
+      setMessages([
+        ...messages,
+        {
+          user: 0,
+          content: value,
+        },
+      ]);
+      return setValue('');
+    }
   };
 
   return (
@@ -103,7 +111,11 @@ const MessagesList = () => {
         </View>
         <View style={styles.sendBox}>
           <TouchableOpacity onPress={getMessage}>
-            <View style={styles.send}>
+            <View
+              style={[
+                styles.send,
+                {backgroundColor: sendMessages ? '#5DB075' : '#BDBDBD'},
+              ]}>
               <ArrowIcon width={16} height={25} fill="#FFFFFF" />
             </View>
           </TouchableOpacity>

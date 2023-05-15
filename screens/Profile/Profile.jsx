@@ -7,14 +7,18 @@ import Posts from './page/Posts/Posts';
 import requestCameraPermission from '../../utils/CameraPermissionUtils';
 import {launchImageLibrary} from 'react-native-image-picker';
 import styles from './style';
-import SkeletonPosts from './page/Skeleton/SkeletonPosts';
-
+import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
+import {useEffect} from 'react';
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const {feedData} = useContext(DNAdataContext);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2500);
+  }, []);
 
   const selectFile = () => {
     const options = {
@@ -58,7 +62,7 @@ const Profile = ({navigation}) => {
             ) : (
               <View style={styles.addImageContainer}>
                 <TouchableOpacity onPress={accessCamera}>
-                  <AddProfileIcon width={170} height={170} fill="#5DB075" />
+                  <AddProfileIcon width={150} height={150} fill="#5DB075" />
                 </TouchableOpacity>
               </View>
             )}
@@ -104,7 +108,11 @@ const Profile = ({navigation}) => {
           style={styles.contentsBlockContainer}
           keyExtractor={item => item.id}
           renderItem={({item, index}) => {
-            return  loading ? <SkeletonPosts/> : <Posts item={item} itemIndex={index} navigation={navigation} />;
+            return loading ? (
+              <SkeletonPosts />
+            ) : (
+              <Posts item={item} itemIndex={index} navigation={navigation} />
+            );
           }}
         />
       )}

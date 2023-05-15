@@ -1,19 +1,24 @@
-import React, { useContext } from "react";
-import { FlatList, Text, TextInput, TouchableOpacity, View } from "react-native";
-import FeedItem from "./FeedItem";
-import { DNAdataContext } from "../../Data/data";
-import styles from "./style";
+import React, {useContext, useEffect, useState} from 'react';
+import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import FeedItem from './FeedItem';
+import {DNAdataContext} from '../../Data/data';
+import styles from './style';
+import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 
+const FeedScreen = ({navigation}) => {
+  const {feedData} = useContext(DNAdataContext);
+  const [loading, setLoading] = useState(true);
 
-const FeedScreen = ({ navigation }) => {
-  const { feedData } = useContext(DNAdataContext);
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2500);
+  }, []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
-      <View style={{ flex: 1, alignItems: "center" }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{flex: 1, alignItems: 'center'}}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate("Auth")}>
+            <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
               <Text style={styles.headerButtonText}>Back</Text>
             </TouchableOpacity>
           </View>
@@ -23,7 +28,7 @@ const FeedScreen = ({ navigation }) => {
           </View>
 
           <View style={styles.headerButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate("Market")}>
+            <TouchableOpacity onPress={() => navigation.navigate('Market')}>
               <Text style={styles.headerButtonText}>Filter</Text>
             </TouchableOpacity>
           </View>
@@ -42,8 +47,18 @@ const FeedScreen = ({ navigation }) => {
             data={feedData}
             key={item => item.id}
             keyExtractor={item => item.id}
-            renderItem={({ item, index }) => {
-              return <FeedItem item={item} itemIndex={index} navigation={navigation} />;
+            renderItem={({item, index}) => {
+              return loading ? (
+                <View style={styles.skeleton}>
+                  <SkeletonPosts />
+                </View>
+              ) : (
+                <FeedItem
+                  item={item}
+                  itemIndex={index}
+                  navigation={navigation}
+                />
+              );
             }}
           />
         </View>

@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     bottom: 9,
   },
   send: {
-    backgroundColor: '#5DB075',
     width: 34,
     height: 34,
     borderRadius: 100,
@@ -102,6 +101,26 @@ const styles = StyleSheet.create({
     color: '#000',
     alignSelf: 'flex-start',
     fontSize: 15,
+  },
+  leftArrow: {
+    position: 'absolute',
+    backgroundColor: '#E8E8E8',
+    width: 20,
+    height: 30,
+    bottom: 0,
+    borderBottomRightRadius: 25,
+    left: 20,
+    zIndex: -1,
+  },
+  rightArrow: {
+    position: 'absolute',
+    backgroundColor: '#5DB075',
+    width: 20,
+    height: 30,
+    bottom: 0,
+    borderBottomLeftRadius: 25,
+    right: 20,
+    zIndex: -1,
   },
 });
 

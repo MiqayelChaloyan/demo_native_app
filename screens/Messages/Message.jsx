@@ -10,6 +10,7 @@ const Message = ({ isLeft, message }) => {
                     <Text style={[!isLeft ? styles.messageisRight : styles.messageIsLeft]}>{message}</Text>
                 </View>
             </View>
+           {isLeft ? <View style={styles.leftArrow}/> : <View style={styles.rightArrow}/>}
         </View>
     )
 }
