@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ContentScreen from '../screens/Content/ContentScreen';
 import FeedScreen from '../screens/Feed/FeedScreen';
@@ -10,7 +9,6 @@ const Stack = createNativeStackNavigator();
 
 export default function StackNavigation() {
   return (
-    <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Feed"
@@ -19,19 +17,16 @@ export default function StackNavigation() {
             headerStyle: {backgroundColor: 'coral'},
           }}
         />
-
         <Stack.Screen
           name="Content"
           component={ContentScreen}
           options={{headerShown: false}}
         />
-
         <Stack.Screen
           name="Auth"
           component={AuthNavigation}
           options={{headerShown: false}}
         />
-
         <Stack.Screen
           name="Market"
           component={MarketScreen}
@@ -40,6 +35,5 @@ export default function StackNavigation() {
           }}
         />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 }

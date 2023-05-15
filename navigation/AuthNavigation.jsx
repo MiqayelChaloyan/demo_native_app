@@ -7,19 +7,17 @@ const Stack = createNativeStackNavigator();
 
 export default function AuthNavigation() {
   return (
-
-    <Stack.Navigator>
-      <Stack.Screen
-        name="LogIn"
-        component={LogInScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUpScreen}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-
+      <Stack.Navigator>
+        <Stack.Screen
+          name="LogIn"
+          component={LogInScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUpScreen}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
   );
 }

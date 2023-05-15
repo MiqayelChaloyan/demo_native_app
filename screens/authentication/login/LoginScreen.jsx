@@ -46,7 +46,10 @@ const LogInScreen = ({navigation}) => {
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
-                <CancelIcon width={20} height={20} fill="#BDBDBD" />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Profile')}>
+                  <CancelIcon width={20} height={20} fill="#BDBDBD" />
+                </TouchableOpacity>
               </View>
               <View style={styles.headerBox}>
                 <Text style={styles.logIn}>Log In</Text>

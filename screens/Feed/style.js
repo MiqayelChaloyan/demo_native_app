@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-
   headerText: {
     fontSize: 30,
     fontWeight: 600,
@@ -93,5 +92,6 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
+
 
 export default styles;
