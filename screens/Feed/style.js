@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
   contentsBlockContainer: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.45,
-    marginVertical: windowHeight * 0.02,
     marginHorizontal: windowWidth * 0.05,
     justifyContent: 'space-between',
   },
@@ -54,6 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    marginTop: 16,
   },
   contentBlock: {
     width: windowWidth * 0.133,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 8,
   },
-  headerText: {
+  headerFeedText: {
     fontSize: 16,
     fontWeight: 600,
     color: 'black',
@@ -92,5 +92,6 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
+
 
 export default styles;
