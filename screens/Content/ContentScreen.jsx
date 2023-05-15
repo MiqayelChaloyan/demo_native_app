@@ -3,6 +3,7 @@ import { Dimensions, Image, Text, TextInput, TouchableOpacity, View } from "reac
 import styles from "./style";
 import { SwiperFlatList } from "react-native-swiper-flatlist";
 import { DNAdataContext } from "../../Data/data";
+import { renderItem } from "./renderItem";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -11,41 +12,10 @@ const ContentScreen = ({ navigation, route }) => {
   const { feedData } = useContext(DNAdataContext);
   const { itemIndex } = route.params;
 
-  const diffMonths = (item) => {
-    const todaysDate = new Date();
-    const createdDate = new Date(item.createdData);
-    return (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
-      (todaysDate.getMonth() - createdDate.getMonth());
-  };
-
-
-  const renderItem = ({ item }) => {
-  const monthsAgo = diffMonths(item);
-  return (
-    <View style={{ width: windowWidth, height: windowHeight * 0.42 }}>
-      <Image
-        resizeMode="stretch"
-        style={styles.image}
-        source={{ uri: item.imageUri }}
-      />
-      <Text style={styles.titleStyle}>{item.title}</Text>
-      <View style={{ width: windowWidth * 0.9, height: 34 }}>
-
-        <Text style={styles.postMessage} numberOfLines={2} ellipsizeMode="tail">{item.message}</Text>
-
-        <Text style={styles.dateStyle}>{monthsAgo}m ago</Text>
-
-      </View>
-
-    </View>
-  )
-
-  };
-
 
   return (
-    <View style={{ flex: 1 }}>
-      <View style={{ flex: 1, alignItems: "center" }}>
+    <View style={styles.contentContainer}>
+      <View style={styles.contentBox}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
             <TouchableOpacity onPress={() => navigation.navigate("Feed")}>
@@ -72,7 +42,7 @@ const ContentScreen = ({ navigation, route }) => {
           />
         </View>
 
-        <View style={{ width: windowWidth * 0.9, marginTop: 16 }}>
+        <View style={styles.swiperItem}>
 
           <SwiperFlatList
             autoplay={true}
@@ -80,7 +50,7 @@ const ContentScreen = ({ navigation, route }) => {
             autoplayLoop
             index={itemIndex}
             showPagination
-            paginationStyle={{ paddingLeft: windowWidth * 0.78, marginBottom: -16 }}
+            paginationStyle={styles.paginationStyle}
             paginationStyleItem={styles.dotStyle}
             paginationStyleItemActive={styles.activeDotStyle}
             data={feedData}

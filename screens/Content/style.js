@@ -5,13 +5,21 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  slideItemContainer: {
-    marginVertical: windowHeight * 0.02,
-    marginHorizontal: windowWidth * 0.05,
-    justifyContent: 'center',
-    height: windowHeight * 0.3,
+  contentContainer: {
+    flex: 1,
   },
-
+  contentBox: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  swiperItem: {
+    width: windowWidth * 0.9,
+    marginTop: 16,
+  },
+  paginationStyle: {
+    paddingLeft: windowWidth * 0.78,
+    marginBottom: -16,
+  },
   image: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.3,
@@ -37,11 +45,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 3,
   },
-  paginationStyle: {
-    bottom: -113,
-    left: null,
-    right: 10,
-  },
+
   titleStyle: {
     width: windowWidth * 0.9,
     height: 19,
@@ -74,12 +78,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  contentInfo: {
-    width: windowWidth * 0.9,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginHorizontal: windowWidth * 0.05,
-  },
 
   headerText: {
     fontSize: 30,
@@ -111,31 +109,9 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     backgroundColor: '#F6F6F6',
   },
-  contentsBlockContainer: {
-    width: windowWidth * 0.9,
-    height: windowHeight * 0.31,
-    backgroundColor: '#F6F6F6',
-    marginVertical: windowHeight * 0.02,
-    marginHorizontal: windowWidth * 0.05,
-    borderRadius: 8,
-  },
-  headerFeedText: {
-    fontSize: 16,
-    fontWeight: 600,
-    color: 'black',
-  },
-  aboutContentDate: {
-    fontSize: 14,
-    fontWeight: 400,
-    color: '#BDBDBD',
-  },
-  feedTextContainer: {},
-
-  feedText: {
-    fontSize: 14,
-    fontWeight: 400,
-    color: 'black',
-    marginVertical: 8,
+  contentItem: {
+    width: windowWidth,
+    height: windowHeight * 0.42,
   },
 });
 
