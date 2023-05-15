@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -38,11 +38,7 @@ const MessagesList = () => {
   ]);
 
   useEffect(() => {
-    if (value.length > 0 && value.trim() !== '') {
-      setSendMessages(true);
-    } else {
-        setSendMessages(false)
-    }
+    setSendMessages(value.length > 0 && value.trim() !== '');
   }, [value.length]);
 
   const getMessage = () => {
@@ -79,11 +75,11 @@ const MessagesList = () => {
         style={styles.messegesList}
         ref={ref => (scrollWiew.current = ref)}
         onContentSizeChange={() =>
-          scrollWiew.current.scrollToEnd({animated: true})
+          scrollWiew.current.scrollToEnd({ animated: true })
         }>
         <FlatList
           data={messages}
-          renderItem={({item, index}) => (
+          renderItem={({ item, index }) => (
             <Message
               key={index}
               isLeft={item.user !== user.current}
@@ -114,7 +110,7 @@ const MessagesList = () => {
             <View
               style={[
                 styles.send,
-                {backgroundColor: sendMessages ? '#5DB075' : '#BDBDBD'},
+                { backgroundColor: sendMessages ? '#5DB075' : '#BDBDBD' },
               ]}>
               <ArrowIcon width={16} height={25} fill="#FFFFFF" />
             </View>

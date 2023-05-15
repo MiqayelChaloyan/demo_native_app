@@ -1,21 +1,22 @@
-import {useContext, useState} from 'react';
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import { useContext, useState } from 'react';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddProfileIcon from '../../assets/icons/AddProfileImage.svg';
-import {DNAdataContext} from '../../Data/data';
+import { DNAdataContext } from '../../Data/data';
 import Posts from './page/Posts/Posts';
 import requestCameraPermission from '../../utils/CameraPermissionUtils';
-import {launchImageLibrary} from 'react-native-image-picker';
+import { launchImageLibrary } from 'react-native-image-picker';
 import styles from './style';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
   const [showHide, setShowHide] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
-  const {feedData} = useContext(DNAdataContext);
+  const { feedData } = useContext(DNAdataContext);
   const [loading, setLoading] = useState(true);
 
+  // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
     setTimeout(() => setLoading(false), 2500);
   }, []);
@@ -36,7 +37,7 @@ const Profile = ({navigation}) => {
   const accessCamera = async () => await requestCameraPermission(selectFile);
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <View style={styles.headerProfile}>
         <View style={styles.profileTextContainer}>
           <TouchableOpacity>
@@ -48,7 +49,7 @@ const Profile = ({navigation}) => {
         </View>
         <View style={styles.profileTextContainer}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Auth', {screen: 'LogIn'})}>
+            onPress={() => navigation.navigate('Auth', { screen: 'LogIn' })}>
             <Text style={styles.profileText}>Logout</Text>
           </TouchableOpacity>
         </View>
@@ -56,7 +57,7 @@ const Profile = ({navigation}) => {
           <View>
             {imageUrl ? (
               <View style={styles.profileImgUrl}>
-                <Image style={styles.userImg} source={{uri: imageUrl}} />
+                <Image style={styles.userImg} source={{ uri: imageUrl }} />
                 <View style={styles.imageBackground} />
               </View>
             ) : (
@@ -91,8 +92,8 @@ const Profile = ({navigation}) => {
             valuePadding={2}
             hasPadding
             options={[
-              {label: 'Posts', value: false},
-              {label: 'Photos', value: true},
+              { label: 'Posts', value: false },
+              { label: 'Photos', value: true },
             ]}
           />
         </View>
@@ -107,7 +108,7 @@ const Profile = ({navigation}) => {
           key={item => item.id}
           style={styles.contentsBlockContainer}
           keyExtractor={item => item.id}
-          renderItem={({item, index}) => {
+          renderItem={({ item, index }) => {
             return loading ? (
               <SkeletonPosts />
             ) : (

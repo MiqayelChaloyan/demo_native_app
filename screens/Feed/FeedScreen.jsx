@@ -1,21 +1,22 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import FeedItem from './FeedItem';
-import {DNAdataContext} from '../../Data/data';
+import { DNAdataContext } from '../../Data/data';
 import styles from './style';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 
-const FeedScreen = ({navigation}) => {
-  const {feedData} = useContext(DNAdataContext);
+const FeedScreen = ({ navigation }) => {
+  const { feedData } = useContext(DNAdataContext);
   const [loading, setLoading] = useState(true);
 
+  // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
     setTimeout(() => setLoading(false), 2500);
   }, []);
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-      <View style={{flex: 1, alignItems: 'center'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={{ flex: 1, alignItems: 'center' }}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
@@ -47,7 +48,7 @@ const FeedScreen = ({navigation}) => {
             data={feedData}
             key={item => item.id}
             keyExtractor={item => item.id}
-            renderItem={({item, index}) => {
+            renderItem={({ item, index }) => {
               return loading ? (
                 <View style={styles.skeleton}>
                   <SkeletonPosts />

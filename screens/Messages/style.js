@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
@@ -102,25 +102,21 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     fontSize: 15,
   },
-  leftArrow: {
+  arrow: {
     position: 'absolute',
     backgroundColor: '#E8E8E8',
     width: 20,
     height: 30,
     bottom: 0,
-    borderBottomRightRadius: 25,
-    left: 20,
     zIndex: -1,
   },
+  leftArrow: {
+    borderBottomRightRadius: 25,
+    left: 20,
+  },
   rightArrow: {
-    position: 'absolute',
-    backgroundColor: '#5DB075',
-    width: 20,
-    height: 30,
-    bottom: 0,
     borderBottomLeftRadius: 25,
     right: 20,
-    zIndex: -1,
   },
 });
 
