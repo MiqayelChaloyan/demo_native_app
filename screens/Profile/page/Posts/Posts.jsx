@@ -11,7 +11,7 @@ import styles from './style';
 
 const windowWidth = Dimensions.get('window').width;
 
-const Posts = ({item}) => {
+const Posts = ({item, itemIndex, navigation}) => {
   const todaysDate = new Date();
 
   const createdDate = item.createdData;
@@ -19,6 +19,7 @@ const Posts = ({item}) => {
   const diffMonths =
     (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
     (todaysDate.getMonth() - createdDate.getMonth());
+
   return (
     <View>
       <TouchableOpacity>

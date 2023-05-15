@@ -13,7 +13,7 @@ const FeedItem = ({ item, itemIndex, navigation }) => {
     (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
     (todaysDate.getMonth() - createdDate.getMonth());
 
-  return (
+    return (
     <View>
       <TouchableOpacity
         onPress={() => {

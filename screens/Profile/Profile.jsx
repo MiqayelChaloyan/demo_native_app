@@ -7,12 +7,14 @@ import Posts from './page/Posts/Posts';
 import requestCameraPermission from '../../utils/CameraPermissionUtils';
 import {launchImageLibrary} from 'react-native-image-picker';
 import styles from './style';
+import SkeletonPosts from './page/Skeleton/SkeletonPosts';
 
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const {feedData} = useContext(DNAdataContext);
+  const [loading, setLoading] = useState(true);
 
   const selectFile = () => {
     const options = {
@@ -101,8 +103,8 @@ const Profile = ({navigation}) => {
           key={item => item.id}
           style={styles.contentsBlockContainer}
           keyExtractor={item => item.id}
-          renderItem={({item}) => {
-            return <Posts item={item} />;
+          renderItem={({item, index}) => {
+            return  loading ? <SkeletonPosts/> : <Posts item={item} itemIndex={index} navigation={navigation} />;
           }}
         />
       )}
