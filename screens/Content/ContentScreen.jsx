@@ -1,36 +1,34 @@
-import React from 'react';
-import {
-  Dimensions,
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import styles from './style';
+import { useContext } from "react";
+import { Dimensions, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import styles from "./style";
+import { SwiperFlatList } from "react-native-swiper-flatlist";
+import { DNAdataContext } from "../../Data/data";
+import { renderItem } from "./renderItem";
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get("window").width;
 
-const ContentScreen = ({navigation, route}) => {
-  const {item, diffMonths} = route.params;
+const windowHeight = Dimensions.get("window").height;
+const ContentScreen = ({ navigation, route }) => {
+  const { feedData } = useContext(DNAdataContext);
+  const { itemIndex } = route.params;
+
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-      <View style={{flex: 1, alignItems: 'center'}}>
+    <View style={styles.contentContainer}>
+      <View style={styles.contentBox}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
+            <TouchableOpacity onPress={() => navigation.navigate("Feed")}>
               <Text style={styles.headerButtonText}>Back</Text>
             </TouchableOpacity>
           </View>
 
-          <View style={styles.headerTextContainer}>
-            <Text style={[styles.headerText, {fontSize: 30}]}>Content</Text>
+          <View>
+            <Text style={styles.headerText}>Content</Text>
           </View>
 
           <View style={styles.headerButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('Market')}>
+            <TouchableOpacity onPress={() => navigation.navigate("Market")}>
               <Text style={styles.headerButtonText}>Filter</Text>
             </TouchableOpacity>
           </View>
@@ -44,25 +42,24 @@ const ContentScreen = ({navigation, route}) => {
           />
         </View>
 
-        <View style={styles.contentsBlockContainer}>
-          <Image
-            source={{uri: item.imageUri}}
-            style={{
-              width: windowWidth * 0.9,
-              height: windowHeight * 0.31,
-              borderRadius: 8,
-            }}
+        <View style={styles.swiperItem}>
+
+          <SwiperFlatList
+            autoplay={true}
+            autoplayDelay={3}
+            autoplayLoop
+            index={itemIndex}
+            showPagination
+            paginationStyle={styles.paginationStyle}
+            paginationStyleItem={styles.dotStyle}
+            paginationStyleItemActive={styles.activeDotStyle}
+            data={feedData}
+            renderItem={renderItem}
           />
+
+
         </View>
 
-        <View style={styles.contentInfo}>
-          <Text style={styles.headerText}>{item.title}</Text>
-          <View style={styles.feedTextContainer}>
-            <Text style={styles.feedText}>{item.message}</Text>
-          </View>
-
-          <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
-        </View>
       </View>
     </View>
   );
