@@ -104,17 +104,18 @@ const styles = StyleSheet.create({
   },
   arrow: {
     position: 'absolute',
-    backgroundColor: '#E8E8E8',
     width: 20,
     height: 30,
     bottom: 0,
     zIndex: -1,
   },
   leftArrow: {
+    backgroundColor: '#E8E8E8',
     borderBottomRightRadius: 25,
     left: 20,
   },
   rightArrow: {
+    backgroundColor: '#5DB075',
     borderBottomLeftRadius: 25,
     right: 20,
   },
