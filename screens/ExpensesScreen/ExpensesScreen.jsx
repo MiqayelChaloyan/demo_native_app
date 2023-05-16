@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
-import { Text, FlatList, TextInput, TouchableOpacity, View, ScrollView, } from 'react-native';
-import Item from './Item';
-import { DNAdataContext } from '../../Data/data';
-import styles from './style';
+import { Text, TouchableOpacity, View,  } from 'react-native';
+import { DNAdataContext } from "../../Data/data";
+import styles from "./style";
 
-const ExpensesScreen = ({ navigation }) => {
-  const { marketData } = useContext(DNAdataContext);
+const ExpensesScreen = () => {
+  const { expensesData } = useContext(DNAdataContext);
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
-      <View style={{ flex: 1, alignItems: 'center' }}>
+      <View style={styles.container}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
             <TouchableOpacity>
@@ -17,7 +15,7 @@ const ExpensesScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.headerTextContainer}>
+          <View >
             <Text style={styles.headerText}>Market</Text>
           </View>
 
