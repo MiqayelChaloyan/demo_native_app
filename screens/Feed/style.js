@@ -101,6 +101,9 @@ const styles = StyleSheet.create({
     height: windowWidth * 0.133,
     borderRadius: 8,
   },
+  skeleton: {
+    marginTop: 25,
+  },
 });
 
 export default styles;

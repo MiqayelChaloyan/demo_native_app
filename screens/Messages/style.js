@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     bottom: 9,
   },
   send: {
-    backgroundColor: '#5DB075',
     width: 34,
     height: 34,
     borderRadius: 100,
@@ -84,6 +83,11 @@ const styles = StyleSheet.create({
   },
   messageisRight: {
     color: 'white',
+  },
+  messageIsLeft: {
+    color: '#000',
+  },
+  message: {
     alignSelf: 'flex-start',
     fontSize: 15,
   },
@@ -98,10 +102,22 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     left: 20,
   },
-  messageIsLeft: {
-    color: '#000',
-    alignSelf: 'flex-start',
-    fontSize: 15,
+  arrow: {
+    position: 'absolute',
+    width: 20,
+    height: 30,
+    bottom: 0,
+    zIndex: -1,
+  },
+  leftArrow: {
+    backgroundColor: '#E8E8E8',
+    borderBottomRightRadius: 25,
+    left: 20,
+  },
+  rightArrow: {
+    backgroundColor: '#5DB075',
+    borderBottomLeftRadius: 25,
+    right: 20,
   },
 });
 

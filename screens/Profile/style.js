@@ -4,6 +4,9 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   headerProfile: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
@@ -56,8 +59,8 @@ const styles = StyleSheet.create({
   },
   addImageContainer: {
     backgroundColor: 'white',
-    width: 170,
-    height: 170,
+    width: 150,
+    height: 150,
     borderRadius: 100,
   },
   informationContainer: {

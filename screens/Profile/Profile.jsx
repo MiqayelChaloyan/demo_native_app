@@ -1,20 +1,24 @@
-import {useContext, useState} from 'react';
+import {useContext, useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddProfileIcon from '../../assets/icons/AddProfileImage.svg';
 import {DNAdataContext} from '../../Data/data';
-import Posts from './page/Posts/Posts';
 import requestCameraPermission from '../../utils/CameraPermissionUtils';
 import {launchImageLibrary} from 'react-native-image-picker';
+import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
+import Posts from './page/Posts/Posts';
 import styles from './style';
-import SkeletonPosts from './page/Skeleton/SkeletonPosts';
-
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const {feedData} = useContext(DNAdataContext);
   const [loading, setLoading] = useState(true);
+
+  // TODO: This part is for a test and will be changed lately.
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2500);
+  }, []);
 
   const selectFile = () => {
     const options = {
@@ -32,7 +36,7 @@ const Profile = ({navigation}) => {
   const accessCamera = async () => await requestCameraPermission(selectFile);
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.root}>
       <View style={styles.headerProfile}>
         <View style={styles.profileTextContainer}>
           <TouchableOpacity>
@@ -58,7 +62,7 @@ const Profile = ({navigation}) => {
             ) : (
               <View style={styles.addImageContainer}>
                 <TouchableOpacity onPress={accessCamera}>
-                  <AddProfileIcon width={170} height={170} fill="#5DB075" />
+                  <AddProfileIcon width={150} height={150} fill="#5DB075" />
                 </TouchableOpacity>
               </View>
             )}
@@ -104,7 +108,11 @@ const Profile = ({navigation}) => {
           style={styles.contentsBlockContainer}
           keyExtractor={item => item.id}
           renderItem={({item, index}) => {
-            return  loading ? <SkeletonPosts/> : <Posts item={item} itemIndex={index} navigation={navigation} />;
+            return loading ? (
+              <SkeletonPosts />
+            ) : (
+              <Posts item={item} itemIndex={index} navigation={navigation} />
+            );
           }}
         />
       )}
