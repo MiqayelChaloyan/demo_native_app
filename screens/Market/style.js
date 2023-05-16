@@ -5,6 +5,14 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+  market: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  marketScreenContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
   headerContainer: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.046,

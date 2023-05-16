@@ -15,8 +15,7 @@ const FeedScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <View style={{ flex: 1, alignItems: 'center' }}>
+      <View style={styles.feedScreenContainer}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
@@ -64,7 +63,6 @@ const FeedScreen = ({ navigation }) => {
           />
         </View>
       </View>
-    </View>
   );
 };
 

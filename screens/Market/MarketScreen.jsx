@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
-import { Text, FlatList, TextInput, TouchableOpacity, View, ScrollView, } from 'react-native';
-import Item from './Item';
-import { DNAdataContext } from '../../Data/data';
+import React from "react";
+import { Text,TextInput, TouchableOpacity, View, ScrollView, } from 'react-native';
 import styles from './style';
+import ItemList from "./ItemList";
 
-const MarketScreen = ({ navigation }) => {
-  const { marketData } = useContext(DNAdataContext);
+const MarketScreen = () => {
+
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
-      <View style={{ flex: 1, alignItems: 'center' }}>
+    <ScrollView style={styles.market}>
+      <View style={styles.marketScreenContainer}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
             <TouchableOpacity>
@@ -41,49 +40,20 @@ const MarketScreen = ({ navigation }) => {
         <Text style={styles.hotDealsText}>Hot deals</Text>
       </View>
 
-      <View style={styles.itemsContainer}>
-        <FlatList
-          numColumns={3}
-          data={marketData}
-          key={item => item.id}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => {
-            return <Item item={item} navigation={navigation} />;
-          }}
-        />
-      </View>
+      <ItemList/>
 
       <View style={styles.hotDealsContainer}>
         <Text style={styles.hotDealsText}>Trending</Text>
       </View>
 
-      <View style={styles.itemsContainer}>
-        <FlatList
-          numColumns={3}
-          data={marketData}
-          key={item => item.id}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => {
-            return <Item item={item} navigation={navigation} />;
-          }}
-        />
-      </View>
+      <ItemList/>
 
       <View style={styles.hotDealsContainer}>
         <Text style={styles.hotDealsText}>Deals</Text>
       </View>
 
-      <View style={styles.itemsContainer}>
-        <FlatList
-          numColumns={3}
-          data={marketData}
-          key={item => item.id}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => {
-            return <Item item={item} navigation={navigation} />;
-          }}
-        />
-      </View>
+      <ItemList/>
+
     </ScrollView>
   );
 };

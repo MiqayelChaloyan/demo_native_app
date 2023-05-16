@@ -5,6 +5,11 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+  feedScreenContainer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
   headerContainer: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.046,
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
   },
   contentsBlockContainer: {
     width: windowWidth * 0.9,
-    height: windowHeight * 0.45,
+    height: windowHeight * 0.5,
     marginHorizontal: windowWidth * 0.05,
     justifyContent: 'space-between',
   },
@@ -91,7 +96,6 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     color: 'black',
   },
-  // todo:need to add
   feedItemImage: {
     width: windowWidth * 0.133,
     height: windowWidth * 0.133,
