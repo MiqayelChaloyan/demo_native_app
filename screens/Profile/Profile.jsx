@@ -1,4 +1,5 @@
 import {useContext, useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddProfileIcon from '../../assets/icons/AddProfileImage.svg';
@@ -8,7 +9,6 @@ import {launchImageLibrary} from 'react-native-image-picker';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 import Posts from './page/Posts/Posts';
 import styles from './style';
-import Header from '../../components/Header/Header';
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
@@ -120,6 +120,10 @@ const Profile = ({navigation}) => {
       )}
     </View>
   );
+};
+
+Profile.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default Profile;

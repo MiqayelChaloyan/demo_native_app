@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {View, Text} from 'react-native';
 import styles from './style';
 
@@ -25,6 +26,11 @@ const Message = ({isLeft, message}) => {
       />
     </View>
   );
+};
+
+Message.propTypes = {
+  isLeft: PropTypes.bool,
+  message: PropTypes.string,
 };
 
 export default Message;

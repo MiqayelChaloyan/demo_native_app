@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {Image, Text, View} from 'react-native';
 import styles from './style';
 
@@ -10,7 +11,8 @@ const diffMonths = item => {
   );
 };
 
-export const renderItem = ({item}) => {
+ const renderItem = ({item}) => {
+  
   const monthsAgo = diffMonths(item);
   return (
     <View style={styles.contentItem}>
@@ -30,3 +32,9 @@ export const renderItem = ({item}) => {
     </View>
   );
 };
+
+renderItem.propTypes = {
+  item: PropTypes.object,
+};
+
+export default renderItem;

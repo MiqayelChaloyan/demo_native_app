@@ -5,6 +5,7 @@ import FeedScreen from '../screens/Feed/FeedScreen';
 import MarketScreen from '../screens/Market/MarketScreen';
 import AuthNavigation from './AuthNavigation';
 import ExpensesScreen from '../screens/ExpensesScreen/ExpensesScreen';
+import MessagesList from '../screens/Messages/MessagesList';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,10 @@ export default function StackNavigation() {
       <Stack.Screen
         name="Expenses"
         component={ExpensesScreen}
+      />
+      <Stack.Screen
+        name="Chat"
+        component={MessagesList}
       />
     </Stack.Navigator>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import FeedScreen from '../screens/Feed/FeedScreen';
 import Profile from '../screens/Profile/Profile';
 
 // icons tabs
@@ -9,7 +8,8 @@ import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 
 import StackNavigation from './StackNavigation';
-import MessagesList from '../screens/Messages/MessagesList';
+// import MessagesList from '../screens/Messages/MessagesList';
+import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +39,7 @@ export default function BottomTabNavigation() {
       />
       <Tab.Screen
         name="Messages"
-        component={MessagesList}
+        component={MessagesUsers}
         options={{
           title: '',
           tabBarIcon: ({ tabInfo, focused }) => (

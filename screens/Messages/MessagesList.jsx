@@ -1,10 +1,13 @@
-import {useContext, useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   TextInput,
   TouchableOpacity,
   ScrollView,
   FlatList,
+  Text,
+  Image,
 } from 'react-native';
 import {DNAdataContext} from '../../Data/data';
 import Message from './Message';
@@ -12,11 +15,12 @@ import ArrowIcon from '../../assets/icons/Arrow.svg';
 import Header from '../../components/Header/Header';
 import styles from './style';
 
-const MessagesList = () => {
+const MessagesList = ({navigation, route}) => {
   const {setMessages, messages} = useContext(DNAdataContext);
   const [value, setValue] = useState('');
   const user = useRef(0);
   const scrollWiew = useRef();
+  const {item} = route.params;
 
   const getMessage = () => {
     if (value.length && value.trim() !== '') {
@@ -37,10 +41,23 @@ const MessagesList = () => {
         <Header
           screen={'Messages'}
           // TODO: This part is will increase later.
-          // navigation={navigation}
-          // back={'Feed'}
-          // continueTo={'Market'}
+          navigation={navigation}
+          back={'Messages'}
+          continueTo={'Market'}
         />
+      </View>
+
+      <View style={styles.userContainer}>
+        <Image
+          style={styles.userImageProfile}
+          source={
+            item.imageUrl
+              ? {uri: item.imageUrl}
+              : require('../../assets/images/Profile.png')
+          }
+        />
+        {item.isActive && <View style={styles.activeChat} />}
+        <Text style={styles.userFullName}>{item.fullName}</Text>
       </View>
 
       <ScrollView
@@ -96,6 +113,10 @@ const MessagesList = () => {
       </View>
     </View>
   );
+};
+
+MessagesList.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default MessagesList;
