@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {FlatList, TextInput, View} from 'react-native';
 import FeedItem from './FeedItem';
 import {DNAdataContext} from '../../Data/data';
-import styles from './style';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
+import Header from '../../components/Header/Header';
+import styles from './style';
 
 const FeedScreen = ({navigation}) => {
   const {feedData} = useContext(DNAdataContext);
@@ -11,29 +12,18 @@ const FeedScreen = ({navigation}) => {
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2500);
+    const timer = setTimeout(() => setLoading(false), 2500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <View style={styles.feedScreenContainer}>
-      <View style={styles.headerContainer}>
-        <View style={styles.headerButtonContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
-            <Text style={styles.headerButtonText}>Back</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View>
-          <Text style={styles.headerText}>Feed</Text>
-        </View>
-
-        <View style={styles.headerButtonContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Market')}>
-            <Text style={styles.headerButtonText}>Filter</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
+      <Header
+        screen={'Feed'}
+        navigation={navigation}
+        back={'Auth'}
+        continueTo={'Market'}
+      />
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}

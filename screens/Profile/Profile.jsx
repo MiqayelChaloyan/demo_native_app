@@ -8,6 +8,7 @@ import {launchImageLibrary} from 'react-native-image-picker';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 import Posts from './page/Posts/Posts';
 import styles from './style';
+import Header from '../../components/Header/Header';
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
@@ -17,7 +18,8 @@ const Profile = ({navigation}) => {
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2500);
+    const timer = setTimeout(() => setLoading(false), 2500);
+    return () => clearTimeout(timer);
   }, []);
 
   const selectFile = () => {

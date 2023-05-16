@@ -1,7 +1,6 @@
 import {useContext, useRef, useState} from 'react';
 import {
   View,
-  Text,
   TextInput,
   TouchableOpacity,
   ScrollView,
@@ -10,6 +9,7 @@ import {
 import {DNAdataContext} from '../../Data/data';
 import Message from './Message';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
+import Header from '../../components/Header/Header';
 import styles from './style';
 
 const MessagesList = () => {
@@ -33,21 +33,16 @@ const MessagesList = () => {
 
   return (
     <View style={styles.root}>
-      <View style={styles.messageProfile}>
-        <View style={styles.messegeTextContainer}>
-          <TouchableOpacity>
-            <Text style={styles.messegeText}>Back</Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <Text style={styles.messege}>Messages</Text>
-        </View>
-        <View style={styles.messegeTextContainer}>
-          <TouchableOpacity>
-            <Text style={styles.messegeText}>Filter</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.header}>
+        <Header
+          screen={'Messages'}
+          // TODO: This part is will increase later.
+          // navigation={navigation}
+          // back={'Feed'}
+          // continueTo={'Market'}
+        />
       </View>
+
       <ScrollView
         style={styles.messegesList}
         ref={ref => (scrollWiew.current = ref)}

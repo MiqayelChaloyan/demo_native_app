@@ -4,36 +4,33 @@ import ContentScreen from '../screens/Content/ContentScreen';
 import FeedScreen from '../screens/Feed/FeedScreen';
 import MarketScreen from '../screens/Market/MarketScreen';
 import AuthNavigation from './AuthNavigation';
+import ExpensesScreen from '../screens/ExpensesScreen/ExpensesScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigation() {
   return (
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Feed"
-          component={FeedScreen}
-          options={{
-            headerStyle: {backgroundColor: 'coral'},
-          }}
-        />
-        <Stack.Screen
-          name="Content"
-          component={ContentScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Auth"
-          component={AuthNavigation}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Market"
-          component={MarketScreen}
-          options={{
-            headerStyle: {backgroundColor: 'aqua'},
-          }}
-        />
-      </Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen
+        name="Feed"
+        component={FeedScreen}
+      />
+      <Stack.Screen
+        name="Content"
+        component={ContentScreen}
+      />
+      <Stack.Screen
+        name="Auth"
+        component={AuthNavigation}
+      />
+      <Stack.Screen
+        name="Market"
+        component={MarketScreen}
+      />
+      <Stack.Screen
+        name="Expenses"
+        component={ExpensesScreen}
+      />
+    </Stack.Navigator>
   );
 }
