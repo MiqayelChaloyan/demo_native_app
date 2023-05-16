@@ -4,6 +4,9 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   headerProfile: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',

@@ -1,17 +1,10 @@
 import React from 'react';
-import {
-  Dimensions,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {Dimensions, Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
 const windowWidth = Dimensions.get('window').width;
 
-const Posts = ({item, itemIndex, navigation}) => {
+const Posts = ({item}) => {
   const todaysDate = new Date();
 
   const createdDate = item.createdData;
@@ -40,7 +33,12 @@ const Posts = ({item, itemIndex, navigation}) => {
               <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
             </View>
             <View style={styles.feedTextContainer}>
-              <Text style={styles.feedText} numberOfLines={2} ellipsizeMode='tail'>{item.message}</Text>
+              <Text
+                style={styles.feedText}
+                numberOfLines={2}
+                ellipsizeMode="tail">
+                {item.message}
+              </Text>
             </View>
             <View style={styles.bottomBorder} />
           </View>

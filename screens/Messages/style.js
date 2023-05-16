@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
@@ -83,6 +83,11 @@ const styles = StyleSheet.create({
   },
   messageisRight: {
     color: 'white',
+  },
+  messageIsLeft: {
+    color: '#000',
+  },
+  message: {
     alignSelf: 'flex-start',
     fontSize: 15,
   },
@@ -96,11 +101,6 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 10,
     left: 20,
-  },
-  messageIsLeft: {
-    color: '#000',
-    alignSelf: 'flex-start',
-    fontSize: 15,
   },
   arrow: {
     position: 'absolute',

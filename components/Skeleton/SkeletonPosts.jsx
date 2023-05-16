@@ -1,6 +1,4 @@
-import {Text, View} from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-
 
 const SkeletonPosts = () => {
     return (
