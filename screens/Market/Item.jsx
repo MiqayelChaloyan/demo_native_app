@@ -1,8 +1,6 @@
 import React from 'react';
-import { Dimensions, Text, View, Image } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import styles from './style';
-
-const windowWidth = Dimensions.get('window').width;
 
 const Item = ({ item }) => {
   return (
