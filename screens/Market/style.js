@@ -13,34 +13,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  headerContainer: {
-    width: windowWidth * 0.9,
-    height: windowHeight * 0.046,
-    marginTop: windowWidth * 0.04,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
   contentInfo: {
     width: windowWidth * 0.9,
     flexDirection: 'column',
     justifyContent: 'space-between',
-  },
-  headerText: {
-    fontSize: 30,
-    fontWeight: 600,
-    textAlign: 'center',
-    color: 'black',
-  },
-  headerButtonContainer: {
-    width: windowWidth * 0.105,
-    height: windowHeight * 0.024,
-  },
-  headerButtonText: {
-    fontSize: 16,
-    fontWeight: 500,
-    color: '#5DB075',
-    position: 'absolute',
   },
   searchContainer: {
     width: windowWidth * 0.9,

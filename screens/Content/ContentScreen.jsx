@@ -1,9 +1,10 @@
 import {useContext} from 'react';
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
-import styles from './style';
+import {TextInput, View} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import {DNAdataContext} from '../../Data/data';
 import {renderItem} from './renderItem';
+import Header from '../../components/Header/Header';
+import styles from './style';
 
 const ContentScreen = ({navigation, route}) => {
   const {feedData} = useContext(DNAdataContext);
@@ -11,23 +12,12 @@ const ContentScreen = ({navigation, route}) => {
 
   return (
     <View style={styles.contentBox}>
-      <View style={styles.headerContainer}>
-        <View style={styles.headerButtonContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
-            <Text style={styles.headerButtonText}>Back</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View>
-          <Text style={styles.headerText}>Content</Text>
-        </View>
-
-        <View style={styles.headerButtonContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Market')}>
-            <Text style={styles.headerButtonText}>Filter</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Header
+        screen={'Content'}
+        navigation={navigation}
+        back={'Feed'}
+        continueTo={'Market'}
+      />
 
       <View style={styles.searchContainer}>
         <TextInput

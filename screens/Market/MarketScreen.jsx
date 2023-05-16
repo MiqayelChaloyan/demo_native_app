@@ -1,35 +1,19 @@
 import React from 'react';
-import {
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  ScrollView,
-} from 'react-native';
-import styles from './style';
+import {Text, TextInput, View, ScrollView} from 'react-native';
 import ItemList from './ItemList';
+import Header from '../../components/Header/Header';
+import styles from './style';
 
-const MarketScreen = () => {
+const MarketScreen = ({navigation}) => {
   return (
     <ScrollView style={styles.market}>
       <View style={styles.marketScreenContainer}>
-        <View style={styles.headerContainer}>
-          <View style={styles.headerButtonContainer}>
-            <TouchableOpacity>
-              <Text style={styles.headerButtonText}>Back</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View>
-            <Text style={styles.headerText}>Market</Text>
-          </View>
-
-          <View style={styles.headerButtonContainer}>
-            <TouchableOpacity>
-              <Text style={styles.headerButtonText}>Filter</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <Header
+          screen={'Market'}
+          navigation={navigation}
+          back={'Feed'}
+          continueTo={'Expenses'}
+        />
 
         <View style={styles.searchContainer}>
           <TextInput
