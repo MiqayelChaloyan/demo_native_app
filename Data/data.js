@@ -66,6 +66,41 @@ function DNAdata({children}) {
       id: '3',
     },
   ]);
+
+  const expensesData = [
+    {
+      item: 'item1',
+      price: 15,
+    },
+    {
+      item: 'item2',
+      price: 8,
+    },
+    {
+      item: 'item3',
+      price: 28,
+    },
+    {
+      item: 'item4',
+      price: 35,
+    },
+    {
+      item: 'item5',
+      price: 12,
+    },
+    {
+      item: 'item6',
+      price: 48,
+    },
+    {
+      item: 'item7',
+      price: 32,
+    },
+    {
+      item: 'item8',
+      price: 12,
+    },
+  ];
   return (
     <DNAdataContext.Provider
       value={{
@@ -73,6 +108,7 @@ function DNAdata({children}) {
         setFeedData,
         marketData,
         setMarketData,
+        expensesData,
       }}>
       {typeof children === 'function' ? children() : children}
     </DNAdataContext.Provider>
