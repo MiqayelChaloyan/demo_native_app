@@ -66,6 +66,28 @@ function DNAdata({children}) {
       id: '3',
     },
   ]);
+
+  const [messages, setMessages] = useState([
+    {
+      user: 1,
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla quam eu faci lisis mollis. ',
+    },
+    {
+      user: 0,
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ',
+    },
+    {
+      user: 0,
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ',
+    },
+    {
+      user: 1,
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla quam eu faci lisis mollis. ',
+    },
+  ]);
+
   return (
     <DNAdataContext.Provider
       value={{
@@ -73,6 +95,8 @@ function DNAdata({children}) {
         setFeedData,
         marketData,
         setMarketData,
+        setMessages,
+        messages,
       }}>
       {typeof children === 'function' ? children() : children}
     </DNAdataContext.Provider>
