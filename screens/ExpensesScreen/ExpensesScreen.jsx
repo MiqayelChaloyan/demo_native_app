@@ -30,7 +30,6 @@ const ExpensesScreen = ({ navigation }) => {
 
       </View>
 
-    </ScrollView>
   );
 };
 
