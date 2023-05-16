@@ -12,7 +12,6 @@ import {
 import CheckBox from 'react-native-check-box';
 import {Formik, useFormik} from 'formik';
 import {signUpValidationSchema} from './signUpValidationSchema';
-// import in icons
 import CancelIcon from '../../../assets/icons/Cancel.svg';
 import styles from './style';
 

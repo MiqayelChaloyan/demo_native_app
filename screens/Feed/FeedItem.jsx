@@ -1,8 +1,8 @@
-import React from "react";
-import { Text, View, Image, TouchableOpacity } from "react-native";
-import styles from "./style";
+import React from 'react';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
+import styles from './style';
 
-const FeedItem = ({ item, itemIndex, navigation }) => {
+const FeedItem = ({item, itemIndex, navigation}) => {
   const todaysDate = new Date();
 
   const createdDate = item.createdData;
@@ -16,17 +16,14 @@ const FeedItem = ({ item, itemIndex, navigation }) => {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate({
-            name: "Content",
-            params: { itemIndex },
+            name: 'Content',
+            params: {itemIndex},
             merge: true,
           });
         }}>
         <View style={styles.contentContainer}>
           <View style={styles.contentBlock}>
-            <Image
-              source={{ uri: item.imageUri }}
-              style={styles.feedItemImage}
-            />
+            <Image source={{uri: item.imageUri}} style={styles.feedItemImage} />
           </View>
 
           <View style={styles.contentInfo}>
@@ -35,7 +32,10 @@ const FeedItem = ({ item, itemIndex, navigation }) => {
               <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
             </View>
             <View style={styles.feedTextContainer}>
-              <Text style={styles.feedText} numberOfLines={2} ellipsizeMode="tail">
+              <Text
+                style={styles.feedText}
+                numberOfLines={2}
+                ellipsizeMode="tail">
                 {item.message}
               </Text>
             </View>

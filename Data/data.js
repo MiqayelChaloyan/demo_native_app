@@ -122,7 +122,7 @@ function DNAdata({children}) {
       price: 12,
     },
   ];
-  
+
   return (
     <DNAdataContext.Provider
       value={{

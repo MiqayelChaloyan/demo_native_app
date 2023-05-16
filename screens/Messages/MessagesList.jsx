@@ -7,13 +7,13 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import { DNAdataContext } from '../../Data/data';
+import {DNAdataContext} from '../../Data/data';
 import Message from './Message';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
 import styles from './style';
 
 const MessagesList = () => {
-  const { setMessages, messages } = useContext(DNAdataContext);
+  const {setMessages, messages} = useContext(DNAdataContext);
   const [value, setValue] = useState('');
   const user = useRef(0);
   const scrollWiew = useRef();
@@ -87,7 +87,12 @@ const MessagesList = () => {
             <View
               style={[
                 styles.send,
-                {backgroundColor: (value.length > 0 && value.trim() !== '') ? '#5DB075' : '#BDBDBD'},
+                {
+                  backgroundColor:
+                    value.length > 0 && value.trim() !== ''
+                      ? '#5DB075'
+                      : '#BDBDBD',
+                },
               ]}>
               <ArrowIcon width={16} height={25} fill="#FFFFFF" />
             </View>

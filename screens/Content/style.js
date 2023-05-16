@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 3,
   },
-
   titleStyle: {
     width: windowWidth * 0.9,
     height: 19,
@@ -69,7 +68,6 @@ const styles = StyleSheet.create({
     color: '#BDBDBD',
     fontWeight: 400,
   },
-
   headerContainer: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.046,
@@ -78,7 +76,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-
   headerText: {
     fontSize: 30,
     fontWeight: 600,

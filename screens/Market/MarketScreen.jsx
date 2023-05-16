@@ -1,11 +1,15 @@
-import React from "react";
-import { Text,TextInput, TouchableOpacity, View, ScrollView, } from 'react-native';
+import React from 'react';
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from 'react-native';
 import styles from './style';
-import ItemList from "./ItemList";
+import ItemList from './ItemList';
 
 const MarketScreen = () => {
-
-
   return (
     <ScrollView style={styles.market}>
       <View style={styles.marketScreenContainer}>
@@ -16,7 +20,7 @@ const MarketScreen = () => {
             </TouchableOpacity>
           </View>
 
-          <View >
+          <View>
             <Text style={styles.headerText}>Market</Text>
           </View>
 
@@ -40,20 +44,19 @@ const MarketScreen = () => {
         <Text style={styles.hotDealsText}>Hot deals</Text>
       </View>
 
-      <ItemList/>
+      <ItemList />
 
       <View style={styles.hotDealsContainer}>
         <Text style={styles.hotDealsText}>Trending</Text>
       </View>
 
-      <ItemList/>
+      <ItemList />
 
       <View style={styles.hotDealsContainer}>
         <Text style={styles.hotDealsText}>Deals</Text>
       </View>
 
-      <ItemList/>
-
+      <ItemList />
     </ScrollView>
   );
 };
