@@ -11,7 +11,6 @@ const ContentScreen = ({ navigation, route }) => {
 
 
   return (
-    <View style={styles.contentContainer}>
       <View style={styles.contentBox}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
@@ -42,7 +41,7 @@ const ContentScreen = ({ navigation, route }) => {
         <View style={styles.swiperItem}>
 
           <SwiperFlatList
-            autoplay={true}
+            autoplay
             autoplayDelay={3}
             autoplayLoop
             index={itemIndex}
@@ -58,7 +57,6 @@ const ContentScreen = ({ navigation, route }) => {
         </View>
 
       </View>
-    </View>
   );
 };
 

@@ -1,8 +1,6 @@
 import React from "react";
-import { Dimensions, Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import styles from "./style";
-
-const windowWidth = Dimensions.get("window").width;
 
 const FeedItem = ({ item, itemIndex, navigation }) => {
   const todaysDate = new Date();
@@ -13,7 +11,7 @@ const FeedItem = ({ item, itemIndex, navigation }) => {
     (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
     (todaysDate.getMonth() - createdDate.getMonth());
 
-    return (
+  return (
     <View>
       <TouchableOpacity
         onPress={() => {
@@ -41,7 +39,6 @@ const FeedItem = ({ item, itemIndex, navigation }) => {
                 {item.message}
               </Text>
             </View>
-            <View style={styles.bottomBorder} />
           </View>
         </View>
       </TouchableOpacity>

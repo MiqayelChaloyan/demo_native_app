@@ -5,7 +5,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  marketScreen: {
+  market: {
     flex: 1,
     backgroundColor: 'white',
   },

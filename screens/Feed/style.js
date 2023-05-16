@@ -5,13 +5,10 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  feedScreen: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
   feedScreenContainer: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   headerContainer: {
     width: windowWidth * 0.9,
@@ -99,7 +96,6 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     color: 'black',
   },
-  // todo:need to add
   feedItemImage: {
     width: windowWidth * 0.133,
     height: windowWidth * 0.133,

@@ -9,7 +9,6 @@ const FeedScreen = ({ navigation }) => {
   const { feedData } = useContext(DNAdataContext);
 
   return (
-    <View style={styles.feedScreen}>
       <View style={styles.feedScreenContainer}>
         <View style={styles.headerContainer}>
           <View style={styles.headerButtonContainer}>
@@ -48,7 +47,6 @@ const FeedScreen = ({ navigation }) => {
           />
         </View>
       </View>
-    </View>
   );
 };
 
