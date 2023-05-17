@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: 100,
     bottom: -50,
-    left: '32%',
+    left: '30%',
   },
   profileImgUrl: {
     position: 'relative',
@@ -57,11 +57,16 @@ const styles = StyleSheet.create({
     bottom: '55%',
     right: '-3.5%',
   },
+  addImage: {
+    position: 'absolute',
+    left: 120,
+  },
   addImageContainer: {
     backgroundColor: 'white',
     width: 150,
     height: 150,
     borderRadius: 100,
+    position: 'relative',
   },
   informationContainer: {
     marginTop: '15%',
@@ -101,6 +106,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 50,
+  },
+  defaultProfileImage: {
+    width: 150,
+    height: 150,
+    borderRadius: 100,
   },
 });
 

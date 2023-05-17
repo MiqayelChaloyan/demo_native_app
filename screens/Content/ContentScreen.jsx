@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {TextInput, View} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import {DNAdataContext} from '../../Data/data';
-import renderItem from './renderItem';
+import RenderItem from './RenderItem';
 import Header from '../../components/Header/Header';
 import styles from './style';
 
@@ -39,7 +39,7 @@ const ContentScreen = ({navigation, route}) => {
           paginationStyleItem={styles.dotStyle}
           paginationStyleItemActive={styles.activeDotStyle}
           data={feedData}
-          renderItem={renderItem}
+          renderItem={RenderItem}
         />
       </View>
     </View>

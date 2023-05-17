@@ -11,8 +11,7 @@ const diffMonths = item => {
   );
 };
 
- const renderItem = ({item}) => {
-  
+const RenderItem = ({item}) => {
   const monthsAgo = diffMonths(item);
   return (
     <View style={styles.contentItem}>
@@ -33,8 +32,8 @@ const diffMonths = item => {
   );
 };
 
-renderItem.propTypes = {
+RenderItem.propTypes = {
   item: PropTypes.object,
 };
 
-export default renderItem;
+export default RenderItem;
