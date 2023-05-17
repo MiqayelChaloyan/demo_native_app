@@ -4,8 +4,8 @@ import Profile from '../screens/Profile/Profile';
 import FeedIcon from '../assets/icons/Feed.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
-import StackNavigation from './StackNavigation';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
+import PageNavigation from './PageNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +20,8 @@ export default function BottomTabNavigation() {
         },
       }}>
       <Tab.Screen
-        name="Feed"
-        component={StackNavigation}
+        name="Pages"
+        component={PageNavigation}
         options={{
           title: '',
           tabBarIcon: ({ tabInfo, focused }) => (
