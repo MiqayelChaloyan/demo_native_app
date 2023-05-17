@@ -11,21 +11,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    left: 15,
   },
   headerText: {
     fontSize: 30,
     fontWeight: 600,
     textAlign: 'center',
     color: 'black',
+    right: 5,
   },
   headerButtonContainer: {
-    width: windowWidth * 0.105,
+    width: windowWidth * 0.17,
     height: windowHeight * 0.024,
   },
   headerButtonText: {
     fontSize: 16,
     fontWeight: 500,
-    color: '#5DB075',
     position: 'absolute',
   },
 });

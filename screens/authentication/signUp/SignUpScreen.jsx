@@ -54,7 +54,7 @@ const SignUpScreen = ({navigation}) => {
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
-                <TouchableOpacity onPress={() => navigation.navigate('LogIn')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
                   <CancelIcon width={20} height={20} fill="#BDBDBD" />
                 </TouchableOpacity>
               </View>
@@ -120,7 +120,7 @@ const SignUpScreen = ({navigation}) => {
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     value={values.password}
-                    keyboardType="password"
+                    keyboardType="visible-password"
                     autoCapitalize="none"
                     autoCorrect={false}
                   />

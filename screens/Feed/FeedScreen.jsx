@@ -24,6 +24,8 @@ const FeedScreen = ({navigation}) => {
         navigation={navigation}
         back={'Auth'}
         continueTo={'Market'}
+        left={'Back'}
+        right={'Filter'}
       />
       <View style={styles.searchContainer}>
         <TextInput

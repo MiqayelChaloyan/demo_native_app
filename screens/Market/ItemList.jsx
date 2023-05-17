@@ -2,8 +2,8 @@ import React, {useContext, useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
 import Item from './Item';
 import {DNAdataContext} from '../../Data/data';
-import styles from './style';
 import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
+import styles from './style';
 
 const ItemList = () => {
   const {marketData} = useContext(DNAdataContext);

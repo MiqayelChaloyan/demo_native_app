@@ -18,6 +18,8 @@ const ContentScreen = ({navigation, route}) => {
         navigation={navigation}
         back={'Feed'}
         continueTo={'Market'}
+        left={'Back'}
+        right={'Filter'}
       />
 
       <View style={styles.searchContainer}>

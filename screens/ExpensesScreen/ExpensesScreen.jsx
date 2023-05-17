@@ -12,13 +12,14 @@ const ExpensesScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Header
-        screen={'Expenses'}
         // TODO: This part is will increase later.
+        screen={'Expenses'}
         navigation={navigation}
         back={'Market'}
-        // continueTo={'Market'}
+        continueTo={'Market'}
+        left={'Back'}
+        right={'New'}
       />
-
       <View style={styles.barChartContainer}>
         <View style={styles.itemsContainer}>
           <FlatList

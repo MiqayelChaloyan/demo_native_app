@@ -43,6 +43,7 @@ const MessagesList = ({navigation, route}) => {
           navigation={navigation}
           back={'Messages'}
           continueTo={'Market'}
+          left={'Back'}
         />
       </View>
 
