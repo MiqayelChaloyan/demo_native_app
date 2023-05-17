@@ -40,7 +40,6 @@ const MessagesList = ({navigation, route}) => {
       <View style={styles.header}>
         <Header
           screen={'Messages'}
-          // TODO: This part is will increase later.
           navigation={navigation}
           back={'Messages'}
           continueTo={'Market'}

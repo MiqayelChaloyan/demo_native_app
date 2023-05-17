@@ -32,11 +32,11 @@ const User = ({item, navigation}) => {
           {item.isActive && <View style={styles.activeChat} />}
         </View>
         <View style={styles.messages}>
-          {messages[messages.length - 2].user === 0 && (
-            <Text style={styles.messagesText}>'You: '</Text>
+          {messages[messages.length - 1].user === 0 && (
+            <Text style={styles.messagesText}>You: </Text>
           )}
           <Text style={styles.messagesText}>
-            {messages[messages.length - 2].content.slice(0, 25)}...
+            {messages[messages.length - 1].content.slice(0, 25)}...
           </Text>
         </View>
       </View>

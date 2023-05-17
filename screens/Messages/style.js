@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
     left: 5,
     color: '#000000',
     top: 5,
+    fontWeight: 600,
   },
 });
 
