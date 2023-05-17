@@ -84,6 +84,41 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: windowHeight * 0.49,
   },
+  headerTextContainer: {
+    width: windowWidth * 0.9,
+    height: 29,
+    marginBottom: 11,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 500,
+    color: 'black',
+  },
+  itemListContainer: {
+    flex: 1,
+    width: windowWidth * 0.9,
+    marginBottom: 30,
+  },
+  contentItemOfList: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 51,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E8E8E8',
+  },
+  circle: {
+    borderRadius: 8,
+    width: 16,
+    height: 16,
+  },
+  leftSide: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  titleContainer: {
+    marginLeft: 16,
+  },
 });
 
 export default styles;
