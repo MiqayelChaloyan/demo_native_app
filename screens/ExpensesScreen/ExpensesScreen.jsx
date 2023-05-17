@@ -6,7 +6,7 @@ import styles from './style';
 import ExpenseItem from './ExpenseItem';
 import ExpenseItemList from './ExpenseItemList';
 
-const ExpensesScreen = () => {
+const ExpensesScreen = ({navigation}) => {
   const {expensesData} = useContext(DNAdataContext);
 
   return (
@@ -14,8 +14,8 @@ const ExpensesScreen = () => {
       <Header
         screen={'Expenses'}
         // TODO: This part is will increase later.
-        // navigation={navigation}
-        // back={'Auth'}
+        navigation={navigation}
+        back={'Market'}
         // continueTo={'Market'}
       />
 
