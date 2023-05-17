@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: 100,
     bottom: -50,
-    left: '30%',
+    left: '32%',
   },
   profileImgUrl: {
     position: 'relative',
