@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {
   Text,
   View,
@@ -129,9 +130,7 @@ const LogInScreen = ({navigation}) => {
               </TouchableOpacity>
               <View style={styles.navigateSignUp}>
                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                  <Text style={styles.forgotPassText}>
-                    If you haven't registered yet, click here
-                  </Text>
+                  <Text style={styles.forgotPassText}>Create acount</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -140,6 +139,10 @@ const LogInScreen = ({navigation}) => {
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
+};
+
+LogInScreen.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default LogInScreen;

@@ -1,14 +1,14 @@
 import {useContext, useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
-import AddProfileIcon from '../../assets/icons/AddProfileImage.svg';
+import AddIcon from '../../assets/icons/AddProfileImage.svg';
 import {DNAdataContext} from '../../Data/data';
 import requestCameraPermission from '../../utils/CameraPermissionUtils';
 import {launchImageLibrary} from 'react-native-image-picker';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 import Posts from './page/Posts/Posts';
 import styles from './style';
-import Header from '../../components/Header/Header';
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
@@ -55,7 +55,7 @@ const Profile = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.imageContainer}>
-          <View>
+          <View style={{position: 'relative'}}>
             {imageUrl ? (
               <View style={styles.profileImgUrl}>
                 <Image style={styles.userImg} source={{uri: imageUrl}} />
@@ -63,11 +63,17 @@ const Profile = ({navigation}) => {
               </View>
             ) : (
               <View style={styles.addImageContainer}>
-                <TouchableOpacity onPress={accessCamera}>
-                  <AddProfileIcon width={150} height={150} fill="#5DB075" />
-                </TouchableOpacity>
+                <Image
+                  style={styles.defaultProfileImage}
+                  source={require('../../assets/images/Profile.png')}
+                />
               </View>
             )}
+            <TouchableOpacity onPress={accessCamera}>
+              <View style={[styles.addImage, {bottom: imageUrl ? 180 : 10}]}>
+                <AddIcon width={40} height={40} fill="#5DB075" />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -120,6 +126,10 @@ const Profile = ({navigation}) => {
       )}
     </View>
   );
+};
+
+Profile.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default Profile;

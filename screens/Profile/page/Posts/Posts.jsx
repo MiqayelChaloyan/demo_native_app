@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Dimensions, Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
@@ -46,6 +47,10 @@ const Posts = ({item}) => {
       </TouchableOpacity>
     </View>
   );
+};
+
+Posts.propTypes = {
+  item: PropTypes.object,
 };
 
 export default Posts;

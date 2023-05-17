@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   },
   paginationStyle: {
     paddingLeft: windowWidth * 0.78,
-    marginBottom: -16,
+    marginBottom: 0,
+    bottom: 16,
   },
   image: {
     width: windowWidth * 0.9,
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   },
   contentItem: {
     width: windowWidth,
-    height: windowHeight * 0.42,
+    height: windowHeight * 0.49,
   },
 });
 

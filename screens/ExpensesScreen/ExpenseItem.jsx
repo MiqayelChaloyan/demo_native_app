@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from 'prop-types';
 import { Text, View } from "react-native";
 import { DNAdataContext } from "../../Data/data";
 import styles from "./style";
@@ -21,6 +22,11 @@ const ExpenseItem = ({ item , index }) => {
       </View>
     </View>
   );
+};
+
+ExpenseItem.propTypes = {
+  item: PropTypes.object,
+  index: PropTypes.number,
 };
 
 export default ExpenseItem;

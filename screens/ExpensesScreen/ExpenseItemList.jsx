@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Text, View } from "react-native";
 import styles from "./style";
 
@@ -22,6 +23,11 @@ const ExpenseItemList = ({ item, index }) => {
     </View>
 
   );
+};
+
+ExpenseItemList.propTypes = {
+  item: PropTypes.object,
+  index: PropTypes.number,
 };
 
 export default ExpenseItemList;

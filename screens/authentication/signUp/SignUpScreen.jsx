@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import {
   Text,
   View,
@@ -53,7 +54,9 @@ const SignUpScreen = ({navigation}) => {
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
-                <CancelIcon width={20} height={20} fill="#BDBDBD" />
+                <TouchableOpacity onPress={() => navigation.navigate('LogIn')}>
+                  <CancelIcon width={20} height={20} fill="#BDBDBD" />
+                </TouchableOpacity>
               </View>
               <View style={styles.headerBox}>
                 <Text style={styles.signUp}>Sign Up</Text>
@@ -140,7 +143,7 @@ const SignUpScreen = ({navigation}) => {
                 <CheckBox
                   style={styles.checkBox}
                   isChecked={isChecked}
-                  checkedCheckBoxColor="#E8E8E8"
+                  checkedCheckBoxColor="#5DB075"
                   checkBoxColor="#E8E8E8"
                   uncheckedCheckBoxColor="#E8E8E8"
                   onClick={() => setIsChecked(!isChecked)}
@@ -172,6 +175,10 @@ const SignUpScreen = ({navigation}) => {
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
+};
+
+SignUpScreen.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default SignUpScreen;

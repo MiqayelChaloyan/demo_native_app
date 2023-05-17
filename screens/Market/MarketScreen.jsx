@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Text, TextInput, View, ScrollView} from 'react-native';
 import ItemList from './ItemList';
 import Header from '../../components/Header/Header';
@@ -43,6 +44,10 @@ const MarketScreen = ({navigation}) => {
       <ItemList />
     </ScrollView>
   );
+};
+
+MarketScreen.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default MarketScreen;

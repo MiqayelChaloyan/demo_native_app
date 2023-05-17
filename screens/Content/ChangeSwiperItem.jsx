@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {Image, Text, View} from 'react-native';
 import styles from './style';
 
@@ -10,7 +11,7 @@ const diffMonths = item => {
   );
 };
 
-export const renderItem = ({item}) => {
+const ChangeSwiperItem = ({item}) => {
   const monthsAgo = diffMonths(item);
   return (
     <View style={styles.contentItem}>
@@ -30,3 +31,9 @@ export const renderItem = ({item}) => {
     </View>
   );
 };
+
+ChangeSwiperItem.propTypes = {
+  item: PropTypes.object,
+};
+
+export default ChangeSwiperItem;

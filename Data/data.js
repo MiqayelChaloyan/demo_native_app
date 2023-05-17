@@ -123,6 +123,57 @@ function DNAdata({children}) {
     },
   ];
 
+  const [usersList, setUsersList] = useState([
+    {
+      id: 0,
+      fullName: 'Terry Dotson',
+      isActive: true,
+      imageUrl:
+        'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      id: 1,
+      fullName: 'Warren Belz',
+      isActive: true,
+      imageUrl:
+        'https://images.pexels.com/photos/1906157/pexels-photo-1906157.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      id: 2,
+      fullName: 'Marie Pasquet',
+      isActive: false,
+      imageUrl:
+        'https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    },
+    {
+      id: 3,
+      fullName: 'Lauriane Rolland',
+      isActive: true,
+      imageUrl:
+        'https://images.pexels.com/photos/2773977/pexels-photo-2773977.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    },
+    {
+      id: 4,
+      fullName: 'John Smith',
+      isActive: false,
+      imageUrl:
+        'https://images.pexels.com/photos/2224699/pexels-photo-2224699.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+    },
+    {
+      id: 5,
+      fullName: 'Alisa Rolland',
+      isActive: true,
+      imageUrl: null,
+    },
+    {
+      id: 6,
+      fullName: 'Alisa Rolland',
+      isActive: false,
+      imageUrl:
+        'https://images.pexels.com/photos/2690774/pexels-photo-2690774.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    },
+  ]);
+
   return (
     <DNAdataContext.Provider
       value={{
@@ -133,6 +184,7 @@ function DNAdata({children}) {
         setMessages,
         messages,
         expensesData,
+        usersList,
       }}>
       {typeof children === 'function' ? children() : children}
     </DNAdataContext.Provider>

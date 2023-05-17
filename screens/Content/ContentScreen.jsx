@@ -1,8 +1,9 @@
 import {useContext} from 'react';
+import PropTypes from 'prop-types';
 import {TextInput, View} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import {DNAdataContext} from '../../Data/data';
-import {renderItem} from './renderItem';
+import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import styles from './style';
 
@@ -38,11 +39,16 @@ const ContentScreen = ({navigation, route}) => {
           paginationStyleItem={styles.dotStyle}
           paginationStyleItemActive={styles.activeDotStyle}
           data={feedData}
-          renderItem={renderItem}
+          renderItem={ChangeSwiperItem}
         />
       </View>
     </View>
   );
+};
+
+ContentScreen.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
 };
 
 export default ContentScreen;

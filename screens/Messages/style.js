@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     right: 20,
   },
   messageisRight: {
-    color: 'white',
+    color: '#fff',
   },
   messageIsLeft: {
     color: '#000',
@@ -100,6 +100,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#5DB075',
     borderBottomLeftRadius: 25,
     right: 20,
+  },
+  userContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    left: 15,
+    alignItems: 'flex-start',
+  },
+  userImageProfile: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+  },
+  activeChat: {
+    borderWidth: 3,
+    borderColor: '#5DB075',
+    width: 12,
+    height: 12,
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    position: 'absolute',
+    bottom: 1,
+    left: 40,
+  },
+  userFullName: {
+    fontSize: 15,
+    left: 5,
+    color: '#000000',
+    top: 5,
+    fontWeight: 600,
   },
 });
 

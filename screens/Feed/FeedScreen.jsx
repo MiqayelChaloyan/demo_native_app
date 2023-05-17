@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import {FlatList, TextInput, View} from 'react-native';
 import FeedItem from './FeedItem';
 import {DNAdataContext} from '../../Data/data';
@@ -50,6 +51,10 @@ const FeedScreen = ({navigation}) => {
       </View>
     </View>
   );
+};
+
+FeedScreen.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default FeedScreen;
