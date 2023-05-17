@@ -90,35 +90,35 @@ function DNAdata({children}) {
 
   const expensesData = [
     {
-      title: 'item1',
+      title: 'Item1',
       price: 15,
     },
     {
-      title: 'item2',
+      title: 'Item2',
       price: 30,
     },
     {
-      title: 'item3',
+      title: 'Item3',
       price: 28,
     },
     {
-      title: 'item4',
+      title: 'Item4',
       price: 35,
     },
     {
-      title: 'item5',
+      title: 'Item5',
       price: 12,
     },
     {
-      title: 'item6',
+      title: 'Item6',
       price: 48,
     },
     {
-      title: 'item7',
+      title: 'Item7',
       price: 32,
     },
     {
-      title: 'item8',
+      title: 'Item8',
       price: 25,
     },
   ];
