@@ -5,9 +5,6 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    flex: 1,
-  },
   contentBox: {
     flex: 1,
     alignItems: 'center',

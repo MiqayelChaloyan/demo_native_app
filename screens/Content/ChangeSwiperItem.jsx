@@ -11,7 +11,7 @@ const diffMonths = item => {
   );
 };
 
-const RenderItem = ({item}) => {
+const ChangeSwiperItem = ({item}) => {
   const monthsAgo = diffMonths(item);
   return (
     <View style={styles.contentItem}>
@@ -32,8 +32,8 @@ const RenderItem = ({item}) => {
   );
 };
 
-RenderItem.propTypes = {
+ChangeSwiperItem.propTypes = {
   item: PropTypes.object,
 };
 
-export default RenderItem;
+export default ChangeSwiperItem;
