@@ -1,11 +1,12 @@
 import {useContext} from 'react';
 import PropTypes from 'prop-types';
-import {TextInput, View} from 'react-native';
+import { TextInput, View, Text, FlatList } from "react-native";
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import {DNAdataContext} from '../../Data/data';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import styles from './style';
+import ContentItemList from "./ContentItemList";
 
 const ContentScreen = ({navigation, route}) => {
   const {feedData} = useContext(DNAdataContext);
@@ -42,6 +43,19 @@ const ContentScreen = ({navigation, route}) => {
           renderItem={ChangeSwiperItem}
         />
       </View>
+
+      <View style={styles.headerTextContainer}>
+        <Text style={styles.headerText}>Outlet</Text>
+      </View>
+
+      <View style={styles.itemListContainer}>
+        <FlatList
+          data={feedData}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item, index}) => <ContentItemList item={item} index={index} />}
+        />
+      </View>
+
     </View>
   );
 };

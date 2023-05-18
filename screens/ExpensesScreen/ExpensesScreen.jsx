@@ -35,7 +35,7 @@ const ExpensesScreen = ({navigation}) => {
       <View style={styles.headerTextContainer}>
         <Text style={styles.headerText}>Expenses</Text>
       </View>
-      <View style={styles.ItemListContainer}>
+      <View style={styles.itemListContainer}>
         <FlatList
           data={expensesData}
           keyExtractor={(_, index) => index.toString()}
