@@ -21,7 +21,6 @@ const ContentScreen = ({navigation, route}) => {
         left={'Back'}
         right={'Filter'}
       />
-
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
@@ -29,7 +28,6 @@ const ContentScreen = ({navigation, route}) => {
           multiline={false}
         />
       </View>
-
       <View style={styles.swiperItem}>
         <SwiperFlatList
           autoplay

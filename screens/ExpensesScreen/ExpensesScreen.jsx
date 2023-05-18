@@ -2,9 +2,9 @@ import React, {useContext} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import {DNAdataContext} from '../../Data/data';
-import styles from './style';
 import ExpenseItem from './ExpenseItem';
 import ExpenseItemList from './ExpenseItemList';
+import styles from './style';
 
 const ExpensesScreen = ({navigation}) => {
   const {expensesData} = useContext(DNAdataContext);
@@ -38,7 +38,7 @@ const ExpensesScreen = ({navigation}) => {
       <View style={styles.ItemListContainer}>
         <FlatList
           data={expensesData}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(_, index) => index.toString()}
           renderItem={({item, index}) => {
             return <ExpenseItemList item={item} index={index} />;
           }}

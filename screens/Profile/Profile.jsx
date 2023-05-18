@@ -110,9 +110,9 @@ const Profile = ({navigation}) => {
           key={item => item.id}
           style={styles.contentsBlockContainer}
           keyExtractor={item => item.id}
-          renderItem={({item, index}) => {
-            return loading ? <SkeletonPhotos /> : <Photos item={item} />;
-          }}
+          renderItem={({item}) =>
+            loading ? <SkeletonPhotos /> : <Photos item={item} />
+          }
         />
       ) : (
         <FlatList
@@ -120,9 +120,9 @@ const Profile = ({navigation}) => {
           key={item => item.id}
           style={styles.contentsBlockContainer}
           keyExtractor={item => item.id}
-          renderItem={({item, index}) => {
-            return loading ? <SkeletonPosts /> : <Posts item={item} />;
-          }}
+          renderItem={({item}) =>
+            loading ? <SkeletonPosts /> : <Posts item={item} />
+          }
         />
       )}
     </View>

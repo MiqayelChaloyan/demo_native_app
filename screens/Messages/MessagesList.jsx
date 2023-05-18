@@ -23,7 +23,7 @@ const MessagesList = ({navigation, route}) => {
   const {item} = route.params;
 
   const getMessage = () => {
-    if (value.length && value.trim() !== '') {
+    if (value.trim() !== '') {
       setMessages([
         ...messages,
         {
@@ -88,7 +88,7 @@ const MessagesList = ({navigation, route}) => {
             variant="standard"
             onChangeText={value => setValue(value)}
             value={value}
-            keyboardType="twitter"
+            keyboardType="web-search"
             autoCapitalize="none"
             autoCorrect={false}
             secureTextEntry={false}
@@ -100,10 +100,7 @@ const MessagesList = ({navigation, route}) => {
               style={[
                 styles.send,
                 {
-                  backgroundColor:
-                    value.length > 0 && value.trim() !== ''
-                      ? '#5DB075'
-                      : '#BDBDBD',
+                  backgroundColor: value.trim() !== '' ? '#5DB075' : '#BDBDBD',
                 },
               ]}>
               <ArrowIcon width={16} height={25} fill="#FFFFFF" />

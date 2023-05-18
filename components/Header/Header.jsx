@@ -19,18 +19,14 @@ const Header = ({
           <Text
             style={[
               styles.headerButtonText,
-              {color: headerTextColor ? headerTextColor : '#5DB075'},
+              {color: headerTextColor || '#5DB075'},
             ]}>
             {left}
           </Text>
         </TouchableOpacity>
       </View>
       <View>
-        <Text
-          style={[
-            styles.headerText,
-            {color: headerTextColor ? headerTextColor : 'black'},
-          ]}>
+        <Text style={[styles.headerText, {color: headerTextColor || 'black'}]}>
           {screen}
         </Text>
       </View>
@@ -45,7 +41,7 @@ const Header = ({
             <Text
               style={[
                 styles.headerButtonText,
-                {color: headerTextColor ? headerTextColor : '#5DB075'},
+                {color: headerTextColor || '#5DB075'},
               ]}>
               {right}
             </Text>

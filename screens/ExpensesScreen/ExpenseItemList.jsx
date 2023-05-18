@@ -11,7 +11,6 @@ const ExpenseItemList = ({item, index}) => {
         <View
           style={[styles.circle, {backgroundColor: backgroundColorStyle}]}
         />
-
         <View style={styles.titleContainer}>
           <Text style={styles.itemTitle}>{item.title}</Text>
         </View>
