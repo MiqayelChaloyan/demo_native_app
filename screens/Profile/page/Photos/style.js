@@ -2,8 +2,8 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   itemImage: {
-    width: 355,
-    height: 250,
+    width: '100%',
+    height: 215,
     borderRadius: 8,
   },
   itemTitle: {
@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     marginTop: 2,
   },
+  khhgtgvt: {},
 });
 
 export default styles;

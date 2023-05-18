@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 7,
     fontSize: 15,
-    borderRadius: 100,
   },
   messegesList: {
     height: 570,

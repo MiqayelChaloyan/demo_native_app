@@ -33,7 +33,7 @@ const Profile = ({navigation}) => {
     };
 
     launchImageLibrary(options, res => {
-      const url = res?.assets && res.assets[0].uri;
+      const url = res.assets && res.assets[0].uri;
       setImageUrl(url);
     });
   };
@@ -46,7 +46,7 @@ const Profile = ({navigation}) => {
         <Header
           screen={'Profile'}
           navigation={navigation}
-          back={'Auth'}
+          back={'Feed'}
           continueTo={'LogIn'}
           root={'Auth'}
           left={'Settings'}

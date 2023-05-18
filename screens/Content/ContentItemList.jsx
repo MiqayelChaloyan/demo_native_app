@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./style";
-import BuyIcon from "../../assets/icons/buy.svg";
+import BuyIcon from "../../assets/icons/Buy.svg";
 import { useNavigation } from "@react-navigation/native";
 
 const ContentItemList = ({ item, index }) => {

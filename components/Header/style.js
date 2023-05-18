@@ -7,27 +7,29 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.05,
-    marginTop: windowWidth * 0.04,
+    marginTop: windowHeight * 0.04,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    left: 15,
   },
   headerText: {
     fontSize: 30,
     fontWeight: 600,
     textAlign: 'center',
     color: 'black',
-    right: 5,
+    lineHeight: 36.31,
   },
   headerButtonContainer: {
-    width: windowWidth * 0.17,
+    width: windowWidth * 0.1,
     height: windowHeight * 0.024,
   },
   headerButtonText: {
+    width: 64,
+    height: 19,
     fontSize: 16,
     fontWeight: 500,
     position: 'absolute',
+    lineHeight: 19.36,
   },
 });
 
