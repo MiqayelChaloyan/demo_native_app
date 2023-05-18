@@ -185,6 +185,7 @@ function DNAdata({children}) {
         messages,
         expensesData,
         usersList,
+        setUsersList,
       }}>
       {typeof children === 'function' ? children() : children}
     </DNAdataContext.Provider>

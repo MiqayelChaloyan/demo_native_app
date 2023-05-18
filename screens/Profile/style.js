@@ -1,7 +1,6 @@
 import {Dimensions, StatusBar, StyleSheet} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   root: {
@@ -12,21 +11,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'flex-start',
     backgroundColor: '#5DB075',
-    height: '32%',
+    height: 245,
     position: 'relative',
-    paddingTop: '1%',
+    paddingTop: 9,
     paddingRight: 10,
-  },
-  profile: {
-    position: 'relative',
   },
   imageContainer: {
     width: 150,
     height: 150,
     position: 'absolute',
     borderRadius: 100,
-    bottom: -40,
-    left: '33%',
+    marginTop: '35%',
+    left: '31%',
   },
   profileImgUrl: {
     position: 'relative',
@@ -37,8 +33,8 @@ const styles = StyleSheet.create({
     height: 160,
     borderRadius: 100,
     zIndex: 111,
-    bottom: '5%',
-    left: '5%',
+    bottom: 16.5,
+    left: 8,
   },
   imageBackground: {
     backgroundColor: 'white',
@@ -46,11 +42,11 @@ const styles = StyleSheet.create({
     height: 165,
     borderRadius: 100,
     bottom: '55%',
-    right: '-3.5%',
+    right: -5.5,
   },
   addImage: {
     position: 'absolute',
-    left: 120,
+    left: '80%',
   },
   addImageContainer: {
     backgroundColor: 'white',
@@ -65,6 +61,7 @@ const styles = StyleSheet.create({
   informationBlog: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 10,
   },
   profileFullName: {
     fontSize: 30,
@@ -79,14 +76,14 @@ const styles = StyleSheet.create({
   switchPageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '2%',
+    marginTop: '4%',
   },
   switchBox: {
-    width: '90%',
+    width: windowWidth * 0.9,
   },
   contentsBlockContainer: {
     width: windowWidth * 0.9,
-    marginVertical: windowHeight * 0.02,
+    marginVertical: windowWidth * 0.03,
     marginHorizontal: windowWidth * 0.05,
   },
   container: {

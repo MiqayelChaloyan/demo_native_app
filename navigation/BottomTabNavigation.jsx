@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Profile from '../screens/Profile/Profile';
-import FeedIcon from '../assets/icons/Feed.svg';
+import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
@@ -25,8 +25,8 @@ export default function BottomTabNavigation() {
         options={{
           title: '',
           tabBarIcon: ({ tabInfo, focused }) => (
-            <FeedIcon
-              width={40}
+            <HomeIcon
+              width={30}
               height={36}
               fill={focused ? '#5DB075' : '#BDBDBD'}
             />

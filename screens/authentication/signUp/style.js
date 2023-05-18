@@ -1,41 +1,49 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   signUpRoot: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
   },
   root: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     paddingTop: 20,
   },
   headerContainer: {
-    width: '100%',
-    height: '2%',
-    marginTop: '2%',
+    width: windowWidth * 0.9,
+    height: 14,
+    marginTop: 14,
+    marginBottom: 17,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'stretch',
-    marginTop: '4%',
+    marginTop: 15,
     marginHorizontal: 20,
   },
   cancel: {
-    top: '4%',
+    top: 8,
     height: 50,
+    width: windowWidth * 0.01,
   },
   headerBox: {
-    height: 50,
+    width: windowWidth * 0.79,
+    height: windowHeight * 0.1,
   },
   signUp: {
     fontSize: 30,
     fontWeight: 600,
     color: '#000000',
     textAlign: 'center',
+    lineHeight: 36.31,
+    left: 10,
   },
   passworddBox: {
-    width: '100%',
+    width: windowWidth,
   },
   passHide: {
     position: 'relative',
@@ -44,14 +52,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#5DB075',
     lineHeight: 36.31,
-    textAlign: 'right',
     fontWeight: 500,
+    width: windowWidth * 0.3,
   },
   form: {
     justifyContent: 'center',
     alignItems: 'center',
     gap: 15,
-    marginTop: '21%',
   },
   hidePassword: {
     fontSize: 16,
@@ -98,7 +105,7 @@ const styles = StyleSheet.create({
     marginTop: '15%',
   },
   input: {
-    width: '90%',
+    width: windowWidth * 0.9,
     height: 51,
     borderWidth: 1,
     borderColor: '#E8E8E8',
@@ -111,13 +118,13 @@ const styles = StyleSheet.create({
   },
   inputError: {
     color: 'red',
-    fontSize: 12.5,
-    marginTop: '1%',
+    fontSize: 11,
+    marginTop: 7,
     marginBottom: -10,
   },
   button: {
-    marginTop: '5%',
-    width: '90%',
+    marginTop: 40,
+    width: windowWidth * 0.9,
     height: 55,
     backgroundColor: '#5DB075',
     alignItems: 'center',
@@ -133,17 +140,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 30,
     height: 25,
-    width: 50,
+    width: windowWidth * 0.12,
     padding: 0,
     marginTop: 15,
-  },
-  forgotPass: {
-    alignItems: 'center',
-    marginTop: '2%',
-  },
-  forgotPassText: {
-    fontSize: 16,
-    color: '#5DB075',
   },
   signUpFooter: {
     alignItems: 'center',

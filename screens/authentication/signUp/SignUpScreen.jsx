@@ -17,6 +17,7 @@ import CancelIcon from '../../../assets/icons/Cancel.svg';
 import styles from './style';
 
 const SignUpScreen = ({navigation}) => {
+  const [keyboardStatus, setKeyboardStatus] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
 
@@ -44,6 +45,20 @@ const SignUpScreen = ({navigation}) => {
       // Here we get the data of filled user fields
     },
   });
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardStatus(true);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardStatus(false);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   return (
     <KeyboardAvoidingView
@@ -120,7 +135,7 @@ const SignUpScreen = ({navigation}) => {
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     value={values.password}
-                    keyboardType="visible-password"
+                    keyboardType="password"
                     autoCapitalize="none"
                     autoCorrect={false}
                   />
@@ -139,7 +154,11 @@ const SignUpScreen = ({navigation}) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              <View style={styles.checkBoxStyle}>
+              <View
+                style={[
+                  styles.checkBoxStyle,
+                  {bottom: keyboardStatus ? '10%' : 0},
+                ]}>
                 <CheckBox
                   style={styles.checkBox}
                   isChecked={isChecked}
@@ -157,17 +176,13 @@ const SignUpScreen = ({navigation}) => {
               </View>
             </View>
           </Formik>
-          <View style={styles.signUpFooter}>
+          <View
+            style={[styles.signUpFooter, {bottom: keyboardStatus ? '12%' : 0}]}>
             <View style={styles.button}>
               <TouchableOpacity
                 disabled={!isValid}
                 onPress={() => handleSubmit()}>
                 <Text style={styles.buttonText}>Sign Up</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.forgotPass}>
-              <TouchableOpacity>
-                <Text style={styles.forgotPassText}>Forgot your password?</Text>
               </TouchableOpacity>
             </View>
           </View>

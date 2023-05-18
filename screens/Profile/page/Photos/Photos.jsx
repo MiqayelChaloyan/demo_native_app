@@ -6,9 +6,7 @@ import styles from './style';
 const Photos = ({item}) => {
   return (
     <View>
-      <View>
-        <Image source={{uri: item.imageUri}} style={styles.itemImage} />
-      </View>
+      <Image source={{uri: item.imageUri}} style={styles.itemImage} />
       <Text style={styles.itemTitle}>{item.title}</Text>
     </View>
   );

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -16,6 +16,7 @@ import CancelIcon from '../../../assets/icons/Cancel.svg';
 import styles from './style';
 
 const LogInScreen = ({navigation}) => {
+  const [keyboardStatus, setKeyboardStatus] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
 
   const {
@@ -36,6 +37,20 @@ const LogInScreen = ({navigation}) => {
       // Here we get the user already registered trial
     },
   });
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardStatus(true);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardStatus(false);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   return (
     <KeyboardAvoidingView
@@ -89,7 +104,7 @@ const LogInScreen = ({navigation}) => {
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     value={values.password}
-                    keyboardType="visible-password"
+                    keyboardType="password"
                     autoCapitalize="none"
                     autoCorrect={false}
                   />
@@ -110,7 +125,8 @@ const LogInScreen = ({navigation}) => {
               </View>
             </View>
           </Formik>
-          <View style={styles.loginFooter}>
+          <View
+            style={[styles.loginFooter, {bottom: keyboardStatus ? '13.5%' : 0}]}>
             <View style={styles.button}>
               <TouchableOpacity
                 disabled={!isValid}
@@ -120,13 +136,7 @@ const LogInScreen = ({navigation}) => {
             </View>
             <View style={styles.forgotPass}>
               <TouchableOpacity>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: '#5DB075',
-                  }}>
-                  Forgot your password?
-                </Text>
+                <Text style={styles.forgotPassText}>Forgot your password?</Text>
               </TouchableOpacity>
               <View style={styles.navigateSignUp}>
                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>

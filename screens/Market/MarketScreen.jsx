@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import ItemList from './ItemList';
 import Header from '../../components/Header/Header';
-import MarketIcon from '../../assets/icons/Market.svg';
+import VideoIcon from '../../assets/icons/Video.svg';
 import styles from './style';
 
 const MarketScreen = ({navigation}) => {
@@ -37,7 +37,7 @@ const MarketScreen = ({navigation}) => {
       <View style={styles.hotDealsContainer}>
         <Text style={styles.hotDealsText}>Hot deals</Text>
         <TouchableOpacity>
-          <MarketIcon width={40} height={40} fill={'#000000'} />
+        <VideoIcon width={30} height={30} fill={'#5DB075'} />
         </TouchableOpacity>
       </View>
 
@@ -46,7 +46,7 @@ const MarketScreen = ({navigation}) => {
       <View style={styles.hotDealsContainer}>
         <Text style={styles.hotDealsText}>Trending</Text>
         <TouchableOpacity>
-          <MarketIcon width={40} height={40} fill={'#000000'} />
+        <VideoIcon width={30} height={30} fill={'#5DB075'} />
         </TouchableOpacity>
       </View>
 
@@ -55,7 +55,7 @@ const MarketScreen = ({navigation}) => {
       <View style={styles.hotDealsContainer}>
         <Text style={styles.hotDealsText}>Deals</Text>
         <TouchableOpacity>
-          <MarketIcon width={40} height={40} fill={'#000000'} />
+        <VideoIcon width={30} height={30} fill={'#5DB075'} />
         </TouchableOpacity>
       </View>
 

@@ -1,50 +1,56 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   loginRoot: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
   },
   root: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     paddingTop: 20,
   },
   headerContainer: {
-    width: '100%',
-    height: '2%',
-    marginTop: '2%',
-    marginBottom: '6%',
+    width: windowWidth,
+    height: 14,
+    marginTop: 14,
+    marginBottom: 17,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    marginTop: '4%',
+    marginTop: 15,
     marginHorizontal: 20,
   },
   cancel: {
-    top: '4%',
+    top: 8,
     height: 50,
+    width: windowWidth * 0.01,
   },
   headerBox: {
-    height: 50,
+    width: windowWidth * 0.79,
+    height: windowHeight * 0.1,
   },
   logIn: {
     fontSize: 30,
     fontWeight: 600,
     color: '#000000',
     textAlign: 'center',
-    left: '130%',
+    lineHeight: 36.31,
+    left: 10,
   },
   login: {
     fontSize: 16,
     color: '#5DB075',
     lineHeight: 36.31,
-    textAlign: 'right',
     fontWeight: 500,
+    width: windowWidth * 0.3,
   },
   passworddBox: {
-    width: '100%',
+    width: windowWidth,
   },
   passHide: {
     position: 'relative',
@@ -53,7 +59,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 15,
-    marginTop: '21%',
   },
   hidePassword: {
     fontSize: 16,
@@ -73,34 +78,33 @@ const styles = StyleSheet.create({
     fontWeight: 400,
   },
   inputsContainer: {
-    width: '100%',
+    width: windowWidth,
     marginTop: '20%',
     gap: 15,
   },
   nameInputStyle: {
-    width: '100%',
+    width: windowWidth,
     justifyContent: 'center',
     alignItems: 'center',
   },
   emailInputStyle: {
-    width: '100%',
+    width: windowWidth,
     justifyContent: 'center',
     alignItems: 'center',
   },
   passwordInputStyle: {
-    width: '100%',
+    width: windowWidth,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
   },
-  checkBoxStyle: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '15%',
+  forgotPassText: {
+    fontSize: 16,
+    color: '#5DB075',
+    lineHeight: 19.36,
   },
   input: {
-    width: '90%',
+    width: windowWidth * 0.9,
     height: 51,
     borderWidth: 1,
     borderColor: '#E8E8E8',
@@ -113,13 +117,13 @@ const styles = StyleSheet.create({
   },
   inputError: {
     color: 'red',
-    fontSize: 12.5,
-    marginTop: '1%',
+    fontSize: 11,
+    marginTop: 7,
     marginBottom: -10,
   },
   button: {
-    marginTop: '45%',
-    width: '90%',
+    marginTop: '53%',
+    width: windowWidth * 0.9,
     height: 55,
     backgroundColor: '#5DB075',
     alignItems: 'center',
@@ -135,25 +139,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 30,
     height: 25,
-    width: 50,
+    width: windowWidth * 0.12,
     padding: 0,
     marginTop: 13,
   },
   forgotPass: {
     alignItems: 'center',
-    marginTop: '2%',
-  },
-  forgotPassText: {
-    fontSize: 16,
-    color: '#5DB075',
+    marginTop: 16,
   },
   navigateSignUp: {
     alignItems: 'center',
-    marginTop: '2%',
+    marginTop: 10,
   },
   loginFooter: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: '7%',
   },
 });
 
