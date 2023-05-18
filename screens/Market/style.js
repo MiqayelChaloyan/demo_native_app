@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
   },
   hotDealsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
     width: windowWidth * 0.3,
     height: windowHeight * 0.04,
     marginLeft: windowWidth * 0.05,
@@ -41,6 +44,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 500,
     color: 'black',
+    width: 320,
   },
   itemsContainer: {
     flexDirection: 'row',

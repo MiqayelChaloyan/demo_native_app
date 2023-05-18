@@ -12,34 +12,25 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'flex-start',
     backgroundColor: '#5DB075',
-    height: '40%',
+    height: '32%',
     position: 'relative',
-    paddingTop: '15%',
-  },
-  profileTextContainer: {
-    alignItems: 'center',
-    marginTop: '2.5%',
-  },
-  profileText: {
-    fontSize: 16,
-    color: '#FFFFFF',
-    fontWeight: 500,
+    paddingTop: '1%',
+    paddingRight: 10,
   },
   profile: {
-    fontSize: 30,
-    color: '#FFFFFF',
-    fontWeight: 600,
+    position: 'relative',
   },
   imageContainer: {
     width: 150,
     height: 150,
     position: 'absolute',
     borderRadius: 100,
-    bottom: -50,
-    left: '30%',
+    bottom: -40,
+    left: '33%',
   },
   profileImgUrl: {
     position: 'relative',
+    right: 10,
   },
   userImg: {
     width: 160,
@@ -69,7 +60,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   informationContainer: {
-    marginTop: '15%',
+    marginTop: '12%',
   },
   informationBlog: {
     justifyContent: 'center',
@@ -88,7 +79,7 @@ const styles = StyleSheet.create({
   switchPageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '7%',
+    marginTop: '2%',
   },
   switchBox: {
     width: '90%',

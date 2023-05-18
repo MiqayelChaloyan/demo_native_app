@@ -7,7 +7,10 @@ import {DNAdataContext} from '../../Data/data';
 import requestCameraPermission from '../../utils/CameraPermissionUtils';
 import {launchImageLibrary} from 'react-native-image-picker';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
+import SkeletonPhotos from '../../components/Skeleton/SkeletonPhotos';
 import Posts from './page/Posts/Posts';
+import Photos from './page/Photos/Photos';
+import Header from '../../components/Header/Header';
 import styles from './style';
 
 const Profile = ({navigation}) => {
@@ -40,22 +43,18 @@ const Profile = ({navigation}) => {
   return (
     <View style={styles.root}>
       <View style={styles.headerProfile}>
-        <View style={styles.profileTextContainer}>
-          <TouchableOpacity>
-            <Text style={styles.profileText}>Settings</Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <Text style={styles.profile}>Profile</Text>
-        </View>
-        <View style={styles.profileTextContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Auth', {screen: 'LogIn'})}>
-            <Text style={styles.profileText}>Logout</Text>
-          </TouchableOpacity>
-        </View>
+        <Header
+          screen={'Profile'}
+          navigation={navigation}
+          back={'Auth'}
+          continueTo={'LogIn'}
+          root={'Auth'}
+          left={'Settings'}
+          right={'Logout'}
+          headerTextColor={'white'}
+        />
         <View style={styles.imageContainer}>
-          <View style={{position: 'relative'}}>
+          <View style={styles.profile}>
             {imageUrl ? (
               <View style={styles.profileImgUrl}>
                 <Image style={styles.userImg} source={{uri: imageUrl}} />
@@ -106,22 +105,24 @@ const Profile = ({navigation}) => {
         </View>
       </View>
       {showHide ? (
-        <View style={styles.photos}>
-          <Text>Photos</Text>
-        </View>
+        <FlatList
+          data={feedData}
+          key={item => item.id}
+          style={styles.contentsBlockContainer}
+          keyExtractor={item => item.id}
+          renderItem={({item}) =>
+            loading ? <SkeletonPhotos /> : <Photos item={item} />
+          }
+        />
       ) : (
         <FlatList
           data={feedData}
           key={item => item.id}
           style={styles.contentsBlockContainer}
           keyExtractor={item => item.id}
-          renderItem={({item, index}) => {
-            return loading ? (
-              <SkeletonPosts />
-            ) : (
-              <Posts item={item} itemIndex={index} navigation={navigation} />
-            );
-          }}
+          renderItem={({item}) =>
+            loading ? <SkeletonPosts /> : <Posts item={item} />
+          }
         />
       )}
     </View>

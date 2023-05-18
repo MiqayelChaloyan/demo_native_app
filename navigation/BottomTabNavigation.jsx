@@ -26,8 +26,8 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({ tabInfo, focused }) => (
             <FeedIcon
-              width={28}
-              height={28}
+              width={40}
+              height={36}
               fill={focused ? '#5DB075' : '#BDBDBD'}
             />
           ),
@@ -40,8 +40,8 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({ tabInfo, focused }) => (
             <MessagesIcon
-              width={28}
-              height={28}
+              width={25}
+              height={35}
               fill={focused ? '#5DB075' : '#BDBDBD'}
             />
           ),
@@ -54,8 +54,8 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({ tabInfo, focused }) => (
             <ProfileIcon
-              width={28}
-              height={28}
+              width={25}
+              height={35}
               fill={focused ? '#5DB075' : '#BDBDBD'}
             />
           ),
