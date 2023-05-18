@@ -52,9 +52,7 @@ const ContentScreen = ({navigation, route}) => {
         <FlatList
           data={feedData}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({item, index}) => {
-            return <ContentItemList item={item} index={index} />;
-          }}
+          renderItem={({item, index}) => <ContentItemList item={item} index={index} />}
         />
       </View>
 
