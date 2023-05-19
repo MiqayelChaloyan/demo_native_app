@@ -19,14 +19,7 @@ const Posts = ({item}) => {
       <TouchableOpacity>
         <View style={styles.contentContainer}>
           <View style={styles.contentBlock}>
-            <Image
-              source={{uri: item.imageUri}}
-              style={{
-                width: windowWidth * 0.133,
-                height: windowWidth * 0.133,
-                borderRadius: 8,
-              }}
-            />
+            <Image source={{uri: item.imageUri}} style={styles.postImage} />
           </View>
           <View style={styles.contentInfo}>
             <View style={styles.headerContent}>

@@ -18,7 +18,7 @@ import styles from './style';
 const LogInScreen = ({navigation}) => {
   const [keyboardStatus, setKeyboardStatus] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
-
+  
   const {
     values,
     handleChange,

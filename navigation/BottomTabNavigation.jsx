@@ -1,6 +1,6 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Profile from '../screens/Profile/Profile';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import ProfileScreen from '../screens/Profile/profile/ProfileScreen';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
@@ -24,10 +24,10 @@ export default function BottomTabNavigation() {
         component={PageNavigation}
         options={{
           title: '',
-          tabBarIcon: ({ tabInfo, focused }) => (
+          tabBarIcon: ({focused}) => (
             <HomeIcon
-              width={30}
-              height={36}
+              width={25}
+              height={35}
               fill={focused ? '#5DB075' : '#BDBDBD'}
             />
           ),
@@ -38,7 +38,7 @@ export default function BottomTabNavigation() {
         component={MessagesUsers}
         options={{
           title: '',
-          tabBarIcon: ({ tabInfo, focused }) => (
+          tabBarIcon: ({focused}) => (
             <MessagesIcon
               width={25}
               height={35}
@@ -49,10 +49,10 @@ export default function BottomTabNavigation() {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileScreen}
         options={{
           title: '',
-          tabBarIcon: ({ tabInfo, focused }) => (
+          tabBarIcon: ({focused}) => (
             <ProfileIcon
               width={25}
               height={35}

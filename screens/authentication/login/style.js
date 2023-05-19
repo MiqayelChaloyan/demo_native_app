@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
   },
   root: {
     flex: 1,
-    paddingTop: 20,
+    // paddingTop: 20,
   },
   headerContainer: {
-    width: windowWidth,
+    // width: windowWidth,
     height: 14,
     marginTop: 14,
     marginBottom: 17,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     height: 51,
     borderWidth: 1,
     borderColor: '#E8E8E8',
-    padding: 10,
+    padding: 16,
     borderRadius: 8,
     backgroundColor: '#F6F6F6',
     paddingHorizontal: 15,

@@ -1,13 +1,14 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+// const windowWidth = Dimensions.get('window').width;
+// const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    width: windowWidth * 0.9,
-    height: windowHeight * 0.05,
-    marginTop: windowHeight * 0.04,
+    // width: windowWidth,
+    // width: windowWidth,
+    // height: windowHeight * 0.1,
+    marginTop: 32,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -18,18 +19,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'black',
     lineHeight: 36.31,
+    maxWidth: 94,
+    maxHeight: 36,
   },
-  headerButtonContainer: {
-    width: windowWidth * 0.1,
-    height: windowHeight * 0.024,
-  },
+  // headerButtonContainer: {
+  //   width: windowWidth * 0.1,
+  //   height: windowHeight * 0.024,
+  // },
   headerButtonText: {
-    width: 64,
-    height: 19,
+    // width: 52,
+    // height: 19,
     fontSize: 16,
     fontWeight: 500,
-    position: 'absolute',
+    // position: 'absolute',
     lineHeight: 19.36,
+    maxWidth: 64,
+    maxHeight: 19,
   },
 });
 

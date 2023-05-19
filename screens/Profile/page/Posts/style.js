@@ -1,7 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
-
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
@@ -16,6 +15,11 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.133,
     height: windowWidth * 0.133,
     backgroundColor: '#F6F6F6',
+  },
+  postImage: {
+    width: windowWidth * 0.133,
+    height: windowWidth * 0.133,
+    borderRadius: 8,
   },
   contentInfo: {
     width: windowWidth * 0.74,
