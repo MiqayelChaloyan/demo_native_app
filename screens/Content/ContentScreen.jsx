@@ -1,12 +1,12 @@
-import {useContext} from 'react';
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
-import { TextInput, View, Text, FlatList } from "react-native";
+import {TextInput, View, Text, FlatList} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import {DNAdataContext} from '../../Data/data';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import styles from './style';
-import ContentItemList from "./ContentItemList";
+import ContentItemList from './ContentItemList';
 
 const ContentScreen = ({navigation, route}) => {
   const {feedData} = useContext(DNAdataContext);
@@ -22,6 +22,7 @@ const ContentScreen = ({navigation, route}) => {
         left={'Back'}
         right={'Filter'}
       />
+
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
@@ -29,6 +30,7 @@ const ContentScreen = ({navigation, route}) => {
           multiline={false}
         />
       </View>
+
       <View style={styles.swiperItem}>
         <SwiperFlatList
           autoplay
@@ -52,10 +54,11 @@ const ContentScreen = ({navigation, route}) => {
         <FlatList
           data={feedData}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({item, index}) => <ContentItemList item={item} index={index} />}
+          renderItem={({item, index}) => {
+            return <ContentItemList item={item} index={index} />;
+          }}
         />
       </View>
-
     </View>
   );
 };

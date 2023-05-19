@@ -5,77 +5,89 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  feedScreenContainer: {
+  feedScreen: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: 'white',
   },
+  feedScreenContainer: {
+    paddingHorizontal: 16,
+    flex: 1,
+    alignItems: 'center',
+  },
   searchContainer: {
-    width: windowWidth * 0.9,
-    marginTop: windowHeight * 0.05,
-    marginHorizontal: windowWidth * 0.05,
+    width: '100%',
+    marginTop: 32,
   },
   searchInput: {
+    height: windowWidth * 0.133,
+    minHeight: 40,
+    maxHeight: 60,
     borderWidth: 1,
     borderColor: '#E8E8E8',
     borderRadius: 100,
-    padding: 10,
+    paddingTop: 16,
+    paddingLeft: 16,
+    paddingBottom: 15,
     backgroundColor: '#F6F6F6',
+    fontSize: 16,
   },
   contentsBlockContainer: {
-    width: windowWidth * 0.9,
+    width: '100%',
     height: windowHeight * 0.5,
-    marginHorizontal: windowWidth * 0.05,
-    justifyContent: 'space-between',
+    minHeight: 320,
+    maxHeight: 445,
+    marginTop: 16,
   },
   contentContainer: {
-    width: windowWidth * 0.9,
-    height: windowHeight * 0.1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginTop: 16,
   },
-  contentBlock: {
+  imageContainer: {
     width: windowWidth * 0.133,
     height: windowWidth * 0.133,
-    backgroundColor: '#F6F6F6',
+    maxHeight: 60,
+    maxWidth: 60,
+  },
+  feedItemImage: {
+    height: windowWidth * 0.133,
+    maxHeight: 60,
+    borderRadius: 8,
   },
   contentInfo: {
     width: windowWidth * 0.74,
     height: windowHeight * 0.1,
+    minWidth: 250,
+    maxWidth: 304,
     borderBottomWidth: 1,
     borderBottomColor: '#E8E8E8',
-    flexDirection: 'column',
   },
   headerContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
     marginBottom: 8,
   },
   headerFeedText: {
     fontSize: 16,
     fontWeight: 600,
     color: 'black',
+    lineHeight: 19,
   },
   aboutContentDate: {
     fontSize: 14,
     fontWeight: 400,
     color: '#BDBDBD',
+    lineHeight: 17,
+    paddingTop: 2,
   },
   feedTextContainer: {
-    paddingRight: 24,
+    paddingRight: 8,
   },
   feedText: {
     fontSize: 14,
     fontWeight: 400,
     color: 'black',
-  },
-  feedItemImage: {
-    width: windowWidth * 0.133,
-    height: windowWidth * 0.133,
-    borderRadius: 8,
+    lineHeight: 17,
   },
   skeleton: {
     marginTop: 25,

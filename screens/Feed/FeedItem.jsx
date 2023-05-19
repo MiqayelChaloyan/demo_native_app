@@ -4,13 +4,13 @@ import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
 const FeedItem = ({item, itemIndex, navigation}) => {
-  const todaysDate = new Date();
+  const currentDate = new Date();
 
   const createdDate = item.createdData;
 
   const diffMonths =
-    (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
-    (todaysDate.getMonth() - createdDate.getMonth());
+    (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
+    (currentDate.getMonth() - createdDate.getMonth());
 
   return (
     <View>
@@ -23,7 +23,7 @@ const FeedItem = ({item, itemIndex, navigation}) => {
           });
         }}>
         <View style={styles.contentContainer}>
-          <View style={styles.contentBlock}>
+          <View style={styles.imageContainer}>
             <Image source={{uri: item.imageUri}} style={styles.feedItemImage} />
           </View>
 
