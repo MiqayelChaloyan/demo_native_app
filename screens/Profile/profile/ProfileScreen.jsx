@@ -42,11 +42,9 @@ const Profile = ({navigation}) => {
   const accessCamera = async () => await requestCameraPermission(selectFile);
 
   const renderSwitchValue = (item) => {
-    if(showHide) {
-     return loading ?  <SkeletonPhotos /> : <Photos item={item} />
-    } else {
-     return loading ? <SkeletonPosts /> : <Posts item={item}/>
-    }
+    if(showHide)  loading ?  <SkeletonPhotos /> : <Photos item={item} />
+    else loading ? <SkeletonPosts /> : <Posts item={item}/>
+    
   };
 
   return (
