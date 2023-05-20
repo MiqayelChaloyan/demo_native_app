@@ -1,23 +1,23 @@
-import {useContext, useState, useEffect} from 'react';
+import { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
-import {DNAdataContext} from '../../../Data/data';
+import { DNAdataContext } from '../../../Data/data';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils';
-import {launchImageLibrary} from 'react-native-image-picker';
+import { launchImageLibrary } from 'react-native-image-picker';
 import SkeletonPosts from '../../../components/Skeleton/SkeletonPosts';
 import SkeletonPhotos from '../../../components/Skeleton/SkeletonPhotos';
 import Posts from '../page/Posts/Posts';
 import Photos from '../page/Photos/Photos';
 import Header from '../../../components/Header/Header';
-import {theme} from '../../../assets/theme/theme';
+import { theme } from '../../../assets/theme/theme';
 import styles from './style';
 
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
   const [showHide, setShowHide] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
-  const {feedData} = useContext(DNAdataContext);
+  const { feedData } = useContext(DNAdataContext);
   const [loading, setLoading] = useState(true);
 
   // TODO: This part is for a test and will be changed lately.
@@ -42,9 +42,12 @@ const Profile = ({navigation}) => {
   const accessCamera = async () => await requestCameraPermission(selectFile);
 
   const renderSwitchValue = (item) => {
-    if(showHide)  loading ?  <SkeletonPhotos /> : <Photos item={item} />
-    else loading ? <SkeletonPosts /> : <Posts item={item}/>
-    
+    if (showHide) {
+      return loading ? <SkeletonPhotos /> : <Photos item={item} />
+    }
+    else {
+      return loading ? <SkeletonPosts /> : <Posts item={item} />
+    }
   };
 
   return (
@@ -64,7 +67,7 @@ const Profile = ({navigation}) => {
           <View>
             {imageUrl ? (
               <View>
-                <Image style={styles.userImage} source={{uri: imageUrl}} />
+                <Image style={styles.userImage} source={{ uri: imageUrl }} />
               </View>
             ) : (
               <View>
@@ -102,19 +105,19 @@ const Profile = ({navigation}) => {
             valuePadding={2}
             hasPadding
             options={[
-              {label: 'Posts', value: false},
-              {label: 'Photos', value: true},
+              { label: 'Posts', value: false },
+              { label: 'Photos', value: true },
             ]}
           />
         </View>
       </View>
       <FlatList
-          data={feedData}
-          key={item => item.id}
-          style={styles.contentsBlockContainer}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => renderSwitchValue(item)}
-        />
+        data={feedData}
+        key={item => item.id}
+        style={styles.contentsBlockContainer}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => renderSwitchValue(item)}
+      />
     </View>
   );
 };

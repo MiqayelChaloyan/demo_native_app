@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -10,15 +10,15 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import {Formik, useFormik} from 'formik';
-import {loginValidationSchema} from './loginValidationSchema';
+import { Formik, useFormik } from 'formik';
+import { loginValidationSchema } from './loginValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
 import styles from './style';
 
-const LogInScreen = ({navigation}) => {
+const LogInScreen = ({ navigation }) => {
   const [keyboardStatus, setKeyboardStatus] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
-  
+
   const {
     values,
     handleChange,
@@ -126,7 +126,7 @@ const LogInScreen = ({navigation}) => {
             </View>
           </Formik>
           <View
-            style={[styles.loginFooter, {bottom: keyboardStatus ? '13.5%' : 0}]}>
+            style={[styles.loginFooter, { bottom: keyboardStatus ? '13.5%' : 0 }]}>
             <View style={styles.button}>
               <TouchableOpacity
                 disabled={!isValid}

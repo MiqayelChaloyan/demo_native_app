@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -10,10 +10,8 @@ const styles = StyleSheet.create({
   },
   root: {
     flex: 1,
-    // paddingTop: 20,
   },
   headerContainer: {
-    // width: windowWidth,
     height: 14,
     marginTop: 14,
     marginBottom: 17,

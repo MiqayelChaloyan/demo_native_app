@@ -1,5 +1,5 @@
-import {Dimensions, StyleSheet} from 'react-native';
-import {theme} from '../../../assets/theme/theme';
+import { Dimensions, StyleSheet } from 'react-native';
+import { theme } from '../../../assets/theme/theme';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     color: theme.colors.foreground,
     fontWeight: 600,
     textAlign: 'center',
+    // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   userAbount: {
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
     color: theme.colors.foreground,
     fontWeight: 600,
     textAlign: 'center',
+    // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   switchContainer: {
