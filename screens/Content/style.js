@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   contentBox: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   swiperItem: {
     width: windowWidth * 0.9,
@@ -15,10 +16,16 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     bottom: 16,
   },
+  imageContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+  },
   image: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.3,
     borderRadius: 8,
+    aspectRatio: 1,
   },
   dotStyle: {
     backgroundColor: '#E8E8E8',
@@ -80,6 +87,7 @@ const styles = StyleSheet.create({
   contentItem: {
     width: windowWidth,
     height: windowHeight * 0.49,
+    backgroundColor: 'transparent',
   },
   headerTextContainer: {
     width: windowWidth * 0.9,

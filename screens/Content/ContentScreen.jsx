@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {TextInput, View, Text, FlatList} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';

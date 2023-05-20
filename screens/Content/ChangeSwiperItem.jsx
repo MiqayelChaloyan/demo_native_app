@@ -16,11 +16,14 @@ const ChangeSwiperItem = ({item}) => {
   const monthsAgo = diffMonths(item);
   return (
     <View style={styles.contentItem}>
-      <Image
-        resizeMode="stretch"
-        style={styles.image}
-        source={{uri: item.imageUri}}
-      />
+      <View style={styles.imageContainer}>
+        <Image
+          resizeMode="stretch"
+          style={styles.image}
+          source={{uri: item.imageUri}}
+        />
+      </View>
+
       <Text style={styles.titleStyle}>{item.title}</Text>
       <View>
         <Text style={styles.postMessage} numberOfLines={2} ellipsizeMode="tail">
