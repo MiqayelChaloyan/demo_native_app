@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
 import Item from './Item';
 import {DNAdataContext} from '../../Data/data';
@@ -21,7 +21,7 @@ const ItemList = () => {
   return (
     <View style={styles.itemsContainer}>
       <FlatList
-        numColumns={3}
+        horizontal={true}
         data={marketData}
         key={item => item.id}
         keyExtractor={item => item.id}
@@ -32,4 +32,5 @@ const ItemList = () => {
     </View>
   );
 };
+
 export default ItemList;

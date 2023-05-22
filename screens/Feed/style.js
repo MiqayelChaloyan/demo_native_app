@@ -1,8 +1,12 @@
-import {StyleSheet, Dimensions} from 'react-native';
-import {theme} from '../../assets/theme/theme';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../assets/metrics/Metrics';
+
 
 const styles = StyleSheet.create({
   feedScreen: {
@@ -10,35 +14,31 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.background,
   },
   feedScreenContainer: {
-    paddingHorizontal: 16,
+    paddingHorizontal: horizontalScale(16),
     flex: 1,
     alignItems: 'center',
   },
   searchContainer: {
     width: '100%',
-    marginTop: 32,
+    marginTop: verticalScale(32),
   },
   searchInput: {
-    height: windowWidth * 0.133,
-    minHeight: 40,
-    maxHeight: 60,
-    borderWidth: 1,
+    height: verticalScale(50),
+    borderWidth: moderateScale(1),
     borderColor: theme.colors.gray,
-    borderRadius: 100,
-    paddingTop: 16,
-    paddingLeft: 16,
-    paddingBottom: 15,
+    borderRadius: moderateScale(100),
+    paddingTop: verticalScale(16),
+    paddingLeft: horizontalScale(16),
+    paddingBottom: verticalScale(15),
     backgroundColor: theme.colors.darkGray,
-    fontSize: 16,
-    // TODO: This part needs to be updated.
+    fontSize: moderateScale(16),
+ // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   contentsBlockContainer: {
     width: '100%',
-    height: windowHeight * 0.5,
-    minHeight: 320,
-    maxHeight: 445,
-    marginTop: 16,
+    height: verticalScale(356),
+    marginTop: verticalScale(16),
   },
   contentContainer: {
     flexDirection: 'row',
@@ -46,59 +46,55 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   imageContainer: {
-    width: windowWidth * 0.133,
-    height: windowWidth * 0.133,
-    maxHeight: 60,
-    maxWidth: 60,
+    width: horizontalScale(50),
+    height: verticalScale(50),
   },
   feedItemImage: {
-    height: windowWidth * 0.133,
-    maxHeight: 60,
-    borderRadius: 8,
+    height: verticalScale(50),
+    borderRadius: moderateScale(8),
   },
   contentInfo: {
-    width: windowWidth * 0.74,
-    height: windowHeight * 0.1,
-    minWidth: 250,
-    maxWidth: 304,
-    borderBottomWidth: 1,
+    width: horizontalScale(269),
+    height: verticalScale(77),
+    borderBottomWidth: moderateScale(1),
     borderBottomColor: theme.colors.gray,
+    marginBottom: verticalScale(16),
   },
   headerContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 8,
+    marginBottom: verticalScale(8),
   },
   headerFeedText: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: 600,
+    lineHeight: verticalScale(19),
     color: theme.colors.foreground,
-    lineHeight: 19,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   aboutContentDate: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 400,
+    lineHeight: verticalScale(17),
+    paddingTop: verticalScale(2),
     color: theme.colors.lightGray,
-    lineHeight: 17,
-    paddingTop: 2,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   feedTextContainer: {
-    paddingRight: 8,
+    paddingRight: horizontalScale(8),
   },
   feedText: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 400,
     color: theme.colors.foreground,
-    lineHeight: 17,
+    lineHeight: verticalScale(17),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   skeleton: {
-    marginTop: 25,
+    marginTop: verticalScale(25),
   },
 });
 
