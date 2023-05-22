@@ -1,78 +1,82 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const windowWidth = Dimensions.get('window').width;
-
-const windowHeight = Dimensions.get('window').height;
+import {StyleSheet} from 'react-native';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
   market: {
     flex: 1,
     backgroundColor: 'white',
   },
-  marketScreenContainer: {
+  headerPartContainer: {
+    paddingHorizontal: horizontalScale(16),
     flex: 1,
     alignItems: 'center',
   },
-  contentInfo: {
-    width: windowWidth * 0.9,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+  contentContainer: {
+    marginLeft: horizontalScale(16),
   },
   searchContainer: {
-    width: windowWidth * 0.9,
-    marginTop: windowHeight * 0.05,
-    marginHorizontal: windowWidth * 0.05,
+    width: '100%',
+    marginTop: verticalScale(32),
   },
   searchInput: {
-    borderWidth: 1,
+    borderWidth: moderateScale(1),
     borderColor: '#E8E8E8',
-    borderRadius: 100,
-    padding: 10,
+    height: verticalScale(50),
+    borderRadius: moderateScale(100),
+    paddingTop: verticalScale(16),
+    paddingLeft: horizontalScale(16),
+    paddingBottom: verticalScale(15),
     backgroundColor: '#F6F6F6',
+    fontSize: moderateScale(16),
   },
   hotDealsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'stretch',
-    width: windowWidth * 0.3,
-    height: windowHeight * 0.04,
-    marginLeft: windowWidth * 0.05,
-    marginTop: windowHeight * 0.04,
-    marginBottom: windowHeight * 0.02,
+    alignItems: 'center',
+    width: '100%',
+    height: verticalScale(29),
+    marginTop: verticalScale(32),
+    marginBottom: verticalScale(16),
+  },
+  playButton: {
+    paddingRight: horizontalScale(16),
   },
   hotDealsText: {
-    fontSize: 24,
+    fontSize: moderateScale(24),
     fontWeight: 500,
     color: 'black',
-    width: 320,
+    maxWidth: horizontalScale(250),
   },
   itemsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginLeft: windowWidth * 0.05,
   },
   itemImageContainer: {
-    width: windowWidth * 0.29,
-    height: windowWidth * 0.29,
+    width: horizontalScale(110),
+    height: horizontalScale(110),
     backgroundColor: '#F6F6F6',
-    borderRadius: 8,
-    marginRight: windowWidth * 0.035,
+    borderRadius: moderateScale(8),
+    marginRight: horizontalScale(16),
   },
   itemNameContainer: {
-    width: windowWidth * 0.3,
-    height: windowHeight * 0.045,
-    marginVertical: windowHeight * 0.01,
+    width: horizontalScale(110),
+    height: verticalScale(34),
+    marginVertical: verticalScale(8),
   },
   itemNameText: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 400,
     color: 'black',
   },
   itemPriceContainer: {
-    width: windowWidth * 0.128,
+    maxWidth: horizontalScale(110),
   },
   itemPriceText: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 600,
     color: 'black',
   },

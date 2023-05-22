@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -15,7 +14,7 @@ import styles from './style';
 const MarketScreen = ({navigation}) => {
   return (
     <ScrollView style={styles.market}>
-      <View style={styles.marketScreenContainer}>
+      <View style={styles.headerPartContainer}>
         <Header
           screen={'Market'}
           navigation={navigation}
@@ -33,33 +32,34 @@ const MarketScreen = ({navigation}) => {
           />
         </View>
       </View>
+      <View style={styles.contentContainer}>
+        <View style={styles.hotDealsContainer}>
+          <Text style={styles.hotDealsText}>Hot deals</Text>
+          <TouchableOpacity style={styles.playButton}>
+            <VideoIcon width={30} height={30} fill={'#5DB075'} />
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.hotDealsContainer}>
-        <Text style={styles.hotDealsText}>Hot deals</Text>
-        <TouchableOpacity>
-        <VideoIcon width={30} height={30} fill={'#5DB075'} />
-        </TouchableOpacity>
+        <ItemList />
+
+        <View style={styles.hotDealsContainer}>
+          <Text style={styles.hotDealsText}>Trending</Text>
+          <TouchableOpacity style={styles.playButton}>
+            <VideoIcon width={30} height={30} fill={'#5DB075'} />
+          </TouchableOpacity>
+        </View>
+
+        <ItemList />
+
+        <View style={styles.hotDealsContainer}>
+          <Text style={styles.hotDealsText}>Deals</Text>
+          <TouchableOpacity style={styles.playButton}>
+            <VideoIcon width={30} height={30} fill={'#5DB075'} />
+          </TouchableOpacity>
+        </View>
+
+        <ItemList />
       </View>
-
-      <ItemList />
-
-      <View style={styles.hotDealsContainer}>
-        <Text style={styles.hotDealsText}>Trending</Text>
-        <TouchableOpacity>
-        <VideoIcon width={30} height={30} fill={'#5DB075'} />
-        </TouchableOpacity>
-      </View>
-
-      <ItemList />
-
-      <View style={styles.hotDealsContainer}>
-        <Text style={styles.hotDealsText}>Deals</Text>
-        <TouchableOpacity>
-        <VideoIcon width={30} height={30} fill={'#5DB075'} />
-        </TouchableOpacity>
-      </View>
-
-      <ItemList />
     </ScrollView>
   );
 };
