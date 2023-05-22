@@ -9,6 +9,7 @@ import {
 import ItemList from './ItemList';
 import Header from '../../components/Header/Header';
 import VideoIcon from '../../assets/icons/Video.svg';
+import { theme } from '../../assets/theme/theme';
 import styles from './style';
 
 const MarketScreen = ({navigation}) => {
@@ -36,7 +37,7 @@ const MarketScreen = ({navigation}) => {
         <View style={styles.hotDealsContainer}>
           <Text style={styles.hotDealsText}>Hot deals</Text>
           <TouchableOpacity style={styles.playButton}>
-            <VideoIcon width={30} height={30} fill={'#5DB075'} />
+            <VideoIcon width={30} height={30} fill={theme.colors.green} />
           </TouchableOpacity>
         </View>
 
@@ -45,7 +46,7 @@ const MarketScreen = ({navigation}) => {
         <View style={styles.hotDealsContainer}>
           <Text style={styles.hotDealsText}>Trending</Text>
           <TouchableOpacity style={styles.playButton}>
-            <VideoIcon width={30} height={30} fill={'#5DB075'} />
+            <VideoIcon width={30} height={30} fill={theme.colors.green} />
           </TouchableOpacity>
         </View>
 
@@ -54,7 +55,7 @@ const MarketScreen = ({navigation}) => {
         <View style={styles.hotDealsContainer}>
           <Text style={styles.hotDealsText}>Deals</Text>
           <TouchableOpacity style={styles.playButton}>
-            <VideoIcon width={30} height={30} fill={'#5DB075'} />
+            <VideoIcon width={30} height={30} fill={theme.colors.green} />
           </TouchableOpacity>
         </View>
 

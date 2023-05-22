@@ -1,4 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.background,
   },
   barChartContainer: {
     marginVertical: 32,
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
     height: windowWidth * 0.6,
     borderRadius: 20,
-    borderColor: '#E8E8E8',
+    borderColor: theme.colors.gray,
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
   progressContainer: {
     height: 159,
     width: 16,
-    backgroundColor: '#F0F0F0',
+    backgroundColor: theme.colors.darkGray,
     borderRadius: 8,
     justifyContent: 'flex-end',
   },
@@ -54,6 +55,8 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 10,
     fontWeight: 400,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   headerTextContainer: {
     width: windowWidth * 0.9,
@@ -63,7 +66,9 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     fontWeight: 500,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   itemListContainer: {
     flex: 1,
@@ -76,7 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 51,
     borderBottomWidth: 1,
-    borderBottomColor: '#E8E8E8',
+    borderBottomColor: theme.colors.gray,
   },
   leftSide: {
     flexDirection: 'row',
@@ -86,7 +91,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     width: 16,
     height: 16,
-    backgroundColor: '#5DB075',
+    backgroundColor: theme.colors.green,
   },
   titleContainer: {
     marginLeft: 16,
@@ -94,12 +99,16 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 16,
     fontWeight: 500,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   priceText: {
     fontSize: 16,
     fontWeight: 400,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
 });
 

@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View} from 'react-native';
-import styles from './style';
 import BuyIcon from '../../assets/icons/Buy.svg';
 import {useNavigation} from '@react-navigation/native';
+import {theme} from '../../assets/theme/theme';
+import styles from './style';
 
 const ContentItemList = ({item, index}) => {
   const navigation = useNavigation();
-  let backgroundColorStyle = index % 2 === 1 ? '#C6C5C5' : '#9B9A9A';
+  let backgroundColorStyle =
+    index % 2 === 1 ? theme.colors.darkGray : theme.colors.lightGray;
+
   return (
     <View style={styles.contentItemOfList}>
       <View style={styles.leftSide}>
@@ -28,7 +31,7 @@ const ContentItemList = ({item, index}) => {
           });
         }}>
         <View>
-          <BuyIcon width={45} height={45} fill="#5DB075" />
+          <BuyIcon width={45} height={45} fill={theme.colors.green} />
         </View>
       </TouchableOpacity>
     </View>

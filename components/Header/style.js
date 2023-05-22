@@ -1,13 +1,9 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   headerContainer: {
-    width: windowWidth * 0.9,
-    height: windowHeight * 0.05,
-    marginTop: windowHeight * 0.04,
+    marginTop: 32,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -16,20 +12,21 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 600,
     textAlign: 'center',
-    color: 'black',
+    color: theme.colors.foreground,
     lineHeight: 36.31,
-  },
-  headerButtonContainer: {
-    width: windowWidth * 0.1,
-    height: windowHeight * 0.024,
+    maxWidth: 94,
+    maxHeight: 36,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   headerButtonText: {
-    width: 64,
-    height: 19,
     fontSize: 16,
     fontWeight: 500,
-    position: 'absolute',
     lineHeight: 19.36,
+    maxWidth: 64,
+    maxHeight: 19,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
 });
 

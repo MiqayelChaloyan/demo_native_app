@@ -1,14 +1,17 @@
+
 import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
 
+
 const styles = StyleSheet.create({
   feedScreen: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.background,
   },
   feedScreenContainer: {
     paddingHorizontal: horizontalScale(16),
@@ -22,13 +25,15 @@ const styles = StyleSheet.create({
   searchInput: {
     height: verticalScale(50),
     borderWidth: moderateScale(1),
-    borderColor: '#E8E8E8',
+    borderColor: theme.colors.gray,
     borderRadius: moderateScale(100),
     paddingTop: verticalScale(16),
     paddingLeft: horizontalScale(16),
     paddingBottom: verticalScale(15),
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
     fontSize: moderateScale(16),
+ // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   contentsBlockContainer: {
     width: '100%',
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
     width: horizontalScale(269),
     height: verticalScale(77),
     borderBottomWidth: moderateScale(1),
-    borderBottomColor: '#E8E8E8',
+    borderBottomColor: theme.colors.gray,
     marginBottom: verticalScale(16),
   },
   headerContent: {
@@ -63,15 +68,19 @@ const styles = StyleSheet.create({
   headerFeedText: {
     fontSize: moderateScale(16),
     fontWeight: 600,
-    color: 'black',
     lineHeight: verticalScale(19),
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   aboutContentDate: {
     fontSize: moderateScale(14),
     fontWeight: 400,
-    color: '#BDBDBD',
     lineHeight: verticalScale(17),
     paddingTop: verticalScale(2),
+    color: theme.colors.lightGray,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   feedTextContainer: {
     paddingRight: horizontalScale(8),
@@ -79,8 +88,10 @@ const styles = StyleSheet.create({
   feedText: {
     fontSize: moderateScale(14),
     fontWeight: 400,
-    color: 'black',
+    color: theme.colors.foreground,
     lineHeight: verticalScale(17),
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   skeleton: {
     marginTop: verticalScale(25),

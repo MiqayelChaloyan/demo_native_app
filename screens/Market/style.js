@@ -4,11 +4,13 @@ import {
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
+import {theme} from '../../assets/theme/theme';
+
 
 const styles = StyleSheet.create({
   market: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.background,
   },
   headerPartContainer: {
     paddingHorizontal: horizontalScale(16),
@@ -24,13 +26,13 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     borderWidth: moderateScale(1),
-    borderColor: '#E8E8E8',
+    borderColor: theme.colors.gray,
     height: verticalScale(50),
     borderRadius: moderateScale(100),
     paddingTop: verticalScale(16),
     paddingLeft: horizontalScale(16),
     paddingBottom: verticalScale(15),
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
     fontSize: moderateScale(16),
   },
   hotDealsContainer: {
@@ -48,8 +50,10 @@ const styles = StyleSheet.create({
   hotDealsText: {
     fontSize: moderateScale(24),
     fontWeight: 500,
-    color: 'black',
+    color: theme.colors.foreground,
     maxWidth: horizontalScale(250),
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   itemsContainer: {
     flexDirection: 'row',
@@ -58,7 +62,7 @@ const styles = StyleSheet.create({
   itemImageContainer: {
     width: horizontalScale(110),
     height: horizontalScale(110),
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
     borderRadius: moderateScale(8),
     marginRight: horizontalScale(16),
   },
@@ -70,7 +74,9 @@ const styles = StyleSheet.create({
   itemNameText: {
     fontSize: moderateScale(14),
     fontWeight: 400,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   itemPriceContainer: {
     maxWidth: horizontalScale(110),
@@ -78,7 +84,9 @@ const styles = StyleSheet.create({
   itemPriceText: {
     fontSize: moderateScale(14),
     fontWeight: 600,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
 });
 
