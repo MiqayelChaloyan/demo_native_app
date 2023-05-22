@@ -1,13 +1,13 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 
 const windowWidth = Dimensions.get('window').width;
-
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   market: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.background,
   },
   marketScreenContainer: {
     flex: 1,
@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     borderWidth: 1,
-    borderColor: '#E8E8E8',
+    borderColor: theme.colors.gray,
     borderRadius: 100,
     padding: 10,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
   },
   hotDealsContainer: {
     flexDirection: 'row',
@@ -43,8 +43,10 @@ const styles = StyleSheet.create({
   hotDealsText: {
     fontSize: 24,
     fontWeight: 500,
-    color: 'black',
+    color: theme.colors.foreground,
     width: 320,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   itemsContainer: {
     flexDirection: 'row',
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
   itemImageContainer: {
     width: windowWidth * 0.29,
     height: windowWidth * 0.29,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
     borderRadius: 8,
     marginRight: windowWidth * 0.035,
   },
@@ -66,7 +68,9 @@ const styles = StyleSheet.create({
   itemNameText: {
     fontSize: 14,
     fontWeight: 400,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   itemPriceContainer: {
     width: windowWidth * 0.128,
@@ -74,7 +78,9 @@ const styles = StyleSheet.create({
   itemPriceText: {
     fontSize: 14,
     fontWeight: 600,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
 });
 

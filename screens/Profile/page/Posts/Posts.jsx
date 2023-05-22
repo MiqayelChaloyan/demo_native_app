@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Dimensions, Text, View, Image, TouchableOpacity} from 'react-native';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
-
-const windowWidth = Dimensions.get('window').width;
 
 const Posts = ({item}) => {
   const todaysDate = new Date();
-
   const createdDate = item.createdData;
 
   const diffMonths =
@@ -19,14 +16,7 @@ const Posts = ({item}) => {
       <TouchableOpacity>
         <View style={styles.contentContainer}>
           <View style={styles.contentBlock}>
-            <Image
-              source={{uri: item.imageUri}}
-              style={{
-                width: windowWidth * 0.133,
-                height: windowWidth * 0.133,
-                borderRadius: 8,
-              }}
-            />
+            <Image source={{uri: item.imageUri}} style={styles.postImage} />
           </View>
           <View style={styles.contentInfo}>
             <View style={styles.headerContent}>
@@ -41,7 +31,6 @@ const Posts = ({item}) => {
                 {item.message}
               </Text>
             </View>
-            <View style={styles.bottomBorder} />
           </View>
         </View>
       </TouchableOpacity>

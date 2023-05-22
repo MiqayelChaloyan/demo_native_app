@@ -1,4 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
+import {theme} from '../../../assets/theme/theme';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -6,7 +7,7 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   signUpRoot: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: theme.colors.background,
   },
   root: {
     flex: 1,
@@ -37,10 +38,12 @@ const styles = StyleSheet.create({
   signUp: {
     fontSize: 30,
     fontWeight: 600,
-    color: '#000000',
+    color: theme.colors.foreground,
     textAlign: 'center',
     lineHeight: 36.31,
     left: 10,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   passworddBox: {
     width: windowWidth,
@@ -50,10 +53,12 @@ const styles = StyleSheet.create({
   },
   login: {
     fontSize: 16,
-    color: '#5DB075',
+    color: theme.colors.green,
     lineHeight: 36.31,
     fontWeight: 500,
     width: windowWidth * 0.3,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   form: {
     justifyContent: 'center',
@@ -62,7 +67,7 @@ const styles = StyleSheet.create({
   },
   hidePassword: {
     fontSize: 16,
-    color: '#5DB075',
+    color: theme.colors.green,
     fontWeight: 500,
   },
   checkBox: {
@@ -72,10 +77,12 @@ const styles = StyleSheet.create({
   },
   checkBoxText: {
     fontSize: 15,
-    color: '#666666',
+    color: theme.colors.mediumLightGray,
     left: '15%',
     top: '2.2%',
     fontWeight: 400,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   inputsContainer: {
     width: '100%',
@@ -108,25 +115,29 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.9,
     height: 51,
     borderWidth: 1,
-    borderColor: '#E8E8E8',
+    borderColor: theme.colors.gray,
     padding: 10,
     borderRadius: 8,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
     paddingHorizontal: 15,
     paddingVertical: 7,
     fontSize: 15,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   inputError: {
-    color: 'red',
+    color: theme.colors.danger,
     fontSize: 11,
     marginTop: 7,
     marginBottom: -10,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   button: {
     marginTop: 40,
     width: windowWidth * 0.9,
     height: 55,
-    backgroundColor: '#5DB075',
+    backgroundColor: theme.colors.green,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 100,
@@ -134,7 +145,9 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontSize: 16,
-    color: 'white',
+    color: theme.colors.primary,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   visibilityBtn: {
     position: 'absolute',

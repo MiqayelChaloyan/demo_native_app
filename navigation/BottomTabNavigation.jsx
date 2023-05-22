@@ -1,11 +1,12 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Profile from '../screens/Profile/Profile';
+import ProfileScreen from '../screens/Profile/profile/ProfileScreen';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
 import PageNavigation from './PageNavigator';
+import {theme} from '../assets/theme/theme';
 
 const Tab = createBottomTabNavigator();
 export default function BottomTabNavigation() {
@@ -25,9 +26,9 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({focused}) => (
             <HomeIcon
-              width={30}
-              height={36}
-              fill={focused ? '#5DB075' : '#BDBDBD'}
+              width={25}
+              height={35}
+              fill={focused ? theme.colors.green : theme.colors.lightGray}
             />
           ),
         }}
@@ -41,21 +42,21 @@ export default function BottomTabNavigation() {
             <MessagesIcon
               width={25}
               height={35}
-              fill={focused ? '#5DB075' : '#BDBDBD'}
+              fill={focused ? theme.colors.green : theme.colors.lightGray}
             />
           ),
         }}
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileScreen}
         options={{
           title: '',
           tabBarIcon: ({focused}) => (
             <ProfileIcon
               width={25}
               height={35}
-              fill={focused ? '#5DB075' : '#BDBDBD'}
+              fill={focused ? theme.colors.green : theme.colors.lightGray}
             />
           ),
         }}

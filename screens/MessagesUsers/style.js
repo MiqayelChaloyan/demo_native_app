@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   root: {
@@ -11,13 +12,15 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 51,
     borderWidth: 1,
-    borderColor: '#E8E8E8',
+    borderColor: theme.colors.gray,
     padding: 10,
     borderRadius: 8,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
     paddingHorizontal: 15,
     paddingVertical: 7,
     fontSize: 15,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   listUsers: {
     marginTop: 5,
@@ -39,14 +42,16 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 600,
     left: 12,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   activeChat: {
     borderWidth: 3,
-    borderColor: '#5DB075',
+    borderColor: theme.colors.green,
     width: 12,
     height: 12,
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.primary,
     borderRadius: 50,
     position: 'absolute',
     bottom: 1,
@@ -64,7 +69,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.2,
     width: 290,
     justifyContent: 'center',
-    backgroundColor: '#000000',
+    backgroundColor: theme.colors.foreground,
     left: 60,
     bottom: 15,
   },

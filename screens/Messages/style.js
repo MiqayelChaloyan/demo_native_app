@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   root: {
@@ -11,14 +12,16 @@ const styles = StyleSheet.create({
   input: {
     width: '90%',
     height: 51,
-    borderWidth: 2,
-    borderColor: '#E5E5E5',
+    borderWidth: 1,
+    borderColor: theme.colors.lightGray,
     padding: 10,
-    borderRadius: 8,
-    backgroundColor: '#E8E8E8',
+    borderRadius: 50,
+    backgroundColor: theme.colors.gray,
     paddingHorizontal: 15,
     paddingVertical: 7,
     fontSize: 15,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   messegesList: {
     height: 570,
@@ -49,11 +52,11 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   messageView: {
-    backgroundColor: 'transparent',
+    backgroundColor: theme.colors.transparent,
     maxWidth: '80%',
   },
   messageContainerisRight: {
-    backgroundColor: '#5DB075',
+    backgroundColor: theme.colors.green,
     maxWidth: '70%',
     alignSelf: 'flex-end',
     borderRadius: 15,
@@ -63,18 +66,20 @@ const styles = StyleSheet.create({
     right: 20,
   },
   messageisRight: {
-    color: '#fff',
+    color: theme.colors.primary,
   },
   messageIsLeft: {
-    color: '#000',
+    color: theme.colors.foreground,
   },
   message: {
     alignSelf: 'flex-start',
     fontSize: 15,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   messageContainerisLeft: {
     alignSelf: 'flex-start',
-    backgroundColor: '#E8E8E8',
+    backgroundColor: theme.colors.gray,
     borderBottomLeftRadius: 0,
     maxWidth: '70%',
     borderRadius: 15,
@@ -91,12 +96,12 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   leftArrow: {
-    backgroundColor: '#E8E8E8',
+    backgroundColor: theme.colors.gray,
     borderBottomRightRadius: 25,
     left: 20,
   },
   rightArrow: {
-    backgroundColor: '#5DB075',
+    backgroundColor: theme.colors.green,
     borderBottomLeftRadius: 25,
     right: 20,
   },
@@ -113,10 +118,10 @@ const styles = StyleSheet.create({
   },
   activeChat: {
     borderWidth: 3,
-    borderColor: '#5DB075',
+    borderColor: theme.colors.green,
     width: 12,
     height: 12,
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.background,
     borderRadius: 50,
     position: 'absolute',
     bottom: 1,
@@ -125,9 +130,11 @@ const styles = StyleSheet.create({
   userFullName: {
     fontSize: 15,
     left: 5,
-    color: '#000000',
+    color: theme.colors.foreground,
     top: 5,
     fontWeight: 600,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
 });
 

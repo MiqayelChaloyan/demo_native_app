@@ -13,6 +13,7 @@ import {DNAdataContext} from '../../Data/data';
 import Message from './Message';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
 import Header from '../../components/Header/Header';
+import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
 const MessagesList = ({navigation, route}) => {
@@ -46,7 +47,6 @@ const MessagesList = ({navigation, route}) => {
           left={'Back'}
         />
       </View>
-
       <View style={styles.userContainer}>
         <Image
           style={styles.userImageProfile}
@@ -59,7 +59,6 @@ const MessagesList = ({navigation, route}) => {
         {item.isActive && <View style={styles.activeChat} />}
         <Text style={styles.userFullName}>{item.fullName}</Text>
       </View>
-
       <ScrollView
         style={styles.messegesList}
         ref={ref => (scrollWiew.current = ref)}
@@ -83,7 +82,7 @@ const MessagesList = ({navigation, route}) => {
           <TextInput
             name="messages"
             placeholder="Message here..."
-            placeholderTextColor="#BDBDBD"
+            placeholderTextColor={theme.colors.lightGray}
             style={styles.input}
             variant="standard"
             onChangeText={value => setValue(value)}
@@ -100,10 +99,13 @@ const MessagesList = ({navigation, route}) => {
               style={[
                 styles.send,
                 {
-                  backgroundColor: value.trim() !== '' ? '#5DB075' : '#BDBDBD',
+                  backgroundColor:
+                    value.trim() !== ''
+                      ? theme.colors.green
+                      : theme.colors.lightGray,
                 },
               ]}>
-              <ArrowIcon width={16} height={25} fill="#FFFFFF" />
+              <ArrowIcon width={16} height={25} fill={theme.colors.primary} />
             </View>
           </TouchableOpacity>
         </View>

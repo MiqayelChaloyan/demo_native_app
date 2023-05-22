@@ -26,7 +26,6 @@ const FeedItem = ({item, itemIndex, navigation}) => {
           <View style={styles.imageContainer}>
             <Image source={{uri: item.imageUri}} style={styles.feedItemImage} />
           </View>
-
           <View style={styles.contentInfo}>
             <View style={styles.headerContent}>
               <Text style={styles.headerFeedText}>{item.title}</Text>

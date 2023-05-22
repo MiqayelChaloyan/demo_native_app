@@ -1,13 +1,13 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 
 const windowWidth = Dimensions.get('window').width;
-
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   feedScreen: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.background,
   },
   feedScreenContainer: {
     paddingHorizontal: 16,
@@ -23,13 +23,15 @@ const styles = StyleSheet.create({
     minHeight: 40,
     maxHeight: 60,
     borderWidth: 1,
-    borderColor: '#E8E8E8',
+    borderColor: theme.colors.gray,
     borderRadius: 100,
     paddingTop: 16,
     paddingLeft: 16,
     paddingBottom: 15,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
     fontSize: 16,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   contentsBlockContainer: {
     width: '100%',
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     minWidth: 250,
     maxWidth: 304,
     borderBottomWidth: 1,
-    borderBottomColor: '#E8E8E8',
+    borderBottomColor: theme.colors.gray,
   },
   headerContent: {
     flexDirection: 'row',
@@ -70,15 +72,19 @@ const styles = StyleSheet.create({
   headerFeedText: {
     fontSize: 16,
     fontWeight: 600,
-    color: 'black',
+    color: theme.colors.foreground,
     lineHeight: 19,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   aboutContentDate: {
     fontSize: 14,
     fontWeight: 400,
-    color: '#BDBDBD',
+    color: theme.colors.lightGray,
     lineHeight: 17,
     paddingTop: 2,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   feedTextContainer: {
     paddingRight: 8,
@@ -86,8 +92,10 @@ const styles = StyleSheet.create({
   feedText: {
     fontSize: 14,
     fontWeight: 400,
-    color: 'black',
+    color: theme.colors.foreground,
     lineHeight: 17,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   skeleton: {
     marginTop: 25,

@@ -35,7 +35,6 @@ const FeedScreen = ({navigation}) => {
             multiline={false}
           />
         </View>
-
         <View style={styles.contentsBlockContainer}>
           <FlatList
             data={feedData}

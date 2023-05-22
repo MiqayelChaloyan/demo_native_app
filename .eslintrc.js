@@ -5,7 +5,9 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 6,
     es6: true,
+    sourceType: 'module',
     ecmaFeatures: {
+      js: true,
       jsx: true,
     },
   },
@@ -24,6 +26,9 @@ module.exports = {
     'react-native/no-inline-styles': 2,
     'react-native/no-raw-text': 2,
     'react-native/no-single-element-style-arrays': 2,
+    'no-console': 0,
+    disallowMultipleVarDecl: 0,
+    maximumLineLength: 100,
     'react/react-in-jsx-scope': 'off',
   },
 };
