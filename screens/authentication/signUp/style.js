@@ -1,5 +1,10 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {theme} from '../../../assets/theme/theme';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../../assets/metrics/Metrics';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -11,24 +16,24 @@ const styles = StyleSheet.create({
   },
   root: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: verticalScale(20),
   },
   headerContainer: {
     width: windowWidth * 0.9,
-    height: 14,
-    marginTop: 14,
-    marginBottom: 17,
+    height: verticalScale(14),
+    marginTop: verticalScale(14),
+    marginBottom: verticalScale(17),
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'stretch',
-    marginTop: 15,
-    marginHorizontal: 20,
+    marginTop: verticalScale(15),
+    marginHorizontal: horizontalScale(20),
   },
   cancel: {
-    top: 8,
-    height: 50,
+    top: verticalScale(8),
+    height: verticalScale(50),
     width: windowWidth * 0.01,
   },
   headerBox: {
@@ -36,12 +41,12 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.1,
   },
   signUp: {
-    fontSize: 30,
+    fontSize: moderateScale(30),
     fontWeight: 600,
     color: theme.colors.foreground,
     textAlign: 'center',
-    lineHeight: 36.31,
-    left: 10,
+    lineHeight: verticalScale(36.31),
+    left: verticalScale(10),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
@@ -52,9 +57,9 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   login: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     color: theme.colors.green,
-    lineHeight: 36.31,
+    lineHeight: verticalScale(36.31),
     fontWeight: 500,
     width: windowWidth * 0.3,
     // TODO: This part needs to be updated.
@@ -63,23 +68,23 @@ const styles = StyleSheet.create({
   form: {
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 15,
+    gap: verticalScale(15),
   },
   hidePassword: {
-    fontSize: 16,
+    fontSize: verticalScale(16),
     color: theme.colors.green,
     fontWeight: 500,
   },
   checkBox: {
-    padding: 15,
+    padding: verticalScale(15),
     justifyContent: 'flex-start',
-    margin: 5,
+    margin: verticalScale(5),
   },
   checkBoxText: {
-    fontSize: 15,
+    fontSize: verticalScale(15),
     color: theme.colors.mediumLightGray,
-    left: '15%',
-    top: '2.2%',
+    left: verticalScale(10),
+    top: verticalScale(7),
     fontWeight: 400,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
   inputsContainer: {
     width: '100%',
     marginTop: '20%',
-    gap: 15,
+    gap: verticalScale(15),
   },
   nameInputStyle: {
     width: '100%',
@@ -109,53 +114,51 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '15%',
+    marginTop: verticalScale(30),
   },
   input: {
-    width: windowWidth * 0.9,
-    height: 51,
+    width: horizontalScale(343),
+    height: verticalScale(50),
     borderWidth: 1,
     borderColor: theme.colors.gray,
-    padding: 10,
+    padding: verticalScale(10),
     borderRadius: 8,
     backgroundColor: theme.colors.darkGray,
-    paddingHorizontal: 15,
+    paddingHorizontal: horizontalScale(15),
     paddingVertical: 7,
-    fontSize: 15,
+    fontSize: moderateScale(15),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   inputError: {
     color: theme.colors.danger,
-    fontSize: 11,
-    marginTop: 7,
-    marginBottom: -10,
+    fontSize: moderateScale(11),
+    marginTop: verticalScale(7),
+    marginBottom: verticalScale(-10),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   button: {
-    marginTop: 40,
-    width: windowWidth * 0.9,
-    height: 55,
+    marginTop: verticalScale(43),
+    width: horizontalScale(343),
+    height: verticalScale(51),
     backgroundColor: theme.colors.green,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 100,
+    borderRadius: verticalScale(100),
   },
   buttonText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: moderateScale(16),
     color: theme.colors.primary,
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
   },
   visibilityBtn: {
     position: 'absolute',
-    right: 30,
-    height: 25,
+    right: verticalScale(30),
+    height: verticalScale(25),
     width: windowWidth * 0.12,
     padding: 0,
-    marginTop: 15,
+    marginTop: verticalScale(15),
   },
   signUpFooter: {
     alignItems: 'center',

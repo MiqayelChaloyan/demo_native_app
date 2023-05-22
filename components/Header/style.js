@@ -1,8 +1,10 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../assets/theme/theme';
+import {horizontalScale} from '../../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
   headerContainer: {
+    width: '100%',
     marginTop: 32,
     flexDirection: 'row',
     alignItems: 'center',
@@ -14,8 +16,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: theme.colors.foreground,
     lineHeight: 36.31,
-    maxWidth: 94,
-    maxHeight: 36,
+    maxWidth: horizontalScale(260),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },

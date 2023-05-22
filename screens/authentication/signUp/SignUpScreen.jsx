@@ -158,7 +158,7 @@ const SignUpScreen = ({navigation}) => {
               <View
                 style={[
                   styles.checkBoxStyle,
-                  {bottom: keyboardStatus ? '10%' : 0},
+                  {bottom: keyboardStatus ? '1%' : 0},
                 ]}>
                 <CheckBox
                   style={styles.checkBox}
@@ -178,7 +178,7 @@ const SignUpScreen = ({navigation}) => {
             </View>
           </Formik>
           <View
-            style={[styles.signUpFooter, {bottom: keyboardStatus ? '12%' : 0}]}>
+            style={[styles.signUpFooter, {bottom: keyboardStatus ? '3%' : 0}]}>
             <View style={styles.button}>
               <TouchableOpacity
                 disabled={!isValid}

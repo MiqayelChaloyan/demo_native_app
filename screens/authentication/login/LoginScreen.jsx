@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -10,14 +10,13 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import { Formik, useFormik } from 'formik';
-import { loginValidationSchema } from './loginValidationSchema';
+import {Formik, useFormik} from 'formik';
+import {loginValidationSchema} from './loginValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
-import { theme } from '../../../assets/theme/theme';
+import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
-const LogInScreen = ({ navigation }) => {
-  const [keyboardStatus, setKeyboardStatus] = useState(false);
+const LogInScreen = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
 
   const {
@@ -39,20 +38,6 @@ const LogInScreen = ({ navigation }) => {
     },
   });
 
-  useEffect(() => {
-    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
-      setKeyboardStatus(true);
-    });
-    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
-      setKeyboardStatus(false);
-    });
-
-    return () => {
-      showSubscription.remove();
-      hideSubscription.remove();
-    };
-  }, []);
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -64,7 +49,11 @@ const LogInScreen = ({ navigation }) => {
               <View style={styles.cancel}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Profile')}>
-                  <CancelIcon width={20} height={20} fill={theme.colors.lightGray} />
+                  <CancelIcon
+                    width={20}
+                    height={20}
+                    fill={theme.colors.lightGray}
+                  />
                 </TouchableOpacity>
               </View>
               <View style={styles.headerBox}>
@@ -93,7 +82,7 @@ const LogInScreen = ({ navigation }) => {
                   <Text style={styles.inputError}>{errors.email}</Text>
                 )}
               </View>
-              <View style={styles.passworddBox}>
+              <View>
                 <View style={styles.passwordInputStyle}>
                   <TextInput
                     name="password"
@@ -113,7 +102,7 @@ const LogInScreen = ({ navigation }) => {
                     <Text style={styles.inputError}>{errors.password}</Text>
                   )}
                 </View>
-                <View style={styles.passHide}>
+                <View>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     style={styles.visibilityBtn}
@@ -126,8 +115,7 @@ const LogInScreen = ({ navigation }) => {
               </View>
             </View>
           </Formik>
-          <View
-            style={[styles.loginFooter, { bottom: keyboardStatus ? '13.5%' : 0 }]}>
+          <View style={styles.loginFooter}>
             <View style={styles.button}>
               <TouchableOpacity
                 disabled={!isValid}
