@@ -7,6 +7,7 @@ module.exports = {
     es6: true,
     sourceType: 'module',
     ecmaFeatures: {
+      js: true,
       jsx: true,
     },
   },
@@ -22,6 +23,6 @@ module.exports = {
     'react-native/no-single-element-style-arrays': 2,
     'no-console': 0,
     disallowMultipleVarDecl: 0,
-    maximumLineLength: 100,
+    maximumLineLength: 10,
   },
 };
