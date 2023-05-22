@@ -1,14 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import {Image, Text, View} from 'react-native';
 import styles from './style';
 
 const diffMonths = item => {
-  const todaysDate = new Date();
+  const currentDate = new Date();
   const createdDate = new Date(item.createdData);
   return (
-    (todaysDate.getFullYear() - createdDate.getFullYear()) * 12 +
-    (todaysDate.getMonth() - createdDate.getMonth())
+    (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
+    (currentDate.getMonth() - createdDate.getMonth())
   );
 };
 
