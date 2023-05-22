@@ -65,6 +65,13 @@ function DNAdata({children}) {
       price: '$19.99',
       id: '3',
     },
+    {
+      title: 'GAZELLE SHOES',
+      imageUri:
+        'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b0fd05cae60a48a6bd20c800cb0b8636_9366/Gazelle_Shoes_Blue_IG0666_HM1.jpg',
+      price: '$19.99',
+      id: '4',
+    },
   ]);
 
   const [messages, setMessages] = useState([
