@@ -1,8 +1,9 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const windowWidth = Dimensions.get('window').width;
-
-const windowHeight = Dimensions.get('window').height;
+import {StyleSheet} from 'react-native';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
   feedScreen: {
@@ -10,33 +11,29 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   feedScreenContainer: {
-    paddingHorizontal: 16,
+    paddingHorizontal: horizontalScale(16),
     flex: 1,
     alignItems: 'center',
   },
   searchContainer: {
     width: '100%',
-    marginTop: 32,
+    marginTop: verticalScale(32),
   },
   searchInput: {
-    height: windowWidth * 0.133,
-    minHeight: 40,
-    maxHeight: 60,
-    borderWidth: 1,
+    height: verticalScale(50),
+    borderWidth: moderateScale(1),
     borderColor: '#E8E8E8',
-    borderRadius: 100,
-    paddingTop: 16,
-    paddingLeft: 16,
-    paddingBottom: 15,
+    borderRadius: moderateScale(100),
+    paddingTop: verticalScale(16),
+    paddingLeft: horizontalScale(16),
+    paddingBottom: verticalScale(15),
     backgroundColor: '#F6F6F6',
-    fontSize: 16,
+    fontSize: moderateScale(16),
   },
   contentsBlockContainer: {
     width: '100%',
-    height: windowHeight * 0.5,
-    minHeight: 320,
-    maxHeight: 445,
-    marginTop: 16,
+    height: verticalScale(356),
+    marginTop: verticalScale(16),
   },
   contentContainer: {
     flexDirection: 'row',
@@ -44,53 +41,49 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   imageContainer: {
-    width: windowWidth * 0.133,
-    height: windowWidth * 0.133,
-    maxHeight: 60,
-    maxWidth: 60,
+    width: horizontalScale(50),
+    height: verticalScale(50),
   },
   feedItemImage: {
-    height: windowWidth * 0.133,
-    maxHeight: 60,
-    borderRadius: 8,
+    height: verticalScale(50),
+    borderRadius: moderateScale(8),
   },
   contentInfo: {
-    width: windowWidth * 0.74,
-    height: windowHeight * 0.1,
-    minWidth: 250,
-    maxWidth: 304,
-    borderBottomWidth: 1,
+    width: horizontalScale(269),
+    height: verticalScale(77),
+    borderBottomWidth: moderateScale(1),
     borderBottomColor: '#E8E8E8',
+    marginBottom: verticalScale(16),
   },
   headerContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 8,
+    marginBottom: verticalScale(8),
   },
   headerFeedText: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: 600,
     color: 'black',
-    lineHeight: 19,
+    lineHeight: verticalScale(19),
   },
   aboutContentDate: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 400,
     color: '#BDBDBD',
-    lineHeight: 17,
-    paddingTop: 2,
+    lineHeight: verticalScale(17),
+    paddingTop: verticalScale(2),
   },
   feedTextContainer: {
-    paddingRight: 8,
+    paddingRight: horizontalScale(8),
   },
   feedText: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 400,
     color: 'black',
-    lineHeight: 17,
+    lineHeight: verticalScale(17),
   },
   skeleton: {
-    marginTop: 25,
+    marginTop: verticalScale(25),
   },
 });
 
