@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     color: 'black',
   },
-  ItemListContainer: {
+  itemListContainer: {
     flex: 1,
     width: windowWidth * 0.9,
     marginBottom: 70,
