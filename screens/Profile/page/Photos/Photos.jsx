@@ -5,7 +5,7 @@ import styles from './style';
 
 const Photos = ({item}) => {
   return (
-    <View style={{paddingTop: 1}}>
+    <View style={styles.container}>
       <Image source={{uri: item.imageUri}} style={styles.itemImage} />
       <Text style={styles.itemTitle}>{item.title}</Text>
     </View>

@@ -14,7 +14,12 @@ module.exports = {
   env: {
     'react-native/react-native': true,
   },
-  plugins: ['react', 'react-native', 'prettier'],
+  plugins: ['react', 'react-native', 'prettier', 'react-refresh'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
     'react-native/no-unused-styles': 2,
     'react-native/split-platform-components': 2,
@@ -24,5 +29,6 @@ module.exports = {
     'no-console': 0,
     disallowMultipleVarDecl: 0,
     maximumLineLength: 100,
+    'react/react-in-jsx-scope': 'off',
   },
 };

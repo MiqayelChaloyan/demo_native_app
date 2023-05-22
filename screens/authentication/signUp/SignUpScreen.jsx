@@ -14,6 +14,7 @@ import CheckBox from 'react-native-check-box';
 import {Formik, useFormik} from 'formik';
 import {signUpValidationSchema} from './signUpValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
+import { theme } from '../../../assets/theme/theme';
 import styles from './style';
 
 const SignUpScreen = ({navigation}) => {
@@ -70,7 +71,7 @@ const SignUpScreen = ({navigation}) => {
             <View style={styles.header}>
               <View style={styles.cancel}>
                 <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
-                  <CancelIcon width={20} height={20} fill="#BDBDBD" />
+                  <CancelIcon width={20} height={20} fill={theme.colors.lightGray} />
                 </TouchableOpacity>
               </View>
               <View style={styles.headerBox}>
@@ -89,7 +90,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   name="name"
                   placeholder="Name"
-                  placeholderTextColor="#BDBDBD"
+                  placeholderTextColor={theme.colors.lightGray}
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('name')}
@@ -108,7 +109,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   name="email"
                   placeholder="Email Address"
-                  placeholderTextColor="#BDBDBD"
+                  placeholderTextColor={theme.colors.lightGray}
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('email')}
@@ -129,7 +130,7 @@ const SignUpScreen = ({navigation}) => {
                     name="password"
                     secureTextEntry={hidePassword}
                     placeholder="Password"
-                    placeholderTextColor="#BDBDBD"
+                    placeholderTextColor={theme.colors.lightGray}
                     style={styles.input}
                     variant="standard"
                     onChangeText={handleChange('password')}
@@ -162,9 +163,9 @@ const SignUpScreen = ({navigation}) => {
                 <CheckBox
                   style={styles.checkBox}
                   isChecked={isChecked}
-                  checkedCheckBoxColor="#5DB075"
-                  checkBoxColor="#E8E8E8"
-                  uncheckedCheckBoxColor="#E8E8E8"
+                  checkedCheckBoxColor={theme.colors.green}
+                  checkBoxColor={theme.colors.gray}
+                  uncheckedCheckBoxColor={theme.colors.gray}
                   onClick={() => setIsChecked(!isChecked)}
                   rightTextView={
                     <Text style={styles.checkBoxText}>

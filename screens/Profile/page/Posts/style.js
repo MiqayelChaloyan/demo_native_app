@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {theme} from '../../../../assets/theme/theme';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
   contentBlock: {
     width: windowWidth * 0.133,
     height: windowWidth * 0.133,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
   },
   postImage: {
     width: windowWidth * 0.133,
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.74,
     height: windowHeight * 0.1,
     borderBottomWidth: 1,
-    borderBottomColor: '#E8E8E8',
+    borderBottomColor: theme.colors.gray,
     flexDirection: 'column',
   },
   headerContent: {
@@ -37,7 +38,9 @@ const styles = StyleSheet.create({
   aboutContentDate: {
     fontSize: 14,
     fontWeight: 400,
-    color: '#BDBDBD',
+    color: theme.colors.lightGray,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   feedTextContainer: {
     paddingRight: 24,
@@ -45,12 +48,16 @@ const styles = StyleSheet.create({
   feedText: {
     fontSize: 14,
     fontWeight: 400,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   headerText: {
     fontSize: 16,
     fontWeight: 600,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
 });
 

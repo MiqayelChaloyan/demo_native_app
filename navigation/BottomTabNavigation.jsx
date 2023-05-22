@@ -6,9 +6,9 @@ import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
 import PageNavigation from './PageNavigator';
+import {theme} from '../assets/theme/theme';
 
 const Tab = createBottomTabNavigator();
-
 export default function BottomTabNavigation() {
   return (
     <Tab.Navigator
@@ -28,7 +28,7 @@ export default function BottomTabNavigation() {
             <HomeIcon
               width={25}
               height={35}
-              fill={focused ? '#5DB075' : '#BDBDBD'}
+              fill={focused ? theme.colors.green : theme.colors.lightGray}
             />
           ),
         }}
@@ -42,7 +42,7 @@ export default function BottomTabNavigation() {
             <MessagesIcon
               width={25}
               height={35}
-              fill={focused ? '#5DB075' : '#BDBDBD'}
+              fill={focused ? theme.colors.green : theme.colors.lightGray}
             />
           ),
         }}
@@ -56,7 +56,7 @@ export default function BottomTabNavigation() {
             <ProfileIcon
               width={25}
               height={35}
-              fill={focused ? '#5DB075' : '#BDBDBD'}
+              fill={focused ? theme.colors.green : theme.colors.lightGray}
             />
           ),
         }}

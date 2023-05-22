@@ -1,13 +1,14 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 
 const windowWidth = Dimensions.get('window').width;
-
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   contentBox: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: theme.colors.background,
   },
   swiperItem: {
     width: windowWidth * 0.9,
@@ -18,13 +19,19 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     bottom: 16,
   },
+  imageContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: theme.colors.background,
+  },
   image: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.3,
     borderRadius: 8,
+    aspectRatio: 1,
   },
   dotStyle: {
-    backgroundColor: '#E8E8E8',
+    backgroundColor: theme.colors.gray,
     width: 8,
     height: 8,
     borderRadius: 4,
@@ -34,7 +41,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   activeDotStyle: {
-    backgroundColor: '#5DB075',
+    backgroundColor: theme.colors.green,
     width: 8,
     height: 8,
     borderRadius: 4,
@@ -48,23 +55,29 @@ const styles = StyleSheet.create({
     height: 19,
     marginTop: 8,
     fontSize: 16,
-    color: 'black',
+    color: theme.colors.foreground,
     fontWeight: 600,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   postMessage: {
     width: windowWidth * 0.9,
     height: 34,
     fontSize: 14,
-    color: 'black',
+    color: theme.colors.foreground,
     fontWeight: 400,
     marginVertical: 8,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   dateStyle: {
     width: windowWidth * 0.3,
     height: 17,
     fontSize: 14,
-    color: '#BDBDBD',
+    color: theme.colors.lightGray,
     fontWeight: 400,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   searchContainer: {
     width: windowWidth * 0.9,
@@ -73,16 +86,17 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     borderWidth: 1,
-    borderColor: '#E8E8E8',
+    borderColor: theme.colors.gray,
     borderRadius: 100,
     paddingLeft: 16,
     paddingTop: 16,
     paddingBottom: 15,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: theme.colors.darkGray,
   },
   contentItem: {
     width: windowWidth,
     height: windowHeight * 0.49,
+    backgroundColor: theme.colors.transparent,
   },
   headerTextContainer: {
     width: windowWidth * 0.9,
@@ -92,7 +106,9 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     fontWeight: 500,
-    color: 'black',
+    color: theme.colors.foreground,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   itemListContainer: {
     flex: 1,
@@ -105,7 +121,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 51,
     borderBottomWidth: 1,
-    borderBottomColor: '#E8E8E8',
   },
   circle: {
     borderRadius: 8,

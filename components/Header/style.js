@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -11,10 +12,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 600,
     textAlign: 'center',
-    color: 'black',
+    color: theme.colors.foreground,
     lineHeight: 36.31,
     maxWidth: 94,
     maxHeight: 36,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   headerButtonText: {
     fontSize: 16,
@@ -22,6 +25,8 @@ const styles = StyleSheet.create({
     lineHeight: 19.36,
     maxWidth: 64,
     maxHeight: 19,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
 });
 

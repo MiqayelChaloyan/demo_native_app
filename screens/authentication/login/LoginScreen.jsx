@@ -13,6 +13,7 @@ import {
 import { Formik, useFormik } from 'formik';
 import { loginValidationSchema } from './loginValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
+import { theme } from '../../../assets/theme/theme';
 import styles from './style';
 
 const LogInScreen = ({ navigation }) => {
@@ -63,7 +64,7 @@ const LogInScreen = ({ navigation }) => {
               <View style={styles.cancel}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Profile')}>
-                  <CancelIcon width={20} height={20} fill="#BDBDBD" />
+                  <CancelIcon width={20} height={20} fill={theme.colors.lightGray} />
                 </TouchableOpacity>
               </View>
               <View style={styles.headerBox}>
@@ -77,7 +78,7 @@ const LogInScreen = ({ navigation }) => {
                 <TextInput
                   name="email"
                   placeholder="Email Address"
-                  placeholderTextColor="#BDBDBD"
+                  placeholderTextColor={theme.colors.lightGray}
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('email')}
@@ -98,7 +99,7 @@ const LogInScreen = ({ navigation }) => {
                     name="password"
                     secureTextEntry={hidePassword}
                     placeholder="Password"
-                    placeholderTextColor="#BDBDBD"
+                    placeholderTextColor={theme.colors.lightGray}
                     style={styles.input}
                     variant="standard"
                     onChangeText={handleChange('password')}

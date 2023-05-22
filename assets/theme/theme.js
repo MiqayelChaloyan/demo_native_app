@@ -6,7 +6,9 @@ const palette = {
   gray: '#E8E8E8',
   red: '#ff0000',
   lightGray: '#BDBDBD',
-  darkGray: 'F6F6F6',
+  darkGray: '#F6F6F6',
+  mediumLightGray: '#666666',
+  transparent: 'transparent',
 };
 
 export const theme = {
@@ -20,6 +22,9 @@ export const theme = {
     darkGreen: palette.darkGreen,
     lightGray: palette.lightGray,
     darkGray: palette.darkGray,
+    gray: palette.gray,
+    mediumLightGray: palette.mediumLightGray,
+    transparent: palette.transparent,
   },
   spacing: {
     s: 8,

@@ -4,6 +4,7 @@ import {FlatList, TextInput, View} from 'react-native';
 import {DNAdataContext} from '../../Data/data';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
 import User from './User';
+import { theme } from '../../assets/theme/theme';
 import styles from './style';
 
 const MessagesUsers = ({navigation}) => {
@@ -32,7 +33,7 @@ const MessagesUsers = ({navigation}) => {
         <TextInput
           name="search"
           placeholder="Search..."
-          placeholderTextColor="#BDBDBD"
+          placeholderTextColor={theme.colors.lightGray}
           style={styles.input}
           variant="standard"
           onChangeText={value => setSearchItemValue(value)}
