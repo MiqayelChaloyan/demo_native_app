@@ -1,138 +1,127 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
+import { horizontalScale, moderateScale, verticalScale } from "../../assets/metrics/Metrics";
 import {theme} from '../../assets/theme/theme';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   contentBox: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: theme.colors.background,
   },
+  contentContainer:{
+    flex: 1,
+    alignItems: 'center',
+    marginHorizontal: horizontalScale(16),
+  },
   swiperItem: {
-    width: windowWidth * 0.9,
-    marginTop: 16,
+    width: '100%',
+    marginTop: verticalScale(16),
   },
   paginationStyle: {
-    paddingLeft: windowWidth * 0.78,
-    marginBottom: 0,
-    bottom: 16,
+    right: horizontalScale(0),
+    bottom:verticalScale(0),
   },
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors.background,
+    width:horizontalScale(343),
+    height:verticalScale(240),
   },
   image: {
-    width: windowWidth * 0.9,
-    height: windowHeight * 0.3,
     borderRadius: 8,
-    aspectRatio: 1,
+    width:horizontalScale(343),
+    height:verticalScale(240),
   },
   dotStyle: {
     backgroundColor: theme.colors.gray,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    marginLeft: 3,
-    marginRight: 3,
-    marginTop: 3,
-    marginBottom: 3,
-  },
-  activeDotStyle: {
-    backgroundColor: theme.colors.green,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    marginLeft: 3,
-    marginRight: 3,
-    marginTop: 3,
-    marginBottom: 3,
+    width: horizontalScale(8),
+    height: verticalScale(8),
+    borderRadius: moderateScale(4),
+    marginHorizontal:horizontalScale(3),
+    marginVertical:verticalScale(33),
   },
   titleStyle: {
-    width: windowWidth * 0.9,
-    height: 19,
-    marginTop: 8,
-    fontSize: 16,
+    width: '100%',
+    marginTop: horizontalScale(8),
+    fontSize: moderateScale(16),
     color: theme.colors.foreground,
     fontWeight: 600,
+    lineHeight:verticalScale(19),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   postMessage: {
-    width: windowWidth * 0.9,
-    height: 34,
-    fontSize: 14,
+    width:'90%',
+    fontSize: moderateScale(14),
     color: theme.colors.foreground,
     fontWeight: 400,
-    marginVertical: 8,
+    marginVertical: verticalScale(8),
+    lineHeight:verticalScale(17),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   dateStyle: {
-    width: windowWidth * 0.3,
-    height: 17,
-    fontSize: 14,
+    fontSize: moderateScale(14),
+    lineHeight:verticalScale(17),
     color: theme.colors.lightGray,
     fontWeight: 400,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   searchContainer: {
-    width: windowWidth * 0.9,
-    marginTop: windowHeight * 0.05,
-    marginHorizontal: windowWidth * 0.05,
+    width: '100%',
+    marginTop: verticalScale(32),
   },
   searchInput: {
-    borderWidth: 1,
+    height: verticalScale(50),
+    borderWidth: moderateScale(1),
     borderColor: theme.colors.gray,
-    borderRadius: 100,
-    paddingLeft: 16,
-    paddingTop: 16,
-    paddingBottom: 15,
+    borderRadius: moderateScale(100),
+    paddingTop: verticalScale(16),
+    paddingLeft: horizontalScale(16),
+    paddingBottom: verticalScale(15),
     backgroundColor: theme.colors.darkGray,
+    fontSize: moderateScale(16),
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   contentItem: {
-    width: windowWidth,
-    height: windowHeight * 0.49,
-    backgroundColor: theme.colors.transparent,
+    width: horizontalScale(375),
   },
   headerTextContainer: {
-    width: windowWidth * 0.9,
-    height: 29,
-    marginBottom: 11,
+    width: '100%',
+    marginVertical: verticalScale(16),
   },
   headerText: {
-    fontSize: 24,
-    fontWeight: 500,
+    fontSize: moderateScale(24),
+    fontWeight: 600,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   itemListContainer: {
     flex: 1,
-    width: windowWidth * 0.9,
-    marginBottom: 30,
+    width: '100%',
+    marginBottom: verticalScale(30),
   },
   contentItemOfList: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 51,
-    borderBottomWidth: 1,
+    height: verticalScale(45),
+    borderBottomWidth: moderateScale(1),
   },
   circle: {
-    borderRadius: 8,
-    width: 16,
-    height: 16,
+    borderRadius: moderateScale(8),
+    width: horizontalScale(16),
+    height: verticalScale(16),
   },
   leftSide: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   titleContainer: {
-    marginLeft: 16,
+    marginLeft: horizontalScale(10),
   },
 });
 

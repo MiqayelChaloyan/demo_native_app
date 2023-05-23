@@ -2,6 +2,7 @@ import {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {TextInput, View, Text, FlatList} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
+import { theme } from "../../assets/theme/theme";
 import {DNAdataContext} from '../../Data/data';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
@@ -14,6 +15,7 @@ const ContentScreen = ({navigation, route}) => {
 
   return (
     <View style={styles.contentBox}>
+      <View style={styles.contentContainer}>
       <Header
         screen={'Content'}
         navigation={navigation}
@@ -40,7 +42,7 @@ const ContentScreen = ({navigation, route}) => {
           showPagination
           paginationStyle={styles.paginationStyle}
           paginationStyleItem={styles.dotStyle}
-          paginationStyleItemActive={styles.activeDotStyle}
+          paginationStyleItemActive={[styles.dotStyle,{backgroundColor:theme.colors.green}]}
           data={feedData}
           renderItem={ChangeSwiperItem}
         />
@@ -58,6 +60,7 @@ const ContentScreen = ({navigation, route}) => {
             <ContentItemList item={item} index={index} />
           )}
         />
+      </View>
       </View>
     </View>
   );
