@@ -9,7 +9,6 @@ import {theme} from '../../assets/theme/theme';
 const styles = StyleSheet.create({
   expenses: {
     flex: 1,
-    backgroundColor: 'green',
   },
   container: {
     flex: 1,

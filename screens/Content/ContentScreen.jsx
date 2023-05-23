@@ -16,48 +16,49 @@ const ContentScreen = ({navigation, route}) => {
 
   return (
     <View style={styles.contentBox}>
-      <Header
-        screen={'Content'}
-        navigation={navigation}
-        back={'Feed'}
-        continueTo={'Market'}
-        left={'Back'}
-        right={'Filter'}
-      />
-      <Search list={feedData} setState={setState} keyword="title" />
-      <View style={styles.swiperItem}>
-        <SwiperFlatList
-          autoplay
-          autoplayDelay={3}
-          autoplayLoop
-          index={itemIndex}
-          showPagination
-          paginationStyle={styles.paginationStyle}
-          paginationStyleItem={styles.dotStyle}
-          paginationStyleItemActive={styles.activeDotStyle}
-          data={feedData}
-          renderItem={ChangeSwiperItem}
+      <View style={styles.contentContainer}>
+        <Header
+          screen={'Content'}
+          navigation={navigation}
+          back={'Feed'}
+          continueTo={'Market'}
+          left={'Back'}
+          right={'Filter'}
         />
-      </View>
-      <View style={styles.headerTextContainer}>
-        <Text style={styles.headerText}>Outlet</Text>
-      </View>
-      {/* {state.length ? ( */}
-      <View style={styles.itemListContainer}>
-        <FlatList
-          data={state}
-          ListEmptyComponent={
-            <View style={styles.warning}>
-              <Text style={styles.warningText}>
-                Nothing was found in your search results.
-              </Text>
-            </View>
-          }
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item, index}) => (
-            <ContentItemList item={item} index={index} />
-          )}
-        />
+        <Search list={feedData} setState={setState} keyword="title" />
+        <View style={styles.swiperItem}>
+          <SwiperFlatList
+            autoplay
+            autoplayDelay={3}
+            autoplayLoop
+            index={itemIndex}
+            showPagination
+            paginationStyle={styles.paginationStyle}
+            paginationStyleItem={styles.dotStyle}
+            paginationStyleItemActive={styles.activeDotStyle}
+            data={feedData}
+            renderItem={ChangeSwiperItem}
+          />
+        </View>
+        <View style={styles.headerTextContainer}>
+          <Text style={styles.headerText}>Outlet</Text>
+        </View>
+        <View style={styles.itemListContainer}>
+          <FlatList
+            data={state}
+            ListEmptyComponent={
+              <View style={styles.warning}>
+                <Text style={styles.warningText}>
+                  Nothing was found in your search results.
+                </Text>
+              </View>
+            }
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item, index}) => (
+              <ContentItemList item={item} index={index} />
+            )}
+          />
+        </View>
       </View>
     </View>
   );

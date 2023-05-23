@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
   },
   itemNameContainer: {
     width: horizontalScale(110),
-    height: verticalScale(34),
     marginVertical: verticalScale(8),
   },
   itemNameText: {

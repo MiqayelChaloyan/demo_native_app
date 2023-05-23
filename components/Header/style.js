@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   headerButtonText: {
     fontSize: moderateScale(16),
     fontWeight: 500,
-    lineHeight: moderateScale(19.36),
+    lineHeight: verticalScale(19.36),
     maxWidth: horizontalScale(64),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
