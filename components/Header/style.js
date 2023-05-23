@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     lineHeight: 19.36,
     maxWidth: 64,
-    maxHeight: 19,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
