@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    left: 20,
-    marginBottom: 25,
+    marginBottom: 20,
+    paddingHorizontal: 16,
   },
   input: {
     width: '90%',

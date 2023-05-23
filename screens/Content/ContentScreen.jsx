@@ -1,15 +1,17 @@
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import PropTypes from 'prop-types';
-import {TextInput, View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import {DNAdataContext} from '../../Data/data';
+import {GlobalDataContext} from '../../Data/context';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
+import Search from '../../components/Search/Search';
 import styles from './style';
 import ContentItemList from './ContentItemList';
 
 const ContentScreen = ({navigation, route}) => {
-  const {feedData} = useContext(DNAdataContext);
+  const {feedData} = useContext(GlobalDataContext);
+  const [state, setState] = useState(feedData);
   const {itemIndex} = route.params;
 
   return (
@@ -22,15 +24,7 @@ const ContentScreen = ({navigation, route}) => {
         left={'Back'}
         right={'Filter'}
       />
-
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          multiline={false}
-        />
-      </View>
-
+      <Search list={feedData} setState={setState} keyword="title" />
       <View style={styles.swiperItem}>
         <SwiperFlatList
           autoplay
@@ -45,20 +39,26 @@ const ContentScreen = ({navigation, route}) => {
           renderItem={ChangeSwiperItem}
         />
       </View>
-
       <View style={styles.headerTextContainer}>
         <Text style={styles.headerText}>Outlet</Text>
       </View>
-
-      <View style={styles.itemListContainer}>
-        <FlatList
-          data={feedData}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item, index}) => (
-            <ContentItemList item={item} index={index} />
-          )}
-        />
-      </View>
+      {state.length ? (
+        <View style={styles.itemListContainer}>
+          <FlatList
+            data={state}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item, index}) => (
+              <ContentItemList item={item} index={index} />
+            )}
+          />
+        </View>
+      ) : (
+        <View style={styles.warning}>
+          <Text style={styles.warningText}>
+            Nothing was found in your search results.
+          </Text>
+        </View>
+      )}
     </View>
   );
 };

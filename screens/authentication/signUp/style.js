@@ -1,13 +1,10 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {theme} from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../../assets/metrics/Metrics';
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   signUpRoot: {
@@ -19,7 +16,7 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(20),
   },
   headerContainer: {
-    width: windowWidth * 0.9,
+    width: horizontalScale(376),
     height: verticalScale(14),
     marginTop: verticalScale(14),
     marginBottom: verticalScale(17),
@@ -34,11 +31,11 @@ const styles = StyleSheet.create({
   cancel: {
     top: verticalScale(8),
     height: verticalScale(50),
-    width: windowWidth * 0.01,
+    width: horizontalScale(2),
   },
   headerBox: {
-    width: windowWidth * 0.79,
-    height: windowHeight * 0.1,
+    width: horizontalScale(293),
+    height: horizontalScale(110),
   },
   signUp: {
     fontSize: moderateScale(30),
@@ -50,8 +47,8 @@ const styles = StyleSheet.create({
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
-  passworddBox: {
-    width: windowWidth,
+  passwordBox: {
+    width: '100%',
   },
   passHide: {
     position: 'relative',
@@ -61,7 +58,7 @@ const styles = StyleSheet.create({
     color: theme.colors.green,
     lineHeight: verticalScale(36.31),
     fontWeight: 500,
-    width: windowWidth * 0.3,
+    width: horizontalScale(43),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
@@ -74,6 +71,8 @@ const styles = StyleSheet.create({
     fontSize: verticalScale(16),
     color: theme.colors.green,
     fontWeight: 500,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.body,
   },
   checkBox: {
     padding: verticalScale(15),
@@ -81,9 +80,10 @@ const styles = StyleSheet.create({
     margin: verticalScale(5),
   },
   checkBoxText: {
+    width: horizontalScale(325),
     fontSize: verticalScale(15),
     color: theme.colors.mediumLightGray,
-    left: verticalScale(10),
+    left: verticalScale(2),
     top: verticalScale(7),
     fontWeight: 400,
     // TODO: This part needs to be updated.
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
   inputsContainer: {
     width: '100%',
-    marginTop: '20%',
+    marginTop: verticalScale(64),
     gap: verticalScale(15),
   },
   nameInputStyle: {
@@ -119,10 +119,10 @@ const styles = StyleSheet.create({
   input: {
     width: horizontalScale(343),
     height: verticalScale(50),
-    borderWidth: 1,
+    borderWidth: moderateScale(1),
     borderColor: theme.colors.gray,
     padding: verticalScale(10),
-    borderRadius: 8,
+    borderRadius: moderateScale(8),
     backgroundColor: theme.colors.darkGray,
     paddingHorizontal: horizontalScale(15),
     paddingVertical: horizontalScale(7),
@@ -156,9 +156,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: verticalScale(30),
     height: verticalScale(25),
-    width: windowWidth * 0.12,
+    width: horizontalScale(50),
     padding: 0,
-    marginTop: verticalScale(15),
+    marginTop: verticalScale(13),
   },
   signUpFooter: {
     alignItems: 'center',

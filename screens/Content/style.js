@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {moderateScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 
 const windowWidth = Dimensions.get('window').width;
@@ -79,20 +80,6 @@ const styles = StyleSheet.create({
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
-  searchContainer: {
-    width: windowWidth * 0.9,
-    marginTop: windowHeight * 0.05,
-    marginHorizontal: windowWidth * 0.05,
-  },
-  searchInput: {
-    borderWidth: 1,
-    borderColor: theme.colors.gray,
-    borderRadius: 100,
-    paddingLeft: 16,
-    paddingTop: 16,
-    paddingBottom: 15,
-    backgroundColor: theme.colors.darkGray,
-  },
   contentItem: {
     width: windowWidth,
     height: windowHeight * 0.49,
@@ -133,6 +120,16 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     marginLeft: 16,
+  },
+  warning: {
+    width: '100%',
+    marginTop: verticalScale(10),
+  },
+  warningText: {
+    fontSize: moderateScale(14),
+    fontWeight: 300,
+    color: theme.colors.mediumLightGray,
+    textAlign: 'center',
   },
 });
 
