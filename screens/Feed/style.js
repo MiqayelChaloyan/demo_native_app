@@ -1,4 +1,3 @@
-
 import {StyleSheet} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import {
@@ -6,7 +5,6 @@ import {
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-
 
 const styles = StyleSheet.create({
   feedScreen: {
@@ -32,7 +30,7 @@ const styles = StyleSheet.create({
     paddingBottom: verticalScale(15),
     backgroundColor: theme.colors.darkGray,
     fontSize: moderateScale(16),
- // TODO: This part needs to be updated.
+    // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   contentsBlockContainer: {

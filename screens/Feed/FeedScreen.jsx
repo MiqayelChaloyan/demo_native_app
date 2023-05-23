@@ -20,14 +20,14 @@ const FeedScreen = ({navigation}) => {
   return (
     <View style={styles.feedScreen}>
       <View style={styles.feedScreenContainer}>
-        <Header
-          screen={'Feed'}
-          navigation={navigation}
-          back={'Auth'}
-          continueTo={'Market'}
-          left={'Back'}
-          right={'Filter'}
-        />
+          <Header
+            screen={'Feed'}
+            navigation={navigation}
+            back={'Auth'}
+            continueTo={'Market'}
+            left={'Back'}
+            right={'Filter'}
+          />
         <View style={styles.searchContainer}>
           <TextInput
             style={styles.searchInput}
