@@ -6,7 +6,6 @@ import {
 } from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 
-
 const styles = StyleSheet.create({
   market: {
     flex: 1,
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     color: theme.colors.foreground,
     maxWidth: horizontalScale(250),
-    verticalAlign:'top',
+    verticalAlign: 'top',
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
@@ -68,7 +67,6 @@ const styles = StyleSheet.create({
   },
   itemNameContainer: {
     width: horizontalScale(110),
-    height: verticalScale(34),
     marginVertical: verticalScale(8),
   },
   itemNameText: {

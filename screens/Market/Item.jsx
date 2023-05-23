@@ -12,7 +12,11 @@ const Item = ({item}) => {
         />
       </View>
       <View style={styles.itemNameContainer}>
-        <Text style={styles.itemNameText}>
+        <Text
+          style={styles.itemNameText}
+          numberOfLines={2}
+          ellipsizeMode="tail"
+        >
           Item #{item.id} {item.title}
         </Text>
       </View>

@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
-  passworddBox: {
+  passwordBox: {
     width: windowWidth,
   },
   passHide: {
