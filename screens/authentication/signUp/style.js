@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: theme.colors.darkGray,
     paddingHorizontal: horizontalScale(15),
-    paddingVertical: 7,
+    paddingVertical: horizontalScale(7),
     fontSize: moderateScale(15),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,

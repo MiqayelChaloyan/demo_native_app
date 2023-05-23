@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
+import {horizontalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
-import {horizontalScale} from '../../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
   headerContainer: {
