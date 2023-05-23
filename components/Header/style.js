@@ -8,27 +8,26 @@ import { theme } from "../../assets/theme/theme";import {
 const styles = StyleSheet.create({
   headerContainer: {
     width:'100%',
-    marginTop: 32,
+    marginTop: verticalScale(32),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   headerText: {
-    fontSize: 30,
+    fontSize: moderateScale(30),
     fontWeight: 600,
     textAlign: 'center',
     color: theme.colors.foreground,
-    lineHeight: 36.31,
+    lineHeight: moderateScale(36.31),
     maxWidth: horizontalScale(260),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   headerButtonText: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: 500,
-    lineHeight: 19.36,
-    maxWidth: 64,
-    maxHeight: 19,
+    lineHeight: moderateScale(19.36),
+    maxWidth: horizontalScale(64),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
