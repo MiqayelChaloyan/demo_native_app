@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: verticalScale(29),
     marginTop: verticalScale(32),
     marginBottom: verticalScale(16),
   },
@@ -52,6 +51,7 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     color: theme.colors.foreground,
     maxWidth: horizontalScale(250),
+    verticalAlign:'top',
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
