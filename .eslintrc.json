@@ -10,12 +10,13 @@
     "overrides": [
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": 2017,
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
     "rules": {
+        // "arrow-body-style": ["always"]
     }
 }

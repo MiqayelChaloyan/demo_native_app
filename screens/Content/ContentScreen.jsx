@@ -42,23 +42,23 @@ const ContentScreen = ({navigation, route}) => {
       <View style={styles.headerTextContainer}>
         <Text style={styles.headerText}>Outlet</Text>
       </View>
-      {state.length ? (
-        <View style={styles.itemListContainer}>
-          <FlatList
-            data={state}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) => (
-              <ContentItemList item={item} index={index} />
-            )}
-          />
-        </View>
-      ) : (
-        <View style={styles.warning}>
-          <Text style={styles.warningText}>
-            Nothing was found in your search results.
-          </Text>
-        </View>
-      )}
+      {/* {state.length ? ( */}
+      <View style={styles.itemListContainer}>
+        <FlatList
+          data={state}
+          ListEmptyComponent={
+            <View style={styles.warning}>
+              <Text style={styles.warningText}>
+                Nothing was found in your search results.
+              </Text>
+            </View>
+          }
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item, index}) => (
+            <ContentItemList item={item} index={index} />
+          )}
+        />
+      </View>
     </View>
   );
 };

@@ -31,34 +31,33 @@ const FeedScreen = ({navigation}) => {
           right={'Filter'}
         />
         <Search list={feedData} setState={setState} keyword={'title'} />
-        {state.length ? (
-          <View style={styles.contentsBlockContainer}>
-            <FlatList
-              data={state}
-              key={item => item.id}
-              keyExtractor={item => item.id}
-              renderItem={({item, index}) => {
-                return loading ? (
-                  <View style={styles.skeleton}>
-                    <SkeletonPosts />
-                  </View>
-                ) : (
-                  <FeedItem
-                    item={item}
-                    itemIndex={index}
-                    navigation={navigation}
-                  />
-                );
-              }}
-            />
-          </View>
-        ) : (
-          <View style={styles.warning}>
-            <Text style={styles.warningText}>
-              Nothing was found in your search results.
-            </Text>
-          </View>
-        )}
+        <View style={styles.contentsBlockContainer}>
+          <FlatList
+            data={state}
+            ListEmptyComponent={
+              <View style={styles.warning}>
+                <Text style={styles.warningText}>
+                  Nothing was found in your search results.
+                </Text>
+              </View>
+            }
+            key={item => item.id}
+            keyExtractor={item => item.id}
+            renderItem={({item, index}) => {
+              return loading ? (
+                <View style={styles.skeleton}>
+                  <SkeletonPosts />
+                </View>
+              ) : (
+                <FeedItem
+                  item={item}
+                  itemIndex={index}
+                  navigation={navigation}
+                />
+              );
+            }}
+          />
+        </View>
       </View>
     </View>
   );

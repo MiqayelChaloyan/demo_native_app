@@ -28,7 +28,6 @@ module.exports = {
     'react-native/no-single-element-style-arrays': 2,
     'no-console': 0,
     disallowMultipleVarDecl: 0,
-    maximumLineLength: 0,
     'react/react-in-jsx-scope': 'off',
   },
 };

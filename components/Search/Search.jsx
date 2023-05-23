@@ -9,7 +9,7 @@ const Search = ({list, setState, keyword}) => {
 
   useEffect(() => {
     const result = list.filter(item => {
-      let param = item[keyword].toLowerCase()
+      let param = item[keyword].toLowerCase();
       return param.indexOf(searchItemValue) > -1;
     });
     setState(result);
@@ -28,7 +28,6 @@ const Search = ({list, setState, keyword}) => {
         keyboardType="web-search"
         autoCapitalize="none"
         autoCorrect={false}
-        secureTextEntry={false}
       />
     </View>
   );
