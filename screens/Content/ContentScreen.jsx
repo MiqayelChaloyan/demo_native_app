@@ -6,8 +6,9 @@ import {GlobalDataContext} from '../../Data/context';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
-import styles from './style';
 import ContentItemList from './ContentItemList';
+import {theme} from '../../assets/theme/theme';
+import styles from './style';
 
 const ContentScreen = ({navigation, route}) => {
   const {feedData} = useContext(GlobalDataContext);
@@ -35,7 +36,10 @@ const ContentScreen = ({navigation, route}) => {
             showPagination
             paginationStyle={styles.paginationStyle}
             paginationStyleItem={styles.dotStyle}
-            paginationStyleItemActive={styles.activeDotStyle}
+            paginationStyleItemActive={[
+              styles.dotStyle,
+              {backgroundColor: theme.colors.green},
+            ]}
             data={feedData}
             renderItem={ChangeSwiperItem}
           />
