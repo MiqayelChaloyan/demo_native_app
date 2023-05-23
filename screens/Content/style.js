@@ -71,23 +71,6 @@ const styles = StyleSheet.create({
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
-  searchContainer: {
-    width: '100%',
-    marginTop: verticalScale(32),
-  },
-  searchInput: {
-    height: verticalScale(50),
-    borderWidth: moderateScale(1),
-    borderColor: theme.colors.gray,
-    borderRadius: moderateScale(100),
-    paddingTop: verticalScale(16),
-    paddingLeft: horizontalScale(16),
-    paddingBottom: verticalScale(15),
-    backgroundColor: theme.colors.darkGray,
-    fontSize: moderateScale(16),
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
-  },
   contentItem: {
     width: horizontalScale(375),
   },
@@ -125,6 +108,16 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     marginLeft: horizontalScale(10),
+  },
+  warning: {
+    width: '100%',
+    marginTop: verticalScale(10),
+  },
+  warningText: {
+    fontSize: moderateScale(14),
+    fontWeight: 300,
+    color: theme.colors.mediumLightGray,
+    textAlign: 'center',
   },
 });
 

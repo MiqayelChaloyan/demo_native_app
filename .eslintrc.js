@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: '@react-native-community',
-  // parser: 'babel-eslint',
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 6,
     es6: true,
@@ -28,7 +28,6 @@ module.exports = {
     'react-native/no-single-element-style-arrays': 2,
     'no-console': 0,
     disallowMultipleVarDecl: 0,
-    // maximumLineLength: 1,
     'react/react-in-jsx-scope': 'off',
   },
 };

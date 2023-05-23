@@ -19,21 +19,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginLeft: horizontalScale(16),
   },
-  searchContainer: {
-    width: '100%',
-    marginTop: verticalScale(32),
-  },
-  searchInput: {
-    borderWidth: moderateScale(1),
-    borderColor: theme.colors.gray,
-    height: verticalScale(50),
-    borderRadius: moderateScale(100),
-    paddingTop: verticalScale(16),
-    paddingLeft: horizontalScale(16),
-    paddingBottom: verticalScale(15),
-    backgroundColor: theme.colors.darkGray,
-    fontSize: moderateScale(16),
-  },
   hotDealsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -85,6 +70,16 @@ const styles = StyleSheet.create({
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
+  },
+  warning: {
+    width: '100%',
+    marginTop: verticalScale(120),
+  },
+  warningText: {
+    fontSize: moderateScale(14),
+    fontWeight: 300,
+    color: theme.colors.mediumLightGray,
+    textAlign: 'center',
   },
 });
 

@@ -16,23 +16,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  searchContainer: {
-    width: '100%',
-    marginTop: verticalScale(32),
-  },
-  searchInput: {
-    height: verticalScale(50),
-    borderWidth: moderateScale(1),
-    borderColor: theme.colors.gray,
-    borderRadius: moderateScale(100),
-    paddingTop: verticalScale(16),
-    paddingLeft: horizontalScale(16),
-    paddingBottom: verticalScale(15),
-    backgroundColor: theme.colors.darkGray,
-    fontSize: moderateScale(16),
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
-  },
   contentsBlockContainer: {
     width: '100%',
     height: verticalScale(356),
@@ -93,6 +76,16 @@ const styles = StyleSheet.create({
   },
   skeleton: {
     marginTop: verticalScale(25),
+  },
+  warning: {
+    width: '100%',
+    marginTop: verticalScale(120),
+  },
+  warningText: {
+    fontSize: moderateScale(14),
+    fontWeight: 300,
+    color: theme.colors.mediumLightGray,
+    textAlign: 'center',
   },
 });
 

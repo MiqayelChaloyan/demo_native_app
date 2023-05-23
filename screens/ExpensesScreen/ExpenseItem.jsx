@@ -1,12 +1,12 @@
 import {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View} from 'react-native';
-import {DNAdataContext} from '../../Data/data';
+import {GlobalDataContext} from '../../Data/context';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
 const ExpenseItem = ({item, index}) => {
-  const {expensesData} = useContext(DNAdataContext);
+  const {expensesData} = useContext(GlobalDataContext);
   const priceArray = expensesData.map(item => item.price);
   const maxPrice = Math.max(...priceArray);
   let progressPercent = (item.price * 159) / maxPrice;

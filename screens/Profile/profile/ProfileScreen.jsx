@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
-import {DNAdataContext} from '../../../Data/data';
+import {GlobalDataContext} from '../../../Data/context';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils.android';
 import {launchImageLibrary} from 'react-native-image-picker';
 import SkeletonPosts from '../../../components/Skeleton/SkeletonPosts';
@@ -17,7 +17,7 @@ import styles from './style';
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
-  const {feedData} = useContext(DNAdataContext);
+  const {feedData} = useContext(GlobalDataContext);
   const [loading, setLoading] = useState(true);
 
   // TODO: This part is for a test and will be changed lately.

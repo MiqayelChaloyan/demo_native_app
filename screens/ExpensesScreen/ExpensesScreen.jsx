@@ -1,26 +1,25 @@
-import { useContext } from "react";
-import { FlatList, Text, View } from "react-native";
-import Header from "../../components/Header/Header";
-import { DNAdataContext } from "../../Data/data";
-import ExpenseItem from "./ExpenseItem";
-import ExpenseItemList from "./ExpenseItemList";
-import styles from "./style";
+import React, {useContext} from 'react';
+import {FlatList, Text, View} from 'react-native';
+import Header from '../../components/Header/Header';
+import {GlobalDataContext} from '../../Data/context';
+import ExpenseItem from './ExpenseItem';
+import ExpenseItemList from './ExpenseItemList';
+import styles from './style';
 
-const ExpensesScreen = ({ navigation }) => {
-  const { expensesData } = useContext(DNAdataContext);
+const ExpensesScreen = ({navigation}) => {
+  const {expensesData} = useContext(GlobalDataContext);
 
   return (
     <View style={styles.expenses}>
-
       <View style={styles.container}>
         <Header
           // TODO: This part is will increase later.
-          screen={"Expenses"}
+          screen={'Expenses'}
           navigation={navigation}
-          back={"Market"}
-          continueTo={"Market"}
-          left={"Back"}
-          right={"New"}
+          back={'Market'}
+          continueTo={'Market'}
+          left={'Back'}
+          right={'New'}
         />
         <View style={styles.barChartContainer}>
           <View style={styles.itemsContainer}>
@@ -28,7 +27,7 @@ const ExpensesScreen = ({ navigation }) => {
               horizontal
               data={expensesData}
               keyExtractor={(item, index) => index.toString() + item.title}
-              renderItem={({ item, index }) => {
+              renderItem={({item, index}) => {
                 return <ExpenseItem item={item} index={index} />;
               }}
             />
@@ -41,7 +40,7 @@ const ExpensesScreen = ({ navigation }) => {
           <FlatList
             data={expensesData}
             keyExtractor={(_, index) => index.toString()}
-            renderItem={({ item, index }) => {
+            renderItem={({item, index}) => {
               return <ExpenseItemList item={item} index={index} />;
             }}
           />

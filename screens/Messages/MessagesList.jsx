@@ -9,7 +9,7 @@ import {
   Text,
   Image,
 } from 'react-native';
-import {DNAdataContext} from '../../Data/data';
+import {GlobalDataContext} from '../../Data/context';
 import Message from './Message';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
 import Header from '../../components/Header/Header';
@@ -17,7 +17,7 @@ import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
 const MessagesList = ({navigation, route}) => {
-  const {setMessages, messages} = useContext(DNAdataContext);
+  const {setMessages, messages} = useContext(GlobalDataContext);
   const [value, setValue] = useState('');
   const user = useRef(0);
   const scrollWiew = useRef();

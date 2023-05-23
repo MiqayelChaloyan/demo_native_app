@@ -1,5 +1,10 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {theme} from '../../../assets/theme/theme';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../../assets/metrics/Metrics';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -11,26 +16,26 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     backgroundColor: theme.colors.green,
-    height: 245,
+    height: horizontalScale(245),
     paddingHorizontal: 16,
-    marginBottom: 50,
+    marginBottom: verticalScale(55),
   },
   profileImage: {
-    paddingTop: '15%',
+    paddingTop: verticalScale(60),
     alignItems: 'center',
   },
   userImage: {
-    width: 158,
-    height: 158,
+    width: horizontalScale(158),
+    height: horizontalScale(158),
     borderRadius: 100,
     borderWidth: 2,
     borderColor: 'white',
-    left: 3,
-    bottom: -3,
+    left: verticalScale(3),
+    bottom: verticalScale(-3),
   },
   defaultProfileImage: {
-    width: 158,
-    height: 158,
+    width: horizontalScale(158),
+    height: horizontalScale(158),
     borderRadius: 100,
   },
   addProfileImage: {
@@ -41,9 +46,10 @@ const styles = StyleSheet.create({
   section: {
     justifyContent: 'center',
     alignItems: 'center',
+    bottom: verticalScale(4),
   },
   userFullName: {
-    fontSize: 30,
+    fontSize: moderateScale(30),
     color: theme.colors.foreground,
     fontWeight: 600,
     textAlign: 'center',
@@ -51,8 +57,8 @@ const styles = StyleSheet.create({
     ...theme.textVariants.body,
   },
   userAbount: {
-    marginTop: 2,
-    fontSize: 16,
+    marginTop: verticalScale(2),
+    fontSize: moderateScale(16),
     color: theme.colors.foreground,
     fontWeight: 600,
     textAlign: 'center',
@@ -60,8 +66,8 @@ const styles = StyleSheet.create({
     ...theme.textVariants.body,
   },
   switchContainer: {
-    width: '87%',
-    marginTop: 24,
+    width: horizontalScale(343),
+    marginTop: verticalScale(9),
   },
 
   contentsBlockContainer: {

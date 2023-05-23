@@ -1,25 +1,16 @@
 import React, {useEffect, useContext, useState} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, TextInput, View} from 'react-native';
-import {DNAdataContext} from '../../Data/data';
+import {FlatList, Text, View} from 'react-native';
+import {GlobalDataContext} from '../../Data/context';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
 import User from './User';
-import { theme } from '../../assets/theme/theme';
 import styles from './style';
+import Search from '../../components/Search/Search';
 
 const MessagesUsers = ({navigation}) => {
-  const [searchItemValue, setSearchItemValue] = useState('');
-  const [state, setState] = useState(null);
   const [loading, setLoading] = useState(true);
-  const {usersList} = useContext(DNAdataContext);
-
-  useEffect(() => {
-    const result = usersList.filter(user => {
-      fullName = user.fullName.toLowerCase();
-      return fullName.indexOf(searchItemValue) > -1;
-    });
-    setState(result);
-  }, [searchItemValue]);
+  const {usersList} = useContext(GlobalDataContext);
+  const [state, setState] = useState(usersList);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -30,23 +21,18 @@ const MessagesUsers = ({navigation}) => {
   return (
     <>
       <View style={styles.root}>
-        <TextInput
-          name="search"
-          placeholder="Search..."
-          placeholderTextColor={theme.colors.lightGray}
-          style={styles.input}
-          variant="standard"
-          onChangeText={value => setSearchItemValue(value)}
-          value={searchItemValue}
-          keyboardType="web-search"
-          autoCapitalize="none"
-          autoCorrect={false}
-          secureTextEntry={false}
-        />
+        <Search list={usersList} setState={setState} keyword="fullName" />
       </View>
       <View style={styles.listUsers}>
         <FlatList
           data={state}
+          ListEmptyComponent={
+            <View style={styles.warning}>
+              <Text style={styles.warningText}>
+                Nothing was found in your search results.
+              </Text>
+            </View>
+          }
           key={item => item.id}
           keyExtractor={item => item.id}
           renderItem={({item}) => {

@@ -1,15 +1,17 @@
 import {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, TextInput, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import FeedItem from './FeedItem';
-import {DNAdataContext} from '../../Data/data';
+import {GlobalDataContext} from '../../Data/context';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 import Header from '../../components/Header/Header';
+import Search from '../../components/Search/Search';
 import styles from './style';
 
 const FeedScreen = ({navigation}) => {
-  const {feedData} = useContext(DNAdataContext);
   const [loading, setLoading] = useState(true);
+  const {feedData} = useContext(GlobalDataContext);
+  const [state, setState] = useState(feedData);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -20,24 +22,25 @@ const FeedScreen = ({navigation}) => {
   return (
     <View style={styles.feedScreen}>
       <View style={styles.feedScreenContainer}>
-          <Header
-            screen={'Feed'}
-            navigation={navigation}
-            back={'Auth'}
-            continueTo={'Market'}
-            left={'Back'}
-            right={'Filter'}
-          />
-        <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search"
-            multiline={false}
-          />
-        </View>
+        <Header
+          screen={'Feed'}
+          navigation={navigation}
+          back={'Auth'}
+          continueTo={'Market'}
+          left={'Back'}
+          right={'Filter'}
+        />
+        <Search list={feedData} setState={setState} keyword={'title'} />
         <View style={styles.contentsBlockContainer}>
           <FlatList
-            data={feedData}
+            data={state}
+            ListEmptyComponent={
+              <View style={styles.warning}>
+                <Text style={styles.warningText}>
+                  Nothing was found in your search results.
+                </Text>
+              </View>
+            }
             key={item => item.id}
             keyExtractor={item => item.id}
             renderItem={({item, index}) => {

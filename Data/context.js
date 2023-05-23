@@ -1,8 +1,8 @@
 import React, {createContext, useState} from 'react';
 
-export const DNAdataContext = createContext(undefined);
+export const GlobalDataContext = createContext(undefined);
 
-function DNAdata({children}) {
+function GlobalData({children}) {
   const [feedData, setFeedData] = useState([
     {
       title: 'GAZELLE SHOES',
@@ -174,15 +174,36 @@ function DNAdata({children}) {
     },
     {
       id: 6,
-      fullName: 'Alisa Rolland',
+      fullName: 'Patricia Heaton',
       isActive: false,
       imageUrl:
         'https://images.pexels.com/photos/2690774/pexels-photo-2690774.jpeg?auto=compress&cs=tinysrgb&w=1600',
     },
+    {
+      id: 7,
+      fullName: 'Alisa Rolland',
+      isActive: false,
+      imageUrl:
+        'https://images.pexels.com/photos/3348129/pexels-photo-3348129.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    },
+    {
+      id: 8,
+      fullName: 'Lauriane Rolland',
+      isActive: false,
+      imageUrl:
+        'https://images.pexels.com/photos/6996168/pexels-photo-6996168.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    },
+    {
+      id: 9,
+      fullName: 'AnnaSophia Robb',
+      isActive: false,
+      imageUrl:
+        'https://images.pexels.com/photos/1310474/pexels-photo-1310474.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    },
   ]);
 
   return (
-    <DNAdataContext.Provider
+    <GlobalDataContext.Provider
       value={{
         feedData,
         setFeedData,
@@ -195,8 +216,8 @@ function DNAdata({children}) {
         setUsersList,
       }}>
       {typeof children === 'function' ? children() : children}
-    </DNAdataContext.Provider>
+    </GlobalDataContext.Provider>
   );
 }
 
-export default DNAdata;
+export default GlobalData;

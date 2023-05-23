@@ -1,47 +1,40 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../assets/theme/theme';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
   root: {
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: verticalScale(20),
+    marginBottom: verticalScale(20),
     justifyContent: 'center',
     flexDirection: 'row',
-  },
-  input: {
-    width: '90%',
-    height: 51,
-    borderWidth: 1,
-    borderColor: theme.colors.gray,
-    padding: 10,
-    borderRadius: 8,
-    backgroundColor: theme.colors.darkGray,
-    paddingHorizontal: 15,
-    paddingVertical: 7,
-    fontSize: 15,
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    paddingHorizontal: verticalScale(16),
   },
   listUsers: {
-    marginTop: 5,
-    marginBottom: 100,
+    marginTop: verticalScale(5),
+    marginBottom: 120,
   },
   userRoot: {
-    margin: 2,
-    padding: 20,
+    margin: verticalScale(2),
+    padding: verticalScale(5),
+    paddingHorizontal: verticalScale(16),
   },
   user: {
     flexDirection: 'row',
   },
   profileImage: {
-    width: 55,
-    height: 55,
-    borderRadius: 50,
+    width: horizontalScale(55),
+    height: horizontalScale(55),
+    borderRadius: verticalScale(50),
   },
   userName: {
-    fontSize: 17,
+    fontSize: moderateScale(15),
     fontWeight: 600,
-    left: 12,
+    left: verticalScale(12),
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
@@ -49,32 +42,47 @@ const styles = StyleSheet.create({
   activeChat: {
     borderWidth: 3,
     borderColor: theme.colors.green,
-    width: 12,
-    height: 12,
+    width: horizontalScale(12),
+    height: horizontalScale(12),
     backgroundColor: theme.colors.primary,
-    borderRadius: 50,
+    borderRadius: verticalScale(50),
     position: 'absolute',
     bottom: 1,
-    left: 40,
+    left: verticalScale(40),
   },
   messages: {
-    left: 67,
-    bottom: 15,
+    left: verticalScale(72),
+    bottom: verticalScale(15),
     flexDirection: 'row',
   },
   messagesText: {
-    fontSize: 15,
+    fontSize: moderateScale(14),
+    bottom: verticalScale(12),
   },
   line: {
-    borderWidth: 0.2,
-    width: 290,
+    borderWidth: 0.4,
+    width: horizontalScale(290),
+    height: horizontalScale(1),
     justifyContent: 'center',
     backgroundColor: theme.colors.foreground,
-    left: 60,
-    bottom: 15,
+    left: verticalScale(60),
+    bottom: verticalScale(15),
   },
   skeleton: {
-    margin: 25,
+    margin: verticalScale(2),
+    marginTop: verticalScale(5),
+    padding: verticalScale(5),
+    paddingHorizontal: verticalScale(16),
+  },
+  warning: {
+    width: '100%',
+    marginTop: verticalScale(120),
+  },
+  warningText: {
+    fontSize: moderateScale(14),
+    fontWeight: 300,
+    color: theme.colors.mediumLightGray,
+    textAlign: 'center',
   },
 });
 

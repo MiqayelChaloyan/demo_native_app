@@ -1,59 +1,59 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {theme} from '../../../../assets/theme/theme';
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
   contentContainer: {
-    width: windowWidth * 0.9,
-    height: windowHeight * 0.1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
   },
   contentBlock: {
-    width: windowWidth * 0.133,
-    height: windowWidth * 0.133,
-    backgroundColor: theme.colors.darkGray,
+    width: horizontalScale(50),
+    height: verticalScale(50),
   },
   postImage: {
-    width: windowWidth * 0.133,
-    height: windowWidth * 0.133,
-    borderRadius: 8,
+    height: verticalScale(50),
+    borderRadius: moderateScale(8),
   },
   contentInfo: {
-    width: windowWidth * 0.74,
-    height: windowHeight * 0.1,
-    borderBottomWidth: 1,
+    width: horizontalScale(269),
+    height: verticalScale(70),
+    borderBottomWidth: moderateScale(1),
     borderBottomColor: theme.colors.gray,
-    flexDirection: 'column',
+    marginBottom: verticalScale(16),
   },
   headerContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 8,
+    marginBottom: verticalScale(8),
   },
   aboutContentDate: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 400,
+    lineHeight: verticalScale(17),
+    paddingTop: verticalScale(2),
     color: theme.colors.lightGray,
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   feedTextContainer: {
-    paddingRight: 24,
+    paddingRight: horizontalScale(8),
   },
   feedText: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
     fontWeight: 400,
     color: theme.colors.foreground,
+    lineHeight: verticalScale(17),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   headerText: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: 600,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.

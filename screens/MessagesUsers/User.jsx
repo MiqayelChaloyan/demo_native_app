@@ -1,11 +1,11 @@
 import {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View, Image} from 'react-native';
-import {DNAdataContext} from '../../Data/data';
+import {GlobalDataContext} from '../../Data/context';
 import styles from './style';
 
 const User = ({item, navigation}) => {
-  const {messages} = useContext(DNAdataContext);
+  const {messages} = useContext(GlobalDataContext);
 
   return (
     <TouchableOpacity

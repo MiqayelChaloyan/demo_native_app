@@ -1,20 +1,25 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../../../assets/theme/theme';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 1,
+    paddingTop: verticalScale(1),
   },
   itemImage: {
-    width: '100%',
-    height: 220,
-    borderRadius: 8,
+    width: horizontalScale(335),
+    height: verticalScale(240),
+    borderRadius: moderateScale(8),
   },
   itemTitle: {
-    fontSize: 15,
+    fontSize: moderateScale(15),
     color: theme.colors.foreground,
     fontWeight: 600,
-    marginTop: 2,
+    marginTop: verticalScale(2),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
