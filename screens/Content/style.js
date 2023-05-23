@@ -1,14 +1,17 @@
 import {StyleSheet} from 'react-native';
-import { horizontalScale, moderateScale, verticalScale } from "../../assets/metrics/Metrics";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
-
 
 const styles = StyleSheet.create({
   contentBox: {
     flex: 1,
     backgroundColor: theme.colors.background,
   },
-  contentContainer:{
+  contentContainer: {
     flex: 1,
     alignItems: 'center',
     marginHorizontal: horizontalScale(16),
@@ -19,26 +22,26 @@ const styles = StyleSheet.create({
   },
   paginationStyle: {
     right: horizontalScale(0),
-    bottom:verticalScale(0),
+    bottom: verticalScale(0),
   },
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width:horizontalScale(343),
-    height:verticalScale(240),
+    width: horizontalScale(343),
+    height: verticalScale(240),
   },
   image: {
     borderRadius: 8,
-    width:horizontalScale(343),
-    height:verticalScale(240),
+    width: horizontalScale(343),
+    height: verticalScale(240),
   },
   dotStyle: {
     backgroundColor: theme.colors.gray,
     width: horizontalScale(8),
     height: verticalScale(8),
     borderRadius: moderateScale(4),
-    marginHorizontal:horizontalScale(3),
-    marginVertical:verticalScale(33),
+    marginHorizontal: horizontalScale(3),
+    marginVertical: verticalScale(33),
   },
   titleStyle: {
     width: '100%',
@@ -46,23 +49,23 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     color: theme.colors.foreground,
     fontWeight: 600,
-    lineHeight:verticalScale(19),
+    lineHeight: verticalScale(19),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   postMessage: {
-    width:'90%',
+    width: '90%',
     fontSize: moderateScale(14),
     color: theme.colors.foreground,
     fontWeight: 400,
     marginVertical: verticalScale(8),
-    lineHeight:verticalScale(17),
+    lineHeight: verticalScale(17),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
   dateStyle: {
     fontSize: moderateScale(14),
-    lineHeight:verticalScale(17),
+    lineHeight: verticalScale(17),
     color: theme.colors.lightGray,
     fontWeight: 400,
     // TODO: This part needs to be updated.

@@ -6,9 +6,8 @@ import {
 } from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 
-
 const styles = StyleSheet.create({
-  expenses:{
+  expenses: {
     flex: 1,
   },
   container: {
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
     height: verticalScale(35),
     borderBottomWidth: moderateScale(1),
     borderBottomColor: theme.colors.gray,
-    marginBottom:verticalScale(16),
+    marginBottom: verticalScale(16),
   },
   leftSide: {
     flexDirection: 'row',

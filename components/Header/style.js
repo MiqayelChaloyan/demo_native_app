@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-import { theme } from "../../assets/theme/theme";import {
+import {theme} from '../../assets/theme/theme';
+import {
   horizontalScale,
   moderateScale,
   verticalScale,
@@ -7,7 +8,7 @@ import { theme } from "../../assets/theme/theme";import {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    width:'100%',
+    width: '100%',
     marginTop: verticalScale(32),
     flexDirection: 'row',
     alignItems: 'center',
