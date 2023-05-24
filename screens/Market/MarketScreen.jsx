@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {useContext, useState} from 'react';
 import {Text, View, ScrollView, TouchableOpacity} from 'react-native';
-import ItemList from './ItemList';
+import MarketItemList from './MarketItemList';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import VideoIcon from '../../assets/icons/Video.svg';
@@ -34,21 +34,21 @@ const MarketScreen = ({navigation}) => {
               <VideoIcon width={30} height={30} fill={theme.colors.green} />
             </TouchableOpacity>
           </View>
-          <ItemList data={state} />
+          <MarketItemList data={state} navigation={navigation} />
           <View style={styles.hotDealsContainer}>
             <Text style={styles.hotDealsText}>Trending</Text>
             <TouchableOpacity style={styles.playButton}>
               <VideoIcon width={30} height={30} fill={theme.colors.green} />
             </TouchableOpacity>
           </View>
-          <ItemList data={state} />
+          <MarketItemList data={state} navigation={navigation} />
           <View style={styles.hotDealsContainer}>
             <Text style={styles.hotDealsText}>Deals</Text>
             <TouchableOpacity style={styles.playButton}>
               <VideoIcon width={30} height={30} fill={theme.colors.green} />
             </TouchableOpacity>
           </View>
-          <ItemList data={state} />
+          <MarketItemList data={state} navigation={navigation} />
         </View>
       ) : (
         <View style={styles.warning}>
@@ -57,7 +57,6 @@ const MarketScreen = ({navigation}) => {
           </Text>
         </View>
       )}
-      {/* </View> */}
     </ScrollView>
   );
 };
