@@ -16,10 +16,7 @@ const ChangeSwiperItem = ({item}) => {
   return (
     <View style={styles.contentItem}>
       <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={{uri: item.imageUri}}
-        />
+        <Image style={styles.image} source={{uri: item.imageUri}} />
       </View>
       <Text style={styles.titleStyle}>{item.title}</Text>
       <View>
