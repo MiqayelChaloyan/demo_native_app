@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -11,15 +11,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background,
   },
-  root: {
-    flex: 1,
-    paddingTop: verticalScale(20),
-  },
   headerContainer: {
-    width: horizontalScale(376),
-    height: verticalScale(14),
-    marginTop: verticalScale(14),
-    marginBottom: verticalScale(17),
+    height: verticalScale(36),
+    marginTop: verticalScale(32),
   },
   header: {
     flexDirection: 'row',
@@ -29,9 +23,10 @@ const styles = StyleSheet.create({
     marginHorizontal: horizontalScale(20),
   },
   cancel: {
-    top: verticalScale(8),
+    top: verticalScale(10),
     height: verticalScale(50),
     width: horizontalScale(2),
+    right: 5,
   },
   headerBox: {
     width: horizontalScale(293),
@@ -62,11 +57,6 @@ const styles = StyleSheet.create({
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
-  form: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: verticalScale(15),
-  },
   hidePassword: {
     fontSize: verticalScale(16),
     color: theme.colors.green,
@@ -81,9 +71,9 @@ const styles = StyleSheet.create({
   },
   checkBoxText: {
     width: horizontalScale(325),
-    fontSize: verticalScale(15),
+    fontSize: verticalScale(14),
     color: theme.colors.mediumLightGray,
-    left: verticalScale(2),
+    left: verticalScale(8),
     top: verticalScale(7),
     fontWeight: 400,
     // TODO: This part needs to be updated.
@@ -92,7 +82,7 @@ const styles = StyleSheet.create({
   inputsContainer: {
     width: '100%',
     marginTop: verticalScale(64),
-    gap: verticalScale(15),
+    gap: verticalScale(16),
   },
   nameInputStyle: {
     width: '100%',
@@ -114,7 +104,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: verticalScale(30),
+    marginTop: verticalScale(32),
   },
   input: {
     width: horizontalScale(343),
@@ -151,6 +141,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: moderateScale(16),
     color: theme.colors.primary,
+    fontWeight: 600,
+    lineHeight: 19.36
   },
   visibilityBtn: {
     position: 'absolute',

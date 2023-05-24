@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   listUsers: {
     marginTop: verticalScale(5),
-    marginBottom: 120,
+    marginBottom: verticalScale(250),
   },
   userRoot: {
     margin: verticalScale(2),

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -11,13 +11,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background,
   },
-  root: {
-    flex: 1,
-  },
   headerContainer: {
-    height: verticalScale(14),
-    marginTop: verticalScale(14),
-    marginBottom: verticalScale(17),
+    height: verticalScale(36),
+    marginTop: verticalScale(32),
   },
   header: {
     flexDirection: 'row',
@@ -27,9 +23,10 @@ const styles = StyleSheet.create({
     marginHorizontal: horizontalScale(20),
   },
   cancel: {
-    top: verticalScale(8),
+    top: verticalScale(10),
     height: verticalScale(50),
     width: horizontalScale(10),
+    right: 5
   },
   headerBox: {
     width: horizontalScale(300),
@@ -50,11 +47,6 @@ const styles = StyleSheet.create({
     color: theme.colors.green,
     lineHeight: verticalScale(36.31),
     fontWeight: 500,
-  },
-  form: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    // gap: verticalScale(150),
   },
   hidePassword: {
     fontSize: moderateScale(16),
@@ -109,7 +101,7 @@ const styles = StyleSheet.create({
     ...theme.textVariants.body,
   },
   button: {
-    marginTop: verticalScale(183),
+    marginTop: verticalScale(167),
     width: horizontalScale(343),
     height: verticalScale(51),
     backgroundColor: theme.colors.green,
@@ -121,6 +113,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: moderateScale(16),
     color: theme.colors.primary,
+    fontWeight: 600,
+    lineHeight: 19.36
   },
   visibilityBtn: {
     position: 'absolute',

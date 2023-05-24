@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -8,6 +8,7 @@ import {
 
 const styles = StyleSheet.create({
   optionsContainer: {
+    flex: 1,
     backgroundColor: theme.colors.background,
     paddingHorizontal: horizontalScale(16),
   },
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   selected: {
     height: horizontalScale(12),
     width: horizontalScale(12),
-    borderRadius: verticalScale(5),
+    borderRadius: verticalScale(100),
     backgroundColor: theme.colors.green,
   },
   line: {

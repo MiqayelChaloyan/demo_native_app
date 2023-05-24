@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -12,13 +12,13 @@ import {
   Platform,
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
-import {Formik, useFormik} from 'formik';
-import {signUpValidationSchema} from './signUpValidationSchema';
+import { Formik, useFormik } from 'formik';
+import { signUpValidationSchema } from './signUpValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
-import {theme} from '../../../assets/theme/theme';
+import { theme } from '../../../assets/theme/theme';
 import styles from './style';
 
-const SignUpScreen = ({navigation}) => {
+const SignUpScreen = ({ navigation }) => {
   const [keyboardStatus, setKeyboardStatus] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
@@ -67,14 +67,14 @@ const SignUpScreen = ({navigation}) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.signUpRoot}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.root}>
+        <SafeAreaView>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
                 <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
                   <CancelIcon
-                    width={20}
-                    height={20}
+                    width={16}
+                    height={16}
                     fill={theme.colors.lightGray}
                   />
                 </TouchableOpacity>
@@ -163,7 +163,7 @@ const SignUpScreen = ({navigation}) => {
               <View
                 style={[
                   styles.checkBoxStyle,
-                  {bottom: keyboardStatus ? '1%' : 0},
+                  { bottom: keyboardStatus ? '1%' : 0 },
                 ]}>
                 <CheckBox
                   style={styles.checkBox}
@@ -183,7 +183,7 @@ const SignUpScreen = ({navigation}) => {
             </View>
           </Formik>
           <View
-            style={[styles.signUpFooter, {bottom: keyboardStatus ? '3%' : 0}]}>
+            style={[styles.signUpFooter, { bottom: keyboardStatus ? '8.5%' : 0 }]}>
             <View style={styles.button}>
               <TouchableOpacity
                 disabled={!isValid}
