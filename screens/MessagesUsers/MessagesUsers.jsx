@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react';
+import {useEffect, useContext, useState} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, Text, View} from 'react-native';
 import {GlobalDataContext} from '../../Data/context';
@@ -6,11 +6,19 @@ import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList
 import User from './User';
 import styles from './style';
 import Search from '../../components/Search/Search';
+import CustomModal from '../../components/Modal/Modal'; //
 
 const MessagesUsers = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const {usersList} = useContext(GlobalDataContext);
   const [state, setState] = useState(usersList);
+
+  // TODO: This part is for a test and will be changed lately.
+  const [isModalVisible, setModalVisible] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setModalVisible(true), 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -19,7 +27,7 @@ const MessagesUsers = ({navigation}) => {
   }, []);
 
   return (
-    <>
+    <View>
       <View style={styles.root}>
         <Search list={usersList} setState={setState} keyword="fullName" />
       </View>
@@ -46,7 +54,13 @@ const MessagesUsers = ({navigation}) => {
           }}
         />
       </View>
-    </>
+      {/* {Modal example} */}
+      <CustomModal
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+        navigation={navigation}
+      />
+    </View>
   );
 };
 

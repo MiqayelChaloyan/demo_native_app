@@ -9,12 +9,13 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Platform,
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
 import {Formik, useFormik} from 'formik';
 import {signUpValidationSchema} from './signUpValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
-import { theme } from '../../../assets/theme/theme';
+import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
 const SignUpScreen = ({navigation}) => {
@@ -71,7 +72,11 @@ const SignUpScreen = ({navigation}) => {
             <View style={styles.header}>
               <View style={styles.cancel}>
                 <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
-                  <CancelIcon width={20} height={20} fill={theme.colors.lightGray} />
+                  <CancelIcon
+                    width={20}
+                    height={20}
+                    fill={theme.colors.lightGray}
+                  />
                 </TouchableOpacity>
               </View>
               <View style={styles.headerBox}>

@@ -15,8 +15,7 @@ const Item = ({item}) => {
         <Text
           style={styles.itemNameText}
           numberOfLines={2}
-          ellipsizeMode="tail"
-        >
+          ellipsizeMode="tail">
           Item #{item.id} {item.title}
         </Text>
       </View>

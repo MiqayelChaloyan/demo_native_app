@@ -95,12 +95,12 @@ const Profile = ({navigation}) => {
             onPress={value => setShowHide(value)}
             textColor={theme.colors.lightGray}
             selectedColor={theme.colors.green}
-            backgroundColor={theme.colors.darkGray}
+            backgroundColor={theme.colors.gray}
             buttonColor={theme.colors.primary}
             borderColor={theme.colors.gray}
             height={50}
             borderRadius={100}
-            fontSize={20}
+            fontSize={16}
             valuePadding={2}
             hasPadding
             options={[

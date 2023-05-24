@@ -16,7 +16,4 @@
     "plugins": [
         "react"
     ],
-    "rules": {
-        // "arrow-body-style": ["always"]
-    }
 }

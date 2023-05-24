@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
   },
   messageView: {
     backgroundColor: theme.colors.transparent,
-    maxWidth: '80%',
+    maxWidth: '100%',
+    padding: 10,
   },
   messageContainerisRight: {
     backgroundColor: theme.colors.green,

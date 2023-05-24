@@ -202,6 +202,39 @@ function GlobalData({children}) {
     },
   ]);
 
+  const [radioButtonsData, setRadioButtonsData] = useState([
+    {
+      id: '1',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '2',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '3',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '4',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '5',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '6',
+      label: 'Radio option here...',
+      selected: false,
+    },
+  ]);
+
   return (
     <GlobalDataContext.Provider
       value={{
@@ -214,6 +247,8 @@ function GlobalData({children}) {
         expensesData,
         usersList,
         setUsersList,
+        radioButtonsData,
+        setRadioButtonsData,
       }}>
       {typeof children === 'function' ? children() : children}
     </GlobalDataContext.Provider>

@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     backgroundColor: theme.colors.green,
-    height: horizontalScale(245),
+    height: verticalScale(230),
     paddingHorizontal: 16,
     marginBottom: verticalScale(55),
   },
   profileImage: {
-    paddingTop: verticalScale(60),
+    paddingTop: verticalScale(40),
     alignItems: 'center',
   },
   userImage: {
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     bottom: verticalScale(4),
+    marginTop: 16,
   },
   userFullName: {
     fontSize: moderateScale(30),
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
   },
   switchContainer: {
     width: horizontalScale(343),
-    marginTop: verticalScale(9),
+    marginTop: verticalScale(14),
   },
 
   contentsBlockContainer: {

@@ -4,7 +4,6 @@ import styles from './style';
 
 const FeedItem = ({item, itemIndex, navigation}) => {
   const currentDate = new Date();
-
   const createdDate = item.createdData;
 
   const diffMonths =

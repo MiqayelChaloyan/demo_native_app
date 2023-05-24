@@ -29,21 +29,21 @@ const ContentScreen = ({navigation, route}) => {
         <Search list={feedData} setState={setState} keyword="title" />
       </View>
       <View style={styles.swiperItemContainer}>
-          <SwiperFlatList
-            autoplay
-            autoplayDelay={3}
-            autoplayLoop
-            index={itemIndex}
-            showPagination
-            paginationStyle={styles.paginationStyle}
-            paginationStyleItem={styles.dotStyle}
-            paginationStyleItemActive={[
-              styles.dotStyle,
-              {backgroundColor: theme.colors.green},
-            ]}
-            data={feedData}
-            renderItem={ChangeSwiperItem}
-          />
+        <SwiperFlatList
+          autoplay
+          autoplayDelay={3}
+          autoplayLoop
+          index={itemIndex}
+          showPagination
+          paginationStyle={styles.paginationStyle}
+          paginationStyleItem={styles.dotStyle}
+          paginationStyleItemActive={[
+            styles.dotStyle,
+            {backgroundColor: theme.colors.green},
+          ]}
+          data={feedData}
+          renderItem={ChangeSwiperItem}
+        />
       </View>
       <View style={styles.contentContainer}>
         <View style={styles.headerTextContainer}>

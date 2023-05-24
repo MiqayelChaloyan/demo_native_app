@@ -9,6 +9,7 @@ const palette = {
   darkGray: '#F6F6F6',
   mediumLightGray: '#666666',
   transparent: 'transparent',
+  orange: '#FFB84E',
 };
 
 export const theme = {
@@ -25,6 +26,7 @@ export const theme = {
     gray: palette.gray,
     mediumLightGray: palette.mediumLightGray,
     transparent: palette.transparent,
+    orange: palette.orange,
   },
   spacing: {
     s: 8,
