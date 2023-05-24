@@ -27,7 +27,8 @@ const ContentScreen = ({navigation, route}) => {
           right={'Filter'}
         />
         <Search list={feedData} setState={setState} keyword="title" />
-        <View style={styles.swiperItem}>
+      </View>
+      <View style={styles.swiperItemContainer}>
           <SwiperFlatList
             autoplay
             autoplayDelay={3}
@@ -43,7 +44,8 @@ const ContentScreen = ({navigation, route}) => {
             data={feedData}
             renderItem={ChangeSwiperItem}
           />
-        </View>
+      </View>
+      <View style={styles.contentContainer}>
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Outlet</Text>
         </View>
