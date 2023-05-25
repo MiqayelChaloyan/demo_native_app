@@ -13,20 +13,26 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
-    marginHorizontal: horizontalScale(16),
+    paddingHorizontal: horizontalScale(16),
   },
-  swiperItem: {
-    width: '100%',
-    marginTop: verticalScale(16),
+  swiperItemContainer: {
+    width: horizontalScale(375),
+  },
+  itemInfoContainer:{
+    width:horizontalScale(343)
+  },
+  contentItem: {
+    width: horizontalScale(375),
+    justifyContent:'center',
+      alignItems:'center'
   },
   paginationStyle: {
-    right: horizontalScale(0),
+    right: horizontalScale(16),
     bottom: verticalScale(0),
   },
   imageContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     width: horizontalScale(343),
     height: verticalScale(240),
   },
@@ -44,7 +50,7 @@ const styles = StyleSheet.create({
     marginVertical: verticalScale(33),
   },
   titleStyle: {
-    width: '100%',
+    width: "100%",
     marginTop: horizontalScale(8),
     fontSize: moderateScale(16),
     color: theme.colors.foreground,
@@ -54,11 +60,11 @@ const styles = StyleSheet.create({
     ...theme.textVariants.body,
   },
   postMessage: {
-    width: '90%',
     fontSize: moderateScale(14),
     color: theme.colors.foreground,
     fontWeight: 400,
     marginVertical: verticalScale(8),
+    // paddingHorizontal:horizontalScale(16),
     lineHeight: verticalScale(17),
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
@@ -71,11 +77,8 @@ const styles = StyleSheet.create({
     // TODO: This part needs to be updated.
     ...theme.textVariants.body,
   },
-  contentItem: {
-    width: horizontalScale(375),
-  },
   headerTextContainer: {
-    width: '100%',
+    width: "100%",
     marginVertical: verticalScale(16),
   },
   headerText: {
@@ -87,13 +90,13 @@ const styles = StyleSheet.create({
   },
   itemListContainer: {
     flex: 1,
-    width: '100%',
+    width: "100%",
     marginBottom: verticalScale(30),
   },
   contentItemOfList: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     height: verticalScale(45),
     borderBottomWidth: moderateScale(1),
   },
@@ -103,21 +106,21 @@ const styles = StyleSheet.create({
     height: verticalScale(16),
   },
   leftSide: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   titleContainer: {
     marginLeft: horizontalScale(10),
   },
   warning: {
-    width: '100%',
+    width: "100%",
     marginTop: verticalScale(10),
   },
   warningText: {
     fontSize: moderateScale(14),
     fontWeight: 300,
     color: theme.colors.mediumLightGray,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
