@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AuthNavigation from './AuthNavigation';
 import ExpensesScreen from '../screens/ExpensesScreen/ExpensesScreen';
-import MessagesList from '../screens/Messages/MessagesList';
+import MessagesList from '../screens/MessagesScreen/MessagesList';
 import BottomTabNavigation from './BottomTabNavigation';
 
 const Stack = createNativeStackNavigator();

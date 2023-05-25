@@ -52,7 +52,7 @@ const ContentScreen = ({navigation, route}) => {
             index={itemIndex}
             showPagination
             paginationStyle={styles.paginationStyle}
-            paginationStyleItem={styles.dotStyle}
+            paginationStyleItemInactive={styles.dotStyle}
             paginationStyleItemActive={[
               styles.dotStyle,
               {backgroundColor: theme.colors.green},

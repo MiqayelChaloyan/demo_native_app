@@ -9,12 +9,11 @@ import {theme} from '../../assets/theme/theme';
 const styles = StyleSheet.create({
   expenses: {
     flex: 1,
+    backgroundColor: theme.colors.background,
   },
   container: {
     flex: 1,
-    alignItems: 'center',
     paddingHorizontal: horizontalScale(16),
-    backgroundColor: theme.colors.background,
   },
   barChartContainer: {
     marginVertical: verticalScale(32),
