@@ -67,7 +67,7 @@ const MessagesList = ({navigation, route}) => {
         }>
         <FlatList
           data={messages}
-          renderItem={({item, index}) => (
+          renderItem={({index}) => (
             <Message
               key={index}
               isLeft={item.user !== user.current}
@@ -85,7 +85,7 @@ const MessagesList = ({navigation, route}) => {
             placeholderTextColor={theme.colors.lightGray}
             style={styles.input}
             variant="standard"
-            onChangeText={value => setValue(value)}
+            onChangeText={() => setValue(value)}
             value={value}
             keyboardType="web-search"
             autoCapitalize="none"
