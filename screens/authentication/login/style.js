@@ -10,26 +10,22 @@ const styles = StyleSheet.create({
   loginRoot: {
     flex: 1,
     backgroundColor: theme.colors.background,
-  },
-  root: {
-    flex: 1,
+    paddingHorizontal: 16,
   },
   headerContainer: {
-    height: verticalScale(14),
-    marginTop: verticalScale(14),
-    marginBottom: verticalScale(17),
+    height: verticalScale(36),
+    marginTop: verticalScale(30),
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    marginTop: verticalScale(15),
-    marginHorizontal: horizontalScale(20),
   },
   cancel: {
-    top: verticalScale(8),
+    top: verticalScale(10),
     height: verticalScale(50),
     width: horizontalScale(10),
+    right: 0,
   },
   headerBox: {
     width: horizontalScale(300),
@@ -43,7 +39,7 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(36.31),
     left: verticalScale(10),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   login: {
     fontSize: moderateScale(16),
@@ -51,30 +47,27 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(36.31),
     fontWeight: 500,
   },
-  form: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    // gap: verticalScale(150),
-  },
   hidePassword: {
     fontSize: moderateScale(16),
     color: theme.colors.green,
     fontWeight: 500,
+    left: verticalScale(15),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   inputsContainer: {
-    width: horizontalScale(375),
-    marginTop: verticalScale(64),
-    gap: moderateScale(16),
+    width: '100%',
+    marginTop: verticalScale(37),
+    gap: verticalScale(16),
+    marginBottom: verticalScale(50),
   },
   emailInputStyle: {
-    width: horizontalScale(375),
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   passwordInputStyle: {
-    width: horizontalScale(375),
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
@@ -84,21 +77,21 @@ const styles = StyleSheet.create({
     color: theme.colors.green,
     lineHeight: verticalScale(19.36),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   input: {
     width: horizontalScale(343),
-    height: verticalScale(50),
+    height: verticalScale(51),
     borderWidth: 1,
     borderColor: theme.colors.gray,
     padding: verticalScale(16),
     borderRadius: moderateScale(8),
     backgroundColor: theme.colors.darkGray,
-    paddingHorizontal: verticalScale(15),
+    // paddingHorizontal: verticalScale(15),
     paddingVertical: verticalScale(7),
     fontSize: moderateScale(15),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   inputError: {
     color: theme.colors.danger,
@@ -106,10 +99,10 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(7),
     marginBottom: verticalScale(-10),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   button: {
-    marginTop: verticalScale(183),
+    marginTop: verticalScale(167),
     width: horizontalScale(343),
     height: verticalScale(51),
     backgroundColor: theme.colors.green,
@@ -121,6 +114,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: moderateScale(16),
     color: theme.colors.primary,
+    fontWeight: 600,
+    lineHeight: 19.36,
   },
   visibilityBtn: {
     position: 'absolute',
@@ -140,7 +135,7 @@ const styles = StyleSheet.create({
   },
   loginFooter: {
     alignItems: 'center',
-    marginTop: verticalScale(7),
+    marginTop: verticalScale(70),
     bottom: verticalScale(13.5),
   },
 });

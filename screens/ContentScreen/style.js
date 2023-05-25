@@ -18,21 +18,21 @@ const styles = StyleSheet.create({
   swiperItemContainer: {
     width: horizontalScale(375),
   },
-  itemInfoContainer:{
-    width:horizontalScale(343)
+  itemInfoContainer: {
+    width: horizontalScale(343),
   },
   contentItem: {
     width: horizontalScale(375),
-    justifyContent:'center',
-      alignItems:'center'
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   paginationStyle: {
     right: horizontalScale(16),
     bottom: verticalScale(0),
   },
   imageContainer: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     width: horizontalScale(343),
     height: verticalScale(240),
   },
@@ -50,24 +50,31 @@ const styles = StyleSheet.create({
     marginVertical: verticalScale(33),
   },
   titleStyle: {
-    width: "100%",
+    width: '100%',
     marginTop: horizontalScale(8),
     fontSize: moderateScale(16),
     color: theme.colors.foreground,
     fontWeight: 600,
     lineHeight: verticalScale(19),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
+  },
+  itemTitle: {
+    fontSize: moderateScale(16),
+    fontWeight: 500,
+    color: theme.colors.lightGray,
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.Regular,
   },
   postMessage: {
     fontSize: moderateScale(14),
     color: theme.colors.foreground,
     fontWeight: 400,
     marginVertical: verticalScale(8),
-    // paddingHorizontal:horizontalScale(16),
+    paddingHorizontal: horizontalScale(16),
     lineHeight: verticalScale(17),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   dateStyle: {
     fontSize: moderateScale(14),
@@ -75,10 +82,10 @@ const styles = StyleSheet.create({
     color: theme.colors.lightGray,
     fontWeight: 400,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   headerTextContainer: {
-    width: "100%",
+    width: '100%',
     marginVertical: verticalScale(16),
   },
   headerText: {
@@ -86,17 +93,17 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   itemListContainer: {
     flex: 1,
-    width: "100%",
+    width: '100%',
     marginBottom: verticalScale(30),
   },
   contentItemOfList: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     height: verticalScale(45),
     borderBottomWidth: moderateScale(1),
   },
@@ -106,21 +113,21 @@ const styles = StyleSheet.create({
     height: verticalScale(16),
   },
   leftSide: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   titleContainer: {
     marginLeft: horizontalScale(10),
   },
   warning: {
-    width: "100%",
+    width: '100%',
     marginTop: verticalScale(10),
   },
   warningText: {
     fontSize: moderateScale(14),
     fontWeight: 300,
     color: theme.colors.mediumLightGray,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });
 

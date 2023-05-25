@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    backgroundColor: theme.colors.background,
   },
   contentBlock: {
     width: horizontalScale(50),
@@ -25,12 +26,12 @@ const styles = StyleSheet.create({
     height: verticalScale(70),
     borderBottomWidth: moderateScale(1),
     borderBottomColor: theme.colors.gray,
-    marginBottom: verticalScale(16),
+    marginBottom: verticalScale(20),
   },
   headerContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: verticalScale(8),
+    marginBottom: verticalScale(5),
   },
   aboutContentDate: {
     fontSize: moderateScale(14),
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(2),
     color: theme.colors.lightGray,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   feedTextContainer: {
     paddingRight: horizontalScale(8),
@@ -50,14 +51,14 @@ const styles = StyleSheet.create({
     color: theme.colors.foreground,
     lineHeight: verticalScale(17),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   headerText: {
     fontSize: moderateScale(16),
     fontWeight: 600,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
 });
 

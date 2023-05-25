@@ -9,6 +9,7 @@ import {
 const styles = StyleSheet.create({
   container: {
     paddingTop: verticalScale(1),
+    backgroundColor: theme.colors.background,
   },
   itemImage: {
     width: horizontalScale(335),
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     marginTop: verticalScale(2),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
 });
 

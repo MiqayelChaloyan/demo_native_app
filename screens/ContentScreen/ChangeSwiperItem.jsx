@@ -24,14 +24,16 @@ const ChangeSwiperItem = ({item}) => {
         </View>
 
         <View>
-          <Text style={styles.postMessage} numberOfLines={2} ellipsizeMode="tail">
+          <Text
+            style={styles.postMessage}
+            numberOfLines={2}
+            ellipsizeMode="tail">
             {item.message}
           </Text>
 
           <Text style={styles.dateStyle}>{monthsAgo}m ago</Text>
         </View>
       </View>
-
     </View>
   );
 };

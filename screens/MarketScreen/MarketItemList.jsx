@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
 import MarketItem from './MarketItem';
 import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
@@ -23,7 +24,7 @@ const MarketItemList = ({data, navigation}) => {
         data={data}
         key={item => item.id}
         keyExtractor={item => item.id}
-        renderItem={({item, index}) => {
+        renderItem={({item}) => {
           return isLoading ? (
             <MarketSkeletonItem />
           ) : (
@@ -33,6 +34,10 @@ const MarketItemList = ({data, navigation}) => {
       />
     </View>
   );
+};
+
+MarketItemList.propTypes = {
+  data: PropTypes.object,
 };
 
 export default MarketItemList;

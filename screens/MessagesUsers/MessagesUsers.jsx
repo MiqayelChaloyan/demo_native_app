@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react';
+import {useEffect, useContext, useState} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, Text, View} from 'react-native';
 import {GlobalDataContext} from '../../Data/context';
@@ -19,7 +19,7 @@ const MessagesUsers = ({navigation}) => {
   }, []);
 
   return (
-    <>
+    <View>
       <View style={styles.root}>
         <Search list={usersList} setState={setState} keyword="fullName" />
       </View>
@@ -46,7 +46,7 @@ const MessagesUsers = ({navigation}) => {
           }}
         />
       </View>
-    </>
+    </View>
   );
 };
 

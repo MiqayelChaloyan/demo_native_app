@@ -21,9 +21,12 @@ const Message = ({isLeft, message}) => {
           </Text>
         </View>
       </View>
-      <View
+      {/* <View
         style={[styles.arrow, isLeft ? styles.leftArrow : styles.rightArrow]}
-      />
+      /> */}
+      <View>
+        <View style={isLeft ? styles.leftArrow : styles.rightArrow} />
+      </View>
     </View>
   );
 };

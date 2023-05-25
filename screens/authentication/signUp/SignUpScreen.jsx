@@ -9,22 +9,24 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Platform,
 } from 'react-native';
-import CheckBox from 'react-native-check-box';
 import {Formik, useFormik} from 'formik';
 import {signUpValidationSchema} from './signUpValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
-import { theme } from '../../../assets/theme/theme';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
 const SignUpScreen = ({navigation}) => {
-  const [keyboardStatus, setKeyboardStatus] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
+  const checkBoxText =
+    'I would like to receive your newsletter and other promotional information.';
 
   useEffect(() => {
     values.isChecked = isChecked;
-  }, [isChecked]);
+  }, [isChecked, values]);
 
   const {
     values,
@@ -47,31 +49,24 @@ const SignUpScreen = ({navigation}) => {
     },
   });
 
-  useEffect(() => {
-    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
-      setKeyboardStatus(true);
-    });
-    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
-      setKeyboardStatus(false);
-    });
-
-    return () => {
-      showSubscription.remove();
-      hideSubscription.remove();
-    };
-  }, []);
+  const changeBackgroundColor = () =>
+    isChecked ? theme.colors.green : theme.colors.darkGray;
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.signUpRoot}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.root}>
+        <SafeAreaView>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
                 <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
-                  <CancelIcon width={20} height={20} fill={theme.colors.lightGray} />
+                  <CancelIcon
+                    width={16}
+                    height={16}
+                    fill={theme.colors.lightGray}
+                  />
                 </TouchableOpacity>
               </View>
               <View style={styles.headerBox}>
@@ -108,7 +103,7 @@ const SignUpScreen = ({navigation}) => {
               <View style={styles.emailInputStyle}>
                 <TextInput
                   name="email"
-                  placeholder="Email Address"
+                  placeholder="Email"
                   placeholderTextColor={theme.colors.lightGray}
                   style={styles.input}
                   variant="standard"
@@ -155,30 +150,23 @@ const SignUpScreen = ({navigation}) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              <View
-                style={[
-                  styles.checkBoxStyle,
-                  {bottom: keyboardStatus ? '1%' : 0},
-                ]}>
-                <CheckBox
-                  style={styles.checkBox}
-                  isChecked={isChecked}
-                  checkedCheckBoxColor={theme.colors.green}
-                  checkBoxColor={theme.colors.gray}
-                  uncheckedCheckBoxColor={theme.colors.gray}
-                  onClick={() => setIsChecked(!isChecked)}
-                  rightTextView={
-                    <Text style={styles.checkBoxText}>
-                      I would like to receive your newsletter and other
-                      promotional information.
-                    </Text>
-                  }
-                />
-              </View>
             </View>
           </Formik>
-          <View
-            style={[styles.signUpFooter, {bottom: keyboardStatus ? '3%' : 0}]}>
+          <View style={styles.checkBox}>
+            <BouncyCheckbox
+              size={16}
+              text={checkBoxText}
+              isChecked={isChecked}
+              iconStyle={[
+                styles.iconStyle,
+                {backgroundColor: changeBackgroundColor()},
+              ]}
+              innerIconStyle={styles.innerIconStyle}
+              textStyle={styles.textStyle}
+              onPress={() => setIsChecked(!isChecked)}
+            />
+          </View>
+          <View style={styles.signUpFooter}>
             <View style={styles.button}>
               <TouchableOpacity
                 disabled={!isValid}

@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Platform,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {loginValidationSchema} from './loginValidationSchema';
@@ -43,15 +44,15 @@ const LogInScreen = ({navigation}) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.loginRoot}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.root}>
+        <SafeAreaView>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Profile')}>
                   <CancelIcon
-                    width={20}
-                    height={20}
+                    width={16}
+                    height={16}
                     fill={theme.colors.lightGray}
                   />
                 </TouchableOpacity>
@@ -66,7 +67,7 @@ const LogInScreen = ({navigation}) => {
               <View style={styles.emailInputStyle}>
                 <TextInput
                   name="email"
-                  placeholder="Email Address"
+                  placeholder="Email"
                   placeholderTextColor={theme.colors.lightGray}
                   style={styles.input}
                   variant="standard"

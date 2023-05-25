@@ -45,6 +45,7 @@ const MessagesList = ({navigation, route}) => {
           back={'Messages'}
           continueTo={'Market'}
           left={'Back'}
+          right={'Filter'}
         />
       </View>
       <View style={styles.userContainer}>
@@ -116,6 +117,7 @@ const MessagesList = ({navigation, route}) => {
 
 MessagesList.propTypes = {
   navigation: PropTypes.object,
+  route: PropTypes.object,
 };
 
 export default MessagesList;

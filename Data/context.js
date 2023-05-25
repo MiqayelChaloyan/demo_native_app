@@ -67,7 +67,7 @@ function GlobalData({children}) {
     },
     {
       title: 'FORUM LOW SHOES',
-     imageUri:
+      imageUri:
         'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c2547ff40b3f47818118aed2015e64c6_9366/Forum_Low_Shoes_Black_FZ5891_01_standard.jpg',
       price: '$19.99',
       id: '4',
@@ -209,6 +209,39 @@ function GlobalData({children}) {
     },
   ]);
 
+  const [radioButtonsData, setRadioButtonsData] = useState([
+    {
+      id: '1',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '2',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '3',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '4',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '5',
+      label: 'Radio option here...',
+      selected: false,
+    },
+    {
+      id: '6',
+      label: 'Radio option here...',
+      selected: false,
+    },
+  ]);
+
   return (
     <GlobalDataContext.Provider
       value={{
@@ -221,6 +254,8 @@ function GlobalData({children}) {
         expensesData,
         usersList,
         setUsersList,
+        radioButtonsData,
+        setRadioButtonsData,
       }}>
       {typeof children === 'function' ? children() : children}
     </GlobalDataContext.Provider>

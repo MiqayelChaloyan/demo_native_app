@@ -1,3 +1,5 @@
+import {Medium, Regular, SemiBold} from '../../constants/font';
+
 const palette = {
   green: '#5DB075',
   darkGreen: '#4B9460',
@@ -9,6 +11,7 @@ const palette = {
   darkGray: '#F6F6F6',
   mediumLightGray: '#666666',
   transparent: 'transparent',
+  orange: '#FFB84E',
 };
 
 export const theme = {
@@ -25,16 +28,20 @@ export const theme = {
     gray: palette.gray,
     mediumLightGray: palette.mediumLightGray,
     transparent: palette.transparent,
-  },
-  spacing: {
-    s: 8,
-    m: 16,
-    l: 24,
-    xl: 32,
+    orange: palette.orange,
   },
   textVariants: {
-    body: {
-      fontFamily: 'Inter',
+    SemiBold: {
+      fontFamily: SemiBold,
+      fontStyle: 'normal',
+    },
+    Medium: {
+      fontFamily: Medium,
+      fontStyle: 'normal',
+    },
+    Regular: {
+      fontFamily: Regular,
+      fontStyle: 'normal',
     },
   },
 };

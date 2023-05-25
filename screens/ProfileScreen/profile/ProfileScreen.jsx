@@ -98,9 +98,10 @@ const Profile = ({navigation}) => {
             backgroundColor={theme.colors.darkGray}
             buttonColor={theme.colors.primary}
             borderColor={theme.colors.gray}
+            borderWidth={1.5}
             height={50}
             borderRadius={100}
-            fontSize={20}
+            fontSize={16}
             valuePadding={2}
             hasPadding
             options={[

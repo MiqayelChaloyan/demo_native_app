@@ -19,7 +19,7 @@ const Search = ({list, setState, keyword}) => {
     <View style={styles.container}>
       <TextInput
         name="search"
-        placeholder="Search..."
+        placeholder="Search"
         placeholderTextColor={theme.colors.lightGray}
         style={styles.input}
         variant="standard"

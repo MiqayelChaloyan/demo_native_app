@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import PropTypes from 'prop-types';
 import {FlatList, Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import {GlobalDataContext} from '../../Data/context';
@@ -48,6 +49,10 @@ const ExpensesScreen = ({navigation}) => {
       </View>
     </View>
   );
+};
+
+ExpensesScreen.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default ExpensesScreen;

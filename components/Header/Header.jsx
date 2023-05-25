@@ -14,7 +14,7 @@ const Header = ({
 }) => {
   return (
     <View style={styles.headerContainer}>
-      <View style={styles.headerButtonContainer}>
+      <View>
         <TouchableOpacity onPress={() => navigation.navigate(back)}>
           <Text
             style={[
@@ -30,7 +30,7 @@ const Header = ({
           {screen}
         </Text>
       </View>
-      <View style={styles.headerButtonContainer}>
+      <View>
         {right && (
           <TouchableOpacity
             onPress={() =>

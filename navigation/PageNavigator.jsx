@@ -4,6 +4,7 @@ import ContentScreen from '../screens/ContentScreen/ContentScreen';
 import FeedScreen from '../screens/FeedScreen/FeedScreen';
 import ItemDescriptionScreen from '../screens/ItemDescriptionScreen/ItemDescriptionScreen';
 import MarketScreen from '../screens/MarketScreen/MarketScreen';
+import UserOptions from '../screens/UserOptions/UserOptions';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ export default function PageNavigation() {
       <Stack.Screen name="Feed" component={FeedScreen} />
       <Stack.Screen name="Content" component={ContentScreen} />
       <Stack.Screen name="Market" component={MarketScreen} />
+      <Stack.Screen name="Options" component={UserOptions} />
       <Stack.Screen name="Description" component={ItemDescriptionScreen} />
     </Stack.Navigator>
   );
