@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -104,11 +104,11 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: verticalScale(32),
+    marginTop: verticalScale(35),
   },
   input: {
     width: horizontalScale(343),
-    height: verticalScale(50),
+    height: verticalScale(51),
     borderWidth: moderateScale(1),
     borderColor: theme.colors.gray,
     padding: verticalScale(10),
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     color: theme.colors.primary,
     fontWeight: 600,
-    lineHeight: 19.36
+    lineHeight: 19.36,
   },
   visibilityBtn: {
     position: 'absolute',

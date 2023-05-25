@@ -113,7 +113,7 @@ const SignUpScreen = ({ navigation }) => {
               <View style={styles.emailInputStyle}>
                 <TextInput
                   name="email"
-                  placeholder="Email Address"
+                  placeholder="Email"
                   placeholderTextColor={theme.colors.lightGray}
                   style={styles.input}
                   variant="standard"

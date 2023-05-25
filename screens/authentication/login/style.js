@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     top: verticalScale(10),
     height: verticalScale(50),
     width: horizontalScale(10),
-    right: 5
+    right: verticalScale(5),
   },
   headerBox: {
     width: horizontalScale(300),
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: horizontalScale(343),
-    height: verticalScale(50),
+    height: verticalScale(51),
     borderWidth: 1,
     borderColor: theme.colors.gray,
     padding: verticalScale(16),
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     color: theme.colors.primary,
     fontWeight: 600,
-    lineHeight: 19.36
+    lineHeight: 19.36,
   },
   visibilityBtn: {
     position: 'absolute',
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   loginFooter: {
     alignItems: 'center',
-    marginTop: verticalScale(7),
+    marginTop: verticalScale(77),
     bottom: verticalScale(13.5),
   },
 });
