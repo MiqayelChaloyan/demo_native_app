@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import {useState} from 'react';
+import PropTypes from 'prop-types';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
-const CustomModal = ({ isModalVisible, setModalVisible, navigation }) => {
+const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
 
@@ -32,13 +33,13 @@ const CustomModal = ({ isModalVisible, setModalVisible, navigation }) => {
             <FlatList
               data={[1, 2, 3, 4, 5]}
               contentContainerStyle={styles.starsContainer}
-              renderItem={({ item: starPlacedNumber }) => (
+              renderItem={({item: starPlacedNumber}) => (
                 <TouchableOpacity
                   onPress={() => changeColorOfStars(starPlacedNumber)}>
                   <StarIcon
                     fill={
                       activeStarsColor &&
-                        starPlacedNumber <= numberOfStarsPlaced
+                      starPlacedNumber <= numberOfStarsPlaced
                         ? theme.colors.orange
                         : theme.colors.lightGray
                     }
@@ -74,6 +75,12 @@ const CustomModal = ({ isModalVisible, setModalVisible, navigation }) => {
       </View>
     </Modal>
   );
+};
+
+CustomModal.propTypes = {
+  navigation: PropTypes.object,
+  isModalVisible: PropTypes.bool,
+  setModalVisible: PropTypes.func,
 };
 
 export default CustomModal;

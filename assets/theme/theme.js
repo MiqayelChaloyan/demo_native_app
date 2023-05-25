@@ -1,3 +1,5 @@
+import {Medium, Regular, SemiBold} from '../../constants/font';
+
 const palette = {
   green: '#5DB075',
   darkGreen: '#4B9460',
@@ -28,15 +30,18 @@ export const theme = {
     transparent: palette.transparent,
     orange: palette.orange,
   },
-  spacing: {
-    s: 8,
-    m: 16,
-    l: 24,
-    xl: 32,
-  },
   textVariants: {
-    body: {
-      fontFamily: 'Inter',
+    SemiBold: {
+      fontFamily: SemiBold,
+      fontStyle: 'normal',
+    },
+    Medium: {
+      fontFamily: Medium,
+      fontStyle: 'normal',
+    },
+    Regular: {
+      fontFamily: Regular,
+      fontStyle: 'normal',
     },
   },
 };

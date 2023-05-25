@@ -6,11 +6,11 @@ const Message = ({isLeft, message}) => {
   return (
     <View style={styles.container}>
       <View
-        style={[
+        style={
           !isLeft
             ? styles.messageContainerisRight
-            : styles.messageContainerisLeft,
-        ]}>
+            : styles.messageContainerisLeft
+        }>
         <View style={styles.messageView}>
           <Text
             style={[
@@ -21,9 +21,12 @@ const Message = ({isLeft, message}) => {
           </Text>
         </View>
       </View>
-      <View
+      {/* <View
         style={[styles.arrow, isLeft ? styles.leftArrow : styles.rightArrow]}
-      />
+      /> */}
+      <View>
+        <View style={isLeft ? styles.leftArrow : styles.rightArrow} />
+      </View>
     </View>
   );
 };

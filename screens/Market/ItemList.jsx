@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
 import Item from './Item';
 import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
@@ -29,6 +30,10 @@ const ItemList = ({data}) => {
       />
     </View>
   );
+};
+
+ItemList.propTypes = {
+  data: PropTypes.object,
 };
 
 export default ItemList;

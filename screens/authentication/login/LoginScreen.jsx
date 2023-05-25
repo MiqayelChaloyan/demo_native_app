@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -11,13 +11,13 @@ import {
   Keyboard,
   Platform,
 } from 'react-native';
-import { Formik, useFormik } from 'formik';
-import { loginValidationSchema } from './loginValidationSchema';
+import {Formik, useFormik} from 'formik';
+import {loginValidationSchema} from './loginValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
-import { theme } from '../../../assets/theme/theme';
+import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
-const LogInScreen = ({ navigation }) => {
+const LogInScreen = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
 
   const {

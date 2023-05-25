@@ -35,10 +35,10 @@ const styles = StyleSheet.create({
     color: theme.colors.foreground,
     marginTop: verticalScale(32),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   content: {
-    width: horizontalScale(311),
+    width: horizontalScale(320),
     fontSize: moderateScale(16),
     marginHorizontal: verticalScale(16),
     fontWeight: 500,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: verticalScale(16),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   button: {
     marginTop: verticalScale(45),
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     color: theme.colors.primary,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   text: {
     textAlign: 'center',
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(16),
     fontWeight: 600,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
 });
 

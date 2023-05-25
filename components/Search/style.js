@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(1),
     borderColor: theme.colors.gray,
     borderRadius: moderateScale(100),
-    paddingTop: verticalScale(16),
+    paddingTop: verticalScale(15),
     paddingLeft: horizontalScale(16),
     paddingBottom: verticalScale(15),
     backgroundColor: theme.colors.darkGray,
     fontSize: moderateScale(16),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
 });
 

@@ -22,15 +22,14 @@ const styles = StyleSheet.create({
     lineHeight: moderateScale(36.31),
     maxWidth: horizontalScale(260),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   headerButtonText: {
     fontSize: moderateScale(16),
     fontWeight: 500,
     lineHeight: verticalScale(19.36),
-    maxWidth: horizontalScale(64),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
 });
 

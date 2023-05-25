@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   profileImage: {
-    width: horizontalScale(55),
-    height: horizontalScale(55),
-    borderRadius: verticalScale(50),
+    width: horizontalScale(54),
+    height: horizontalScale(54),
+    borderRadius: verticalScale(100),
   },
   userName: {
     fontSize: moderateScale(15),
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     left: verticalScale(12),
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   activeChat: {
     borderWidth: 3,
@@ -51,13 +51,15 @@ const styles = StyleSheet.create({
     left: verticalScale(40),
   },
   messages: {
-    left: verticalScale(72),
+    left: verticalScale(71),
     bottom: verticalScale(15),
     flexDirection: 'row',
   },
   messagesText: {
     fontSize: moderateScale(14),
     bottom: verticalScale(12),
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.Regular,
   },
   line: {
     borderWidth: 0.4,

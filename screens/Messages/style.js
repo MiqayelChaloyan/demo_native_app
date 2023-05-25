@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
   },
   input: {
     width: horizontalScale(343),
-    height: verticalScale(51),
-    borderWidth: 1,
+    height: verticalScale(50),
+    paddingEnd: horizontalScale(55),
+    borderWidth: 0.5,
     borderColor: theme.colors.lightGray,
     padding: verticalScale(10),
     borderRadius: 50,
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     fontSize: 15,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   messegesList: {
     height: verticalScale(500),
@@ -42,33 +43,28 @@ const styles = StyleSheet.create({
   },
   sendBox: {
     position: 'absolute',
-    right: verticalScale(30),
-    bottom: verticalScale(9),
+    right: verticalScale(24),
+    bottom: verticalScale(7),
   },
   send: {
-    width: horizontalScale(34),
-    height: verticalScale(34),
+    width: horizontalScale(36),
+    height: verticalScale(37),
     borderRadius: moderateScale(100),
     justifyContent: 'center',
     alignItems: 'center',
   },
   container: {
-    paddingVertical: horizontalScale(16),
     marginVertical: horizontalScale(5),
   },
   messageView: {
     backgroundColor: theme.colors.transparent,
     maxWidth: horizontalScale(235),
-    padding: verticalScale(10),
   },
   messageContainerisRight: {
     backgroundColor: theme.colors.green,
     maxWidth: horizontalScale(250),
     alignSelf: 'flex-end',
-    borderRadius: moderateScale(15),
-    paddingHorizontal: horizontalScale(10),
-    paddingTop: verticalScale(5),
-    paddingBottom: verticalScale(10),
+    borderRadius: moderateScale(8),
     right: verticalScale(19),
   },
   messageisRight: {
@@ -79,16 +75,17 @@ const styles = StyleSheet.create({
   },
   message: {
     alignSelf: 'flex-start',
-    fontSize: moderateScale(15),
+    fontSize: moderateScale(14),
+    padding: verticalScale(16),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   messageContainerisLeft: {
     alignSelf: 'flex-start',
     backgroundColor: theme.colors.gray,
     borderBottomLeftRadius: 0,
     maxWidth: horizontalScale(250),
-    borderRadius: moderateScale(15),
+    borderRadius: moderateScale(8),
     paddingHorizontal: horizontalScale(10),
     paddingTop: verticalScale(5),
     paddingBottom: verticalScale(10),
@@ -102,14 +99,37 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   leftArrow: {
-    backgroundColor: theme.colors.gray,
-    borderBottomRightRadius: moderateScale(25),
-    left: verticalScale(20),
+    // backgroundColor: theme.colors.gray,
+    // borderBottomRightRadius: moderateScale(25),
+    // left: verticalScale(20),
+    left: 19,
+    bottom: 20,
+    zIndex: -1,
+    borderTopWidth: 30 / 2.0,
+    borderRightWidth: 0,
+    borderBottomWidth: 50 / 2.0,
+    borderLeftWidth: 30,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderLeftColor: theme.colors.gray,
   },
   rightArrow: {
-    backgroundColor: theme.colors.green,
-    borderBottomLeftRadius: moderateScale(25),
-    right: verticalScale(19),
+    // backgroundColor: theme.colors.green,
+    // borderBottomLeftRadius: moderateScale(25),
+    // right: verticalScale(19),
+    bottom: 25,
+    right: 18,
+    zIndex: -1,
+    borderTopWidth: 40 / 2.0,
+    borderRightWidth: 0,
+    borderBottomWidth: 40 / 2.0,
+    borderLeftWidth: 30,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderLeftColor: theme.colors.green,
+    transform: [{rotate: '180deg'}],
   },
   userContainer: {
     flexDirection: 'row',
@@ -118,9 +138,9 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   userImageProfile: {
-    width: horizontalScale(50),
+    width: horizontalScale(47),
     height: verticalScale(50),
-    borderRadius: 50,
+    borderRadius: moderateScale(100),
   },
   activeChat: {
     borderWidth: moderateScale(3),
@@ -131,7 +151,7 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(50),
     position: 'absolute',
     bottom: verticalScale(1),
-    left: verticalScale(40),
+    left: verticalScale(37),
   },
   userFullName: {
     fontSize: moderateScale(15),
@@ -140,7 +160,7 @@ const styles = StyleSheet.create({
     top: verticalScale(5),
     fontWeight: 600,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
 });
 

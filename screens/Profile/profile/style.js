@@ -12,13 +12,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
+    backgroundColor: theme.colors.background,
   },
   header: {
     width: '100%',
     backgroundColor: theme.colors.green,
     height: verticalScale(230),
     paddingHorizontal: 16,
-    marginBottom: verticalScale(55),
+    // marginBottom: verticalScale(55),
+    zIndex: 1,
   },
   profileImage: {
     paddingTop: verticalScale(40),
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     height: horizontalScale(158),
     borderRadius: 100,
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: theme.colors.primary,
     left: verticalScale(3),
     bottom: verticalScale(-3),
   },
@@ -46,8 +48,9 @@ const styles = StyleSheet.create({
   section: {
     justifyContent: 'center',
     alignItems: 'center',
-    bottom: verticalScale(4),
-    marginTop: 16,
+    // bottom: verticalScale(4),
+    paddingTop: 60,
+    backgroundColor: theme.colors.background,
   },
   userFullName: {
     fontSize: moderateScale(30),
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     textAlign: 'center',
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   userAbount: {
     marginTop: verticalScale(2),
@@ -64,14 +67,15 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     textAlign: 'center',
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   switchContainer: {
     width: horizontalScale(343),
-    marginTop: verticalScale(14),
+    height: horizontalScale(50),
+    marginTop: verticalScale(19),
   },
-
   contentsBlockContainer: {
+    backgroundColor: theme.colors.background,
     width: windowWidth * 0.9,
     marginVertical: windowWidth * 0.03,
     marginHorizontal: windowWidth * 0.05,

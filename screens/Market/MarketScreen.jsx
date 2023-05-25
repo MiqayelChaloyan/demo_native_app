@@ -57,7 +57,6 @@ const MarketScreen = ({navigation}) => {
           </Text>
         </View>
       )}
-      {/* </View> */}
     </ScrollView>
   );
 };

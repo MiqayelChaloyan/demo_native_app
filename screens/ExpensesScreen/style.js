@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(10),
     fontWeight: 400,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   headerTextContainer: {
     marginBottom: verticalScale(32),
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   itemListContainer: {
     flex: 1,
@@ -105,14 +105,14 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   priceText: {
     fontSize: moderateScale(16),
     fontWeight: 400,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
 });
 

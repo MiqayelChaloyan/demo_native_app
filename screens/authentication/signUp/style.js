@@ -10,26 +10,24 @@ const styles = StyleSheet.create({
   signUpRoot: {
     flex: 1,
     backgroundColor: theme.colors.background,
+    paddingHorizontal: 16,
   },
   headerContainer: {
     height: verticalScale(36),
-    marginTop: verticalScale(32),
+    marginTop: verticalScale(30),
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'stretch',
-    marginTop: verticalScale(15),
-    marginHorizontal: horizontalScale(20),
   },
   cancel: {
     top: verticalScale(10),
     height: verticalScale(50),
     width: horizontalScale(2),
-    right: 5,
+    right: 0,
   },
   headerBox: {
-    width: horizontalScale(293),
     height: horizontalScale(110),
   },
   signUp: {
@@ -40,7 +38,7 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(36.31),
     left: verticalScale(10),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   passwordBox: {
     width: '100%',
@@ -53,36 +51,26 @@ const styles = StyleSheet.create({
     color: theme.colors.green,
     lineHeight: verticalScale(36.31),
     fontWeight: 500,
-    width: horizontalScale(43),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   hidePassword: {
     fontSize: verticalScale(16),
     color: theme.colors.green,
     fontWeight: 500,
+    left: verticalScale(15),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   checkBox: {
-    padding: verticalScale(15),
     justifyContent: 'flex-start',
-    margin: verticalScale(5),
-  },
-  checkBoxText: {
-    width: horizontalScale(325),
-    fontSize: verticalScale(14),
-    color: theme.colors.mediumLightGray,
-    left: verticalScale(8),
-    top: verticalScale(7),
-    fontWeight: 400,
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    marginTop: 32,
   },
   inputsContainer: {
     width: '100%',
-    marginTop: verticalScale(64),
+    marginTop: verticalScale(37),
     gap: verticalScale(16),
+    marginBottom: verticalScale(50),
   },
   nameInputStyle: {
     width: '100%',
@@ -100,12 +88,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'absolute',
   },
-  checkBoxStyle: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: verticalScale(35),
-  },
   input: {
     width: horizontalScale(343),
     height: verticalScale(51),
@@ -114,11 +96,10 @@ const styles = StyleSheet.create({
     padding: verticalScale(10),
     borderRadius: moderateScale(8),
     backgroundColor: theme.colors.darkGray,
-    paddingHorizontal: horizontalScale(15),
     paddingVertical: horizontalScale(7),
     fontSize: moderateScale(15),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   inputError: {
     color: theme.colors.danger,
@@ -126,7 +107,7 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(7),
     marginBottom: verticalScale(-10),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   button: {
     marginTop: verticalScale(43),
@@ -154,6 +135,25 @@ const styles = StyleSheet.create({
   },
   signUpFooter: {
     alignItems: 'center',
+  },
+  iconStyle: {
+    borderRadius: moderateScale(7),
+  },
+  innerIconStyle: {
+    borderWidth: 1,
+    borderRadius: moderateScale(4),
+    borderColor: theme.colors.gray,
+    color: theme.colors.foreground,
+  },
+  textStyle: {
+    fontFamily: 'JosefinSans-Regular',
+    textDecorationLine: 'none',
+    top: verticalScale(7),
+    color: theme.colors.mediumLightGray,
+    fontWeight: 400,
+    fontSize: moderateScale(14),
+    // TODO: This part needs to be updated.
+    ...theme.textVariants.Regular,
   },
 });
 

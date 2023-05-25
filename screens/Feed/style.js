@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(19),
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   aboutContentDate: {
     fontSize: moderateScale(14),
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(2),
     color: theme.colors.lightGray,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   feedTextContainer: {
     paddingRight: horizontalScale(8),
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     color: theme.colors.foreground,
     lineHeight: verticalScale(17),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   skeleton: {
     marginTop: verticalScale(25),

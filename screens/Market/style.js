@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     maxWidth: horizontalScale(250),
     verticalAlign: 'top',
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   itemsContainer: {
     flexDirection: 'row',
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
   itemPriceContainer: {
     maxWidth: horizontalScale(110),
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     color: theme.colors.foreground,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   warning: {
     width: '100%',

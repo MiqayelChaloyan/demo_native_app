@@ -13,13 +13,13 @@ const Search = ({list, setState, keyword}) => {
       return param.indexOf(searchItemValue) > -1;
     });
     setState(result);
-  }, [searchItemValue]);
+  }, [keyword, list, searchItemValue, setState]);
 
   return (
     <View style={styles.container}>
       <TextInput
         name="search"
-        placeholder="Search..."
+        placeholder="Search"
         placeholderTextColor={theme.colors.lightGray}
         style={styles.input}
         variant="standard"

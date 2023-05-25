@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     color: theme.colors.lightGray,
     fontSize: moderateScale(16),
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.Medium,
   },
   container: {
     marginTop: verticalScale(47),
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     color: theme.colors.primary,
     // TODO: This part needs to be updated.
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   radioBoxContainer: {
     height: horizontalScale(18),

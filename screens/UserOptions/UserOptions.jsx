@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import {useContext} from 'react';
+import {useState, useContext} from 'react';
+import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, FlatList} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import Header from '../../components/Header/Header';
@@ -59,6 +59,10 @@ const UserOptions = ({navigation}) => {
       </View>
     </View>
   );
+};
+
+UserOptions.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default UserOptions;
