@@ -1,10 +1,11 @@
 module.exports = {
   root: true,
   extends: '@react-native-community',
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 6,
     es6: true,
+    presets: ['@babel/preset-env'],
     sourceType: 'module',
     ecmaFeatures: {
       js: true,

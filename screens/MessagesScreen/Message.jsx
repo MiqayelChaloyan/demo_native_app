@@ -6,11 +6,11 @@ const Message = ({isLeft, message}) => {
   return (
     <View style={styles.container}>
       <View
-        style={[
+        style={
           !isLeft
             ? styles.messageContainerisRight
-            : styles.messageContainerisLeft,
-        ]}>
+            : styles.messageContainerisLeft
+        }>
         <View style={styles.messageView}>
           <Text
             style={[

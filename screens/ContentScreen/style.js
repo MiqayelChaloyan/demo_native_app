@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     width: horizontalScale(8),
     height: verticalScale(8),
     borderRadius: moderateScale(4),
-    marginHorizontal: horizontalScale(3),
+    marginHorizontal: horizontalScale(4),
     marginVertical: verticalScale(33),
   },
   titleStyle: {

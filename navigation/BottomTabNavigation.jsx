@@ -4,7 +4,7 @@ import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
-import ProfileScreen from '../screens/Profile/profile/ProfileScreen';
+import ProfileScreen from '../screens/ProfileScreen/profile/ProfileScreen';
 import PageNavigation from './PageNavigator';
 import {theme} from '../assets/theme/theme';
 
