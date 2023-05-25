@@ -99,9 +99,6 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   leftArrow: {
-    // backgroundColor: theme.colors.gray,
-    // borderBottomRightRadius: moderateScale(25),
-    // left: verticalScale(20),
     left: 19,
     bottom: 20,
     zIndex: -1,
@@ -115,9 +112,6 @@ const styles = StyleSheet.create({
     borderLeftColor: theme.colors.gray,
   },
   rightArrow: {
-    // backgroundColor: theme.colors.green,
-    // borderBottomLeftRadius: moderateScale(25),
-    // right: verticalScale(19),
     bottom: 25,
     right: 18,
     zIndex: -1,

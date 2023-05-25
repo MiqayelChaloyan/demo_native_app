@@ -68,7 +68,7 @@ const MessagesList = ({navigation, route}) => {
         }>
         <FlatList
           data={messages}
-          renderItem={({index}) => (
+          renderItem={({item, index}) => (
             <Message
               key={index}
               isLeft={item.user !== user.current}
