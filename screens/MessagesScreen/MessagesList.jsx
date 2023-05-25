@@ -1,4 +1,4 @@
-import React, {useContext, useRef, useState} from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
@@ -9,19 +9,19 @@ import {
   Text,
   Image,
 } from 'react-native';
-import {GlobalDataContext} from '../../Data/context';
+import { GlobalDataContext } from '../../Data/context';
 import Message from './Message';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
 import Header from '../../components/Header/Header';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 import styles from './style';
 
-const MessagesList = ({navigation, route}) => {
-  const {setMessages, messages} = useContext(GlobalDataContext);
+const MessagesList = ({ navigation, route }) => {
+  const { setMessages, messages } = useContext(GlobalDataContext);
   const [value, setValue] = useState('');
   const user = useRef(0);
   const scrollView = useRef();
-  const {item} = route.params;
+  const { item } = route.params;
 
   const getMessage = () => {
     if (value.trim() !== '') {
@@ -35,6 +35,10 @@ const MessagesList = ({navigation, route}) => {
       return setValue('');
     }
   };
+
+  useEffect(() => {
+    console.log(value);
+  }, [value])
 
   return (
     <View style={styles.root}>
@@ -53,7 +57,7 @@ const MessagesList = ({navigation, route}) => {
           style={styles.userImageProfile}
           source={
             item.imageUrl
-              ? {uri: item.imageUrl}
+              ? { uri: item.imageUrl }
               : require('../../assets/images/Profile.png')
           }
         />
@@ -64,11 +68,11 @@ const MessagesList = ({navigation, route}) => {
         style={styles.messegesList}
         ref={ref => (scrollView.current = ref)}
         onContentSizeChange={() =>
-          scrollView.current.scrollToEnd({animated: true})
+          scrollView.current.scrollToEnd({ animated: true })
         }>
         <FlatList
           data={messages}
-          renderItem={({item, index}) => (
+          renderItem={({ item, index }) => (
             <Message
               key={index}
               isLeft={item.user !== user.current}
@@ -86,7 +90,7 @@ const MessagesList = ({navigation, route}) => {
             placeholderTextColor={theme.colors.lightGray}
             style={styles.input}
             variant="standard"
-            onChangeText={() => setValue(value)}
+            onChangeText={value => setValue(value)}
             value={value}
             keyboardType="web-search"
             autoCapitalize="none"
@@ -121,3 +125,5 @@ MessagesList.propTypes = {
 };
 
 export default MessagesList;
+
+

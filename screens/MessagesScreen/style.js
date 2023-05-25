@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   leftArrow: {
-    left: 19,
+    left: 20,
     bottom: 20,
     zIndex: -1,
     borderTopWidth: 30 / 2.0,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   rightArrow: {
     bottom: 25,
-    right: 18,
+    right: 20,
     zIndex: -1,
     borderTopWidth: 40 / 2.0,
     borderRightWidth: 0,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: 'transparent',
     borderLeftColor: theme.colors.green,
-    transform: [{rotate: '180deg'}],
+    transform: [{ rotate: '180deg' }],
   },
   userContainer: {
     flexDirection: 'row',
