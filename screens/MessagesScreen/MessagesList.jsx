@@ -20,7 +20,7 @@ const MessagesList = ({navigation, route}) => {
   const {setMessages, messages} = useContext(GlobalDataContext);
   const [value, setValue] = useState('');
   const user = useRef(0);
-  const scrollWiew = useRef();
+  const scrollView = useRef();
   const {item} = route.params;
 
   const getMessage = () => {
@@ -61,9 +61,9 @@ const MessagesList = ({navigation, route}) => {
       </View>
       <ScrollView
         style={styles.messegesList}
-        ref={ref => (scrollWiew.current = ref)}
+        ref={ref => (scrollView.current = ref)}
         onContentSizeChange={() =>
-          scrollWiew.current.scrollToEnd({animated: true})
+          scrollView.current.scrollToEnd({animated: true})
         }>
         <FlatList
           data={messages}
