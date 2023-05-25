@@ -18,8 +18,8 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
   return (
     <Modal
       isVisible={isModalVisible}
-      coverScreen={true}
-      transparent={true}
+      coverScreen
+      transparent
       backdropColor={theme.colors.green}
       backdropOpacity={2}
       backdropTransitionInTiming={500}
