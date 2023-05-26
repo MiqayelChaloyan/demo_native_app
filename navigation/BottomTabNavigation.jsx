@@ -6,7 +6,7 @@ import MessagesIcon from '../assets/icons/Messages.svg';
 import SupportIcon from '../assets/icons/Support.svg';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
 import ProfileScreen from '../screens/ProfileScreen/profile/ProfileScreen';
-import SupportMessageScreen from "../screens/SupportMessageScreen/SupportMessageScreen";
+import SupportMessageScreen from '../screens/SupportMessageScreen/SupportMessageScreen';
 import PageNavigation from './PageNavigator';
 import {theme} from '../assets/theme/theme';
 
