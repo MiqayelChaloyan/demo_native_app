@@ -256,7 +256,6 @@ function GlobalData({children}) {
         setUsersList,
         radioButtonsData,
         setRadioButtonsData,
-        // navigation,
       }}>
       {typeof children === 'function' ? children() : children}
     </GlobalDataContext.Provider>
