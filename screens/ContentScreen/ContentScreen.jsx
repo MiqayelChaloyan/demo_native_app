@@ -62,7 +62,7 @@ const ContentScreen = ({navigation, route}) => {
           />
         </View>
       )}
-      <View style={styles.contentContainer}>
+      <View style={styles.outletContainer}>
         {keyboardStatus && (
           <View style={styles.headerTextContainer}>
             <Text style={styles.headerText}>Outlet</Text>
