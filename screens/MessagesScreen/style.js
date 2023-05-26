@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   leftArrow: {
-    left: 19,
+    left: 20,
     bottom: 20,
     zIndex: -1,
     borderTopWidth: 30 / 2.0,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   rightArrow: {
     bottom: 25,
-    right: 18,
+    right: 20,
     zIndex: -1,
     borderTopWidth: 40 / 2.0,
     borderRightWidth: 0,

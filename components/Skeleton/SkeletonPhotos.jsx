@@ -1,8 +1,9 @@
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { theme } from '../../assets/theme/theme';
 
 const SkeletonPhotos = () => {
   return (
-    <SkeletonPlaceholder borderRadius={4} speed={1500}>
+    <SkeletonPlaceholder borderRadius={4} speed={1500} backgroundColor={theme.colors.darkGray}>
       <SkeletonPlaceholder.Item alignItems="flex-start" marginBottom={15}>
         <SkeletonPlaceholder.Item width={335} height={340} borderRadius={8} />
         <SkeletonPlaceholder.Item

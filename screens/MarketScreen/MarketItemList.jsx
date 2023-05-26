@@ -37,7 +37,7 @@ const MarketItemList = ({data, navigation}) => {
 };
 
 MarketItemList.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.array,
 };
 
 export default MarketItemList;

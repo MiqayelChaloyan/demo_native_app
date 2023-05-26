@@ -1,8 +1,10 @@
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { theme } from '../../assets/theme/theme';
 
 const SkeletonPosts = () => {
   return (
-    <SkeletonPlaceholder borderRadius={4} speed={1500}>
+    <SkeletonPlaceholder borderRadius={4} speed={1500} backgroundColor={theme.colors.darkGray}
+    >
       <SkeletonPlaceholder.Item
         flexDirection="row"
         alignItems="flex-start"

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(100),
     paddingTop: verticalScale(15),
     paddingLeft: horizontalScale(16),
-    paddingBottom: verticalScale(15),
+    paddingBottom: verticalScale(14),
     backgroundColor: theme.colors.darkGray,
     fontSize: moderateScale(16),
     // TODO: This part needs to be updated.
