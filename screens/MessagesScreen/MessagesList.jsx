@@ -86,7 +86,7 @@ const MessagesList = ({navigation, route}) => {
             placeholderTextColor={theme.colors.lightGray}
             style={styles.input}
             variant="standard"
-            onChangeText={() => setValue(value)}
+            onChangeText={value => setValue(value)}
             value={value}
             keyboardType="web-search"
             autoCapitalize="none"

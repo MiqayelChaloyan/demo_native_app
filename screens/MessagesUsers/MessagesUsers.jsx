@@ -19,7 +19,7 @@ const MessagesUsers = ({navigation}) => {
   }, []);
 
   return (
-    <View>
+    <View style={styles.listUsersRoot}>
       <View style={styles.root}>
         <Search list={usersList} setState={setState} keyword="fullName" />
       </View>

@@ -4,7 +4,7 @@ import ContentScreen from '../screens/ContentScreen/ContentScreen';
 import FeedScreen from '../screens/FeedScreen/FeedScreen';
 import ItemDescriptionScreen from '../screens/ItemDescriptionScreen/ItemDescriptionScreen';
 import MarketScreen from '../screens/MarketScreen/MarketScreen';
-import UserOptions from '../screens/UserOptions/UserOptions';
+import UserOptions from '../screens/UserOptionsScreen/UserOptions';
 
 const Stack = createNativeStackNavigator();
 
