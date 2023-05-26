@@ -12,10 +12,14 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.background,
   },
   contentContainer: {
+    paddingHorizontal: horizontalScale(16),
+  },
+  outletContainer: {
     flex: 1,
     paddingHorizontal: horizontalScale(16),
   },
   swiperItemContainer: {
+    marginTop: verticalScale(16),
     width: horizontalScale(375),
   },
   itemInfoContainer: {
@@ -31,8 +35,6 @@ const styles = StyleSheet.create({
     bottom: verticalScale(0),
   },
   imageContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
     width: horizontalScale(343),
     height: verticalScale(240),
   },
@@ -62,7 +64,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: moderateScale(16),
     fontWeight: 500,
-    color: theme.colors.lightGray,
+    color: theme.colors.mediumLightGray,
     // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
@@ -71,7 +73,6 @@ const styles = StyleSheet.create({
     color: theme.colors.foreground,
     fontWeight: 400,
     marginVertical: verticalScale(8),
-    paddingHorizontal: horizontalScale(16),
     lineHeight: verticalScale(17),
     // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
