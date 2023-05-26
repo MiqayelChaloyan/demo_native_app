@@ -41,7 +41,9 @@ const Header = ({
             <Text
               style={[
                 styles.headerButtonText,
-                {color: headerTextColor || '#5DB075'},
+                {
+                  color: headerTextColor || '#5DB075',
+                },
               ]}>
               {right}
             </Text>

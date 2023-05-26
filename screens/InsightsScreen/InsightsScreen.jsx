@@ -1,38 +1,27 @@
-import React, {useContext} from 'react';
-import PropTypes from 'prop-types';
+import {useContext} from 'react';
 import {FlatList, Text, View} from 'react-native';
-import Header from '../../components/Header/Header';
-import {GlobalDataContext} from '../../Data/context';
-import ExpenseItem from './ExpenseItem';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
+import Header from '../../components/Header/Header';
+import ProgressCircle from '../../components/ProgressCircle/ProgressCircle';
+import {GlobalDataContext} from '../../Data/context';
 import styles from './style';
 
-const ExpensesScreen = ({navigation}) => {
+const InsightsScreen = ({navigation}) => {
   const {expensesData} = useContext(GlobalDataContext);
 
   return (
-    <View style={styles.expenses}>
+    <View style={styles.insights}>
       <View style={styles.container}>
         <Header
           // TODO: This part is will increase later.
-          screen={'Expenses'}
+          screen={'Insights'}
           navigation={navigation}
-          back={'Market'}
-          continueTo={'Insights'}
+          back={'Expenses'}
           left={'Back'}
-          right={'New'}
+          right={'Filter'}
         />
-        <View style={styles.barChartContainer}>
-          <View style={styles.itemsContainer}>
-            <FlatList
-              horizontal
-              data={expensesData}
-              keyExtractor={(item, index) => index.toString() + item.title}
-              renderItem={({item, index}) => {
-                return <ExpenseItem item={item} index={index} />;
-              }}
-            />
-          </View>
+        <View style={styles.progressCircle}>
+          <ProgressCircle />
         </View>
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Expenses</Text>
@@ -50,9 +39,4 @@ const ExpensesScreen = ({navigation}) => {
     </View>
   );
 };
-
-ExpensesScreen.propTypes = {
-  navigation: PropTypes.object,
-};
-
-export default ExpensesScreen;
+export default InsightsScreen;

@@ -95,7 +95,6 @@ const LogInScreen = ({navigation}) => {
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     value={values.password}
-                    keyboardType="password"
                     autoCapitalize="none"
                     autoCorrect={false}
                   />

@@ -77,42 +77,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: verticalScale(70),
   },
-  expenseItemOfList: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    height: verticalScale(35),
-    borderBottomWidth: moderateScale(1),
-    borderBottomColor: theme.colors.gray,
-    marginBottom: verticalScale(16),
-  },
-  leftSide: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  circle: {
-    borderRadius: verticalScale(8),
-    width: verticalScale(16),
-    height: horizontalScale(16),
-    backgroundColor: theme.colors.green,
-  },
-  titleContainer: {
-    marginLeft: horizontalScale(16),
-  },
-  itemTitle: {
-    fontSize: moderateScale(16),
-    fontWeight: 500,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.Medium,
-  },
-  priceText: {
-    fontSize: moderateScale(16),
-    fontWeight: 400,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.Regular,
-  },
 });
 
 export default styles;

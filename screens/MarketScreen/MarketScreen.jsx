@@ -31,21 +31,33 @@ const MarketScreen = ({navigation}) => {
           <View style={styles.hotDealsContainer}>
             <Text style={styles.hotDealsText}>Hot deals</Text>
             <TouchableOpacity style={styles.playButton}>
-              <VideoIcon width={30} height={30} fill={theme.colors.green} />
+              <VideoIcon
+                width={30}
+                height={30}
+                fill={theme.colors.foreground}
+              />
             </TouchableOpacity>
           </View>
           <MarketItemList data={state} navigation={navigation} />
           <View style={styles.hotDealsContainer}>
             <Text style={styles.hotDealsText}>Trending</Text>
             <TouchableOpacity style={styles.playButton}>
-              <VideoIcon width={30} height={30} fill={theme.colors.green} />
+              <VideoIcon
+                width={30}
+                height={30}
+                fill={theme.colors.foreground}
+              />
             </TouchableOpacity>
           </View>
           <MarketItemList data={state} navigation={navigation} />
           <View style={styles.hotDealsContainer}>
             <Text style={styles.hotDealsText}>Deals</Text>
             <TouchableOpacity style={styles.playButton}>
-              <VideoIcon width={30} height={30} fill={theme.colors.green} />
+              <VideoIcon
+                width={30}
+                height={30}
+                fill={theme.colors.foreground}
+              />
             </TouchableOpacity>
           </View>
           <MarketItemList data={state} navigation={navigation} />

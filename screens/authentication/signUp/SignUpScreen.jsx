@@ -131,7 +131,6 @@ const SignUpScreen = ({navigation}) => {
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     value={values.password}
-                    keyboardType="password"
                     autoCapitalize="none"
                     autoCorrect={false}
                   />

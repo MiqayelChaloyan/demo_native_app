@@ -4,6 +4,7 @@ import AuthNavigation from './AuthNavigation';
 import ExpensesScreen from '../screens/ExpensesScreen/ExpensesScreen';
 import MessagesList from '../screens/MessagesScreen/MessagesList';
 import BottomTabNavigation from './BottomTabNavigation';
+import InsightsScreen from '../screens/InsightsScreen/InsightsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ export default function StackNavigation() {
       <Stack.Screen name="Auth" component={AuthNavigation} />
       <Stack.Screen name="Expenses" component={ExpensesScreen} />
       <Stack.Screen name="Chat" component={MessagesList} />
+      <Stack.Screen name="Insights" component={InsightsScreen} />
     </Stack.Navigator>
   );
 }
