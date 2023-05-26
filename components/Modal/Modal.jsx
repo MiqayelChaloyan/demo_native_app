@@ -67,7 +67,12 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate({
+                  name: 'Feed',
+                })
+              }>
               <Text style={styles.text}>Don’t like the app? Let us know.</Text>
             </TouchableOpacity>
           </View>

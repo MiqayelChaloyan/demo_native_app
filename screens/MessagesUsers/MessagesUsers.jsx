@@ -1,15 +1,15 @@
-import { useEffect, useContext, useState } from 'react';
+import {useEffect, useContext, useState} from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, Text, View } from 'react-native';
-import { GlobalDataContext } from '../../Data/context';
+import {FlatList, Text, View} from 'react-native';
+import {GlobalDataContext} from '../../Data/context';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
 import User from './User';
 import styles from './style';
 import Search from '../../components/Search/Search';
 
-const MessagesUsers = ({ navigation }) => {
+const MessagesUsers = ({navigation}) => {
   const [loading, setLoading] = useState(true);
-  const { usersList } = useContext(GlobalDataContext);
+  const {usersList} = useContext(GlobalDataContext);
   const [state, setState] = useState(usersList);
 
   // TODO: This part is for a test and will be changed lately.
@@ -35,7 +35,7 @@ const MessagesUsers = ({ navigation }) => {
           }
           key={item => item.id}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => {
+          renderItem={({item}) => {
             return loading ? (
               <View style={styles.skeleton}>
                 <SkeletonMessagesList />

@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, View } from 'react-native';
+import {FlatList, View} from 'react-native';
 import MarketItem from './MarketItem';
 import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
 import styles from './style';
 
-const MarketItemList = ({ data, navigation }) => {
+const MarketItemList = ({data, navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
 
   //todo:This part of the code is temporary and should be removed
@@ -24,7 +24,7 @@ const MarketItemList = ({ data, navigation }) => {
         data={data}
         key={item => item.id}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => {
+        renderItem={({item}) => {
           return isLoading ? (
             <MarketSkeletonItem />
           ) : (
