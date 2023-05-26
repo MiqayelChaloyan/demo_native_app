@@ -57,22 +57,12 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
             adipisicing sunt.
           </Text>
           <View style={styles.button}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate({
-                  name: 'Options',
-                });
-              }}>
+            <TouchableOpacity onPress={() => navigation.navigate('Options')}>
               <Text style={styles.buttonText}>I love it!</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate({
-                  name: 'Feed',
-                })
-              }>
+            <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
               <Text style={styles.text}>Don’t like the app? Let us know.</Text>
             </TouchableOpacity>
           </View>
