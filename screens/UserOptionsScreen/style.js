@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     margin: 5,
   },
-  optionstext: {
+  optionsText: {
     color: theme.colors.lightGray,
     fontSize: moderateScale(16),
     // TODO: This part needs to be updated.
