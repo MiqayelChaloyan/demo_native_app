@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -9,17 +9,18 @@ import {
 const styles = StyleSheet.create({
   optionsContainer: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
     paddingHorizontal: horizontalScale(16),
   },
   starsContainer: {
     width: '100%',
+    marginBottom: verticalScale(290),
+
   },
   button: {
-    marginTop: verticalScale(245),
     width: horizontalScale(311),
     height: verticalScale(51),
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.primary_green,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: verticalScale(100),
@@ -32,9 +33,8 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   optionstext: {
-    color: theme.colors.lightGray,
+    color: theme.colors.cool_gray,
     fontSize: moderateScale(16),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Medium,
   },
   container: {
@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontSize: moderateScale(16),
-    color: theme.colors.primary,
-    // TODO: This part needs to be updated.
+    color: theme.colors.primary_white,
     ...theme.textVariants.SemiBold,
   },
   radioBoxContainer: {
@@ -59,12 +58,12 @@ const styles = StyleSheet.create({
     height: horizontalScale(12),
     width: horizontalScale(12),
     borderRadius: verticalScale(100),
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.primary_green,
   },
   line: {
     width: '100%',
     height: 1,
-    backgroundColor: theme.colors.lightGray,
+    backgroundColor: theme.colors.cool_gray,
     margin: verticalScale(9.2),
   },
 });

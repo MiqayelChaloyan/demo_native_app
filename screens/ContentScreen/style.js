@@ -1,15 +1,15 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   contentBox: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   contentContainer: {
     paddingHorizontal: horizontalScale(16),
@@ -55,34 +55,30 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: horizontalScale(8),
     fontSize: moderateScale(16),
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     fontWeight: 600,
     lineHeight: verticalScale(19),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
   itemTitle: {
     fontSize: moderateScale(16),
     fontWeight: 500,
-    color: theme.colors.mediumLightGray,
-    // TODO: This part needs to be updated.
+    color: theme.colors.dark_gray,
     ...theme.textVariants.Regular,
   },
   postMessage: {
     fontSize: moderateScale(14),
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     fontWeight: 400,
     marginVertical: verticalScale(8),
     lineHeight: verticalScale(17),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   dateStyle: {
     fontSize: moderateScale(14),
     lineHeight: verticalScale(17),
-    color: theme.colors.lightGray,
+    color: theme.colors.cool_gray,
     fontWeight: 400,
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   headerTextContainer: {
@@ -92,8 +88,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: moderateScale(24),
     fontWeight: 600,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
   itemListContainer: {
@@ -127,7 +122,7 @@ const styles = StyleSheet.create({
   warningText: {
     fontSize: moderateScale(14),
     fontWeight: 300,
-    color: theme.colors.mediumLightGray,
+    color: theme.colors.dark_gray,
     textAlign: 'center',
   },
 });

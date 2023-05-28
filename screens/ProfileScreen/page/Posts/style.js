@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   contentBlock: {
     width: horizontalScale(50),
@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     lineHeight: verticalScale(17),
     paddingTop: verticalScale(2),
-    color: theme.colors.lightGray,
-    // TODO: This part needs to be updated.
+    color: theme.colors.cool_gray,
     ...theme.textVariants.Regular,
   },
   feedTextContainer: {
@@ -48,16 +47,14 @@ const styles = StyleSheet.create({
   feedText: {
     fontSize: moderateScale(14),
     fontWeight: 400,
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     lineHeight: verticalScale(17),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   headerText: {
     fontSize: moderateScale(16),
     fontWeight: 600,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
 });

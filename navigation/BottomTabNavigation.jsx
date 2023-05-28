@@ -1,12 +1,12 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
 import ProfileScreen from '../screens/ProfileScreen/profile/ProfileScreen';
 import PageNavigation from './PageNavigator';
-import {theme} from '../assets/theme/theme';
+import { theme } from '../assets/theme/theme';
 
 const Tab = createBottomTabNavigator();
 export default function BottomTabNavigation() {
@@ -24,11 +24,11 @@ export default function BottomTabNavigation() {
         component={PageNavigation}
         options={{
           title: '',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <HomeIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={focused ? theme.colors.primary_green : theme.colors.cool_gray}
             />
           ),
         }}
@@ -38,11 +38,11 @@ export default function BottomTabNavigation() {
         component={MessagesUsers}
         options={{
           title: '',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <MessagesIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={focused ? theme.colors.primary_green : theme.colors.cool_gray}
             />
           ),
         }}
@@ -52,11 +52,11 @@ export default function BottomTabNavigation() {
         component={ProfileScreen}
         options={{
           title: '',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <ProfileIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={focused ? theme.colors.primary_green : theme.colors.cool_gray}
             />
           ),
         }}

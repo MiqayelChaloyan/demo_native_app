@@ -1,9 +1,9 @@
-import {useEffect} from 'react';
-import {useRef} from 'react';
-import {Animated, View, Text} from 'react-native';
-import Svg, {G, Circle} from 'react-native-svg';
-import {verticalScale} from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { Animated, View, Text } from 'react-native';
+import Svg, { G, Circle } from 'react-native-svg';
+import { verticalScale } from '../../assets/metrics/Metrics';
+import { theme } from '../../assets/theme/theme';
 import styles from './style';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
@@ -15,7 +15,7 @@ const ProgressCircle = () => {
   const amount = 32.01;
   const radius = verticalScale(108);
   const duration = 3000;
-  const color = theme.colors.green;
+  const color = theme.colors.primary_green;
   const inactiveColor = theme.colors.gray;
   const strokeWidth = 3;
   const halfCircle = radius + strokeWidth;

@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {View, TextInput} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { View, TextInput } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import styles from './style';
 
-const Search = ({list, setState, keyword}) => {
+const Search = ({ list, setState, keyword }) => {
   const [searchItemValue, setSearchItemValue] = useState('');
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Search = ({list, setState, keyword}) => {
       <TextInput
         name="search"
         placeholder="Search"
-        placeholderTextColor={theme.colors.lightGray}
+        placeholderTextColor={theme.colors.cool_gray}
         style={styles.input}
         variant="standard"
         onChangeText={value => setSearchItemValue(value)}

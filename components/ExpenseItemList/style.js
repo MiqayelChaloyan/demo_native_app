@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   expenseItemOfList: {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: verticalScale(8),
     width: verticalScale(16),
     height: horizontalScale(16),
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.primary_green,
   },
   titleContainer: {
     marginLeft: horizontalScale(16),
@@ -32,15 +32,13 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: moderateScale(16),
     fontWeight: 500,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.Medium,
   },
   priceText: {
     fontSize: moderateScale(16),
     fontWeight: 400,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.Regular,
   },
 });

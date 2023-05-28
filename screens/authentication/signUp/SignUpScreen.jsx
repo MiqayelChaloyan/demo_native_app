@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -11,14 +11,14 @@ import {
   Keyboard,
   Platform,
 } from 'react-native';
-import {Formik, useFormik} from 'formik';
-import {signUpValidationSchema} from './signUpValidationSchema';
+import { Formik, useFormik } from 'formik';
+import { signUpValidationSchema } from './signUpValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {theme} from '../../../assets/theme/theme';
+import { theme } from '../../../assets/theme/theme';
 import styles from './style';
 
-const SignUpScreen = ({navigation}) => {
+const SignUpScreen = ({ navigation }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
   const checkBoxText =
@@ -50,7 +50,7 @@ const SignUpScreen = ({navigation}) => {
   });
 
   const changeBackgroundColor = () =>
-    isChecked ? theme.colors.green : theme.colors.darkGray;
+    isChecked ? theme.colors.primary_green : theme.colors.light_gray;
 
   return (
     <KeyboardAvoidingView
@@ -65,7 +65,7 @@ const SignUpScreen = ({navigation}) => {
                   <CancelIcon
                     width={16}
                     height={16}
-                    fill={theme.colors.lightGray}
+                    fill={theme.colors.cool_gray}
                   />
                 </TouchableOpacity>
               </View>
@@ -85,7 +85,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   name="name"
                   placeholder="Name"
-                  placeholderTextColor={theme.colors.lightGray}
+                  placeholderTextColor={theme.colors.cool_gray}
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('name')}
@@ -104,7 +104,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   name="email"
                   placeholder="Email"
-                  placeholderTextColor={theme.colors.lightGray}
+                  placeholderTextColor={theme.colors.cool_gray}
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('email')}
@@ -125,12 +125,13 @@ const SignUpScreen = ({navigation}) => {
                     name="password"
                     secureTextEntry={hidePassword}
                     placeholder="Password"
-                    placeholderTextColor={theme.colors.lightGray}
+                    placeholderTextColor={theme.colors.cool_gray}
                     style={styles.input}
                     variant="standard"
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     value={values.password}
+                    keyboardType="password"
                     autoCapitalize="none"
                     autoCorrect={false}
                   />
@@ -158,7 +159,7 @@ const SignUpScreen = ({navigation}) => {
               isChecked={isChecked}
               iconStyle={[
                 styles.iconStyle,
-                {backgroundColor: changeBackgroundColor()},
+                { backgroundColor: changeBackgroundColor() },
               ]}
               innerIconStyle={styles.innerIconStyle}
               textStyle={styles.textStyle}

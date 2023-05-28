@@ -1,12 +1,12 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
-const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
+const CustomModal = ({ isModalVisible, setModalVisible, navigation }) => {
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
 
@@ -20,7 +20,7 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
       isVisible={isModalVisible}
       coverScreen
       transparent
-      backdropColor={theme.colors.green}
+      backdropColor={theme.colors.primary_green}
       backdropOpacity={2}
       backdropTransitionInTiming={500}
       backdropTransitionOutTiming={500}
@@ -33,15 +33,15 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
             <FlatList
               data={[1, 2, 3, 4, 5]}
               contentContainerStyle={styles.starsContainer}
-              renderItem={({item: starPlacedNumber}) => (
+              renderItem={({ item: starPlacedNumber }) => (
                 <TouchableOpacity
                   onPress={() => changeColorOfStars(starPlacedNumber)}>
                   <StarIcon
                     fill={
                       activeStarsColor &&
-                      starPlacedNumber <= numberOfStarsPlaced
+                        starPlacedNumber <= numberOfStarsPlaced
                         ? theme.colors.orange
-                        : theme.colors.lightGray
+                        : theme.colors.cool_gray
                     }
                   />
                 </TouchableOpacity>
@@ -62,7 +62,7 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
+            <TouchableOpacity onPress={() => setModalVisible(false)}>
               <Text style={styles.text}>Don’t like the app? Let us know.</Text>
             </TouchableOpacity>
           </View>

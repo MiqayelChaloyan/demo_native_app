@@ -1,20 +1,20 @@
-import {useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, FlatList, Keyboard} from 'react-native';
-import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import {GlobalDataContext} from '../../Data/context';
+import { View, Text, FlatList, Keyboard } from 'react-native';
+import { SwiperFlatList } from 'react-native-swiper-flatlist';
+import { GlobalDataContext } from '../../Data/context';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import ContentItemList from './ContentItemList';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 import styles from './style';
 
-const ContentScreen = ({navigation, route}) => {
-  const {feedData} = useContext(GlobalDataContext);
+const ContentScreen = ({ navigation, route }) => {
+  const { feedData } = useContext(GlobalDataContext);
   const [state, setState] = useState(feedData);
   const [keyboardStatus, setKeyboardStatus] = useState(true);
-  const {itemIndex} = route.params;
+  const { itemIndex } = route.params;
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -55,7 +55,7 @@ const ContentScreen = ({navigation, route}) => {
             paginationStyleItemInactive={styles.dotStyle}
             paginationStyleItemActive={[
               styles.dotStyle,
-              {backgroundColor: theme.colors.green},
+              { backgroundColor: theme.colors.primary_green },
             ]}
             data={feedData}
             renderItem={ChangeSwiperItem}
@@ -79,7 +79,7 @@ const ContentScreen = ({navigation, route}) => {
               </View>
             }
             keyExtractor={(_, index) => index.toString()}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <ContentItemList item={item} index={index} />
             )}
           />
