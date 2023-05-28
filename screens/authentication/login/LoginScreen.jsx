@@ -130,7 +130,7 @@ const LogInScreen = ({ navigation }) => {
               </TouchableOpacity>
               <View style={styles.navigateSignUp}>
                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                  <Text style={styles.forgotPassText}>Create acount</Text>
+                  <Text style={styles.forgotPassText}>Create account</Text>
                 </TouchableOpacity>
               </View>
             </View>
