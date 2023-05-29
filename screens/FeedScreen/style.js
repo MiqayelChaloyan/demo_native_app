@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -9,7 +9,7 @@ import {
 const styles = StyleSheet.create({
   feedScreen: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   feedScreenContainer: {
     paddingHorizontal: horizontalScale(16),
@@ -50,8 +50,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     fontWeight: 600,
     lineHeight: verticalScale(19),
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
   aboutContentDate: {
@@ -59,8 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     lineHeight: verticalScale(17),
     paddingTop: verticalScale(2),
-    color: theme.colors.lightGray,
-    // TODO: This part needs to be updated.
+    color: theme.colors.cool_gray,
     ...theme.textVariants.Regular,
   },
   feedTextContainer: {
@@ -69,9 +67,8 @@ const styles = StyleSheet.create({
   feedText: {
     fontSize: moderateScale(14),
     fontWeight: 400,
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     lineHeight: verticalScale(17),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   skeleton: {
@@ -84,7 +81,7 @@ const styles = StyleSheet.create({
   warningText: {
     fontSize: moderateScale(14),
     fontWeight: 300,
-    color: theme.colors.mediumLightGray,
+    color: theme.colors.dark_gray,
     textAlign: 'center',
   },
 });

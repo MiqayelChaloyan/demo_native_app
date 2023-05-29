@@ -8,7 +8,7 @@ import {
 
 const styles = StyleSheet.create({
   listUsersRoot: {
-    backgroundColor: theme.colors.background
+    backgroundColor: theme.colors.primary_white
   },
   root: {
     marginTop: verticalScale(20),
@@ -38,16 +38,15 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(15),
     fontWeight: 600,
     left: verticalScale(12),
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.Medium,
   },
   activeChat: {
     borderWidth: 3,
-    borderColor: theme.colors.green,
+    borderColor: theme.colors.primary_green,
     width: horizontalScale(12),
     height: horizontalScale(12),
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.primary_white,
     borderRadius: verticalScale(50),
     position: 'absolute',
     bottom: 1,
@@ -61,7 +60,6 @@ const styles = StyleSheet.create({
   messagesText: {
     fontSize: moderateScale(14),
     bottom: verticalScale(12),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   line: {
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     width: horizontalScale(290),
     height: horizontalScale(1),
     justifyContent: 'center',
-    backgroundColor: theme.colors.foreground,
+    backgroundColor: theme.colors.black,
     left: verticalScale(60),
     bottom: verticalScale(15),
   },
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
   warningText: {
     fontSize: moderateScale(14),
     fontWeight: 300,
-    color: theme.colors.mediumLightGray,
+    color: theme.colors.dark_gray,
     textAlign: 'center',
   },
 });

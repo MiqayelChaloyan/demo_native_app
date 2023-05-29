@@ -7,7 +7,7 @@ const size = Dimensions.get('window').width * 0.29;
 
 const MarketSkeletonItem = () => {
   return (
-    <SkeletonPlaceholder flexDirection="row" speed={1500} backgroundColor={theme.colors.darkGray}>
+    <SkeletonPlaceholder flexDirection="row" speed={1500} backgroundColor={theme.colors.light_gray}>
       <SkeletonPlaceholder.Item flexDirection="row">
         <SkeletonPlaceholder.Item flexDirection="column" marginRight={8}>
           <SkeletonPlaceholder.Item

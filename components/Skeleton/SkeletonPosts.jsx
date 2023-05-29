@@ -3,7 +3,7 @@ import { theme } from '../../assets/theme/theme';
 
 const SkeletonPosts = () => {
   return (
-    <SkeletonPlaceholder borderRadius={4} speed={1500} backgroundColor={theme.colors.darkGray}
+    <SkeletonPlaceholder borderRadius={4} speed={1500} backgroundColor={theme.colors.light_gray}
     >
       <SkeletonPlaceholder.Item
         flexDirection="row"

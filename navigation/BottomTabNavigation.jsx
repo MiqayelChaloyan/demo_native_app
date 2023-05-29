@@ -30,7 +30,9 @@ export default function BottomTabNavigation() {
             <HomeIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={
+                focused ? theme.colors.primary_green : theme.colors.cool_gray
+              }
             />
           ),
         }}
@@ -44,7 +46,9 @@ export default function BottomTabNavigation() {
             <MessagesIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={
+                focused ? theme.colors.primary_green : theme.colors.cool_gray
+              }
             />
           ),
         }}
@@ -58,7 +62,9 @@ export default function BottomTabNavigation() {
             <ProfileIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={
+                focused ? theme.colors.primary_green : theme.colors.cool_gray
+              }
             />
           ),
         }}

@@ -1,15 +1,15 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   itemDataBox: {
     paddingHorizontal: horizontalScale(16),
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(24),
     fontWeight: 500,
     lineHeight: verticalScale(29),
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     ...theme.textVariants.body,
   },
   descriptionContainer: {
@@ -49,14 +49,14 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     fontWeight: 600,
     lineHeight: verticalScale(19),
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     ...theme.textVariants.body,
   },
   text: {
     fontSize: moderateScale(16),
     fontWeight: 500,
     lineHeight: verticalScale(19),
-    color: theme.colors.mediumLightGray,
+    color: theme.colors.dark_gray,
     ...theme.textVariants.body,
   },
 });

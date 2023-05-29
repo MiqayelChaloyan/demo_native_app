@@ -1,15 +1,15 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   market: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   headerPartContainer: {
     paddingHorizontal: horizontalScale(16),
@@ -33,10 +33,9 @@ const styles = StyleSheet.create({
   hotDealsText: {
     fontSize: moderateScale(24),
     fontWeight: 500,
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     maxWidth: horizontalScale(250),
     verticalAlign: 'top',
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Medium,
   },
   itemsContainer: {
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
   itemImageContainer: {
     width: horizontalScale(110),
     height: horizontalScale(110),
-    backgroundColor: theme.colors.darkGray,
+    backgroundColor: theme.colors.light_gray,
     borderRadius: moderateScale(8),
     marginRight: horizontalScale(16),
   },
@@ -57,8 +56,7 @@ const styles = StyleSheet.create({
   itemNameText: {
     fontSize: moderateScale(14),
     fontWeight: 400,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.Regular,
   },
   itemPriceContainer: {
@@ -67,8 +65,7 @@ const styles = StyleSheet.create({
   itemPriceText: {
     fontSize: moderateScale(14),
     fontWeight: 600,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
   warning: {
@@ -78,7 +75,7 @@ const styles = StyleSheet.create({
   warningText: {
     fontSize: moderateScale(14),
     fontWeight: 300,
-    color: theme.colors.mediumLightGray,
+    color: theme.colors.dark_gray,
     textAlign: 'center',
   },
 });

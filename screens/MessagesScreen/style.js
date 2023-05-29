@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -19,14 +19,13 @@ const styles = StyleSheet.create({
     height: verticalScale(50),
     paddingEnd: horizontalScale(55),
     borderWidth: 0.5,
-    borderColor: theme.colors.lightGray,
+    borderColor: theme.colors.cool_gray,
     padding: verticalScale(10),
     borderRadius: 50,
     backgroundColor: theme.colors.gray,
     paddingHorizontal: verticalScale(15),
     paddingVertical: 7,
     fontSize: 15,
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   messegesList: {
@@ -61,23 +60,22 @@ const styles = StyleSheet.create({
     maxWidth: horizontalScale(235),
   },
   messageContainerisRight: {
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.primary_green,
     maxWidth: horizontalScale(250),
     alignSelf: 'flex-end',
     borderRadius: moderateScale(8),
     right: verticalScale(19),
   },
   messageisRight: {
-    color: theme.colors.primary,
+    color: theme.colors.primary_white,
   },
   messageIsLeft: {
-    color: theme.colors.foreground,
+    color: theme.colors.black,
   },
   message: {
     alignSelf: 'flex-start',
     fontSize: moderateScale(14),
     padding: verticalScale(16),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   messageContainerisLeft: {
@@ -122,8 +120,8 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: 'transparent',
-    borderLeftColor: theme.colors.green,
-    transform: [{rotate: '180deg'}],
+    borderLeftColor: theme.colors.primary_green,
+    transform: [{ rotate: '180deg' }],
   },
   userContainer: {
     flexDirection: 'row',
@@ -138,10 +136,10 @@ const styles = StyleSheet.create({
   },
   activeChat: {
     borderWidth: moderateScale(3),
-    borderColor: theme.colors.green,
+    borderColor: theme.colors.primary_green,
     width: horizontalScale(12),
     height: verticalScale(12),
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
     borderRadius: moderateScale(50),
     position: 'absolute',
     bottom: verticalScale(1),
@@ -150,10 +148,9 @@ const styles = StyleSheet.create({
   userFullName: {
     fontSize: moderateScale(15),
     left: verticalScale(5),
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     top: verticalScale(5),
     fontWeight: 600,
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
 });

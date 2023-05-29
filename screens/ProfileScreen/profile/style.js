@@ -1,5 +1,5 @@
-import {Dimensions, StyleSheet} from 'react-native';
-import {theme} from '../../../assets/theme/theme';
+import { Dimensions, StyleSheet } from 'react-native';
+import { theme } from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -12,14 +12,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   header: {
     width: '100%',
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.primary_green,
     height: verticalScale(230),
     paddingHorizontal: 16,
-    // marginBottom: verticalScale(55),
     zIndex: 1,
   },
   profileImage: {
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
     height: horizontalScale(158),
     borderRadius: 100,
     borderWidth: 2,
-    borderColor: theme.colors.primary,
+    borderColor: theme.colors.primary_white,
     left: verticalScale(3),
     bottom: verticalScale(-3),
   },
@@ -48,25 +47,22 @@ const styles = StyleSheet.create({
   section: {
     justifyContent: 'center',
     alignItems: 'center',
-    // bottom: verticalScale(4),
     paddingTop: 60,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   userFullName: {
     fontSize: moderateScale(30),
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     fontWeight: 600,
     textAlign: 'center',
-    // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
   userAbount: {
     marginTop: verticalScale(2),
     fontSize: moderateScale(16),
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     fontWeight: 600,
     textAlign: 'center',
-    // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
   switchContainer: {
@@ -75,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(19),
   },
   contentsBlockContainer: {
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
     width: windowWidth * 0.9,
     marginVertical: windowWidth * 0.03,
     marginHorizontal: windowWidth * 0.05,

@@ -1,4 +1,4 @@
-import React, {useContext, useRef, useState} from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
@@ -9,19 +9,19 @@ import {
   Text,
   Image,
 } from 'react-native';
-import {GlobalDataContext} from '../../Data/context';
+import { GlobalDataContext } from '../../Data/context';
 import Message from './Message';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
 import Header from '../../components/Header/Header';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 import styles from './style';
 
-const MessagesList = ({navigation, route}) => {
-  const {setMessages, messages} = useContext(GlobalDataContext);
+const MessagesList = ({ navigation, route }) => {
+  const { setMessages, messages } = useContext(GlobalDataContext);
   const [value, setValue] = useState('');
   const user = useRef(0);
   const scrollView = useRef();
-  const {item} = route.params;
+  const { item } = route.params;
 
   const getMessage = () => {
     if (value.trim() !== '') {
@@ -53,7 +53,7 @@ const MessagesList = ({navigation, route}) => {
           style={styles.userImageProfile}
           source={
             item.imageUrl
-              ? {uri: item.imageUrl}
+              ? { uri: item.imageUrl }
               : require('../../assets/images/Profile.png')
           }
         />
@@ -64,11 +64,11 @@ const MessagesList = ({navigation, route}) => {
         style={styles.messegesList}
         ref={ref => (scrollView.current = ref)}
         onContentSizeChange={() =>
-          scrollView.current.scrollToEnd({animated: true})
+          scrollView.current.scrollToEnd({ animated: true })
         }>
         <FlatList
           data={messages}
-          renderItem={({item, index}) => (
+          renderItem={({ item, index }) => (
             <Message
               key={index}
               isLeft={item.user !== user.current}
@@ -83,7 +83,7 @@ const MessagesList = ({navigation, route}) => {
           <TextInput
             name="messages"
             placeholder="Message here..."
-            placeholderTextColor={theme.colors.lightGray}
+            placeholderTextColor={theme.colors.cool_gray}
             style={styles.input}
             variant="standard"
             onChangeText={value => setValue(value)}
@@ -103,10 +103,10 @@ const MessagesList = ({navigation, route}) => {
                   backgroundColor:
                     value.trim() !== ''
                       ? theme.colors.green
-                      : theme.colors.lightGray,
+                      : theme.colors.cool_gray,
                 },
               ]}>
-              <ArrowIcon width={16} height={25} fill={theme.colors.primary} />
+              <ArrowIcon width={16} height={25} fill={theme.colors.primary_white} />
             </View>
           </TouchableOpacity>
         </View>

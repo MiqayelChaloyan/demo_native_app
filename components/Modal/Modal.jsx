@@ -20,7 +20,7 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
       isVisible={isModalVisible}
       coverScreen
       transparent
-      backdropColor={theme.colors.green}
+      backdropColor={theme.colors.primary_green}
       backdropOpacity={2}
       backdropTransitionInTiming={500}
       backdropTransitionOutTiming={500}
@@ -41,7 +41,7 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
                       activeStarsColor &&
                       starPlacedNumber <= numberOfStarsPlaced
                         ? theme.colors.orange
-                        : theme.colors.lightGray
+                        : theme.colors.cool_gray
                     }
                   />
                 </TouchableOpacity>
@@ -62,7 +62,7 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
+            <TouchableOpacity onPress={() => setModalVisible(false)}>
               <Text style={styles.text}>Don’t like the app? Let us know.</Text>
             </TouchableOpacity>
           </View>

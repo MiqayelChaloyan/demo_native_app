@@ -50,7 +50,7 @@ const SignUpScreen = ({navigation}) => {
   });
 
   const changeBackgroundColor = () =>
-    isChecked ? theme.colors.green : theme.colors.darkGray;
+    isChecked ? theme.colors.primary_green : theme.colors.light_gray;
 
   return (
     <KeyboardAvoidingView
@@ -65,7 +65,7 @@ const SignUpScreen = ({navigation}) => {
                   <CancelIcon
                     width={16}
                     height={16}
-                    fill={theme.colors.lightGray}
+                    fill={theme.colors.cool_gray}
                   />
                 </TouchableOpacity>
               </View>
@@ -85,7 +85,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   name="name"
                   placeholder="Name"
-                  placeholderTextColor={theme.colors.lightGray}
+                  placeholderTextColor={theme.colors.cool_gray}
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('name')}
@@ -104,7 +104,7 @@ const SignUpScreen = ({navigation}) => {
                 <TextInput
                   name="email"
                   placeholder="Email"
-                  placeholderTextColor={theme.colors.lightGray}
+                  placeholderTextColor={theme.colors.cool_gray}
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('email')}
@@ -125,7 +125,7 @@ const SignUpScreen = ({navigation}) => {
                     name="password"
                     secureTextEntry={hidePassword}
                     placeholder="Password"
-                    placeholderTextColor={theme.colors.lightGray}
+                    placeholderTextColor={theme.colors.cool_gray}
                     style={styles.input}
                     variant="standard"
                     onChangeText={handleChange('password')}
