@@ -4,7 +4,7 @@ import {FlatList, Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import {GlobalDataContext} from '../../Data/context';
 import ExpenseItem from './ExpenseItem';
-import ExpenseItemList from './ExpenseItemList';
+import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import styles from './style';
 
 const ExpensesScreen = ({navigation}) => {
@@ -18,7 +18,7 @@ const ExpensesScreen = ({navigation}) => {
           screen={'Expenses'}
           navigation={navigation}
           back={'Market'}
-          continueTo={'Market'}
+          continueTo={'Insights'}
           left={'Back'}
           right={'New'}
         />

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -11,13 +11,13 @@ import {
   Keyboard,
   Platform,
 } from 'react-native';
-import {Formik, useFormik} from 'formik';
-import {loginValidationSchema} from './loginValidationSchema';
+import { Formik, useFormik } from 'formik';
+import { loginValidationSchema } from './loginValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
-import {theme} from '../../../assets/theme/theme';
+import { theme } from '../../../assets/theme/theme';
 import styles from './style';
 
-const LogInScreen = ({navigation}) => {
+const LogInScreen = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
 
   const {
@@ -53,7 +53,7 @@ const LogInScreen = ({navigation}) => {
                   <CancelIcon
                     width={16}
                     height={16}
-                    fill={theme.colors.lightGray}
+                    fill={theme.colors.cool_gray}
                   />
                 </TouchableOpacity>
               </View>
@@ -68,7 +68,7 @@ const LogInScreen = ({navigation}) => {
                 <TextInput
                   name="email"
                   placeholder="Email"
-                  placeholderTextColor={theme.colors.lightGray}
+                  placeholderTextColor={theme.colors.cool_gray}
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('email')}
@@ -89,7 +89,7 @@ const LogInScreen = ({navigation}) => {
                     name="password"
                     secureTextEntry={hidePassword}
                     placeholder="Password"
-                    placeholderTextColor={theme.colors.lightGray}
+                    placeholderTextColor={theme.colors.cool_gray}
                     style={styles.input}
                     variant="standard"
                     onChangeText={handleChange('password')}
@@ -130,7 +130,7 @@ const LogInScreen = ({navigation}) => {
               </TouchableOpacity>
               <View style={styles.navigateSignUp}>
                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                  <Text style={styles.forgotPassText}>Create acount</Text>
+                  <Text style={styles.forgotPassText}>Create account</Text>
                 </TouchableOpacity>
               </View>
             </View>

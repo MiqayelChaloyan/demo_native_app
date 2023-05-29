@@ -1,13 +1,13 @@
-import {useState, useContext} from 'react';
+import { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, TouchableOpacity, FlatList} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import Header from '../../components/Header/Header';
-import {GlobalDataContext} from '../../Data/context';
+import { GlobalDataContext } from '../../Data/context';
 import styles from './style';
 
-const UserOptions = ({navigation}) => {
-  const {radioButtonsData} = useContext(GlobalDataContext);
+const UserOptionsScreen = ({ navigation }) => {
+  const { radioButtonsData } = useContext(GlobalDataContext);
   const [activated, setActivated] = useState(false);
 
   return (
@@ -18,13 +18,13 @@ const UserOptions = ({navigation}) => {
         back={'Feed'}
         continueTo={'Expenses'}
         left={'Back'}
-        right={'Filter'}
+        right={'Next'}
       />
       <View style={styles.container}>
         <FlatList
           data={radioButtonsData}
           contentContainerStyle={styles.starsContainer}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <>
               <View style={styles.options}>
                 <Text style={styles.optionsText}>{item.label}</Text>
@@ -37,8 +37,8 @@ const UserOptions = ({navigation}) => {
                     style={[
                       {
                         borderColor: item.selected
-                          ? theme.colors.green
-                          : theme.colors.lightGray,
+                          ? theme.colors.primary_green
+                          : theme.colors.cool_gray,
                       },
                       styles.radioBoxContainer,
                     ]}>
@@ -61,8 +61,8 @@ const UserOptions = ({navigation}) => {
   );
 };
 
-UserOptions.propTypes = {
+UserOptionsScreen.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default UserOptions;
+export default UserOptionsScreen;

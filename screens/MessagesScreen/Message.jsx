@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 import styles from './style';
 
-const Message = ({isLeft, message}) => {
+const Message = ({ isLeft, message }) => {
   return (
     <View style={styles.container}>
       <View

@@ -19,9 +19,8 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(15),
     paddingLeft: horizontalScale(16),
     paddingBottom: verticalScale(14),
-    backgroundColor: theme.colors.darkGray,
+    backgroundColor: theme.colors.light_gray,
     fontSize: moderateScale(16),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Medium,
   },
 });

@@ -1,4 +1,4 @@
-import {PermissionsAndroid} from 'react-native';
+import {Alert, PermissionsAndroid} from 'react-native';
 
 const requestCameraPermission = async func => {
   try {
@@ -16,12 +16,12 @@ const requestCameraPermission = async func => {
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
       func();
-      console.log('You can use the camera');
+      Alert.alert('You can use the camera');
     } else {
-      console.log('Camera permission denied');
+      Alert.alert('Camera permission denied');
     }
   } catch (err) {
-    console.warn(err);
+    Alert.alert(err);
   }
 };
 

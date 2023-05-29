@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -18,17 +18,15 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(30),
     fontWeight: 600,
     textAlign: 'center',
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     lineHeight: moderateScale(36.31),
     maxWidth: horizontalScale(260),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
   headerButtonText: {
     fontSize: moderateScale(16),
     fontWeight: 500,
     lineHeight: verticalScale(19.36),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Medium,
   },
 });

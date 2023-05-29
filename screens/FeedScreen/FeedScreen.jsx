@@ -17,7 +17,7 @@ const FeedScreen = ({navigation}) => {
   // TODO: This part is for a test and will be changed lately.
   const [isModalVisible, setModalVisible] = useState(false);
   useEffect(() => {
-    const timer = setTimeout(() => setModalVisible(true), 250);
+    const timer = setTimeout(() => setModalVisible(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 

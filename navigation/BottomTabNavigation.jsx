@@ -3,8 +3,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
+import SupportIcon from '../assets/icons/Support.svg';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
 import ProfileScreen from '../screens/ProfileScreen/profile/ProfileScreen';
+import SupportMessageScreen from '../screens/SupportMessageScreen/SupportMessageScreen';
 import PageNavigation from './PageNavigator';
 import {theme} from '../assets/theme/theme';
 
@@ -28,7 +30,9 @@ export default function BottomTabNavigation() {
             <HomeIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={
+                focused ? theme.colors.primary_green : theme.colors.cool_gray
+              }
             />
           ),
         }}
@@ -42,7 +46,9 @@ export default function BottomTabNavigation() {
             <MessagesIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={
+                focused ? theme.colors.primary_green : theme.colors.cool_gray
+              }
             />
           ),
         }}
@@ -54,6 +60,22 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({focused}) => (
             <ProfileIcon
+              width={25}
+              height={35}
+              fill={
+                focused ? theme.colors.primary_green : theme.colors.cool_gray
+              }
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Support"
+        component={SupportMessageScreen}
+        options={{
+          title: '',
+          tabBarIcon: ({focused}) => (
+            <SupportIcon
               width={25}
               height={35}
               fill={focused ? theme.colors.green : theme.colors.lightGray}

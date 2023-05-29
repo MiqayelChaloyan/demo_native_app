@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     height: horizontalScale(427),
     width: horizontalScale(343),
     paddingTop: verticalScale(10),
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.primary_white,
     borderRadius: verticalScale(10),
   },
   apperaciative: {
@@ -32,9 +32,8 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(30),
     textAlign: 'center',
     fontWeight: 600,
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     marginTop: verticalScale(32),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
   content: {
@@ -42,17 +41,16 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     marginHorizontal: verticalScale(16),
     fontWeight: 500,
-    color: theme.colors.mediumLightGray,
+    color: theme.colors.dark_gray,
     textAlign: 'center',
     marginTop: verticalScale(16),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Medium,
   },
   button: {
     marginTop: verticalScale(45),
     width: horizontalScale(311),
     height: verticalScale(51),
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.primary_green,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: verticalScale(100),
@@ -61,17 +59,15 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontSize: moderateScale(16),
-    color: theme.colors.primary,
-    // TODO: This part needs to be updated.
+    color: theme.colors.primary_white,
     ...theme.textVariants.SemiBold,
   },
   text: {
     textAlign: 'center',
-    color: theme.colors.green,
+    color: theme.colors.primary_green,
     fontSize: moderateScale(14),
     marginTop: verticalScale(16),
     fontWeight: 600,
-    // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
 });

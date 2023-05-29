@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -9,7 +9,7 @@ import {
 const styles = StyleSheet.create({
   signUpRoot: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
     paddingHorizontal: 16,
   },
   headerContainer: {
@@ -33,11 +33,10 @@ const styles = StyleSheet.create({
   signUp: {
     fontSize: moderateScale(30),
     fontWeight: 600,
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     textAlign: 'center',
     lineHeight: verticalScale(36.31),
     left: verticalScale(10),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
   passwordBox: {
@@ -48,18 +47,16 @@ const styles = StyleSheet.create({
   },
   login: {
     fontSize: moderateScale(16),
-    color: theme.colors.green,
+    color: theme.colors.primary_green,
     lineHeight: verticalScale(36.31),
     fontWeight: 500,
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Medium,
   },
   hidePassword: {
     fontSize: verticalScale(16),
-    color: theme.colors.green,
+    color: theme.colors.primary_green,
     fontWeight: 500,
     left: verticalScale(15),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Medium,
   },
   checkBox: {
@@ -95,10 +92,9 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.gray,
     padding: verticalScale(10),
     borderRadius: moderateScale(8),
-    backgroundColor: theme.colors.darkGray,
+    backgroundColor: theme.colors.light_gray,
     paddingVertical: horizontalScale(7),
     fontSize: moderateScale(15),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Medium,
   },
   inputError: {
@@ -106,14 +102,13 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(11),
     marginTop: verticalScale(7),
     marginBottom: verticalScale(-10),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   button: {
     marginTop: verticalScale(43),
     width: horizontalScale(343),
     height: verticalScale(51),
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.primary_green,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: verticalScale(100),
@@ -121,7 +116,7 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontSize: moderateScale(16),
-    color: theme.colors.primary,
+    color: theme.colors.primary_white,
     fontWeight: 600,
     lineHeight: 19.36,
   },
@@ -143,16 +138,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: moderateScale(4),
     borderColor: theme.colors.gray,
-    color: theme.colors.foreground,
+    color: theme.colors.black,
   },
   textStyle: {
     fontFamily: 'JosefinSans-Regular',
     textDecorationLine: 'none',
     top: verticalScale(7),
-    color: theme.colors.mediumLightGray,
+    color: theme.colors.dark_gray,
     fontWeight: 400,
     fontSize: moderateScale(14),
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
 });

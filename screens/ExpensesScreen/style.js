@@ -1,15 +1,15 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   expenses: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   container: {
     flex: 1,
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   progressContainer: {
     height: verticalScale(159),
     width: horizontalScale(16),
-    backgroundColor: theme.colors.darkGray,
+    backgroundColor: theme.colors.light_gray,
     borderRadius: moderateScale(8),
     justifyContent: 'flex-end',
   },
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     top: verticalScale(8),
     right: horizontalScale(8),
     height: verticalScale(12),
-    transform: [{rotate: '315deg'}],
+    transform: [{ rotate: '315deg' }],
     alignItems: 'center',
     width: verticalScale(28),
   },
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: moderateScale(10),
     fontWeight: 400,
-    // TODO: This part needs to be updated.
     ...theme.textVariants.Regular,
   },
   headerTextContainer: {
@@ -68,50 +67,13 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: moderateScale(24),
     fontWeight: 500,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
+    color: theme.colors.black,
     ...theme.textVariants.Medium,
   },
   itemListContainer: {
     flex: 1,
     width: '100%',
     marginBottom: verticalScale(70),
-  },
-  expenseItemOfList: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    height: verticalScale(35),
-    borderBottomWidth: moderateScale(1),
-    borderBottomColor: theme.colors.gray,
-    marginBottom: verticalScale(16),
-  },
-  leftSide: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  circle: {
-    borderRadius: verticalScale(8),
-    width: verticalScale(16),
-    height: horizontalScale(16),
-    backgroundColor: theme.colors.green,
-  },
-  titleContainer: {
-    marginLeft: horizontalScale(16),
-  },
-  itemTitle: {
-    fontSize: moderateScale(16),
-    fontWeight: 500,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.Medium,
-  },
-  priceText: {
-    fontSize: moderateScale(16),
-    fontWeight: 400,
-    color: theme.colors.foreground,
-    // TODO: This part needs to be updated.
-    ...theme.textVariants.Regular,
   },
 });
 
