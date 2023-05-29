@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -11,14 +11,14 @@ import {
   Keyboard,
   Platform,
 } from 'react-native';
-import { Formik, useFormik } from 'formik';
-import { signUpValidationSchema } from './signUpValidationSchema';
+import {Formik, useFormik} from 'formik';
+import {signUpValidationSchema} from './signUpValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { theme } from '../../../assets/theme/theme';
+import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
-const SignUpScreen = ({ navigation }) => {
+const SignUpScreen = ({navigation}) => {
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
   const checkBoxText =
@@ -159,7 +159,7 @@ const SignUpScreen = ({ navigation }) => {
               isChecked={isChecked}
               iconStyle={[
                 styles.iconStyle,
-                { backgroundColor: changeBackgroundColor() },
+                {backgroundColor: changeBackgroundColor()},
               ]}
               innerIconStyle={styles.innerIconStyle}
               textStyle={styles.textStyle}

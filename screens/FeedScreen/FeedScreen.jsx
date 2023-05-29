@@ -1,17 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
+import {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, Text, View } from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import FeedItem from './FeedItem';
-import { GlobalDataContext } from '../../Data/context';
+import {GlobalDataContext} from '../../Data/context';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import CustomModal from '../../components/Modal/Modal';
 import styles from './style';
 
-const FeedScreen = ({ navigation }) => {
+const FeedScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
-  const { feedData } = useContext(GlobalDataContext);
+  const {feedData} = useContext(GlobalDataContext);
   const [state, setState] = useState(feedData);
 
   // TODO: This part is for a test and will be changed lately.
@@ -52,7 +52,7 @@ const FeedScreen = ({ navigation }) => {
               }
               key={item => item.id}
               keyExtractor={item => item.id}
-              renderItem={({ item, index }) => {
+              renderItem={({item, index}) => {
                 return loading ? (
                   <View style={styles.skeleton}>
                     <SkeletonPosts />
