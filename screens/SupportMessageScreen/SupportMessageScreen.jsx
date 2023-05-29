@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TextInput, TouchableOpacity, View, Alert} from 'react-native';
 import Header from '../../components/Header/Header';
-import styles from './style';
 import Share from 'react-native-share';
+import styles from './style';
 
 const SupportMessageScreen = ({navigation}) => {
   const [text, setText] = useState('');

@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modal: {
-    height: horizontalScale(427),
+    height: horizontalScale(457),
     width: horizontalScale(343),
     paddingTop: verticalScale(10),
     backgroundColor: theme.colors.primary_white,

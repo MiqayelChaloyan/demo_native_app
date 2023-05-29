@@ -78,7 +78,9 @@ export default function BottomTabNavigation() {
             <SupportIcon
               width={25}
               height={35}
-              fill={focused ? theme.colors.green : theme.colors.lightGray}
+              fill={
+                focused ? theme.colors.primary_green : theme.colors.cool_gray
+              }
             />
           ),
         }}

@@ -16,7 +16,7 @@ module.exports = (async () => {
     },
     resolver: {
       assetExts: assetExts.filter(ext => ext !== 'svg'),
-      sourceExts: [...sourceExts, 'jsx', 'js', 'ts', 'tsx', 'cjs', 'svg'],
+      sourceExts: [...sourceExts, 'jsx', 'js', 'svg'],
     },
   };
 })();
