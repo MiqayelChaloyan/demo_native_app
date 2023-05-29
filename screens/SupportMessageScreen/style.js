@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: horizontalScale(16),
   },
   button: {
-    height: verticalScale(51),
     backgroundColor: theme.colors.green,
     alignItems: 'center',
     justifyContent: 'center',
@@ -39,6 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: verticalScale(100),
   },
   buttonText: {
+    paddingVertical: verticalScale(16),
     textAlign: 'center',
     fontSize: moderateScale(16),
     color: theme.colors.primary,
