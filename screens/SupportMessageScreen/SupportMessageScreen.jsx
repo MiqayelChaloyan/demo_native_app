@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Text, TextInput, TouchableOpacity, View, Alert} from 'react-native';
 import Header from '../../components/Header/Header';
 import styles from './style';
 import Share from 'react-native-share';
@@ -13,21 +13,22 @@ const SupportMessageScreen = ({navigation}) => {
       message: text,
       title: 'Testing the new app',
       email: 'cs-reply@amazon.com',
-      subject: 'This is an example share.',
-      recipient: '+37496403050',
     };
 
     try {
       const result = await Share.open(options);
       if (result.action === Share.sharedAction) {
-        console.log('Share was successful');
+        Alert.alert('Share was successful');
       } else if (result.action === Share.dismissedAction) {
-        console.log('Share was dismissed');
+        Alert.alert('Share was dismissed');
       } else if (result.action === Share.failedAction) {
-        console.log('Share failed');
+        Alert.alert('Share failed');
       }
     } catch (err) {
-      console.log(err.message);
+      if (err.message === 'User did not share') {
+      } else {
+        Alert.alert(err.message);
+      }
     }
   };
   return (
