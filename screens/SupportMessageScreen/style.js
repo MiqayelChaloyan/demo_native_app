@@ -9,7 +9,7 @@ import {theme} from '../../assets/theme/theme';
 const styles = StyleSheet.create({
   supportScreenContainer: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.primary_white,
   },
   supportScreen: {
     flex: 1,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     maxWidth: horizontalScale(343),
     fontSize: moderateScale(16),
     lineHeight: verticalScale(25),
-    color: theme.colors.foreground,
+    color: theme.colors.black,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: horizontalScale(16),
   },
   button: {
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.primary_green,
     alignItems: 'center',
     justifyContent: 'center',
     bottom: 16,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(16),
     textAlign: 'center',
     fontSize: moderateScale(16),
-    color: theme.colors.primary,
+    color: theme.colors.primary_white,
     // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
