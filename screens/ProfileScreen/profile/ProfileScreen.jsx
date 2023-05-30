@@ -59,7 +59,7 @@ const Profile = ({navigation}) => {
     } else if (isAnswer === 'STORAGE') {
       navigation.navigate('Images');
     }
-    return () => setAnswer(null);
+    return () => setAnswer('');
   }, [isAnswer]);
 
   return (
