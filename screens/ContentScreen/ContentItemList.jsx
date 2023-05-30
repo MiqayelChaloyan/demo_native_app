@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { Text, TouchableOpacity, View } from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import BuyIcon from '../../assets/icons/Buy.svg';
-import { useNavigation } from '@react-navigation/native';
-import { theme } from '../../assets/theme/theme';
+import {useNavigation} from '@react-navigation/native';
+import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
-const ContentItemList = ({ item, index }) => {
+const ContentItemList = ({item, index}) => {
   const navigation = useNavigation();
   let backgroundColorStyle =
     index % 2 === 1 ? theme.colors.light_gray : theme.colors.cool_gray;
@@ -14,7 +14,7 @@ const ContentItemList = ({ item, index }) => {
     <View style={styles.contentItemOfList}>
       <View style={styles.leftSide}>
         <View
-          style={[styles.circle, { backgroundColor: backgroundColorStyle }]}
+          style={[styles.circle, {backgroundColor: backgroundColorStyle}]}
         />
 
         <View style={styles.titleContainer}>
@@ -26,7 +26,7 @@ const ContentItemList = ({ item, index }) => {
         onPress={() => {
           navigation.navigate({
             name: 'Feed',
-            params: { index },
+            params: {index},
             merge: true,
           });
         }}>

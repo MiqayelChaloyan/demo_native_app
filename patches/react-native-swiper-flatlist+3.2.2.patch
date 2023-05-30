@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-swiper-flatlist/src/components/SwiperFlatList/SwiperFlatList.tsx b/node_modules/react-native-swiper-flatlist/src/components/SwiperFlatList/SwiperFlatList.tsx
+index e9c712c..81798f1 100644
+--- a/node_modules/react-native-swiper-flatlist/src/components/SwiperFlatList/SwiperFlatList.tsx
++++ b/node_modules/react-native-swiper-flatlist/src/components/SwiperFlatList/SwiperFlatList.tsx
+@@ -264,7 +264,7 @@ export const SwiperFlatList = React.forwardRef(
+ 
+     if (useReactNativeGestureHandler) {
+       try {
+-        FlatList = require('react-native-gesture-handler').FlatList;
++        FlatList = require('react-native').FlatList;
+       } catch (error) {
+         console.warn(
+           "react-native-gesture-handler isn't installed, please install it or remove `useReactNativeGestureHandler`",

@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: moderateScale(16),
     color: theme.colors.primary_white,
-    // TODO: This part needs to be updated.
     ...theme.textVariants.SemiBold,
   },
 });
