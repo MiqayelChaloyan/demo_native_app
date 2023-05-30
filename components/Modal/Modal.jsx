@@ -6,12 +6,7 @@ import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
-const CustomModal = ({
-  isModalVisible,
-  setModalVisible,
-  // setShowAgain,
-  navigation,
-}) => {
+const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
 
@@ -71,11 +66,6 @@ const CustomModal = ({
               <Text style={styles.text}>Don’t like the app? Let us know.</Text>
             </TouchableOpacity>
           </View>
-          {/* <View>
-            <TouchableOpacity onPress={() => setModalVisible(false)}>
-              <Text style={styles.text}>Not Now</Text>
-            </TouchableOpacity>
-          </View> */}
         </View>
       </View>
     </Modal>
@@ -85,7 +75,6 @@ const CustomModal = ({
 CustomModal.propTypes = {
   navigation: PropTypes.object,
   isModalVisible: PropTypes.bool,
-  setShowAgain: PropTypes.func,
   setModalVisible: PropTypes.func,
 };
 
