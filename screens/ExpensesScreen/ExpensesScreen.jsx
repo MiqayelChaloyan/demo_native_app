@@ -17,7 +17,7 @@ const ExpensesScreen = ({navigation}) => {
           // TODO: This part is will increase later.
           screen={'Expenses'}
           navigation={navigation}
-          back={'Market'}
+          back={'Images'}
           continueTo={'Insights'}
           left={'Back'}
           right={'New'}

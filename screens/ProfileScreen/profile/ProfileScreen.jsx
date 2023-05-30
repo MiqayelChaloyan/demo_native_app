@@ -1,24 +1,27 @@
-import { useContext, useState, useEffect } from 'react';
+import {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
+import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
-import { GlobalDataContext } from '../../../Data/context';
+import {GlobalDataContext} from '../../../Data/context';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils.android';
-import { launchImageLibrary } from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 import SkeletonPosts from '../../../components/Skeleton/SkeletonPosts';
 import SkeletonPhotos from '../../../components/Skeleton/SkeletonPhotos';
 import Posts from '../page/Posts/Posts';
 import Photos from '../page/Photos/Photos';
 import Header from '../../../components/Header/Header';
-import { theme } from '../../../assets/theme/theme';
+import {theme} from '../../../assets/theme/theme';
 import styles from './style';
+import PermissionModal from '../../../components/Permission/Modal';
 
-const Profile = ({ navigation }) => {
+const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
-  const { feedData } = useContext(GlobalDataContext);
+  const {feedData} = useContext(GlobalDataContext);
   const [loading, setLoading] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isAnswer, setAnswer] = useState(null);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -49,6 +52,16 @@ const Profile = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    setModalVisible(false);
+    if (isAnswer === 'PHONE') {
+      accessCamera();
+    } else if (isAnswer === 'STORAGE') {
+      navigation.navigate('Images');
+    }
+    return () => setAnswer(null);
+  }, [isAnswer]);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -66,7 +79,7 @@ const Profile = ({ navigation }) => {
           <View>
             {imageUrl ? (
               <View>
-                <Image style={styles.userImage} source={{ uri: imageUrl }} />
+                <Image style={styles.userImage} source={{uri: imageUrl}} />
               </View>
             ) : (
               <View>
@@ -76,9 +89,13 @@ const Profile = ({ navigation }) => {
                 />
               </View>
             )}
-            <TouchableOpacity onPress={accessCamera}>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <View style={styles.addProfileImage}>
-                <AddIcon width={40} height={40} fill={theme.colors.primary_green} />
+                <AddIcon
+                  width={40}
+                  height={40}
+                  fill={theme.colors.primary_green}
+                />
               </View>
             </TouchableOpacity>
           </View>
@@ -105,8 +122,8 @@ const Profile = ({ navigation }) => {
             valuePadding={2}
             hasPadding
             options={[
-              { label: 'Posts', value: false },
-              { label: 'Photos', value: true },
+              {label: 'Posts', value: false},
+              {label: 'Photos', value: true},
             ]}
           />
         </View>
@@ -116,7 +133,12 @@ const Profile = ({ navigation }) => {
         key={item => item.id}
         style={styles.contentsBlockContainer}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => renderSwitchValue(item)}
+        renderItem={({item}) => renderSwitchValue(item)}
+      />
+      <PermissionModal
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+        setAnswer={setAnswer}
       />
     </View>
   );
