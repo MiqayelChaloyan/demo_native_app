@@ -1,4 +1,4 @@
-import { Medium, Regular, SemiBold } from '../../constants/font';
+import {Medium, Regular, SemiBold} from '../../constants/font';
 
 const palette = {
   primary_green: '#5DB075',

@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
   },
   starsContainer: {
     width: '100%',
-    marginBottom: verticalScale(290),
-
+    marginBottom: horizontalScale(240),
   },
   button: {
     width: horizontalScale(311),
