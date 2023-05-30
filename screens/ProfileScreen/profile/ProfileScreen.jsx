@@ -68,7 +68,7 @@ const Profile = ({navigation}) => {
         <Header
           screen={'Profile'}
           navigation={navigation}
-          back={'Feed'}
+          back={'SettingsNav'}
           continueTo={'LogIn'}
           root={'Auth'}
           left={'Settings'}
