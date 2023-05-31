@@ -6,6 +6,7 @@ import SupportIcon from '../assets/icons/Help.svg';
 import MessagesIcon from '../assets/icons/Message.svg';
 import NotificationIcon from '../assets/icons/Notifications.svg';
 import PrivacyIcon from '../assets/icons/Privacy.svg';
+import ImagesIcon from '../assets/icons/Images.svg';
 
 export const GlobalDataContext = createContext(undefined);
 
@@ -261,6 +262,12 @@ function GlobalData({children}) {
       icon: NotificationIcon,
       title: 'Notifications',
       onPress: () => Alert.alert('Navigated to Notifications page'),
+    },
+    {
+      key: 'images',
+      icon: ImagesIcon,
+      title: 'Images',
+      onPress: navigation => navigation.navigate('Images'),
     },
     {
       key: 'messages',
