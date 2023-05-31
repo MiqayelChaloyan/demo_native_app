@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: horizontalScale(16),
   },
-
   row: {
     flexDirection: 'row',
   },

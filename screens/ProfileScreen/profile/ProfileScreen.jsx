@@ -17,8 +17,8 @@ import PermissionModal from '../../../components/Permission/Modal';
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
-  const {feedData} = useContext(GlobalDataContext);
+  const {feedData, arrayImages, setArrayImage, imageUrl, setImageUrl} =
+    useContext(GlobalDataContext);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [isAnswer, setAnswer] = useState(null);
@@ -39,6 +39,7 @@ const Profile = ({navigation}) => {
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
       setImageUrl(url);
+      setArrayImage([...arrayImages, {id: arrayImages.length + 1, url: url}]);
     });
   };
 
@@ -89,7 +90,14 @@ const Profile = ({navigation}) => {
                 />
               </View>
             )}
-            <TouchableOpacity onPress={() => setModalVisible(true)}>
+            <TouchableOpacity
+              onPress={() => {
+                if (arrayImages.length !== 0) {
+                  setModalVisible(true);
+                } else {
+                  accessCamera();
+                }
+              }}>
               <View style={styles.addProfileImage}>
                 <AddIcon
                   width={40}

@@ -20,7 +20,7 @@ const MarketScreen = ({navigation}) => {
           screen={'Market'}
           navigation={navigation}
           back={'Feed'}
-          continueTo={'Images'}
+          continueTo={'Expenses'}
           left={'Back'}
           right={'Filter'}
         />
