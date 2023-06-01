@@ -42,7 +42,51 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 128,
+    height: 150,
+  },
+  checkBox: {
+    position: 'absolute',
+    right: 1,
+    bottom: 1,
+    backgroundColor: theme.colors.primary_green,
+    borderRadius: 50,
+    padding: 2,
+  },
+  check: {
+    position: 'absolute',
+    borderRadius: 50,
+    backgroundColor: theme.colors.transparent,
+    borderWidth: 2,
+    borderColor: theme.colors.primary_green,
+    width: 30,
+    height: 30,
+    right: 10,
+    bottom: 10,
+  },
+  contain: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 200,
+  },
+  empty: {
+    width: 120,
+    height: 120,
+  },
+  modalText: {
+    fontSize: 18,
+    color: 'black',
+    left: 7,
+  },
+  sheetContainer: {
+    backgroundColor: '#E8E8E8',
+    height: 100,
+    justifyContent: 'flex-start',
+    paddingVertical: 15,
+  },
+  command: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
