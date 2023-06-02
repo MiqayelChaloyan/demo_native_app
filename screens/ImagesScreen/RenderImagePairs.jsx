@@ -11,7 +11,10 @@ const Col = ({numRows, children}) => {
   return <View style={styles[`${numRows}col`]}>{children}</View>;
 };
 
-const RenderImagePairs = (isBottomSheetVisible, changeProfileImage) => {
+const RenderImagePairs = (
+  isBottomSheetVisible,
+  changeProfileImage,
+) => {
   const {arrayImages} = useContext(GlobalDataContext);
   const maximum = 4;
   const minimum = 1;
@@ -28,13 +31,13 @@ const RenderImagePairs = (isBottomSheetVisible, changeProfileImage) => {
             <TouchableOpacity
               onPress={() => changeProfileImage(arrayImages[i].id)}>
               <Image source={{uri: arrayImages[i].url}} style={styles.image} />
-              <View style={styles.check}>
-                {isBottomSheetVisible && (
+              {/* <View style={styles.check}>
+                {true && (
                   <View style={styles.checkBox}>
                     <CheckIcon width={20} height={20} />
                   </View>
                 )}
-              </View>
+              </View> */}
             </TouchableOpacity>
           </Col>
           {arrayImages[i + 1] && (
@@ -45,13 +48,13 @@ const RenderImagePairs = (isBottomSheetVisible, changeProfileImage) => {
                   source={{uri: arrayImages[i + 1].url}}
                   style={styles.image}
                 />
-                <View style={styles.check}>
-                  {isBottomSheetVisible && (
+                {/* <View style={styles.check}> */}
+                  {/* {true && (
                     <View style={styles.checkBox}>
                       <CheckIcon width={20} height={20} />
                     </View>
-                  )}
-                </View>
+                  )} */}
+                {/* </View> */}
               </TouchableOpacity>
             </Col>
           )}

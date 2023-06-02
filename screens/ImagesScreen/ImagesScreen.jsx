@@ -4,7 +4,7 @@ import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import {GlobalDataContext} from '../../Data/context';
 import MyBottomsheet from './BottomSheet';
-import RenderImagePairs from './RenderImageParis';
+import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
 
 const ImagesScreen = ({navigation}) => {
@@ -28,10 +28,8 @@ const ImagesScreen = ({navigation}) => {
   }, [sheet, photoId]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setBottomSheetVisible(!isBottomSheetVisible);
-    }, 200);
-    return () => clearTimeout(timer);
+    setBottomSheetVisible(false);
+    setTimeout(() => setBottomSheetVisible(true), 150);
   }, [photoId, changeProfileImage]);
 
   const changeProfileImage = id => {
@@ -53,7 +51,11 @@ const ImagesScreen = ({navigation}) => {
         <ScrollView>
           {arrayImages && (
             <View style={styles.app}>
-              {RenderImagePairs(isBottomSheetVisible, changeProfileImage)}
+              {RenderImagePairs(
+                isBottomSheetVisible,
+                changeProfileImage,
+                photoId,
+              )}
             </View>
           )}
           {!arrayImages.length && (
@@ -66,7 +68,7 @@ const ImagesScreen = ({navigation}) => {
           )}
         </ScrollView>
       </View>
-      {isBottomSheetVisible && <MyBottomsheet sheet={setSheet} />}
+      {isBottomSheetVisible && !sheet && <MyBottomsheet sheet={setSheet} />}
     </View>
   );
 };
