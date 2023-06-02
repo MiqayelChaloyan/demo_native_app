@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
@@ -11,8 +11,8 @@ const ExpensesScreen = ({navigation}) => {
   const {expensesData} = useContext(GlobalDataContext);
 
   return (
-    <View style={styles.expenses}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.expenses}>
         <Header
           // TODO: This part is will increase later.
           screen={'Expenses'}

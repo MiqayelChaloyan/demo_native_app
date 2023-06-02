@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: moderateScale(15),
     color: theme.colors.black,
-    fontWeight: 600,
     marginTop: verticalScale(2),
     ...theme.textVariants.SemiBold,
   },

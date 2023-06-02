@@ -10,14 +10,14 @@ const InsightsScreen = ({navigation}) => {
   const {expensesData} = useContext(GlobalDataContext);
 
   return (
-    <View style={styles.insights}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.insights}>
         <Header
-          screen={'Insights'}
+          screen="Insights"
           navigation={navigation}
-          back={'Expenses'}
-          left={'Back'}
-          right={'Filter'}
+          back="Expenses"
+          left="Back"
+          right="Filter"
         />
         <View style={styles.progressCircle}>
           <ProgressCircle />

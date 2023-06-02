@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary_white,
     borderRadius: verticalScale(10),
   },
-  apperaciative: {
+  appreciative: {
     marginTop: verticalScale(32),
   },
   starsContainer: {

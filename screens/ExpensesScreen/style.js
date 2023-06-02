@@ -7,11 +7,11 @@ import {
 import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
-  expenses: {
+  container: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
-  container: {
+  expenses: {
     flex: 1,
     paddingHorizontal: horizontalScale(16),
   },
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: moderateScale(10),
-    fontWeight: 400,
     ...theme.textVariants.Regular,
   },
   headerTextContainer: {
@@ -66,7 +65,6 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: moderateScale(24),
-    fontWeight: 500,
     color: theme.colors.black,
     ...theme.textVariants.Medium,
   },

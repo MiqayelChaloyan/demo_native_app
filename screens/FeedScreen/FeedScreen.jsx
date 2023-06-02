@@ -29,17 +29,17 @@ const FeedScreen = ({navigation}) => {
 
   return (
     <>
-      <View style={styles.feedScreen}>
-        <View style={styles.feedScreenContainer}>
+      <View style={styles.feedScreenContainer}>
+        <View style={styles.feedScreen}>
           <Header
-            screen={'Feed'}
+            screen="Feed"
             navigation={navigation}
-            back={'Auth'}
-            continueTo={'Market'}
-            left={'Back'}
-            right={'Filter'}
+            back="Auth"
+            continueTo="Market"
+            left="Back"
+            right="Filter"
           />
-          <Search list={feedData} setState={setState} keyword={'title'} />
+          <Search list={feedData} setState={setState} keyword="title" />
           <View style={styles.contentsBlockContainer}>
             <FlatList
               data={state}

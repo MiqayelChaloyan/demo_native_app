@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
-} from '../../assets//metrics/Metrics';
+} from '../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
   root: {
@@ -18,18 +18,15 @@ const styles = StyleSheet.create({
     width: horizontalScale(343),
     height: verticalScale(50),
     paddingEnd: horizontalScale(55),
-    borderWidth: 0.5,
+    borderWidth: moderateScale(0.5),
     borderColor: theme.colors.cool_gray,
     padding: verticalScale(10),
-    borderRadius: 50,
+    borderRadius: moderateScale(50),
     backgroundColor: theme.colors.gray,
     paddingHorizontal: verticalScale(15),
-    paddingVertical: 7,
-    fontSize: 15,
+    paddingVertical: verticalScale(7),
+    fontSize: moderateScale(15),
     ...theme.textVariants.Regular,
-  },
-  messegesList: {
-    height: verticalScale(500),
   },
   newMessage: {
     position: 'relative',
@@ -59,14 +56,14 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.transparent,
     maxWidth: horizontalScale(235),
   },
-  messageContainerisRight: {
+  messageContainerIsRight: {
     backgroundColor: theme.colors.primary_green,
     maxWidth: horizontalScale(250),
     alignSelf: 'flex-end',
     borderRadius: moderateScale(8),
     right: verticalScale(19),
   },
-  messageisRight: {
+  messageIsRight: {
     color: theme.colors.primary_white,
   },
   messageIsLeft: {
@@ -78,10 +75,9 @@ const styles = StyleSheet.create({
     padding: verticalScale(16),
     ...theme.textVariants.Regular,
   },
-  messageContainerisLeft: {
+  messageContainerIsLeft: {
     alignSelf: 'flex-start',
     backgroundColor: theme.colors.gray,
-    borderBottomLeftRadius: 0,
     maxWidth: horizontalScale(250),
     borderRadius: moderateScale(8),
     paddingHorizontal: horizontalScale(10),
@@ -121,7 +117,7 @@ const styles = StyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: 'transparent',
     borderLeftColor: theme.colors.primary_green,
-    transform: [{ rotate: '180deg' }],
+    transform: [{rotate: '180deg'}],
   },
   userContainer: {
     flexDirection: 'row',
@@ -150,8 +146,7 @@ const styles = StyleSheet.create({
     left: verticalScale(5),
     color: theme.colors.black,
     top: verticalScale(5),
-    fontWeight: 600,
-    ...theme.textVariants.Regular,
+    ...theme.textVariants.Medium,
   },
 });
 

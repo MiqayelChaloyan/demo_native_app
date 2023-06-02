@@ -31,22 +31,12 @@ export const theme = {
   textVariants: {
     SemiBold: {
       fontFamily: SemiBold,
-      fontStyle: 'normal',
     },
     Medium: {
       fontFamily: Medium,
-      fontStyle: 'normal',
     },
     Regular: {
       fontFamily: Regular,
-      fontStyle: 'normal',
     },
-  },
-};
-
-export const darkTheme = {
-  ...theme,
-  colors: {
-    ...theme.colors,
   },
 };

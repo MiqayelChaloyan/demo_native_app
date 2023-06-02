@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import {useContext, useState} from 'react';
 import {Text, View, ScrollView, TouchableOpacity} from 'react-native';
+import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import MarketItemList from './MarketItemList';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
@@ -14,15 +15,15 @@ const MarketScreen = ({navigation}) => {
   const [state, setState] = useState(marketData);
 
   return (
-    <ScrollView style={styles.market}>
+    <ScrollView style={styles.marketContainer}>
       <View style={styles.headerPartContainer}>
         <Header
-          screen={'Market'}
+          screen="Market"
           navigation={navigation}
-          back={'Feed'}
-          continueTo={'Expenses'}
-          left={'Back'}
-          right={'Filter'}
+          back="Feed"
+          continueTo="Expenses"
+          left="Back"
+          right="Filter"
         />
         <Search list={marketData} setState={setState} keyword="title" />
       </View>
@@ -31,21 +32,32 @@ const MarketScreen = ({navigation}) => {
           <View style={styles.hotDealsContainer}>
             <Text style={styles.hotDealsText}>Hot deals</Text>
             <TouchableOpacity style={styles.playButton}>
-              <VideoIcon width={30} height={30} fill={theme.colors.black} />
-            </TouchableOpacity>
+              <VideoIcon
+                width={horizontalScale(30)}
+                height={verticalScale(30)}
+                fill={theme.colors.black}
+              />
           </View>
           <MarketItemList data={state} navigation={navigation} />
           <View style={styles.hotDealsContainer}>
             <Text style={styles.hotDealsText}>Trending</Text>
             <TouchableOpacity style={styles.playButton}>
-              <VideoIcon width={30} height={30} fill={theme.colors.black} />
+              <VideoIcon
+                width={horizontalScale(30)}
+                height={verticalScale(30)}
+                fill={theme.colors.black}
+              />
             </TouchableOpacity>
           </View>
           <MarketItemList data={state} navigation={navigation} />
           <View style={styles.hotDealsContainer}>
             <Text style={styles.hotDealsText}>Deals</Text>
             <TouchableOpacity style={styles.playButton}>
-              <VideoIcon width={30} height={30} fill={theme.colors.black} />
+              <VideoIcon
+                width={horizontalScale(30)}
+                height={verticalScale(30)}
+                fill={theme.colors.black}
+              />
             </TouchableOpacity>
           </View>
           <MarketItemList data={state} navigation={navigation} />

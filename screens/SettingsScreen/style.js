@@ -36,10 +36,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: moderateScale(14),
-    fontWeight: 500,
+    ...theme.textVariants.Medium,
     lineHeight: verticalScale(19),
     color: theme.colors.black,
-    ...theme.textVariants.body,
   },
 });
 

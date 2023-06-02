@@ -1,13 +1,13 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
-  market: {
+  marketContainer: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
@@ -32,15 +32,10 @@ const styles = StyleSheet.create({
   },
   hotDealsText: {
     fontSize: moderateScale(24),
-    fontWeight: 500,
     color: theme.colors.black,
     maxWidth: horizontalScale(250),
     verticalAlign: 'top',
     ...theme.textVariants.Medium,
-  },
-  itemsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
   },
   itemImageContainer: {
     width: horizontalScale(110),
@@ -55,7 +50,6 @@ const styles = StyleSheet.create({
   },
   itemNameText: {
     fontSize: moderateScale(14),
-    fontWeight: 400,
     color: theme.colors.black,
     ...theme.textVariants.Regular,
   },
@@ -64,7 +58,6 @@ const styles = StyleSheet.create({
   },
   itemPriceText: {
     fontSize: moderateScale(14),
-    fontWeight: 600,
     color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
@@ -74,7 +67,7 @@ const styles = StyleSheet.create({
   },
   warningText: {
     fontSize: moderateScale(14),
-    fontWeight: 300,
+    ...theme.textVariants.Regular,
     color: theme.colors.dark_gray,
     textAlign: 'center',
   },

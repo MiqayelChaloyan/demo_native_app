@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
   options: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    margin: 5,
+    margin: horizontalScale(5),
   },
-  optionstext: {
+  optionsText: {
     color: theme.colors.cool_gray,
     fontSize: moderateScale(16),
     ...theme.textVariants.Medium,
