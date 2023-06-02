@@ -13,12 +13,15 @@ import Photos from '../page/Photos/Photos';
 import Header from '../../../components/Header/Header';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
+import PermissionModal from '../../../components/Permission/Modal';
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
-  const {feedData} = useContext(GlobalDataContext);
+  const {feedData, arrayImages, setArrayImage, imageUrl, setImageUrl} =
+    useContext(GlobalDataContext);
   const [loading, setLoading] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isAnswer, setAnswer] = useState(null);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -36,6 +39,7 @@ const Profile = ({navigation}) => {
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
       setImageUrl(url);
+      setArrayImage([...arrayImages, {id: arrayImages.length + 1, url: url}]);
     });
   };
 
@@ -48,6 +52,16 @@ const Profile = ({navigation}) => {
       return loading ? <SkeletonPosts /> : <Posts item={item} />;
     }
   };
+
+  useEffect(() => {
+    setModalVisible(false);
+    if (isAnswer === 'PHONE') {
+      accessCamera();
+    } else if (isAnswer === 'STORAGE') {
+      navigation.navigate('Images');
+    }
+    return () => setAnswer('');
+  }, [isAnswer]);
 
   return (
     <View style={styles.container}>
@@ -76,7 +90,14 @@ const Profile = ({navigation}) => {
                 />
               </View>
             )}
-            <TouchableOpacity onPress={accessCamera}>
+            <TouchableOpacity
+              onPress={() => {
+                if (arrayImages.length !== 0) {
+                  setModalVisible(true);
+                } else {
+                  accessCamera();
+                }
+              }}>
               <View style={styles.addProfileImage}>
                 <AddIcon
                   width={40}
@@ -121,6 +142,11 @@ const Profile = ({navigation}) => {
         style={styles.contentsBlockContainer}
         keyExtractor={item => item.id}
         renderItem={({item}) => renderSwitchValue(item)}
+      />
+      <PermissionModal
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+        setAnswer={setAnswer}
       />
     </View>
   );

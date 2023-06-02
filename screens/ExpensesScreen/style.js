@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   expenses: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     top: verticalScale(8),
     right: horizontalScale(8),
     height: verticalScale(12),
-    transform: [{ rotate: '315deg' }],
+    transform: [{rotate: '315deg'}],
     alignItems: 'center',
     width: verticalScale(28),
   },

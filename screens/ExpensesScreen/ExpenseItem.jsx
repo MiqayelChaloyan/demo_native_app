@@ -20,7 +20,7 @@ const ExpenseItem = ({item, index}) => {
       if (percent < Math.ceil(progressPercent)) {
         setPerccent(percent + 2);
       }
-    }, 50);
+    }, 25);
     return () => clearTimeout(timer);
   }, [percent, progressPercent]);
 
