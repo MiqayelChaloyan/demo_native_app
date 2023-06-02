@@ -1,13 +1,8 @@
-import React, {useContext, useState, useEffect} from 'react';
+import {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
-import {
-  horizontalScale,
-  moderateScale,
-  verticalScale,
-} from '../../../assets/metrics/Metrics';
 import {GlobalDataContext} from '../../../Data/context';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils.android';
 import {launchImageLibrary} from 'react-native-image-picker';
@@ -41,14 +36,11 @@ const Profile = ({navigation}) => {
       includeBase64: false,
     };
 
-    launchImageLibrary(options)
-      .then(res => {
-        const url = res.assets && res.assets[0].uri;
-        setImageUrl(url);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    launchImageLibrary(options, res => {
+      const url = res.assets && res.assets[0].uri;
+      setImageUrl(url);
+      setArrayImage([...arrayImages, {id: arrayImages.length + 1, url: url}]);
+    });
   };
 
   const accessCamera = async () => await requestCameraPermission(selectFile);
@@ -75,13 +67,13 @@ const Profile = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Header
-          screen="Profile"
+          screen={'Profile'}
           navigation={navigation}
-          back="SettingsNav"
-          continueTo="LogIn"
-          root="Auth"
-          left="Settings"
-          right="Logout"
+          back={'SettingsNav'}
+          continueTo={'LogIn'}
+          root={'Auth'}
+          left={'Settings'}
+          right={'Logout'}
           headerTextColor={theme.colors.primary_white}
         />
         <View style={styles.profileImage}>
@@ -108,8 +100,8 @@ const Profile = ({navigation}) => {
               }}>
               <View style={styles.addProfileImage}>
                 <AddIcon
-                  width={horizontalScale(40)}
-                  height={verticalScale(40)}
+                  width={40}
+                  height={40}
                   fill={theme.colors.primary_green}
                 />
               </View>
@@ -131,11 +123,11 @@ const Profile = ({navigation}) => {
             backgroundColor={theme.colors.light_gray}
             buttonColor={theme.colors.primary_white}
             borderColor={theme.colors.gray}
-            borderWidth={moderateScale(1.5)}
-            height={verticalScale(50)}
-            borderRadius={moderateScale(100)}
-            fontSize={moderateScale(16)}
-            valuePadding={horizontalScale(2)}
+            borderWidth={1.5}
+            height={50}
+            borderRadius={100}
+            fontSize={16}
+            valuePadding={2}
             hasPadding
             options={[
               {label: 'Posts', value: false},
@@ -146,8 +138,9 @@ const Profile = ({navigation}) => {
       </View>
       <FlatList
         data={feedData}
-        keyExtractor={item => item.id}
+        key={item => item.id}
         style={styles.contentsBlockContainer}
+        keyExtractor={item => item.id}
         renderItem={({item}) => renderSwitchValue(item)}
       />
       <PermissionModal

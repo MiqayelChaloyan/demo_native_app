@@ -29,6 +29,6 @@ module.exports = {
     'react-native/no-single-element-style-arrays': 2,
     'no-console': 0,
     disallowMultipleVarDecl: 0,
-    'react/react-in-jsx-scope': 3,
+    'react/react-in-jsx-scope': 0,
   },
 };

@@ -5,7 +5,7 @@ import ProfileIcon from '../../assets/icons/ProfileAdd.svg';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
-const MyBottomsheet = ({sheet}) => {
+const MyBottomSheet = ({sheet}) => {
   return (
     <View style={styles.sheetContainer}>
       <View>
@@ -32,8 +32,8 @@ const MyBottomsheet = ({sheet}) => {
   );
 };
 
-MyBottomsheet.propTypes = {
+MyBottomSheet.propTypes = {
   sheet: PropTypes.any,
 };
 
-export default MyBottomsheet;
+export default MyBottomSheet;

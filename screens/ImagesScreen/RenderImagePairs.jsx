@@ -11,10 +11,7 @@ const Col = ({numRows, children}) => {
   return <View style={styles[`${numRows}col`]}>{children}</View>;
 };
 
-const RenderImagePairs = (
-  isBottomSheetVisible,
-  changeProfileImage,
-) => {
+const RenderImagePairs = (isBottomSheetVisible, changeProfileImage) => {
   const {arrayImages} = useContext(GlobalDataContext);
   const maximum = 4;
   const minimum = 1;
@@ -49,7 +46,7 @@ const RenderImagePairs = (
                   style={styles.image}
                 />
                 {/* <View style={styles.check}> */}
-                  {/* {true && (
+                {/* {true && (
                     <View style={styles.checkBox}>
                       <CheckIcon width={20} height={20} />
                     </View>

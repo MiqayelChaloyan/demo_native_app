@@ -3,7 +3,7 @@ import {useState, useContext, useEffect} from 'react';
 import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import {GlobalDataContext} from '../../Data/context';
-import MyBottomsheet from './BottomSheet';
+import MyBottomSheet from './BottomSheet';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
 
@@ -30,7 +30,7 @@ const ImagesScreen = ({navigation}) => {
   useEffect(() => {
     setBottomSheetVisible(false);
     setTimeout(() => setBottomSheetVisible(true), 150);
-  }, [photoId, changeProfileImage]);
+  }, [photoId]);
 
   const changeProfileImage = id => {
     setPhotoId(id);
@@ -68,7 +68,7 @@ const ImagesScreen = ({navigation}) => {
           )}
         </ScrollView>
       </View>
-      {isBottomSheetVisible && !sheet && <MyBottomsheet sheet={setSheet} />}
+      {isBottomSheetVisible && !sheet && <MyBottomSheet sheet={setSheet} />}
     </View>
   );
 };

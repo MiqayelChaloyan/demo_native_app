@@ -24,7 +24,7 @@ const ExpenseItem = ({item, index}) => {
 
     return () => clearTimeout(timer);
   }, [percent, progressPercent]);
-
+  console.log('item.title:>>>', item.title)
   return (
     <View style={styles.expenseItem}>
       <View style={styles.progressContainer}>
