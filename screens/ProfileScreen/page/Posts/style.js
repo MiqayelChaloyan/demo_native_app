@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   },
   aboutContentDate: {
     fontSize: moderateScale(14),
-    fontWeight: 400,
     lineHeight: verticalScale(17),
     paddingTop: verticalScale(2),
     color: theme.colors.cool_gray,
@@ -46,14 +45,12 @@ const styles = StyleSheet.create({
   },
   feedText: {
     fontSize: moderateScale(14),
-    fontWeight: 400,
     color: theme.colors.black,
     lineHeight: verticalScale(17),
     ...theme.textVariants.Regular,
   },
   headerText: {
     fontSize: moderateScale(16),
-    fontWeight: 600,
     color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },

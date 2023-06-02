@@ -1,7 +1,6 @@
-import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import GlobalData from '../Data/context';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import StackNavigation from '../navigation/StackNavigation';
 import styles from './style';
 

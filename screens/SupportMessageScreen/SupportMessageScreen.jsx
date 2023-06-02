@@ -7,7 +7,6 @@ import styles from './style';
 
 const SupportMessageScreen = ({navigation}) => {
   const [text, setText] = useState('');
-
   const share = async () => {
     const options = {
       message: text,
@@ -31,17 +30,18 @@ const SupportMessageScreen = ({navigation}) => {
       }
     }
   };
+
   return (
     <View style={styles.supportScreenContainer}>
       <View style={styles.supportScreen}>
         <Header
           // TODO: This part is will increase later.
-          screen={'Compose'}
+          screen="Compose"
           navigation={navigation}
-          back={'Market'}
-          continueTo={'Market'}
-          left={'Back'}
-          right={'New'}
+          back="Market"
+          continueTo="Market"
+          left="Back"
+          right="New"
         />
 
         <View style={styles.inputContainer}>

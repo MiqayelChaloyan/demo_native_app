@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './style';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 
 const Header = ({
   screen,
@@ -20,14 +20,18 @@ const Header = ({
           <Text
             style={[
               styles.headerButtonText,
-              { color: headerTextColor || theme.colors.primary_green },
+              {color: headerTextColor || theme.colors.primary_green},
             ]}>
             {left}
           </Text>
         </TouchableOpacity>
       </View>
       <View>
-        <Text style={[styles.headerText, { color: headerTextColor || theme.colors.black }]}>
+        <Text
+          style={[
+            styles.headerText,
+            {color: headerTextColor || theme.colors.black},
+          ]}>
           {screen}
         </Text>
       </View>

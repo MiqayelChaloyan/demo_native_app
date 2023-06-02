@@ -1,4 +1,3 @@
-import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ContentScreen from '../screens/ContentScreen/ContentScreen';
 import FeedScreen from '../screens/FeedScreen/FeedScreen';
@@ -17,7 +16,11 @@ export default function PageNavigation() {
       <Stack.Screen name="Market" component={MarketScreen} />
       <Stack.Screen name="SettingsNav" component={SettingsNavigation} />
       <Stack.Screen name="Options" component={UserOptionsScreen} />
-      <Stack.Screen name="Description" component={ItemDescriptionScreen} />
+      <Stack.Screen
+        name="Description"
+        component={ItemDescriptionScreen}
+        options={{headerShown: true}}
+      />
     </Stack.Navigator>
   );
 }

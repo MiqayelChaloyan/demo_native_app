@@ -8,14 +8,14 @@ const Message = ({isLeft, message}) => {
       <View
         style={
           !isLeft
-            ? styles.messageContainerisRight
-            : styles.messageContainerisLeft
+            ? styles.messageContainerIsRight
+            : styles.messageContainerIsLeft
         }>
         <View style={styles.messageView}>
           <Text
             style={[
               styles.message,
-              !isLeft ? styles.messageisRight : styles.messageIsLeft,
+              !isLeft ? styles.messageIsRight : styles.messageIsLeft,
             ]}>
             {message}
           </Text>

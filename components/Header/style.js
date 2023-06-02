@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: moderateScale(30),
-    fontWeight: 600,
     textAlign: 'center',
     color: theme.colors.black,
     lineHeight: moderateScale(36.31),
@@ -25,7 +24,6 @@ const styles = StyleSheet.create({
   },
   headerButtonText: {
     fontSize: moderateScale(16),
-    fontWeight: 500,
     lineHeight: verticalScale(19.36),
     ...theme.textVariants.Medium,
   },

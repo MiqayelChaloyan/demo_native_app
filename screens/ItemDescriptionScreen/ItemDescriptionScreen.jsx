@@ -8,8 +8,10 @@ import {
   Alert,
 } from 'react-native';
 import CartIcon from '../../assets/icons/Cart.svg';
+import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
+
 const ItemDescriptionScreen = ({route}) => {
   const {item} = route.params;
   return (
@@ -26,7 +28,11 @@ const ItemDescriptionScreen = ({route}) => {
           </View>
           <TouchableOpacity
             onPress={() => Alert.alert(`${item.title} was added to your cart`)}>
-            <CartIcon width={30} height={30} fill={theme.colors.green} />
+            <CartIcon
+              width={horizontalScale(30)}
+              height={verticalScale(30)}
+              fill={theme.colors.dark_green}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.descriptionContainer}>

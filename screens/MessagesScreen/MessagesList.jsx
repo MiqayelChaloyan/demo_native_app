@@ -1,14 +1,14 @@
-import React, {useContext, useRef, useState} from 'react';
+import {useContext, useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
   TextInput,
   TouchableOpacity,
-  ScrollView,
   FlatList,
   Text,
   Image,
 } from 'react-native';
+import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {GlobalDataContext} from '../../Data/context';
 import Message from './Message';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
@@ -20,8 +20,8 @@ const MessagesList = ({navigation, route}) => {
   const {setMessages, messages} = useContext(GlobalDataContext);
   const [value, setValue] = useState('');
   const user = useRef(0);
-  const scrollView = useRef();
-  const {item} = route.params;
+  const flatListRef = useRef();
+  const userItem = route.params.userItem;
 
   const getMessage = () => {
     if (value.trim() !== '') {
@@ -32,52 +32,55 @@ const MessagesList = ({navigation, route}) => {
           content: value,
         },
       ]);
-      return setValue('');
+      setValue('');
     }
   };
+
+  useEffect(() => {
+    flatListRef.current.scrollToEnd({animated: true});
+  }, [messages]);
+
+  const renderItem = ({item, index}) => (
+    <Message
+      key={index}
+      isLeft={item.user !== user.current}
+      message={item.content}
+    />
+  );
 
   return (
     <View style={styles.root}>
       <View style={styles.header}>
         <Header
-          screen={'Messages'}
+          screen="Messages"
           navigation={navigation}
-          back={'Messages'}
-          continueTo={'Market'}
-          left={'Back'}
-          right={'Filter'}
+          back="Messages"
+          continueTo="Market"
+          left="Back"
+          right="Filter"
         />
       </View>
       <View style={styles.userContainer}>
         <Image
           style={styles.userImageProfile}
           source={
-            item.imageUrl
-              ? {uri: item.imageUrl}
+            userItem.imageUrl
+              ? {uri: userItem.imageUrl}
               : require('../../assets/images/Profile.png')
           }
         />
-        {item.isActive && <View style={styles.activeChat} />}
-        <Text style={styles.userFullName}>{item.fullName}</Text>
+        {userItem.isActive && <View style={styles.activeChat} />}
+        <Text style={styles.userFullName}>{userItem.fullName}</Text>
       </View>
-      <ScrollView
-        style={styles.messegesList}
-        ref={ref => (scrollView.current = ref)}
+      <FlatList
+        ref={flatListRef}
+        data={messages}
+        renderItem={renderItem}
+        keyExtractor={(_, index) => String(index)}
         onContentSizeChange={() =>
-          scrollView.current.scrollToEnd({animated: true})
-        }>
-        <FlatList
-          data={messages}
-          renderItem={({item, index}) => (
-            <Message
-              key={index}
-              isLeft={item.user !== user.current}
-              message={item.content}
-            />
-          )}
-          keyExtractor={(_, index) => index}
-        />
-      </ScrollView>
+          flatListRef.current.scrollToEnd({animated: true})
+        }
+      />
       <View style={styles.newMessage}>
         <View style={styles.inputBox}>
           <TextInput
@@ -86,7 +89,7 @@ const MessagesList = ({navigation, route}) => {
             placeholderTextColor={theme.colors.cool_gray}
             style={styles.input}
             variant="standard"
-            onChangeText={value => setValue(value)}
+            onChangeText={text => setValue(text)}
             value={value}
             keyboardType="web-search"
             autoCapitalize="none"
@@ -102,13 +105,13 @@ const MessagesList = ({navigation, route}) => {
                 {
                   backgroundColor:
                     value.trim() !== ''
-                      ? theme.colors.green
+                      ? theme.colors.dark_green
                       : theme.colors.cool_gray,
                 },
               ]}>
               <ArrowIcon
-                width={16}
-                height={25}
+                width={horizontalScale(16)}
+                height={verticalScale(25)}
                 fill={theme.colors.primary_white}
               />
             </View>

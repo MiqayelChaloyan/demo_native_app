@@ -1,9 +1,9 @@
-import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 import SupportIcon from '../assets/icons/Support.svg';
+import {horizontalScale, verticalScale} from '../assets/metrics/Metrics';
 import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
 import ProfileScreen from '../screens/ProfileScreen/profile/ProfileScreen';
 import SupportMessageScreen from '../screens/SupportMessageScreen/SupportMessageScreen';
@@ -18,7 +18,7 @@ export default function BottomTabNavigation() {
         tabBarHideOnKeyboard: true,
         headerShown: false,
         tabBarItemStyle: {
-          paddingTop: 15,
+          paddingTop: verticalScale(15),
         },
       }}>
       <Tab.Screen
@@ -28,8 +28,8 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({focused}) => (
             <HomeIcon
-              width={25}
-              height={35}
+              width={horizontalScale(25)}
+              height={verticalScale(25)}
               fill={
                 focused ? theme.colors.primary_green : theme.colors.cool_gray
               }
@@ -44,8 +44,8 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({focused}) => (
             <MessagesIcon
-              width={25}
-              height={35}
+              width={horizontalScale(25)}
+              height={verticalScale(25)}
               fill={
                 focused ? theme.colors.primary_green : theme.colors.cool_gray
               }
@@ -60,8 +60,8 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({focused}) => (
             <ProfileIcon
-              width={25}
-              height={35}
+              width={horizontalScale(25)}
+              height={verticalScale(25)}
               fill={
                 focused ? theme.colors.primary_green : theme.colors.cool_gray
               }
@@ -76,8 +76,8 @@ export default function BottomTabNavigation() {
           title: '',
           tabBarIcon: ({focused}) => (
             <SupportIcon
-              width={25}
-              height={35}
+              width={horizontalScale(25)}
+              height={verticalScale(25)}
               fill={
                 focused ? theme.colors.primary_green : theme.colors.cool_gray
               }

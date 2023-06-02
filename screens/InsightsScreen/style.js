@@ -1,17 +1,17 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
-  insights: {
+  container: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
-  container: {
+  insights: {
     flex: 1,
     paddingHorizontal: horizontalScale(16),
   },
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: moderateScale(24),
-    fontWeight: 500,
     color: theme.colors.black,
     ...theme.textVariants.Medium,
   },

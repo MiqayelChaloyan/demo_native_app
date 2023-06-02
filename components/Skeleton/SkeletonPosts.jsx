@@ -1,25 +1,46 @@
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-import { theme } from '../../assets/theme/theme';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../assets/metrics/Metrics';
+import {theme} from '../../assets/theme/theme';
 
 const SkeletonPosts = () => {
   return (
-    <SkeletonPlaceholder borderRadius={4} speed={1500} backgroundColor={theme.colors.light_gray}
-    >
+    <SkeletonPlaceholder
+      borderRadius={moderateScale(4)}
+      speed={1500}
+      backgroundColor={theme.colors.light_gray}>
       <SkeletonPlaceholder.Item
         flexDirection="row"
         alignItems="flex-start"
-        marginBottom={15}>
-        <SkeletonPlaceholder.Item width={60} height={60} borderRadius={8} />
-        <SkeletonPlaceholder.Item marginLeft={20} flexDirection="column">
-          <SkeletonPlaceholder.Item width={100} height={20} borderRadius={8} />
+        marginBottom={verticalScale(15)}>
+        <SkeletonPlaceholder.Item
+          width={horizontalScale(60)}
+          height={verticalScale(60)}
+          borderRadius={moderateScale(8)}
+        />
+        <SkeletonPlaceholder.Item
+          marginLeft={horizontalScale(20)}
+          flexDirection="column">
           <SkeletonPlaceholder.Item
-            marginTop={6}
-            width={220}
-            height={40}
-            borderRadius={8}
+            width={horizontalScale(20)}
+            height={verticalScale(20)}
+            borderRadius={moderateScale(8)}
+          />
+          <SkeletonPlaceholder.Item
+            marginTop={verticalScale(60)}
+            width={horizontalScale(220)}
+            height={verticalScale(40)}
+            borderRadius={moderateScale(8)}
           />
         </SkeletonPlaceholder.Item>
-        <SkeletonPlaceholder.Item width={45} height={20} borderRadius={8} />
+        <SkeletonPlaceholder.Item
+          width={horizontalScale(45)}
+          height={verticalScale(20)}
+          borderRadius={moderateScale(8)}
+        />
       </SkeletonPlaceholder.Item>
     </SkeletonPlaceholder>
   );

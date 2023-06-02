@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -8,7 +8,7 @@ import {
 
 const styles = StyleSheet.create({
   listUsersRoot: {
-    backgroundColor: theme.colors.primary_white
+    backgroundColor: theme.colors.primary_white,
   },
   root: {
     marginTop: verticalScale(20),
@@ -36,13 +36,12 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: moderateScale(15),
-    fontWeight: 600,
     left: verticalScale(12),
     color: theme.colors.black,
     ...theme.textVariants.Medium,
   },
   activeChat: {
-    borderWidth: 3,
+    borderWidth: moderateScale(3),
     borderColor: theme.colors.primary_green,
     width: horizontalScale(12),
     height: horizontalScale(12),
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
     ...theme.textVariants.Regular,
   },
   line: {
-    borderWidth: 0.4,
+    borderWidth: moderateScale(0.4),
     width: horizontalScale(290),
     height: horizontalScale(1),
     justifyContent: 'center',
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
   },
   warningText: {
     fontSize: moderateScale(14),
-    fontWeight: 300,
+    ...theme.textVariants.Regular,
     color: theme.colors.dark_gray,
     textAlign: 'center',
   },

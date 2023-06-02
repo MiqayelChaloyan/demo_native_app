@@ -1,17 +1,17 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
-  expenses: {
+  container: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
-  container: {
+  expenses: {
     flex: 1,
     paddingHorizontal: horizontalScale(16),
   },
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     top: verticalScale(8),
     right: horizontalScale(8),
     height: verticalScale(12),
-    transform: [{ rotate: '315deg' }],
+    transform: [{rotate: '315deg'}],
     alignItems: 'center',
     width: verticalScale(28),
   },
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: moderateScale(10),
-    fontWeight: 400,
     ...theme.textVariants.Regular,
   },
   headerTextContainer: {
@@ -66,7 +65,6 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: moderateScale(24),
-    fontWeight: 500,
     color: theme.colors.black,
     ...theme.textVariants.Medium,
   },

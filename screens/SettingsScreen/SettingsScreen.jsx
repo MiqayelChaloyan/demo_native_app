@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import {useContext} from 'react';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import GoIcon from '../../assets/icons/Go.svg';
+import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import Header from '../../components/Header/Header';
 import {GlobalDataContext} from '../../Data/context';
 import styles from './style';
@@ -13,7 +14,7 @@ const SettingsScreen = ({navigation}) => {
       style={styles.settingsItem}
       onPress={() => item.onPress(navigation)}>
       <View style={styles.leftSide}>
-        <item.icon width={30} height={30} />
+        <item.icon width={horizontalScale(30)} height={verticalScale(30)} />
         <View style={styles.titleContainer}>
           <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
             {item.title}
@@ -21,7 +22,7 @@ const SettingsScreen = ({navigation}) => {
         </View>
       </View>
       <View>
-        <GoIcon width={30} height={30} />
+        <GoIcon width={horizontalScale(30)} height={verticalScale(30)} />
       </View>
     </TouchableOpacity>
   );
@@ -30,12 +31,12 @@ const SettingsScreen = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.settingsScreen}>
         <Header
-          screen={'Settings'}
+          screen="Settings"
           navigation={navigation}
-          back={'Feed'}
-          continueTo={'Market'}
-          left={'Back'}
-          right={'Filter'}
+          back="Feed"
+          continueTo="Market"
+          left="Back"
+          right="Filter"
         />
         <View style={styles.settingsList}>
           <FlatList

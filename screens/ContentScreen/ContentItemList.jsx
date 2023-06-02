@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View} from 'react-native';
 import BuyIcon from '../../assets/icons/Buy.svg';
 import {useNavigation} from '@react-navigation/native';
+import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
@@ -27,11 +28,14 @@ const ContentItemList = ({item, index}) => {
           navigation.navigate({
             name: 'Feed',
             params: {index},
-            merge: true,
           });
         }}>
         <View>
-          <BuyIcon width={45} height={45} fill={theme.colors.primary_green} />
+          <BuyIcon
+            width={horizontalScale(45)}
+            height={verticalScale(45)}
+            fill={theme.colors.primary_green}
+          />
         </View>
       </TouchableOpacity>
     </View>

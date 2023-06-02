@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import {createContext, useState} from 'react';
 import {Alert} from 'react-native';
 import AboutIcon from '../assets/icons/About.svg';
 import AccountIcon from '../assets/icons/Account.svg';

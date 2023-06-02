@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {Text, View} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
-const ExpenseItemList = ({ item, index }) => {
+const ExpenseItemList = ({item, index}) => {
   let backgroundColorStyle =
     index % 2 === 1 ? theme.colors.dark_green : theme.colors.primary_green;
 
@@ -11,7 +11,7 @@ const ExpenseItemList = ({ item, index }) => {
     <View style={styles.expenseItemOfList}>
       <View style={styles.leftSide}>
         <View
-          style={[styles.circle, { backgroundColor: backgroundColorStyle }]}
+          style={[styles.circle, {backgroundColor: backgroundColorStyle}]}
         />
         <View style={styles.titleContainer}>
           <Text style={styles.itemTitle}>{item.title}</Text>

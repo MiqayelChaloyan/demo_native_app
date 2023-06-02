@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { useRef } from 'react';
-import { Animated, View, Text } from 'react-native';
-import Svg, { G, Circle } from 'react-native-svg';
-import { verticalScale } from '../../assets/metrics/Metrics';
-import { theme } from '../../assets/theme/theme';
+import {useEffect} from 'react';
+import {useRef} from 'react';
+import {Animated, View, Text} from 'react-native';
+import Svg, {G, Circle} from 'react-native-svg';
+import {verticalScale} from '../../assets/metrics/Metrics';
+import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
@@ -35,9 +35,9 @@ const ProgressCircle = () => {
 
     animatedValue.addListener(v => {
       if (circleRef?.current) {
-        const maxPerc = (100 * v.value) / max;
+        const maxPercent = (100 * v.value) / max;
         const strokeDashoffset =
-          circleCircumference - (circleCircumference * maxPerc) / 100;
+          circleCircumference - (circleCircumference * maxPercent) / 100;
         circleRef.current.setNativeProps({
           strokeDashoffset,
         });
@@ -77,7 +77,7 @@ const ProgressCircle = () => {
         </G>
       </Svg>
       <View style={styles.container}>
-        <Text style={styles.procent}>${amount}</Text>
+        <Text style={styles.percent}>${amount}</Text>
         <Text style={styles.spent}>{percentage}% spent</Text>
       </View>
     </View>

@@ -1,4 +1,3 @@
-import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AuthNavigation from './AuthNavigation';
 import ExpensesScreen from '../screens/ExpensesScreen/ExpensesScreen';

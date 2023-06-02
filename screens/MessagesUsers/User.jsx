@@ -4,16 +4,14 @@ import {Text, TouchableOpacity, View, Image} from 'react-native';
 import {GlobalDataContext} from '../../Data/context';
 import styles from './style';
 
-const User = ({item, navigation}) => {
+const User = ({userItem, navigation}) => {
   const {messages} = useContext(GlobalDataContext);
-
   return (
     <TouchableOpacity
       onPress={() => {
         navigation.navigate({
           name: 'Chat',
-          params: {item},
-          merge: true,
+          params: {userItem},
         });
       }}>
       <View style={styles.userRoot}>
@@ -22,14 +20,14 @@ const User = ({item, navigation}) => {
             <Image
               style={styles.profileImage}
               source={
-                item.imageUrl
-                  ? {uri: item.imageUrl}
+                userItem.imageUrl
+                  ? {uri: userItem.imageUrl}
                   : require('../../assets/images/Profile.png')
               }
             />
           </View>
-          <Text style={styles.userName}>{item.fullName}</Text>
-          {item.isActive && <View style={styles.activeChat} />}
+          <Text style={styles.userName}>{userItem.fullName}</Text>
+          {userItem.isActive && <View style={styles.activeChat} />}
         </View>
         <View style={styles.messages}>
           {messages[messages.length - 1].user === 0 && (
