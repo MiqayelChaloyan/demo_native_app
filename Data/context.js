@@ -295,6 +295,9 @@ function GlobalData({children}) {
     },
   ];
 
+  const [arrayImages, setArrayImage] = useState([]);
+  const [imageUrl, setImageUrl] = useState('');
+
   return (
     <GlobalDataContext.Provider
       value={{
@@ -310,6 +313,10 @@ function GlobalData({children}) {
         radioButtonsData,
         setRadioButtonsData,
         settingsData,
+        arrayImages,
+        setArrayImage,
+        imageUrl,
+        setImageUrl,
       }}>
       {typeof children === 'function' ? children() : children}
     </GlobalDataContext.Provider>

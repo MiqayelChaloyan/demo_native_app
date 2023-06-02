@@ -21,6 +21,7 @@ const ExpenseItem = ({item, index}) => {
         setPercent(percent + 2);
       }
     }, 5);
+
     return () => clearTimeout(timer);
   }, [percent, progressPercent]);
 

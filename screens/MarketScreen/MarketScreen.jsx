@@ -37,7 +37,6 @@ const MarketScreen = ({navigation}) => {
                 height={verticalScale(30)}
                 fill={theme.colors.black}
               />
-            </TouchableOpacity>
           </View>
           <MarketItemList data={state} navigation={navigation} />
           <View style={styles.hotDealsContainer}>
