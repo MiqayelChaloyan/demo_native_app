@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   loginRoot: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
-    paddingHorizontal: 16,
+    paddingHorizontal: horizontalScale(16),
   },
   headerContainer: {
     height: verticalScale(36),
@@ -33,23 +33,15 @@ const styles = StyleSheet.create({
   },
   logIn: {
     fontSize: moderateScale(30),
-    fontWeight: 600,
     color: theme.colors.black,
     textAlign: 'center',
     lineHeight: verticalScale(36.31),
     left: verticalScale(10),
-    ...theme.textVariants.Medium,
-  },
-  login: {
-    fontSize: moderateScale(16),
-    color: theme.colors.primary_green,
-    lineHeight: verticalScale(36.31),
-    fontWeight: 500,
+    ...theme.textVariants.SemiBold,
   },
   hidePassword: {
     fontSize: moderateScale(16),
     color: theme.colors.primary_green,
-    fontWeight: 500,
     left: verticalScale(15),
     ...theme.textVariants.Medium,
   },
@@ -108,7 +100,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: moderateScale(16),
     color: theme.colors.primary_white,
-    fontWeight: 600,
+    ...theme.textVariants.SemiBold,
     lineHeight: 19.36,
   },
   visibilityBtn: {

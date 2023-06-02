@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
 import MarketItem from './MarketItem';
 import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
-import styles from './style';
 
 const MarketItemList = ({data, navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,9 +17,9 @@ const MarketItemList = ({data, navigation}) => {
   }, []);
 
   return (
-    <View style={styles.itemsContainer}>
+    <View>
       <FlatList
-        horizontal={true}
+        horizontal
         data={data}
         key={item => item.id}
         keyExtractor={item => item.id}

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, Image} from 'react-native';
 import styles from './style';

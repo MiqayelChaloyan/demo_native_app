@@ -31,8 +31,8 @@ const ContentScreen = ({navigation, route}) => {
   }, []);
 
   return (
-    <View style={styles.contentBox}>
-      <View style={styles.contentContainer}>
+    <View style={styles.contentContainer}>
+      <View style={styles.contentBox}>
         <Header
           screen={'Content'}
           navigation={navigation}

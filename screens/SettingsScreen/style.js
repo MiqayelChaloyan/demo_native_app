@@ -34,6 +34,12 @@ const styles = StyleSheet.create({
   titleContainer: {
     marginLeft: horizontalScale(20),
   },
+  title: {
+    fontSize: moderateScale(14),
+    ...theme.textVariants.Medium,
+    lineHeight: verticalScale(19),
+    color: theme.colors.black,
+  },
 });
 
 export default styles;

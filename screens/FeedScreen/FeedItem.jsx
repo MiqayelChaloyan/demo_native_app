@@ -17,7 +17,6 @@ const FeedItem = ({item, itemIndex, navigation}) => {
           navigation.navigate({
             name: 'Content',
             params: {itemIndex},
-            merge: true,
           });
         }}>
         <View style={styles.contentContainer}>

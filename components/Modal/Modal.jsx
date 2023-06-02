@@ -29,7 +29,7 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
       hideModal={() => setModalVisible(false)}>
       <View style={styles.container}>
         <View style={styles.modal}>
-          <View style={styles.apperaciative}>
+          <View style={styles.appreciative}>
             <FlatList
               data={[1, 2, 3, 4, 5]}
               contentContainerStyle={styles.starsContainer}

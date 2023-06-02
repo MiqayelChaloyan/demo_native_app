@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -7,11 +7,11 @@ import {
 } from '../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
-  feedScreen: {
+  feedScreenContainer: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
-  feedScreenContainer: {
+  feedScreen: {
     paddingHorizontal: horizontalScale(16),
     flex: 1,
     alignItems: 'center',
@@ -48,14 +48,12 @@ const styles = StyleSheet.create({
   },
   headerFeedText: {
     fontSize: moderateScale(16),
-    fontWeight: 600,
     lineHeight: verticalScale(19),
     color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
   aboutContentDate: {
     fontSize: moderateScale(14),
-    fontWeight: 400,
     lineHeight: verticalScale(17),
     paddingTop: verticalScale(2),
     color: theme.colors.cool_gray,
@@ -66,7 +64,6 @@ const styles = StyleSheet.create({
   },
   feedText: {
     fontSize: moderateScale(14),
-    fontWeight: 400,
     color: theme.colors.black,
     lineHeight: verticalScale(17),
     ...theme.textVariants.Regular,
@@ -80,7 +77,7 @@ const styles = StyleSheet.create({
   },
   warningText: {
     fontSize: moderateScale(14),
-    fontWeight: 300,
+    ...theme.textVariants.Regular,
     color: theme.colors.dark_gray,
     textAlign: 'center',
   },

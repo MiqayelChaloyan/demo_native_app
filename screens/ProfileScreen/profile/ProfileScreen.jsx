@@ -1,24 +1,32 @@
-import { useContext, useState, useEffect } from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
+import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
-import { GlobalDataContext } from '../../../Data/context';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../../assets/metrics/Metrics';
+import {GlobalDataContext} from '../../../Data/context';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils.android';
-import { launchImageLibrary } from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 import SkeletonPosts from '../../../components/Skeleton/SkeletonPosts';
 import SkeletonPhotos from '../../../components/Skeleton/SkeletonPhotos';
 import Posts from '../page/Posts/Posts';
 import Photos from '../page/Photos/Photos';
 import Header from '../../../components/Header/Header';
-import { theme } from '../../../assets/theme/theme';
+import {theme} from '../../../assets/theme/theme';
 import styles from './style';
+import PermissionModal from '../../../components/Permission/Modal';
 
-const Profile = ({ navigation }) => {
+const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
-  const { feedData } = useContext(GlobalDataContext);
+  const {feedData, arrayImages, setArrayImage, imageUrl, setImageUrl} =
+    useContext(GlobalDataContext);
   const [loading, setLoading] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isAnswer, setAnswer] = useState(null);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -33,10 +41,14 @@ const Profile = ({ navigation }) => {
       includeBase64: false,
     };
 
-    launchImageLibrary(options, res => {
-      const url = res.assets && res.assets[0].uri;
-      setImageUrl(url);
-    });
+    launchImageLibrary(options)
+      .then(res => {
+        const url = res.assets && res.assets[0].uri;
+        setImageUrl(url);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   const accessCamera = async () => await requestCameraPermission(selectFile);
@@ -49,24 +61,34 @@ const Profile = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    setModalVisible(false);
+    if (isAnswer === 'PHONE') {
+      accessCamera();
+    } else if (isAnswer === 'STORAGE') {
+      navigation.navigate('Images');
+    }
+    return () => setAnswer('');
+  }, [isAnswer]);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Header
-          screen={'Profile'}
+          screen="Profile"
           navigation={navigation}
-          back={'Feed'}
-          continueTo={'LogIn'}
-          root={'Auth'}
-          left={'Settings'}
-          right={'Logout'}
+          back="SettingsNav"
+          continueTo="LogIn"
+          root="Auth"
+          left="Settings"
+          right="Logout"
           headerTextColor={theme.colors.primary_white}
         />
         <View style={styles.profileImage}>
           <View>
             {imageUrl ? (
               <View>
-                <Image style={styles.userImage} source={{ uri: imageUrl }} />
+                <Image style={styles.userImage} source={{uri: imageUrl}} />
               </View>
             ) : (
               <View>
@@ -76,9 +98,20 @@ const Profile = ({ navigation }) => {
                 />
               </View>
             )}
-            <TouchableOpacity onPress={accessCamera}>
+            <TouchableOpacity
+              onPress={() => {
+                if (arrayImages.length !== 0) {
+                  setModalVisible(true);
+                } else {
+                  accessCamera();
+                }
+              }}>
               <View style={styles.addProfileImage}>
-                <AddIcon width={40} height={40} fill={theme.colors.primary_green} />
+                <AddIcon
+                  width={horizontalScale(40)}
+                  height={verticalScale(40)}
+                  fill={theme.colors.primary_green}
+                />
               </View>
             </TouchableOpacity>
           </View>
@@ -87,7 +120,7 @@ const Profile = ({ navigation }) => {
       <View style={styles.section}>
         <View>
           <Text style={styles.userFullName}>Victoria Robertson</Text>
-          <Text style={styles.userAbount}>A mantra goes here</Text>
+          <Text style={styles.aboutUser}>A mantra goes here</Text>
         </View>
         <View style={styles.switchContainer}>
           <SwitchSelector
@@ -98,25 +131,29 @@ const Profile = ({ navigation }) => {
             backgroundColor={theme.colors.light_gray}
             buttonColor={theme.colors.primary_white}
             borderColor={theme.colors.gray}
-            borderWidth={1.5}
-            height={50}
-            borderRadius={100}
-            fontSize={16}
-            valuePadding={2}
+            borderWidth={moderateScale(1.5)}
+            height={verticalScale(50)}
+            borderRadius={moderateScale(100)}
+            fontSize={moderateScale(16)}
+            valuePadding={horizontalScale(2)}
             hasPadding
             options={[
-              { label: 'Posts', value: false },
-              { label: 'Photos', value: true },
+              {label: 'Posts', value: false},
+              {label: 'Photos', value: true},
             ]}
           />
         </View>
       </View>
       <FlatList
         data={feedData}
-        key={item => item.id}
-        style={styles.contentsBlockContainer}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => renderSwitchValue(item)}
+        style={styles.contentsBlockContainer}
+        renderItem={({item}) => renderSwitchValue(item)}
+      />
+      <PermissionModal
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+        setAnswer={setAnswer}
       />
     </View>
   );

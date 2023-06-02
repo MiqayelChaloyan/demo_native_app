@@ -41,7 +41,7 @@ const MessagesUsers = ({navigation}) => {
                 <SkeletonMessagesList />
               </View>
             ) : (
-              <User item={item} navigation={navigation} />
+              <User userItem={item} navigation={navigation} />
             );
           }}
         />

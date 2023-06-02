@@ -1,23 +1,23 @@
-import { useContext } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import {useContext} from 'react';
+import {FlatList, Text, View} from 'react-native';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import Header from '../../components/Header/Header';
 import ProgressCircle from '../../components/ProgressCircle/ProgressCircle';
-import { GlobalDataContext } from '../../Data/context';
+import {GlobalDataContext} from '../../Data/context';
 import styles from './style';
 
-const InsightsScreen = ({ navigation }) => {
-  const { expensesData } = useContext(GlobalDataContext);
+const InsightsScreen = ({navigation}) => {
+  const {expensesData} = useContext(GlobalDataContext);
 
   return (
-    <View style={styles.insights}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.insights}>
         <Header
-          screen={'Insights'}
+          screen="Insights"
           navigation={navigation}
-          back={'Expenses'}
-          left={'Back'}
-          right={'Filter'}
+          back="Expenses"
+          left="Back"
+          right="Filter"
         />
         <View style={styles.progressCircle}>
           <ProgressCircle />
@@ -29,7 +29,7 @@ const InsightsScreen = ({ navigation }) => {
           <FlatList
             data={expensesData}
             keyExtractor={(_, index) => index.toString()}
-            renderItem={({ item, index }) => {
+            renderItem={({item, index}) => {
               return <ExpenseItemList item={item} index={index} />;
             }}
           />

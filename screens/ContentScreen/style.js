@@ -7,11 +7,11 @@ import {
 import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
-  contentBox: {
+  contentContainer: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
-  contentContainer: {
+  contentBox: {
     paddingHorizontal: horizontalScale(16),
   },
   outletContainer: {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     height: verticalScale(240),
   },
   image: {
-    borderRadius: 8,
+    borderRadius: moderateScale(8),
     width: horizontalScale(343),
     height: verticalScale(240),
   },
@@ -56,20 +56,17 @@ const styles = StyleSheet.create({
     marginTop: horizontalScale(8),
     fontSize: moderateScale(16),
     color: theme.colors.black,
-    fontWeight: 600,
     lineHeight: verticalScale(19),
     ...theme.textVariants.SemiBold,
   },
   itemTitle: {
     fontSize: moderateScale(16),
-    fontWeight: 500,
     color: theme.colors.dark_gray,
-    ...theme.textVariants.Regular,
+    ...theme.textVariants.Medium,
   },
   postMessage: {
     fontSize: moderateScale(14),
     color: theme.colors.black,
-    fontWeight: 400,
     marginVertical: verticalScale(8),
     lineHeight: verticalScale(17),
     ...theme.textVariants.Regular,
@@ -78,7 +75,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(14),
     lineHeight: verticalScale(17),
     color: theme.colors.cool_gray,
-    fontWeight: 400,
     ...theme.textVariants.Regular,
   },
   headerTextContainer: {
@@ -87,7 +83,6 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: moderateScale(24),
-    fontWeight: 600,
     color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
@@ -121,7 +116,7 @@ const styles = StyleSheet.create({
   },
   warningText: {
     fontSize: moderateScale(14),
-    fontWeight: 300,
+    ...theme.textVariants.Regular,
     color: theme.colors.dark_gray,
     textAlign: 'center',
   },

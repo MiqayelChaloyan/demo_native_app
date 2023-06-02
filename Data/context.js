@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import {createContext, useState} from 'react';
 import {Alert} from 'react-native';
 import AboutIcon from '../assets/icons/About.svg';
 import AccountIcon from '../assets/icons/Account.svg';
@@ -6,6 +6,7 @@ import SupportIcon from '../assets/icons/Help.svg';
 import MessagesIcon from '../assets/icons/Message.svg';
 import NotificationIcon from '../assets/icons/Notifications.svg';
 import PrivacyIcon from '../assets/icons/Privacy.svg';
+import ImagesIcon from '../assets/icons/Images.svg';
 
 export const GlobalDataContext = createContext(undefined);
 
@@ -263,6 +264,12 @@ function GlobalData({children}) {
       onPress: () => Alert.alert('Navigated to Notifications page'),
     },
     {
+      key: 'images',
+      icon: ImagesIcon,
+      title: 'Images',
+      onPress: navigation => navigation.navigate('Images'),
+    },
+    {
       key: 'messages',
       icon: MessagesIcon,
       title: 'Messages',
@@ -288,6 +295,9 @@ function GlobalData({children}) {
     },
   ];
 
+  const [arrayImages, setArrayImage] = useState([]);
+  const [imageUrl, setImageUrl] = useState('');
+
   return (
     <GlobalDataContext.Provider
       value={{
@@ -303,6 +313,10 @@ function GlobalData({children}) {
         radioButtonsData,
         setRadioButtonsData,
         settingsData,
+        arrayImages,
+        setArrayImage,
+        imageUrl,
+        setImageUrl,
       }}>
       {typeof children === 'function' ? children() : children}
     </GlobalDataContext.Provider>

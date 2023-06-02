@@ -7,20 +7,21 @@ import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
 const ExpenseItem = ({item, index}) => {
-  const [percent, setPerccent] = useState(0);
+  const [percent, setPercent] = useState(0);
   const {expensesData} = useContext(GlobalDataContext);
-  const priceArray = expensesData.map(item => item.price);
+  const priceArray = expensesData.map(expItem => expItem.price);
   const maxPrice = Math.max(...priceArray);
-  let progressPercent = (item.price * verticalScale(159)) / maxPrice;
+  let progressPercent = (item.price * verticalScale(150)) / maxPrice;
   let backgroundColorStyle =
     index % 2 === 1 ? theme.colors.dark_green : theme.colors.primary_green;
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (percent < Math.ceil(progressPercent)) {
-        setPerccent(percent + 2);
+        setPercent(percent + 2);
       }
-    }, 50);
+    }, 5);
+
     return () => clearTimeout(timer);
   }, [percent, progressPercent]);
 

@@ -10,7 +10,6 @@ const MarketItem = ({item, navigation}) => {
           navigation.navigate({
             name: 'Description',
             params: {item},
-            merge: true,
           });
         }}>
         <View style={styles.itemImageContainer}>

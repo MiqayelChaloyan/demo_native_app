@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,10 +36,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: moderateScale(24),
-    fontWeight: 500,
     lineHeight: verticalScale(29),
     color: theme.colors.black,
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   descriptionContainer: {
     marginTop: verticalScale(8),
@@ -47,17 +46,15 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: moderateScale(16),
-    fontWeight: 600,
     lineHeight: verticalScale(19),
     color: theme.colors.black,
-    ...theme.textVariants.body,
+    ...theme.textVariants.SemiBold,
   },
   text: {
     fontSize: moderateScale(16),
-    fontWeight: 500,
     lineHeight: verticalScale(19),
     color: theme.colors.dark_gray,
-    ...theme.textVariants.body,
+    ...theme.textVariants.Regular,
   },
 });
 
