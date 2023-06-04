@@ -1,0 +1,36 @@
+{
+    "expenses": [
+        {
+            "title": "Item1",
+            "price": 15
+        },
+        {
+            "title": "Item2",
+            "price": 30
+        },
+        {
+            "title": "Item3",
+            "price": 28
+        },
+        {
+            "title": "Item4",
+            "price": 35
+        },
+        {
+            "title": "Item5",
+            "price": 12
+        },
+        {
+            "title": "Item6",
+            "price": 48
+        },
+        {
+            "title": "Item7",
+            "price": 32
+        },
+        {
+            "title": "Item8",
+            "price": 25
+        }
+    ]
+}

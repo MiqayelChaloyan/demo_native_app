@@ -1,11 +1,12 @@
 import {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View, Image} from 'react-native';
-import {GlobalDataContext} from '../../Data/context';
+import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
 const User = ({userItem, navigation}) => {
   const {messages} = useContext(GlobalDataContext);
+
   return (
     <TouchableOpacity
       onPress={() => {

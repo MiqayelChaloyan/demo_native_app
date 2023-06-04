@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
-import {GlobalDataContext} from '../../Data/context';
+import {GlobalDataContext} from '../../contexts/context';
 import Message from './Message';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
 import Header from '../../components/Header/Header';
@@ -76,7 +76,7 @@ const MessagesList = ({navigation, route}) => {
         ref={flatListRef}
         data={messages}
         renderItem={renderItem}
-        keyExtractor={(_, index) => String(index)}
+        keyExtractor={(_, index) => index.toString()}
         onContentSizeChange={() =>
           flatListRef.current.scrollToEnd({animated: true})
         }

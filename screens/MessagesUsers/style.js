@@ -8,6 +8,7 @@ import {
 
 const styles = StyleSheet.create({
   listUsersRoot: {
+    flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
   root: {
@@ -21,6 +22,15 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(5),
     marginBottom: verticalScale(250),
   },
+  navigate: { 
+    textAlign: 'left', 
+    top: verticalScale(27), 
+    fontSize: moderateScale(16),
+    lineHeight: verticalScale(19.36),
+    left: verticalScale(20),
+    color: theme.colors.primary_green,
+    ...theme.textVariants.Medium,
+  },
   userRoot: {
     margin: verticalScale(2),
     padding: verticalScale(5),
@@ -33,6 +43,7 @@ const styles = StyleSheet.create({
     width: horizontalScale(54),
     height: horizontalScale(54),
     borderRadius: verticalScale(100),
+    resizeMode: 'center'
   },
   userName: {
     fontSize: moderateScale(15),

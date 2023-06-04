@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {useContext, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import MarketItemList from './MarketItemList';
@@ -7,12 +7,20 @@ import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import VideoIcon from '../../assets/icons/Video.svg';
 import {theme} from '../../assets/theme/theme';
-import {GlobalDataContext} from '../../Data/context';
+import { getDataMarketFromFile } from '../../utils/ApiUtils';
 import styles from './style';
 
 const MarketScreen = ({navigation}) => {
-  const {marketData} = useContext(GlobalDataContext);
-  const [state, setState] = useState(marketData);
+  const [data, setData] = useState([]);
+  const [state, setState] = useState(data);
+
+  useEffect(() => {
+      const fetchData = async () => {
+          const result = await getDataMarketFromFile();
+          setData(result)
+      };
+      fetchData();
+  }, []);
 
   return (
     <ScrollView style={styles.marketContainer}>
@@ -25,7 +33,7 @@ const MarketScreen = ({navigation}) => {
           left="Back"
           right="Filter"
         />
-        <Search list={marketData} setState={setState} keyword="title" />
+        <Search list={data} setState={setState} keyword="title" />
       </View>
       {state.length ? (
         <View style={styles.contentContainer}>

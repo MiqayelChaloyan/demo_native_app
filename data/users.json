@@ -1,0 +1,94 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "fullName": "Terry Dotson",
+      "isActive": true,
+      "friend": true,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "id": 1,
+      "fullName": "Warren Belz",
+      "isActive": true,
+      "friend": true,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/1906157/pexels-photo-1906157.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "id": 2,
+      "fullName": "Marie Pasquet",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    {
+      "id": 3,
+      "fullName": "Lauriane Rolland",
+      "isActive": true,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/2773977/pexels-photo-2773977.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    {
+      "id": 4,
+      "fullName": "John Smith",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/2224699/pexels-photo-2224699.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    },
+    {
+      "id": 5,
+      "fullName": "Alisa Rolland",
+      "isActive": true,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "fullName": "Patricia Heaton",
+      "isActive": false,
+      "friend": true,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/2690774/pexels-photo-2690774.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    {
+      "id": 7,
+      "fullName": "Alisa Rolland",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/3348129/pexels-photo-3348129.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    {
+      "id": 8,
+      "fullName": "Lauriane Rolland",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/6996168/pexels-photo-6996168.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    {
+      "id": 9,
+      "fullName": "AnnaSophia Robb",
+      "isActive": false,
+      "friend": true,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/1310474/pexels-photo-1310474.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    }
+  ]
+}

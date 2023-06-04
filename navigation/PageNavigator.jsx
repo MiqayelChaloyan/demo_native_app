@@ -1,10 +1,9 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import ContentScreen from '../screens/ContentScreen/ContentScreen';
-import FeedScreen from '../screens/FeedScreen/FeedScreen';
-import ItemDescriptionScreen from '../screens/ItemDescriptionScreen/ItemDescriptionScreen';
-import MarketScreen from '../screens/MarketScreen/MarketScreen';
-import UserOptionsScreen from '../screens/UserOptionsScreen/UserOptionsScreen';
-
+import ContentScreen from '../screens/ContentScreen';
+import FeedScreen from '../screens/FeedScreen';
+import ItemDescriptionScreen from '../screens/ItemDescriptionScreen';
+import MarketScreen from '../screens/MarketScreen';
+import UserOptionsScreen from '../screens/UserOptionsScreen';
 import SettingsNavigation from './SettingsNavigation';
 
 const Stack = createNativeStackNavigator();

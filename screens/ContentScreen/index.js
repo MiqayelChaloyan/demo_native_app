@@ -1,20 +1,24 @@
-import {useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, FlatList, Keyboard} from 'react-native';
-import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import {GlobalDataContext} from '../../Data/context';
+import { View, Text, FlatList, Keyboard } from 'react-native';
+import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import ContentItemList from './ContentItemList';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
+import { GlobalDataContext } from '../../contexts/context';
 import styles from './style';
 
-const ContentScreen = ({navigation, route}) => {
-  const {feedData} = useContext(GlobalDataContext);
-  const [state, setState] = useState(feedData);
+const ContentScreen = ({ navigation, route }) => {
+  const {feeds} = useContext(GlobalDataContext);
+  const [state, setState] = useState(feeds);
   const [keyboardStatus, setKeyboardStatus] = useState(true);
-  const {itemIndex} = route.params;
+  const { itemIndex } = route.params;
+
+  useEffect(() => {
+      console.log(feeds, '--------> Feed data');
+  }, []);
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -31,6 +35,7 @@ const ContentScreen = ({navigation, route}) => {
   }, []);
 
   return (
+    feeds &&
     <View style={styles.contentContainer}>
       <View style={styles.contentBox}>
         <Header
@@ -41,7 +46,7 @@ const ContentScreen = ({navigation, route}) => {
           left={'Back'}
           right={'Filter'}
         />
-        <Search list={feedData} setState={setState} keyword="title" />
+        <Search list={feeds} setState={setState} keyword="title" />
       </View>
       {keyboardStatus && (
         <View style={styles.swiperItemContainer}>
@@ -55,9 +60,9 @@ const ContentScreen = ({navigation, route}) => {
             paginationStyleItemInactive={styles.dotStyle}
             paginationStyleItemActive={[
               styles.dotStyle,
-              {backgroundColor: theme.colors.primary_green},
+              { backgroundColor: theme.colors.primary_green },
             ]}
-            data={feedData}
+            data={feeds}
             renderItem={ChangeSwiperItem}
           />
         </View>
@@ -79,7 +84,7 @@ const ContentScreen = ({navigation, route}) => {
               </View>
             }
             keyExtractor={(_, index) => index.toString()}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <ContentItemList item={item} index={index} />
             )}
           />

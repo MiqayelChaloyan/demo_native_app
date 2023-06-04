@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
-import {GlobalDataContext} from '../../../Data/context';
+import {GlobalDataContext} from '../../../contexts/context';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils.android';
 import {launchImageLibrary} from 'react-native-image-picker';
 import SkeletonPosts from '../../../components/Skeleton/SkeletonPosts';
@@ -14,14 +14,24 @@ import Header from '../../../components/Header/Header';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 import PermissionModal from '../../../components/Permission/Modal';
+import { getDataFeedsFromFile } from '../../../utils/ApiUtils';
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
-  const {feedData, arrayImages, setArrayImage, imageUrl, setImageUrl} =
+  const {arrayImages, setArrayImage, imageUrl, setImageUrl} =
     useContext(GlobalDataContext);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [isAnswer, setAnswer] = useState(null);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getDataFeedsFromFile();
+      setData(result)
+    };
+    fetchData();
+  }, []);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -137,7 +147,7 @@ const Profile = ({navigation}) => {
         </View>
       </View>
       <FlatList
-        data={feedData}
+        data={data}
         key={item => item.id}
         style={styles.contentsBlockContainer}
         keyExtractor={item => item.id}

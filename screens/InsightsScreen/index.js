@@ -1,13 +1,21 @@
-import {useContext} from 'react';
+import {useEffect, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import Header from '../../components/Header/Header';
 import ProgressCircle from '../../components/ProgressCircle/ProgressCircle';
-import {GlobalDataContext} from '../../Data/context';
 import styles from './style';
+import { getDataExpensesFromFile } from '../../utils/ApiUtils';
 
 const InsightsScreen = ({navigation}) => {
-  const {expensesData} = useContext(GlobalDataContext);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+      const fetchData = async () => {
+          const result = await getDataExpensesFromFile();
+          setData(result)
+      };
+      fetchData();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -27,7 +35,7 @@ const InsightsScreen = ({navigation}) => {
         </View>
         <View style={styles.itemListContainer}>
           <FlatList
-            data={expensesData}
+            data={data}
             keyExtractor={(_, index) => index.toString()}
             renderItem={({item, index}) => {
               return <ExpenseItemList item={item} index={index} />;

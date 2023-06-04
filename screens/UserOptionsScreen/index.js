@@ -1,14 +1,22 @@
-import {useState, useContext} from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, FlatList} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import Header from '../../components/Header/Header';
-import {GlobalDataContext} from '../../Data/context';
+import { getDataOptionsFromFile } from '../../utils/ApiUtils';
 import styles from './style';
 
 const UserOptionsScreen = ({navigation}) => {
-  const {radioButtonsData} = useContext(GlobalDataContext);
+  const [data, setData] = useState([]);
   const [activated, setActivated] = useState(false);
+
+  useEffect(() => {
+      const fetchData = async () => {
+          const result = await getDataOptionsFromFile();
+          setData(result)
+      };
+      fetchData();
+  }, []);
 
   return (
     <View style={styles.optionsContainer}>
@@ -22,7 +30,7 @@ const UserOptionsScreen = ({navigation}) => {
       />
       <View style={styles.container}>
         <FlatList
-          data={radioButtonsData}
+          data={data}
           contentContainerStyle={styles.starsContainer}
           renderItem={({item}) => (
             <>

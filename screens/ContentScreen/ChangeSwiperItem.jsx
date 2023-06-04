@@ -3,12 +3,13 @@ import {Image, Text, View} from 'react-native';
 import styles from './style';
 
 const diffMonths = item => {
-  const currentDate = new Date();
-  const createdDate = new Date(item.createdData);
-  return (
-    (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
-    (currentDate.getMonth() - createdDate.getMonth())
-  );
+  // const currentDate = new Date();
+  // const createdDate = new Date(item.createdData);
+  // return (
+  //   (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
+  //   (currentDate.getMonth() - createdDate.getMonth())
+  // );
+  return item;
 };
 
 const ChangeSwiperItem = ({item}) => {

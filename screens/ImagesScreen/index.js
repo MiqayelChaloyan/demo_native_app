@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import {useState, useContext, useEffect} from 'react';
 import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
-import {GlobalDataContext} from '../../Data/context';
+import {GlobalDataContext} from '../../contexts/context';
 import MyBottomSheet from './BottomSheet';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';

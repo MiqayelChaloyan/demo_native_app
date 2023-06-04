@@ -1,30 +1,38 @@
-import {useContext, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View} from 'react-native';
 import {verticalScale} from '../../assets/metrics/Metrics';
-import {GlobalDataContext} from '../../Data/context';
 import {theme} from '../../assets/theme/theme';
+import { getDataExpensesFromFile } from '../../utils/ApiUtils';
 import styles from './style';
 
 const ExpenseItem = ({item, index}) => {
   const [percent, setPercent] = useState(0);
-  const {expensesData} = useContext(GlobalDataContext);
-  const priceArray = expensesData.map(expItem => expItem.price);
+  const [data, setData] = useState([]);
+  const priceArray = data.map(expItem => expItem.price);
   const maxPrice = Math.max(...priceArray);
   let progressPercent = (item.price * verticalScale(150)) / maxPrice;
   let backgroundColorStyle =
     index % 2 === 1 ? theme.colors.dark_green : theme.colors.primary_green;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getDataExpensesFromFile();
+            setData(result)
+        };
+        fetchData();
+    }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (percent < Math.ceil(progressPercent)) {
         setPercent(percent + 2);
       }
-    }, 5);
+    }, 15);
 
     return () => clearTimeout(timer);
   }, [percent, progressPercent]);
-  console.log('item.title:>>>', item.title)
+
   return (
     <View style={styles.expenseItem}>
       <View style={styles.progressContainer}>
