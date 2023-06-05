@@ -90,14 +90,3 @@ FeedScreen.propTypes = {
 };
 
 export default FeedScreen;
-
-{
-  /* TODO: This part is for a test and will be changed lately.*/
-}
-{
-  /* <CustomModal
-        isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}
-        navigation={navigation}
-      /> */
-}

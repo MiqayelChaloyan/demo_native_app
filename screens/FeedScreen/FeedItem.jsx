@@ -15,7 +15,7 @@ const FeedItem = ({item, itemIndex, navigation}) => {
   const monthsAgo = diffMonths(item);
 
   return (
-    item && (
+    item.title && (
       <View>
         <TouchableOpacity
           onPress={() => {

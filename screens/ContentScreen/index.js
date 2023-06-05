@@ -35,63 +35,61 @@ const ContentScreen = ({navigation, route}) => {
   }, []);
 
   return (
-    feeds && (
-      <View style={styles.contentContainer}>
-        <View style={styles.contentBox}>
-          <Header
-            screen="Content"
-            navigation={navigation}
-            back="Feed"
-            continueTo="Market"
-            left="Back"
-            right="Filter"
+    <View style={styles.contentContainer}>
+      <View style={styles.contentBox}>
+        <Header
+          screen="Content"
+          navigation={navigation}
+          back="Feed"
+          continueTo="Market"
+          left="Back"
+          right="Filter"
+        />
+        <Search list={feeds} setState={setState} keyword="title" />
+      </View>
+      {keyboardStatus && (
+        <View style={styles.swiperItemContainer}>
+          <SwiperFlatList
+            autoplay
+            autoplayDelay={3}
+            autoplayLoop
+            index={itemIndex}
+            showPagination
+            paginationStyle={styles.paginationStyle}
+            paginationStyleItemInactive={styles.dotStyle}
+            paginationStyleItemActive={[
+              styles.dotStyle,
+              {backgroundColor: theme.colors.primary_green},
+            ]}
+            data={feeds}
+            renderItem={ChangeSwiperItem}
           />
-          <Search list={feeds} setState={setState} keyword="title" />
         </View>
+      )}
+      <View style={styles.outletContainer}>
         {keyboardStatus && (
-          <View style={styles.swiperItemContainer}>
-            <SwiperFlatList
-              autoplay
-              autoplayDelay={3}
-              autoplayLoop
-              index={itemIndex}
-              showPagination
-              paginationStyle={styles.paginationStyle}
-              paginationStyleItemInactive={styles.dotStyle}
-              paginationStyleItemActive={[
-                styles.dotStyle,
-                {backgroundColor: theme.colors.primary_green},
-              ]}
-              data={feeds}
-              renderItem={ChangeSwiperItem}
-            />
+          <View style={styles.headerTextContainer}>
+            <Text style={styles.headerText}>Outlet</Text>
           </View>
         )}
-        <View style={styles.outletContainer}>
-          {keyboardStatus && (
-            <View style={styles.headerTextContainer}>
-              <Text style={styles.headerText}>Outlet</Text>
-            </View>
-          )}
-          <View style={styles.itemListContainer}>
-            <FlatList
-              data={state}
-              ListEmptyComponent={
-                <View style={styles.warning}>
-                  <Text style={styles.warningText}>
-                    Nothing was found in your search results.
-                  </Text>
-                </View>
-              }
-              keyExtractor={(_, index) => index.toString()}
-              renderItem={({item, index}) => (
-                <ContentItemList item={item} index={index} />
-              )}
-            />
-          </View>
+        <View style={styles.itemListContainer}>
+          <FlatList
+            data={state}
+            ListEmptyComponent={
+              <View style={styles.warning}>
+                <Text style={styles.warningText}>
+                  Nothing was found in your search results.
+                </Text>
+              </View>
+            }
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({item, index}) => (
+              <ContentItemList item={item} index={index} />
+            )}
+          />
         </View>
       </View>
-    )
+    </View>
   );
 };
 

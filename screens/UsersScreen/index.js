@@ -16,6 +16,7 @@ import styles from './style';
 const UsersScreen = ({navigation}) => {
   const {imageUrl} = useContext(GlobalDataContext);
   const [data, setData] = useState([]);
+  const [searchItemValue, setSearchItemValue] = useState('');
 
   useEffect(() => {
     const fetchData = () => {
@@ -44,8 +45,8 @@ const UsersScreen = ({navigation}) => {
           placeholderTextColor={theme.colors.dark_gray}
           style={styles.input}
           variant="outlined"
-          // onChangeText={value => setSearchItemValue(value)}
-          // value={searchItemValue}
+          onChangeText={value => setSearchItemValue(value)}
+          value={searchItemValue}
           keyboardType="web-search"
           autoCapitalize="none"
           autoCorrect={false}

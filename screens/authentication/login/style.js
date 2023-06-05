@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     color: theme.colors.black,
     textAlign: 'center',
     lineHeight: verticalScale(36.31),
-    // left: verticalScale(10),
     ...theme.textVariants.SemiBold,
   },
   hidePassword: {
