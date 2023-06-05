@@ -1,9 +1,10 @@
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
-import ExpenseItem from './ExpenseItem';
-import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
+import BarChart from './BarChart';
+
+import ListOfExpenses from './ListOfExpenses';
 import styles from './style';
 import {getDataExpensesFromFile} from '../../utils/ApiUtils';
 
@@ -30,30 +31,13 @@ const ExpensesScreen = ({navigation}) => {
           left={'Back'}
           right={'New'}
         />
-        <View style={styles.barChartContainer}>
-          <View style={styles.itemsContainer}>
-            <FlatList
-              horizontal
-              data={data}
-              keyExtractor={(item, index) => index.toString() + item.title}
-              renderItem={({item, index}) => {
-                return <ExpenseItem item={item} index={index} />;
-              }}
-            />
-          </View>
-        </View>
+        <BarChart data={data} />
+
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Expenses</Text>
         </View>
-        <View style={styles.itemListContainer}>
-          <FlatList
-            data={data}
-            keyExtractor={(_, index) => index.toString()}
-            renderItem={({item, index}) => {
-              return <ExpenseItemList item={item} index={index} />;
-            }}
-          />
-        </View>
+
+        <ListOfExpenses data={data} />
       </View>
     </View>
   );
