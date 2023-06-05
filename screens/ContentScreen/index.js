@@ -1,24 +1,24 @@
-import { useContext, useEffect, useState } from 'react';
+import {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, FlatList, Keyboard } from 'react-native';
-import { SwiperFlatList } from 'react-native-swiper-flatlist';
+import {View, Text, FlatList, Keyboard} from 'react-native';
+import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import ContentItemList from './ContentItemList';
-import { theme } from '../../assets/theme/theme';
-import { GlobalDataContext } from '../../contexts/context';
+import {theme} from '../../assets/theme/theme';
+import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
-const ContentScreen = ({ navigation, route }) => {
+const ContentScreen = ({navigation, route}) => {
   const {feeds} = useContext(GlobalDataContext);
-  const [state, setState] = useState(feeds);
   const [keyboardStatus, setKeyboardStatus] = useState(true);
-  const { itemIndex } = route.params;
+  const {itemIndex} = route.params;
+  const [state, setState] = useState(feeds);
 
   useEffect(() => {
-      console.log(feeds, '--------> Feed data');
-  }, []);
+    setState(feeds);
+  }, [feeds]);
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -35,62 +35,63 @@ const ContentScreen = ({ navigation, route }) => {
   }, []);
 
   return (
-    feeds &&
-    <View style={styles.contentContainer}>
-      <View style={styles.contentBox}>
-        <Header
-          screen={'Content'}
-          navigation={navigation}
-          back={'Feed'}
-          continueTo={'Market'}
-          left={'Back'}
-          right={'Filter'}
-        />
-        <Search list={feeds} setState={setState} keyword="title" />
-      </View>
-      {keyboardStatus && (
-        <View style={styles.swiperItemContainer}>
-          <SwiperFlatList
-            autoplay
-            autoplayDelay={3}
-            autoplayLoop
-            index={itemIndex}
-            showPagination
-            paginationStyle={styles.paginationStyle}
-            paginationStyleItemInactive={styles.dotStyle}
-            paginationStyleItemActive={[
-              styles.dotStyle,
-              { backgroundColor: theme.colors.primary_green },
-            ]}
-            data={feeds}
-            renderItem={ChangeSwiperItem}
+    feeds && (
+      <View style={styles.contentContainer}>
+        <View style={styles.contentBox}>
+          <Header
+            screen="Content"
+            navigation={navigation}
+            back="Feed"
+            continueTo="Market"
+            left="Back"
+            right="Filter"
           />
+          <Search list={feeds} setState={setState} keyword="title" />
         </View>
-      )}
-      <View style={styles.outletContainer}>
         {keyboardStatus && (
-          <View style={styles.headerTextContainer}>
-            <Text style={styles.headerText}>Outlet</Text>
+          <View style={styles.swiperItemContainer}>
+            <SwiperFlatList
+              autoplay
+              autoplayDelay={3}
+              autoplayLoop
+              index={itemIndex}
+              showPagination
+              paginationStyle={styles.paginationStyle}
+              paginationStyleItemInactive={styles.dotStyle}
+              paginationStyleItemActive={[
+                styles.dotStyle,
+                {backgroundColor: theme.colors.primary_green},
+              ]}
+              data={feeds}
+              renderItem={ChangeSwiperItem}
+            />
           </View>
         )}
-        <View style={styles.itemListContainer}>
-          <FlatList
-            data={state}
-            ListEmptyComponent={
-              <View style={styles.warning}>
-                <Text style={styles.warningText}>
-                  Nothing was found in your search results.
-                </Text>
-              </View>
-            }
-            keyExtractor={(_, index) => index.toString()}
-            renderItem={({ item, index }) => (
-              <ContentItemList item={item} index={index} />
-            )}
-          />
+        <View style={styles.outletContainer}>
+          {keyboardStatus && (
+            <View style={styles.headerTextContainer}>
+              <Text style={styles.headerText}>Outlet</Text>
+            </View>
+          )}
+          <View style={styles.itemListContainer}>
+            <FlatList
+              data={state}
+              ListEmptyComponent={
+                <View style={styles.warning}>
+                  <Text style={styles.warningText}>
+                    Nothing was found in your search results.
+                  </Text>
+                </View>
+              }
+              keyExtractor={(_, index) => index.toString()}
+              renderItem={({item, index}) => (
+                <ContentItemList item={item} index={index} />
+              )}
+            />
+          </View>
         </View>
       </View>
-    </View>
+    )
   );
 };
 

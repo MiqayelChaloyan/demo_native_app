@@ -7,7 +7,7 @@ import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import VideoIcon from '../../assets/icons/Video.svg';
 import {theme} from '../../assets/theme/theme';
-import { getDataMarketFromFile } from '../../utils/ApiUtils';
+import {getDataMarketFromFile} from '../../utils/ApiUtils';
 import styles from './style';
 
 const MarketScreen = ({navigation}) => {
@@ -15,11 +15,11 @@ const MarketScreen = ({navigation}) => {
   const [state, setState] = useState(data);
 
   useEffect(() => {
-      const fetchData = async () => {
-          const result = await getDataMarketFromFile();
-          setData(result)
-      };
-      fetchData();
+    const fetchData = () => {
+      const result = getDataMarketFromFile();
+      setData(result);
+    };
+    fetchData();
   }, []);
 
   return (

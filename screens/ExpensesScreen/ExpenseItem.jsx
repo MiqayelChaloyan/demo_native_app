@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Text, View} from 'react-native';
 import {verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
-import { getDataExpensesFromFile } from '../../utils/ApiUtils';
+import {getDataExpensesFromFile} from '../../utils/ApiUtils';
 import styles from './style';
 
 const ExpenseItem = ({item, index}) => {
@@ -15,13 +15,13 @@ const ExpenseItem = ({item, index}) => {
   let backgroundColorStyle =
     index % 2 === 1 ? theme.colors.dark_green : theme.colors.primary_green;
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await getDataExpensesFromFile();
-            setData(result)
-        };
-        fetchData();
-    }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getDataExpensesFromFile();
+      setData(result);
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {

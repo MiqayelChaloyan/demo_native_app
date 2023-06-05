@@ -1,6 +1,13 @@
 import {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  FlatList,
+  BackHandler,
+} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
 import {GlobalDataContext} from '../../../contexts/context';
@@ -12,26 +19,23 @@ import Posts from '../page/Posts/Posts';
 import Photos from '../page/Photos/Photos';
 import Header from '../../../components/Header/Header';
 import {theme} from '../../../assets/theme/theme';
-import styles from './style';
 import PermissionModal from '../../../components/Permission/Modal';
-import { getDataFeedsFromFile } from '../../../utils/ApiUtils';
+import styles from './style';
 
 const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(false);
-  const {arrayImages, setArrayImage, imageUrl, setImageUrl} =
-    useContext(GlobalDataContext);
+  const {
+    arrayImages,
+    setArrayImage,
+    imageUrl,
+    setImageUrl,
+    feeds,
+    loggedIn,
+    setLoggedIn,
+  } = useContext(GlobalDataContext);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [isAnswer, setAnswer] = useState(null);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getDataFeedsFromFile();
-      setData(result)
-    };
-    fetchData();
-  }, []);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -71,9 +75,27 @@ const Profile = ({navigation}) => {
       navigation.navigate('Images');
     }
     return () => setAnswer('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAnswer]);
 
-  return (
+  // TODO: This part is for a test and will be changed lately.
+  // useEffect(() => {
+  //   const backAction = () => {
+  //     setLoggedIn(false);
+  //     return true;
+  //   };
+  //   const backHandler = BackHandler.addEventListener(
+  //     'hardwareBackPress',
+  //     backAction,
+  //   );
+  //   return () => backHandler.remove();
+  // }, [setLoggedIn]);
+
+  return !loggedIn ? (
+    navigation.navigate('Auth', {
+      screen: 'LogIn',
+    })
+  ) : (
     <View style={styles.container}>
       <View style={styles.header}>
         <Header
@@ -147,7 +169,7 @@ const Profile = ({navigation}) => {
         </View>
       </View>
       <FlatList
-        data={data}
+        data={feeds}
         key={item => item.id}
         style={styles.contentsBlockContainer}
         keyExtractor={item => item.id}

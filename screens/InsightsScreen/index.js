@@ -4,17 +4,17 @@ import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import Header from '../../components/Header/Header';
 import ProgressCircle from '../../components/ProgressCircle/ProgressCircle';
 import styles from './style';
-import { getDataExpensesFromFile } from '../../utils/ApiUtils';
+import {getDataExpensesFromFile} from '../../utils/ApiUtils';
 
 const InsightsScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-      const fetchData = async () => {
-          const result = await getDataExpensesFromFile();
-          setData(result)
-      };
-      fetchData();
+    const fetchData = () => {
+      const result = getDataExpensesFromFile();
+      setData(result);
+    };
+    fetchData();
   }, []);
 
   return (

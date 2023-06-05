@@ -5,17 +5,17 @@ import Header from '../../components/Header/Header';
 import ExpenseItem from './ExpenseItem';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import styles from './style';
-import { getDataExpensesFromFile } from '../../utils/ApiUtils';
+import {getDataExpensesFromFile} from '../../utils/ApiUtils';
 
 const ExpensesScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-      const fetchData = async () => {
-          const result = await getDataExpensesFromFile();
-          setData(result)
-      };
-      fetchData();
+    const fetchData = () => {
+      const result = getDataExpensesFromFile();
+      setData(result);
+    };
+    fetchData();
   }, []);
 
   return (

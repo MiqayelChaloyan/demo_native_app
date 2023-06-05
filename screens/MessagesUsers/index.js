@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
 import User from './User';
 import Search from '../../components/Search/Search';
-import { getDataUsersFromFile } from '../../utils/ApiUtils';
+import {getDataUsersFromFile} from '../../utils/ApiUtils';
 import styles from './style';
 
-const MessagesUsers = ({ navigation }) => {
+const MessagesUsers = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [state, setState] = useState(data);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await getDataUsersFromFile();
+    const fetchData = () => {
+      const result = getDataUsersFromFile();
       const friends = result.filter(item => item.friend);
       setData(friends);
     };
@@ -47,7 +47,7 @@ const MessagesUsers = ({ navigation }) => {
           }
           key={item => item.id}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => {
+          renderItem={({item}) => {
             return loading ? (
               <View style={styles.skeleton}>
                 <SkeletonMessagesList />

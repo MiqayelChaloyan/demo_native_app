@@ -1,7 +1,10 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import PropTypes from 'prop-types';
-import styles from './style';
 import {theme} from '../../assets/theme/theme';
+import {removeItem} from '../../utils/AsyncStorageApiUtils';
+import {useContext} from 'react';
+import {GlobalDataContext} from '../../contexts/context';
+import styles from './style';
 
 const Header = ({
   screen,
@@ -13,6 +16,14 @@ const Header = ({
   right,
   headerTextColor,
 }) => {
+  const {setLoggedIn} = useContext(GlobalDataContext);
+
+  const handleLogout = async key => {
+    await removeItem(key);
+    setLoggedIn(false);
+    Alert.alert('Logout successful');
+  };
+
   return (
     <View style={styles.headerContainer}>
       <View>
@@ -38,11 +49,15 @@ const Header = ({
       <View>
         {right && (
           <TouchableOpacity
-            onPress={() =>
+            onPress={() => {
               navigation.navigate(!root ? continueTo : root, {
                 screen: continueTo,
-              })
-            }>
+              });
+
+              if (right === 'Logout') {
+                handleLogout('loggedIn');
+              }
+            }}>
             <Text
               style={[
                 styles.headerButtonText,

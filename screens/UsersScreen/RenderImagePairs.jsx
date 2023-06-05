@@ -25,7 +25,7 @@ const RenderImagePairs = (data, navigation) => {
                             </View>
                             <View style={{ borderRadius: 50, marginVertical: 20 }}>
                                 <Image
-                                    style={{ width: 80, height: 80, borderRadius: 50, resizeMode: 'center' }}
+                                    style={{ width: 80, height: 80, borderRadius: 50 }}
                                     source={
                                         data[i].imageUrl
                                             ? { uri: data[i].imageUrl }
@@ -70,7 +70,7 @@ const RenderImagePairs = (data, navigation) => {
                                 </View>
                                 <View style={{ borderRadius: 50, marginVertical: 20 }}>
                                     <Image
-                                        style={{ width: 80, height: 80, borderRadius: 50, resizeMode: 'center' }}
+                                        style={{ width: 80, height: 80, borderRadius: 50 }}
                                         source={
                                             data[i + 1].imageUrl
                                                 ? { uri: data[i + 1].imageUrl }

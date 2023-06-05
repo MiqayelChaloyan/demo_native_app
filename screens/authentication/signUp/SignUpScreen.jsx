@@ -17,6 +17,7 @@ import CancelIcon from '../../../assets/icons/Cancel.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
+import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
 
 const SignUpScreen = ({navigation}) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -44,8 +45,12 @@ const SignUpScreen = ({navigation}) => {
       isChecked,
     },
     validationSchema: signUpValidationSchema,
-    onSubmit: data => {
+    onSubmit: async data => {
       // Here we get the data of filled user fields
+      if (data.email && data.password && data.name) {
+        await setDataStorage('user_created', data);
+        return navigation.navigate('LogIn');
+      }
     },
   });
 
@@ -131,7 +136,6 @@ const SignUpScreen = ({navigation}) => {
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     value={values.password}
-                    keyboardType="password"
                     autoCapitalize="none"
                     autoCorrect={false}
                   />

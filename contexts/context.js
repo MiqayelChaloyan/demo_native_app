@@ -24,15 +24,16 @@ function GlobalData({children}) {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla quam eu faci lisis mollis. ',
     },
   ]);
-  
+
   const [feeds, setFeeds] = useState([]);
   const [arrayImages, setArrayImage] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <GlobalDataContext.Provider
       value={{
-        feeds, 
+        feeds,
         setFeeds,
         setMessages,
         messages,
@@ -41,6 +42,8 @@ function GlobalData({children}) {
         setArrayImage,
         imageUrl,
         setImageUrl,
+        loggedIn,
+        setLoggedIn,
       }}>
       {typeof children === 'function' ? children() : children}
     </GlobalDataContext.Provider>

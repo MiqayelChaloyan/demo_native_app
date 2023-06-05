@@ -1,6 +1,10 @@
-import { StyleSheet } from 'react-native';
-import { horizontalScale, moderateScale, verticalScale } from '../../assets/metrics/Metrics';
-import { theme } from '../../assets/theme/theme';
+import {StyleSheet} from 'react-native';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../assets/metrics/Metrics';
+import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   //index.js
@@ -14,7 +18,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 80,
     alignItems: 'stretch',
-    marginBottom: 20,
   },
   input: {
     width: '100%',
@@ -30,7 +33,7 @@ const styles = StyleSheet.create({
   },
   messages: {
     top: 15,
-    left: 15
+    left: 15,
   },
   userImage: {
     width: 40,
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     top: 6,
     right: 15,
-    resizeMode: 'contain'
+    // resizeMode: 'contain',
   },
 
   //RenderImagePairs.jsx

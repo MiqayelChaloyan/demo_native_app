@@ -1,9 +1,9 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, FlatList} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import Header from '../../components/Header/Header';
-import { getDataOptionsFromFile } from '../../utils/ApiUtils';
+import {getDataOptionsFromFile} from '../../utils/ApiUtils';
 import styles from './style';
 
 const UserOptionsScreen = ({navigation}) => {
@@ -11,11 +11,11 @@ const UserOptionsScreen = ({navigation}) => {
   const [activated, setActivated] = useState(false);
 
   useEffect(() => {
-      const fetchData = async () => {
-          const result = await getDataOptionsFromFile();
-          setData(result)
-      };
-      fetchData();
+    const fetchData = () => {
+      const result = getDataOptionsFromFile();
+      setData(result);
+    };
+    fetchData();
   }, []);
 
   return (
