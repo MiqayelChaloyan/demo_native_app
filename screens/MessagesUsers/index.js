@@ -1,16 +1,25 @@
-import {useEffect, useContext, useState} from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, Text, View} from 'react-native';
-import {GlobalDataContext} from '../../Data/context';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
 import User from './User';
-import styles from './style';
 import Search from '../../components/Search/Search';
+import {getDataUsersFromFile} from '../../utils/ApiUtils';
+import styles from './style';
 
 const MessagesUsers = ({navigation}) => {
   const [loading, setLoading] = useState(true);
-  const {usersList} = useContext(GlobalDataContext);
-  const [state, setState] = useState(usersList);
+  const [data, setData] = useState([]);
+  const [state, setState] = useState(data);
+
+  useEffect(() => {
+    const fetchData = () => {
+      const result = getDataUsersFromFile();
+      const friends = result.filter(item => item.friend);
+      setData(friends);
+    };
+    fetchData();
+  }, []);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -20,8 +29,11 @@ const MessagesUsers = ({navigation}) => {
 
   return (
     <View style={styles.listUsersRoot}>
+      <TouchableOpacity onPress={() => navigation.navigate('Users')}>
+        <Text style={styles.navigate}>Back</Text>
+      </TouchableOpacity>
       <View style={styles.root}>
-        <Search list={usersList} setState={setState} keyword="fullName" />
+        <Search list={data} setState={setState} keyword="fullName" />
       </View>
       <View style={styles.listUsers}>
         <FlatList

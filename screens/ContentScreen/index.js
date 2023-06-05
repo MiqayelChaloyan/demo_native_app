@@ -2,19 +2,23 @@ import {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, FlatList, Keyboard} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import {GlobalDataContext} from '../../Data/context';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import ContentItemList from './ContentItemList';
 import {theme} from '../../assets/theme/theme';
+import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
 const ContentScreen = ({navigation, route}) => {
-  const {feedData} = useContext(GlobalDataContext);
-  const [state, setState] = useState(feedData);
+  const {feeds} = useContext(GlobalDataContext);
   const [keyboardStatus, setKeyboardStatus] = useState(true);
   const {itemIndex} = route.params;
+  const [state, setState] = useState(feeds);
+
+  useEffect(() => {
+    setState(feeds);
+  }, [feeds]);
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -34,14 +38,14 @@ const ContentScreen = ({navigation, route}) => {
     <View style={styles.contentContainer}>
       <View style={styles.contentBox}>
         <Header
-          screen={'Content'}
+          screen="Content"
           navigation={navigation}
-          back={'Feed'}
-          continueTo={'Market'}
-          left={'Back'}
-          right={'Filter'}
+          back="Feed"
+          continueTo="Market"
+          left="Back"
+          right="Filter"
         />
-        <Search list={feedData} setState={setState} keyword="title" />
+        <Search list={feeds} setState={setState} keyword="title" />
       </View>
       {keyboardStatus && (
         <View style={styles.swiperItemContainer}>
@@ -57,7 +61,7 @@ const ContentScreen = ({navigation, route}) => {
               styles.dotStyle,
               {backgroundColor: theme.colors.primary_green},
             ]}
-            data={feedData}
+            data={feeds}
             renderItem={ChangeSwiperItem}
           />
         </View>

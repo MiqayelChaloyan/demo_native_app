@@ -4,12 +4,13 @@ import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
 const Posts = ({item}) => {
-  const currentDate = new Date();
-  const createdDate = item.createdData;
+  // const currentDate = new Date();
+  // const createdDate = item.createdData;
+  // const diffMonths =
+  //   (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
+  //   (currentDate.getMonth() - createdDate.getMonth());
 
-  const diffMonths =
-    (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
-    (currentDate.getMonth() - createdDate.getMonth());
+  const diffMonths = 15;
 
   return (
     <View>

@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
   cancel: {
     top: verticalScale(10),
@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     color: theme.colors.black,
     textAlign: 'center',
     lineHeight: verticalScale(36.31),
-    left: verticalScale(10),
     ...theme.textVariants.SemiBold,
   },
   hidePassword: {

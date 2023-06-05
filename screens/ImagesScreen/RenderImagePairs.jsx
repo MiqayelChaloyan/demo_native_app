@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import {useContext, useMemo} from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
-import {GlobalDataContext} from '../../Data/context';
-import CheckIcon from '../../assets/icons/Check.svg';
+import {GlobalDataContext} from '../../contexts/context';
+// import CheckIcon from '../../assets/icons/Check.svg';
 import styles from './style';
 
 const Row = ({children}) => <View style={styles.row}>{children}</View>;
@@ -28,13 +28,6 @@ const RenderImagePairs = (isBottomSheetVisible, changeProfileImage) => {
             <TouchableOpacity
               onPress={() => changeProfileImage(arrayImages[i].id)}>
               <Image source={{uri: arrayImages[i].url}} style={styles.image} />
-              {/* <View style={styles.check}>
-                {true && (
-                  <View style={styles.checkBox}>
-                    <CheckIcon width={20} height={20} />
-                  </View>
-                )}
-              </View> */}
             </TouchableOpacity>
           </Col>
           {arrayImages[i + 1] && (
@@ -45,13 +38,6 @@ const RenderImagePairs = (isBottomSheetVisible, changeProfileImage) => {
                   source={{uri: arrayImages[i + 1].url}}
                   style={styles.image}
                 />
-                {/* <View style={styles.check}> */}
-                {/* {true && (
-                    <View style={styles.checkBox}>
-                      <CheckIcon width={20} height={20} />
-                    </View>
-                  )} */}
-                {/* </View> */}
               </TouchableOpacity>
             </Col>
           )}

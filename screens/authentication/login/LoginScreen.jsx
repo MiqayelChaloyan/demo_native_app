@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -10,16 +10,19 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Platform,
+  Alert,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {loginValidationSchema} from './loginValidationSchema';
-import CancelIcon from '../../../assets/icons/Cancel.svg';
 import {theme} from '../../../assets/theme/theme';
+import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
+import ArrowIcon from '../../../assets/icons/Arrow.svg';
+import {GlobalDataContext} from '../../../contexts/context';
 import styles from './style';
 
 const LogInScreen = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
-
+  const {setLoggedIn} = useContext(GlobalDataContext);
   const {
     values,
     handleChange,
@@ -34,8 +37,17 @@ const LogInScreen = ({navigation}) => {
       password: '',
     },
     validationSchema: loginValidationSchema,
-    onSubmit: data => {
-      // Here we get the user already registered trial
+    onSubmit: async data => {
+      // TODO: This part is for a test and will be changed lately.
+      const {email, password} = await getDataStorage('user_created');
+      if (data.email === email && data.password === password) {
+        await getDataStorage('loggedIn', 'true');
+        setLoggedIn(true);
+        Alert.alert('Login successful');
+        return navigation.navigate('Profile');
+      } else {
+        Alert.alert('Login failed', 'Invalid email or password');
+      }
     },
   });
 
@@ -47,10 +59,9 @@ const LogInScreen = ({navigation}) => {
         <SafeAreaView>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
-              <View style={styles.cancel}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Profile')}>
-                  <CancelIcon
+              <View>
+                <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
+                  <ArrowIcon
                     width={16}
                     height={16}
                     fill={theme.colors.cool_gray}
@@ -95,7 +106,6 @@ const LogInScreen = ({navigation}) => {
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
                     value={values.password}
-                    keyboardType="password"
                     autoCapitalize="none"
                     autoCorrect={false}
                   />

@@ -1,14 +1,22 @@
-import {useContext} from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
-import {GlobalDataContext} from '../../Data/context';
 import ExpenseItem from './ExpenseItem';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import styles from './style';
+import {getDataExpensesFromFile} from '../../utils/ApiUtils';
 
 const ExpensesScreen = ({navigation}) => {
-  const {expensesData} = useContext(GlobalDataContext);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = () => {
+      const result = getDataExpensesFromFile();
+      setData(result);
+    };
+    fetchData();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -26,7 +34,7 @@ const ExpensesScreen = ({navigation}) => {
           <View style={styles.itemsContainer}>
             <FlatList
               horizontal
-              data={expensesData}
+              data={data}
               keyExtractor={(item, index) => index.toString() + item.title}
               renderItem={({item, index}) => {
                 return <ExpenseItem item={item} index={index} />;
@@ -39,7 +47,7 @@ const ExpensesScreen = ({navigation}) => {
         </View>
         <View style={styles.itemListContainer}>
           <FlatList
-            data={expensesData}
+            data={data}
             keyExtractor={(_, index) => index.toString()}
             renderItem={({item, index}) => {
               return <ExpenseItemList item={item} index={index} />;

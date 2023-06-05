@@ -3,43 +3,52 @@ import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
 const FeedItem = ({item, itemIndex, navigation}) => {
-  const currentDate = new Date();
-  const createdDate = item.createdData;
+  const diffMonths = () => {
+    const currentDate = new Date();
+    const createdDate = new Date(item.createdData);
+    return (
+      (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
+      (currentDate.getMonth() - createdDate.getMonth())
+    );
+  };
 
-  const diffMonths =
-    (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
-    (currentDate.getMonth() - createdDate.getMonth());
+  const monthsAgo = diffMonths(item);
 
   return (
-    <View>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate({
-            name: 'Content',
-            params: {itemIndex},
-          });
-        }}>
-        <View style={styles.contentContainer}>
-          <View style={styles.imageContainer}>
-            <Image source={{uri: item.imageUri}} style={styles.feedItemImage} />
-          </View>
-          <View style={styles.contentInfo}>
-            <View style={styles.headerContent}>
-              <Text style={styles.headerFeedText}>{item.title}</Text>
-              <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
+    item.title && (
+      <View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate({
+              name: 'Content',
+              params: {itemIndex},
+            });
+          }}>
+          <View style={styles.contentContainer}>
+            <View style={styles.imageContainer}>
+              <Image
+                source={{uri: item.imageUri}}
+                style={styles.feedItemImage}
+              />
             </View>
-            <View style={styles.feedTextContainer}>
-              <Text
-                style={styles.feedText}
-                numberOfLines={2}
-                ellipsizeMode="tail">
-                {item.message}
-              </Text>
+            <View style={styles.contentInfo}>
+              <View style={styles.headerContent}>
+                <Text style={styles.headerFeedText}>{item.title}</Text>
+                <Text style={styles.aboutContentDate}>{monthsAgo}m ago</Text>
+              </View>
+              <View style={styles.feedTextContainer}>
+                <Text
+                  style={styles.feedText}
+                  numberOfLines={2}
+                  ellipsizeMode="tail">
+                  {item.message}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-      </TouchableOpacity>
-    </View>
+        </TouchableOpacity>
+      </View>
+    )
   );
 };
 

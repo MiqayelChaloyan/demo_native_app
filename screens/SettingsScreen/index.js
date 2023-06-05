@@ -4,11 +4,11 @@ import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import GoIcon from '../../assets/icons/Go.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import Header from '../../components/Header/Header';
-import {GlobalDataContext} from '../../Data/context';
+import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
 const SettingsScreen = ({navigation}) => {
-  const {settingsData} = useContext(GlobalDataContext);
+  const {settings} = useContext(GlobalDataContext);
   const renderItem = ({item}) => (
     <TouchableOpacity
       style={styles.settingsItem}
@@ -40,7 +40,7 @@ const SettingsScreen = ({navigation}) => {
         />
         <View style={styles.settingsList}>
           <FlatList
-            data={settingsData}
+            data={settings}
             renderItem={renderItem}
             keyExtractor={item => item.key}
           />

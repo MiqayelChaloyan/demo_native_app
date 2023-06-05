@@ -1,25 +1,30 @@
-import {useContext, useEffect, useState} from 'react';
+import {useEffect, useState, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, Text, View} from 'react-native';
 import FeedItem from './FeedItem';
-import {GlobalDataContext} from '../../Data/context';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
-import CustomModal from '../../components/Modal/Modal';
+import {GlobalDataContext} from '../../contexts/context';
+// import CustomModal from '../../components/Modal/Modal';
+import {getDataFeedsFromFile} from '../../utils/ApiUtils';
+// import { setDataStorage } from '../../utils/AsyncStorageApiUtils';
 import styles from './style';
 
 const FeedScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
-  const {feedData} = useContext(GlobalDataContext);
-  const [state, setState] = useState(feedData);
+  const {setFeeds} = useContext(GlobalDataContext);
+  const [data, setData] = useState([]);
+  const [state, setState] = useState(data);
 
-  // TODO: This part is for a test and will be changed lately.
-  const [isModalVisible, setModalVisible] = useState(false);
   useEffect(() => {
-    const timer = setTimeout(() => setModalVisible(true), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+    const fetchData = () => {
+      const result = getDataFeedsFromFile();
+      setData(result);
+      return setFeeds(result);
+    };
+    fetchData();
+  }, [loading, setFeeds]);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -27,8 +32,15 @@ const FeedScreen = ({navigation}) => {
     return () => clearTimeout(timer);
   }, []);
 
+  // TODO: This part is for a test and will be changed lately.
+  // const [isModalVisible, setModalVisible] = useState(false);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setModalVisible(true), 3000);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
   return (
-    <>
+    data.length > 0 && (
       <View style={styles.feedScreenContainer}>
         <View style={styles.feedScreen}>
           <Header
@@ -39,7 +51,7 @@ const FeedScreen = ({navigation}) => {
             left="Back"
             right="Filter"
           />
-          <Search list={feedData} setState={setState} keyword="title" />
+          <Search list={data} setState={setState} keyword="title" />
           <View style={styles.contentsBlockContainer}>
             <FlatList
               data={state}
@@ -69,13 +81,7 @@ const FeedScreen = ({navigation}) => {
           </View>
         </View>
       </View>
-      {/* TODO: This part is for a test and will be changed lately.*/}
-      <CustomModal
-        isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}
-        navigation={navigation}
-      />
-    </>
+    )
   );
 };
 

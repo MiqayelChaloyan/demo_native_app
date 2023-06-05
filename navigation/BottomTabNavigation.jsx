@@ -4,10 +4,10 @@ import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 import SupportIcon from '../assets/icons/Support.svg';
 import {horizontalScale, verticalScale} from '../assets/metrics/Metrics';
-import MessagesUsers from '../screens/MessagesUsers/MessagesUsers';
-import ProfileScreen from '../screens/ProfileScreen/profile/ProfileScreen';
-import SupportMessageScreen from '../screens/SupportMessageScreen/SupportMessageScreen';
+import ProfileScreen from '../screens/ProfileScreen/profile';
+import SupportMessageScreen from '../screens/SupportMessageScreen';
 import PageNavigation from './PageNavigator';
+import UsersScreen from '../screens/UsersScreen/index';
 import {theme} from '../assets/theme/theme';
 
 const Tab = createBottomTabNavigator();
@@ -38,8 +38,8 @@ export default function BottomTabNavigation() {
         }}
       />
       <Tab.Screen
-        name="Messages"
-        component={MessagesUsers}
+        name="Users"
+        component={UsersScreen}
         options={{
           title: '',
           tabBarIcon: ({focused}) => (
