@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(24),
     lineHeight: verticalScale(29),
     color: theme.colors.black,
-    ...theme.textVariants.SemiBold,
+    ...theme.textVariants.Medium,
   },
   descriptionContainer: {
     marginTop: verticalScale(8),

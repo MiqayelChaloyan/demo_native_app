@@ -2,6 +2,7 @@ import {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, FlatList, Keyboard} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
+import Warning from '../../components/Warning/Warning';
 import ChangeSwiperItem from './ChangeSwiperItem';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
@@ -75,13 +76,7 @@ const ContentScreen = ({navigation, route}) => {
         <View style={styles.itemListContainer}>
           <FlatList
             data={state}
-            ListEmptyComponent={
-              <View style={styles.warning}>
-                <Text style={styles.warningText}>
-                  Nothing was found in your search results.
-                </Text>
-              </View>
-            }
+            ListEmptyComponent={<Warning />}
             keyExtractor={(_, index) => index.toString()}
             renderItem={({item, index}) => (
               <ContentItemList item={item} index={index} />

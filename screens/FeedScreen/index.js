@@ -1,6 +1,7 @@
 import {useEffect, useState, useContext} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
+import Warning from '../../components/Warning/Warning';
 import FeedItem from './FeedItem';
 import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 import Header from '../../components/Header/Header';
@@ -55,13 +56,7 @@ const FeedScreen = ({navigation}) => {
           <View style={styles.contentsBlockContainer}>
             <FlatList
               data={state}
-              ListEmptyComponent={
-                <View style={styles.warning}>
-                  <Text style={styles.warningText}>
-                    Nothing was found in your search results.
-                  </Text>
-                </View>
-              }
+              ListEmptyComponent={<Warning />}
               key={item => item.id}
               keyExtractor={item => item.id}
               renderItem={({item, index}) => {

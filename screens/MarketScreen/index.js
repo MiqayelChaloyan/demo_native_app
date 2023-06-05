@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import {useEffect, useState} from 'react';
-import {Text, View, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
+import Warning from '../../components/Warning/Warning';
 import Chapter from './Chapter';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
-
 import {getDataMarketFromFile} from '../../utils/ApiUtils';
 import styles from './style';
 
@@ -40,11 +40,7 @@ const MarketScreen = ({navigation}) => {
           <Chapter data={state} navigation={navigation} header="Deals" />
         </View>
       ) : (
-        <View style={styles.warning}>
-          <Text style={styles.warningText}>
-            Nothing was found in your search results.
-          </Text>
-        </View>
+        <Warning />
       )}
     </ScrollView>
   );
