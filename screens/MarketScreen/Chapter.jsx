@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View} from 'react-native';
 import VideoIcon from '../../assets/icons/Video.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
@@ -22,4 +23,11 @@ const Chapter = ({data, navigation, header}) => {
     </View>
   );
 };
+
+Chapter.propTypes = {
+  navigation: PropTypes.object,
+  data: PropTypes.object,
+  header: PropTypes.string,
+};
+
 export default Chapter;
