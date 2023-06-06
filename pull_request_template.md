@@ -6,5 +6,5 @@
   <br>
 + *After that, I edited the proptypes for the data array.* <br>
 
-- [x] Content Screen more understandable and readable.
-- [x] PropTypes for data are edited
+- [ ] Content Screen is more understandable and readable.
+- [ ] PropTypes for data are edited
