@@ -1,15 +1,12 @@
 import {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, FlatList, Keyboard} from 'react-native';
-import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import Warning from '../../components/Warning/Warning';
-import ChangeSwiperItem from './ChangeSwiperItem';
+import {View, Keyboard} from 'react-native';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
-import ContentItemList from './ContentItemList';
-import {theme} from '../../assets/theme/theme';
 import {GlobalDataContext} from '../../contexts/context';
+import OutletList from './OutletList';
 import styles from './style';
+import SwiperList from './SwiperList';
 
 const ContentScreen = ({navigation, route}) => {
   const {feeds} = useContext(GlobalDataContext);
@@ -48,42 +45,8 @@ const ContentScreen = ({navigation, route}) => {
         />
         <Search list={feeds} setState={setState} keyword="title" />
       </View>
-      {keyboardStatus && (
-        <View style={styles.swiperItemContainer}>
-          <SwiperFlatList
-            autoplay
-            autoplayDelay={3}
-            autoplayLoop
-            index={itemIndex}
-            showPagination
-            paginationStyle={styles.paginationStyle}
-            paginationStyleItemInactive={styles.dotStyle}
-            paginationStyleItemActive={[
-              styles.dotStyle,
-              {backgroundColor: theme.colors.primary_green},
-            ]}
-            data={feeds}
-            renderItem={ChangeSwiperItem}
-          />
-        </View>
-      )}
-      <View style={styles.outletContainer}>
-        {keyboardStatus && (
-          <View style={styles.headerTextContainer}>
-            <Text style={styles.headerText}>Outlet</Text>
-          </View>
-        )}
-        <View style={styles.itemListContainer}>
-          <FlatList
-            data={state}
-            ListEmptyComponent={<Warning />}
-            keyExtractor={(_, index) => index.toString()}
-            renderItem={({item, index}) => (
-              <ContentItemList item={item} index={index} />
-            )}
-          />
-        </View>
-      </View>
+      {keyboardStatus && <SwiperList itemIndex={itemIndex} feeds={feeds} />}
+      <OutletList state={state} feeds={feeds} />
     </View>
   );
 };
