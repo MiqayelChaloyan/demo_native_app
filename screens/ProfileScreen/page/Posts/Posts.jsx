@@ -4,13 +4,16 @@ import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
 const Posts = ({item}) => {
-  // const currentDate = new Date();
-  // const createdDate = item.createdData;
-  // const diffMonths =
-  //   (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
-  //   (currentDate.getMonth() - createdDate.getMonth());
+  const diffMonths = () => {
+    const currentDate = new Date();
+    const createdDate = new Date(item.createdData);
+    return (
+      (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
+      (currentDate.getMonth() - createdDate.getMonth())
+    );
+  };
 
-  const diffMonths = 15;
+  const monthsAgo = diffMonths(item);
 
   return (
     <View>
@@ -22,7 +25,7 @@ const Posts = ({item}) => {
           <View style={styles.contentInfo}>
             <View style={styles.headerContent}>
               <Text style={styles.headerText}>{item.title}</Text>
-              <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
+              <Text style={styles.aboutContentDate}>{monthsAgo}m ago</Text>
             </View>
             <View style={styles.feedTextContainer}>
               <Text

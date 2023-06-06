@@ -32,16 +32,17 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
   },
   messages: {
-    top: 15,
+    top: 10,
     left: 15,
   },
   userImage: {
     width: 40,
     height: 40,
     borderRadius: 50,
-    top: 6,
+    top: 4,
     right: 15,
-    // resizeMode: 'contain',
+    borderWidth: 0.5,
+    borderColor: theme.colors.primary_green,
   },
 
   //RenderImagePairs.jsx

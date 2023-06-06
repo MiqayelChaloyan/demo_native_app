@@ -3,8 +3,8 @@ import {FlatList, Text, View} from 'react-native';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import Header from '../../components/Header/Header';
 import ProgressCircle from '../../components/ProgressCircle/ProgressCircle';
-import styles from './style';
 import {getDataExpensesFromFile} from '../../utils/ApiUtils';
+import styles from './style';
 
 const InsightsScreen = ({navigation}) => {
   const [data, setData] = useState([]);

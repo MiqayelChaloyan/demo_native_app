@@ -33,8 +33,8 @@ const SettingsScreen = ({navigation}) => {
         <Header
           screen="Settings"
           navigation={navigation}
-          back="Feed"
-          continueTo="Market"
+          back="Profile"
+          continueTo="Feed"
           left="Back"
           right="Filter"
         />

@@ -1,5 +1,6 @@
 import {createContext, useState} from 'react';
 import settings from '../data/settings';
+// import {user} from '../data/user';
 
 export const GlobalDataContext = createContext(undefined);
 
@@ -29,6 +30,12 @@ function GlobalData({children}) {
   const [arrayImages, setArrayImage] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    isChecked: false,
+  });
 
   return (
     <GlobalDataContext.Provider
@@ -42,6 +49,8 @@ function GlobalData({children}) {
         setArrayImage,
         imageUrl,
         setImageUrl,
+        userData,
+        setUserData,
         loggedIn,
         setLoggedIn,
       }}>

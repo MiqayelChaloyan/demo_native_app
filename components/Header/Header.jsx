@@ -1,9 +1,8 @@
-import {View, Text, TouchableOpacity, Alert} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
+import LogoutModal from '../Logout/LogoutModal';
+import {useState} from 'react';
 import {theme} from '../../assets/theme/theme';
-import {removeItem} from '../../utils/AsyncStorageApiUtils';
-import {useContext} from 'react';
-import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
 const Header = ({
@@ -16,61 +15,65 @@ const Header = ({
   right,
   headerTextColor,
 }) => {
-  const {setLoggedIn} = useContext(GlobalDataContext);
-
-  const handleLogout = async key => {
-    await removeItem(key);
-    setLoggedIn(false);
-    Alert.alert('Logout successful');
+  const [isModalVisible, setModalVisible] = useState(false);
+  const handleLogout = () => {
+    setModalVisible(true);
   };
 
   return (
-    <View style={styles.headerContainer}>
-      <View>
-        <TouchableOpacity onPress={() => navigation.navigate(back)}>
-          <Text
-            style={[
-              styles.headerButtonText,
-              {color: headerTextColor || theme.colors.primary_green},
-            ]}>
-            {left}
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View>
-        <Text
-          style={[
-            styles.headerText,
-            {color: headerTextColor || theme.colors.black},
-          ]}>
-          {screen}
-        </Text>
-      </View>
-      <View>
-        {right && (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate(!root ? continueTo : root, {
-                screen: continueTo,
-              });
-
-              if (right === 'Logout') {
-                handleLogout('loggedIn');
-              }
-            }}>
+    <>
+      <View style={styles.headerContainer}>
+        <View>
+          <TouchableOpacity onPress={() => navigation.navigate(back)}>
             <Text
               style={[
                 styles.headerButtonText,
-                {
-                  color: headerTextColor || theme.colors.primary_green,
-                },
+                {color: headerTextColor || theme.colors.primary_green},
               ]}>
-              {right}
+              {left}
             </Text>
           </TouchableOpacity>
-        )}
+        </View>
+        <View>
+          <Text
+            style={[
+              styles.headerText,
+              {color: headerTextColor || theme.colors.black},
+            ]}>
+            {screen}
+          </Text>
+        </View>
+        <View>
+          {right && (
+            <TouchableOpacity
+              onPress={() => {
+                if (right === 'Logout') {
+                  handleLogout();
+                } else {
+                  navigation.navigate(!root ? continueTo : root, {
+                    screen: continueTo,
+                  });
+                }
+              }}>
+              <Text
+                style={[
+                  styles.headerButtonText,
+                  {
+                    color: headerTextColor || theme.colors.primary_green,
+                  },
+                ]}>
+                {right}
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
-    </View>
+      <LogoutModal
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+        navigation={navigation}
+      />
+    </>
   );
 };
 
