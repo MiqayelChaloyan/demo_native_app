@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
+import Warning from '../../components/Warning/Warning';
 import User from './User';
 import Search from '../../components/Search/Search';
 import {getDataUsersFromFile} from '../../utils/ApiUtils';
@@ -38,13 +39,7 @@ const MessagesUsers = ({navigation}) => {
       <View style={styles.listUsers}>
         <FlatList
           data={state}
-          ListEmptyComponent={
-            <View style={styles.warning}>
-              <Text style={styles.warningText}>
-                Nothing was found in your search results.
-              </Text>
-            </View>
-          }
+          ListEmptyComponent={<Warning />}
           key={item => item.id}
           keyExtractor={item => item.id}
           renderItem={({item}) => {

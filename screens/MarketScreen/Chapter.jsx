@@ -29,4 +29,5 @@ Chapter.propTypes = {
   data: PropTypes.object,
   header: PropTypes.string,
 };
+
 export default Chapter;
