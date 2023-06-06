@@ -11,6 +11,7 @@ import {
   Keyboard,
   Platform,
   Alert,
+  BackHandler,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {loginValidationSchema} from './loginValidationSchema';
@@ -21,7 +22,7 @@ import styles from './style';
 
 const LogInScreen = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
-  const {userData, setLoggedIn} = useContext(GlobalDataContext);
+  const {userData, setLoggedIn, loggedIn} = useContext(GlobalDataContext);
 
   const {
     values,
@@ -49,6 +50,19 @@ const LogInScreen = ({navigation}) => {
       }
     },
   });
+
+  const handleBackButtonClick = () => {
+    navigation.navigate('Feed');
+    setLoggedIn(false);
+    return true;
+  }
+  
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", handleBackButtonClick);
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", handleBackButtonClick);
+    };
+  }, [loggedIn]);
 
   return (
     <KeyboardAvoidingView

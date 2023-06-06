@@ -18,13 +18,14 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {theme} from '../../../assets/theme/theme';
 import {GlobalDataContext} from '../../../contexts/context';
 import styles from './style';
+import { setDataStorage } from '../../../utils/AsyncStorageApiUtils';
 
 const SignUpScreen = ({navigation}) => {
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
   const checkBoxText =
     'I would like to receive your newsletter and other promotional information.';
-  const {setUserData} = useContext(GlobalDataContext);
+  const {setUserData, setLoggedIn} = useContext(GlobalDataContext);
 
   useEffect(() => {
     values.isChecked = isChecked;
@@ -50,7 +51,10 @@ const SignUpScreen = ({navigation}) => {
       // TODO: This part is for a test and will be changed lately.
       if (data.email && data.password && data.name) {
         setUserData(data);
-        return navigation.navigate('LogIn');
+        await setDataStorage('loggedIn', true);
+        setLoggedIn(true);
+        Alert.alert('Login successful');
+        return navigation.navigate('Profile');
       }
     },
   });
