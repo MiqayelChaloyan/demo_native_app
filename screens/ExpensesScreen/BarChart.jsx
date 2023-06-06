@@ -20,6 +20,6 @@ const BarChart = ({data}) => {
   );
 };
 BarChart.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.array,
 };
 export default BarChart;

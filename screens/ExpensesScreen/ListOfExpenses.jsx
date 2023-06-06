@@ -17,6 +17,6 @@ const ListOfExpenses = ({data}) => {
   );
 };
 ListOfExpenses.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.array,
 };
 export default ListOfExpenses;
