@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
 import ExpenseItem from './ExpenseItem';
 import styles from './style';
@@ -17,5 +18,8 @@ const BarChart = ({data}) => {
       </View>
     </View>
   );
+};
+BarChart.propTypes = {
+  data: PropTypes.object,
 };
 export default BarChart;

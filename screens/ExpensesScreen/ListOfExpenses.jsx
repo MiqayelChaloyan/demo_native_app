@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import styles from './style';
@@ -15,5 +16,7 @@ const ListOfExpenses = ({data}) => {
     </View>
   );
 };
-
+ListOfExpenses.propTypes = {
+  data: PropTypes.object,
+};
 export default ListOfExpenses;
