@@ -1,8 +1,9 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import LogoutModal from '../Logout/LogoutModal';
 import {useState} from 'react';
 import {theme} from '../../assets/theme/theme';
+import PermissionModal from '../Permission/Modal';
+import LogoutModal from '../Permission/children/logout';
 import styles from './style';
 
 const Header = ({
@@ -66,10 +67,14 @@ const Header = ({
           )}
         </View>
       </View>
-      <LogoutModal
+      <PermissionModal
         isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}
-        navigation={navigation}
+        children={
+          <LogoutModal
+            navigation={navigation}
+            setModalVisible={setModalVisible}
+          />
+        }
       />
     </>
   );

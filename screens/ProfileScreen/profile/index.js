@@ -14,6 +14,7 @@ import Header from '../../../components/Header/Header';
 import {theme} from '../../../assets/theme/theme';
 import PermissionModal from '../../../components/Permission/Modal';
 import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
+import ProfileModal from '../../../components/Permission/children/profile';
 import styles from './style';
 
 const Profile = ({navigation}) => {
@@ -57,7 +58,10 @@ const Profile = ({navigation}) => {
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
       setImageUrl(url);
-      setArrayImage([...arrayImages, {id: arrayImages.length + 1, url: url}]);
+      setArrayImage([
+        ...arrayImages,
+        {id: arrayImages.length + 1, url: url, isChecked: false},
+      ]);
     });
   };
 
@@ -167,7 +171,7 @@ const Profile = ({navigation}) => {
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}
-        setAnswer={setAnswer}
+        children={<ProfileModal setAnswer={setAnswer} />}
       />
     </View>
   );

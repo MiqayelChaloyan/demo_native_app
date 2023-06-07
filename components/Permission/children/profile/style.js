@@ -3,8 +3,8 @@ import {
   horizontalScale,
   moderateScale,
   verticalScale,
-} from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+} from '../../../../assets/metrics/Metrics';
+import {theme} from '../../../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,23 +21,28 @@ const styles = StyleSheet.create({
   question: {
     fontSize: 17,
     textAlign: 'center',
-    color: 'black',
+    color: theme.colors.black,
     marginTop: verticalScale(35),
     ...theme.textVariants.Regular,
   },
   contain: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: verticalScale(25),
+    marginTop: verticalScale(20),
     paddingHorizontal: horizontalScale(40),
   },
   answer: {
     fontSize: moderateScale(17),
     textAlign: 'center',
-    color: '#59d4b7',
+    color: theme.colors.light_blue,
     marginTop: verticalScale(15),
     margin: verticalScale(50),
     ...theme.textVariants.Regular,
+  },
+  cancel: {
+    position: 'absolute',
+    right: verticalScale(10),
+    top: verticalScale(2),
   },
 });
 
