@@ -86,16 +86,6 @@ const styles = StyleSheet.create({
     padding: verticalScale(5),
     paddingHorizontal: verticalScale(16),
   },
-  warning: {
-    width: '100%',
-    marginTop: verticalScale(120),
-  },
-  warningText: {
-    fontSize: moderateScale(14),
-    ...theme.textVariants.Regular,
-    color: theme.colors.dark_gray,
-    textAlign: 'center',
-  },
 });
 
 export default styles;

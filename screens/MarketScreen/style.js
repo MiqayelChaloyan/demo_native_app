@@ -61,16 +61,6 @@ const styles = StyleSheet.create({
     color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
-  warning: {
-    width: '100%',
-    marginTop: verticalScale(120),
-  },
-  warningText: {
-    fontSize: moderateScale(14),
-    ...theme.textVariants.Regular,
-    color: theme.colors.dark_gray,
-    textAlign: 'center',
-  },
 });
 
 export default styles;
