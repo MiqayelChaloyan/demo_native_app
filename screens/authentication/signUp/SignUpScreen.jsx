@@ -10,6 +10,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Platform,
+  Alert,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {signUpValidationSchema} from './signUpValidationSchema';
@@ -18,7 +19,7 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {theme} from '../../../assets/theme/theme';
 import {GlobalDataContext} from '../../../contexts/context';
 import styles from './style';
-import { setDataStorage } from '../../../utils/AsyncStorageApiUtils';
+import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
 
 const SignUpScreen = ({navigation}) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -54,7 +55,6 @@ const SignUpScreen = ({navigation}) => {
         await setDataStorage('loggedIn', true);
         setLoggedIn(true);
         Alert.alert('Login successful');
-        return navigation.navigate('Profile');
       }
     },
   });

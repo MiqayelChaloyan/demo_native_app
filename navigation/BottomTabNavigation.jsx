@@ -1,21 +1,21 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
 import MessagesIcon from '../assets/icons/Messages.svg';
 import SupportIcon from '../assets/icons/Support.svg';
-import { horizontalScale, verticalScale } from '../assets/metrics/Metrics';
+import {horizontalScale, verticalScale} from '../assets/metrics/Metrics';
 import ProfileScreen from '../screens/ProfileScreen/profile';
 import SupportMessageScreen from '../screens/SupportMessageScreen';
 import PageNavigation from './PageNavigator';
 import UsersScreen from '../screens/UsersScreen/index';
 import AuthNavigation from './AuthNavigation';
-import { theme } from '../assets/theme/theme';
-import { useContext } from 'react';
-import { GlobalDataContext } from '../contexts/context';
+import {theme} from '../assets/theme/theme';
+import {useContext} from 'react';
+import {GlobalDataContext} from '../contexts/context';
 
 const Tab = createBottomTabNavigator();
 export default function BottomTabNavigation() {
-  const { loggedIn } = useContext(GlobalDataContext);
+  const {loggedIn} = useContext(GlobalDataContext);
 
   return (
     <Tab.Navigator
@@ -31,7 +31,7 @@ export default function BottomTabNavigation() {
         component={PageNavigation}
         options={{
           title: '',
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <HomeIcon
               width={horizontalScale(25)}
               height={verticalScale(25)}
@@ -49,12 +49,14 @@ export default function BottomTabNavigation() {
             component={UsersScreen}
             options={{
               title: '',
-              tabBarIcon: ({ focused }) => (
+              tabBarIcon: ({focused}) => (
                 <MessagesIcon
                   width={horizontalScale(25)}
                   height={verticalScale(25)}
                   fill={
-                    focused ? theme.colors.primary_green : theme.colors.cool_gray
+                    focused
+                      ? theme.colors.primary_green
+                      : theme.colors.cool_gray
                   }
                 />
               ),
@@ -65,12 +67,14 @@ export default function BottomTabNavigation() {
             component={ProfileScreen}
             options={{
               title: '',
-              tabBarIcon: ({ focused }) => (
+              tabBarIcon: ({focused}) => (
                 <ProfileIcon
                   width={horizontalScale(25)}
                   height={verticalScale(25)}
                   fill={
-                    focused ? theme.colors.primary_green : theme.colors.cool_gray
+                    focused
+                      ? theme.colors.primary_green
+                      : theme.colors.cool_gray
                   }
                 />
               ),
@@ -81,12 +85,14 @@ export default function BottomTabNavigation() {
             component={SupportMessageScreen}
             options={{
               title: '',
-              tabBarIcon: ({ focused }) => (
+              tabBarIcon: ({focused}) => (
                 <SupportIcon
                   width={horizontalScale(25)}
                   height={verticalScale(25)}
                   fill={
-                    focused ? theme.colors.primary_green : theme.colors.cool_gray
+                    focused
+                      ? theme.colors.primary_green
+                      : theme.colors.cool_gray
                   }
                 />
               ),
@@ -99,7 +105,7 @@ export default function BottomTabNavigation() {
           component={AuthNavigation}
           options={{
             title: '',
-            tabBarIcon: ({ focused }) => (
+            tabBarIcon: ({focused}) => (
               <ProfileIcon
                 width={horizontalScale(25)}
                 height={verticalScale(25)}

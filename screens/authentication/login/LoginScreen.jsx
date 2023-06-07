@@ -51,18 +51,22 @@ const LogInScreen = ({navigation}) => {
     },
   });
 
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        handleBackButtonClick,
+      );
+    };
+  }, [handleBackButtonClick, loggedIn]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleBackButtonClick = () => {
     navigation.navigate('Feed');
     setLoggedIn(false);
     return true;
-  }
-  
-  useEffect(() => {
-    BackHandler.addEventListener("hardwareBackPress", handleBackButtonClick);
-    return () => {
-      BackHandler.removeEventListener("hardwareBackPress", handleBackButtonClick);
-    };
-  }, [loggedIn]);
+  };
 
   return (
     <KeyboardAvoidingView
