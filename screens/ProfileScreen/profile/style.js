@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   section: {
+    paddingHorizontal: horizontalScale(16),
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: verticalScale(60),
@@ -65,11 +66,6 @@ const styles = StyleSheet.create({
     width: horizontalScale(343),
     height: horizontalScale(50),
     marginTop: verticalScale(19),
-  },
-  contentsBlockContainer: {
-    paddingHorizontal: horizontalScale(16),
-    height: verticalScale(356),
-    marginTop: verticalScale(16),
   },
 });
 
