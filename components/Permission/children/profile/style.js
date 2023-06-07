@@ -13,10 +13,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modal: {
-    height: horizontalScale(180),
-    width: horizontalScale(320),
+    height: verticalScale(180),
+    width: horizontalScale(343),
     paddingTop: verticalScale(10),
     backgroundColor: theme.colors.primary_white,
+    borderRadius: verticalScale(10),
   },
   question: {
     fontSize: 17,

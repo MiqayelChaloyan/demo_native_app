@@ -17,7 +17,7 @@ import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import ProfileModal from '../../../components/Permission/children/profile';
 import styles from './style';
 
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
   const [showHide, setShowHide] = useState(false);
   const {
     arrayImages,
@@ -60,7 +60,7 @@ const Profile = ({navigation}) => {
       setImageUrl(url);
       setArrayImage([
         ...arrayImages,
-        {id: arrayImages.length + 1, url: url, isChecked: false},
+        { id: arrayImages.length + 1, url: url, isChecked: false },
       ]);
     });
   };
@@ -87,7 +87,7 @@ const Profile = ({navigation}) => {
   }, [isAnswer]);
 
   return !loggedIn ? (
-    navigation.navigate('Auth', {screen: 'LogIn'})
+    navigation.navigate('Auth', { screen: 'LogIn' })
   ) : (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -105,7 +105,7 @@ const Profile = ({navigation}) => {
           <View>
             {imageUrl ? (
               <View>
-                <Image style={styles.userImage} source={{uri: imageUrl}} />
+                <Image style={styles.userImage} source={{ uri: imageUrl }} />
               </View>
             ) : (
               <View>
@@ -155,8 +155,8 @@ const Profile = ({navigation}) => {
             valuePadding={2}
             hasPadding
             options={[
-              {label: 'Posts', value: false},
-              {label: 'Photos', value: true},
+              { label: 'Posts', value: false },
+              { label: 'Photos', value: true },
             ]}
           />
         </View>
@@ -166,13 +166,14 @@ const Profile = ({navigation}) => {
         key={item => item.id}
         style={styles.contentsBlockContainer}
         keyExtractor={item => item.id}
-        renderItem={({item}) => renderSwitchValue(item)}
+        renderItem={({ item }) => renderSwitchValue(item)}
       />
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}
-        children={<ProfileModal setAnswer={setAnswer} />}
-      />
+      >
+        <ProfileModal setAnswer={setAnswer} />
+      </PermissionModal>
     </View>
   );
 };

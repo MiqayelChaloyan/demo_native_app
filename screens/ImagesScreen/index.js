@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {useState, useContext, useEffect} from 'react';
-import {Image, ScrollView, View} from 'react-native';
+import { Image, ScrollView, View } from 'react-native';
 import Header from '../../components/Header/Header';
 import ImagesModal from '../../components/Permission/children/images';
 import PermissionModal from '../../components/Permission/Modal';
@@ -8,9 +8,9 @@ import {GlobalDataContext} from '../../contexts/context';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
 
-const ImagesScreen = ({navigation}) => {
+const ImagesScreen = ({ navigation }) => {
   const [sheet, setSheet] = useState('');
-  const {arrayImages, setArrayImage, setImageUrl} =
+  const { arrayImages, setArrayImage, setImageUrl } =
     useContext(GlobalDataContext);
   const [photoId, setPhotoId] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
@@ -19,18 +19,15 @@ const ImagesScreen = ({navigation}) => {
     if (sheet === 'Add') {
       const result = arrayImages.filter(item => item.id === photoId);
       setImageUrl(result[0].url);
-      setModalVisible(false);
       return navigation.navigate('Profile');
     } else if (sheet === 'Remove') {
       const result = arrayImages.filter(item => item.id !== photoId);
       setArrayImage(result);
-      setModalVisible(false);
-    } else if (sheet === 'Cancel') {
-      setModalVisible(false);
-    }
+    } 
+    setModalVisible(false);
     setSheet('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sheet, photoId]);
+  }, [sheet]);
 
   const changeProfileImage = id => {
     setPhotoId(id);
@@ -73,11 +70,14 @@ const ImagesScreen = ({navigation}) => {
           )}
         </ScrollView>
       </View>
+
+
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}
-        children={<ImagesModal setSheet={setSheet} />}
-      />
+      >
+        <ImagesModal setSheet={setSheet} />
+      </PermissionModal>
     </View>
   );
 };

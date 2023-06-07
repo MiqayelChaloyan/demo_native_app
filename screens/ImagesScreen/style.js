@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
   checked: {
     position: 'absolute',
     backgroundColor: theme.colors.transparent,
-    width: horizontalScale(31),
-    height: verticalScale(32),
+    width: horizontalScale(30),
+    height: verticalScale(30),
     borderWidth: moderateScale(1.5),
     borderColor: theme.colors.primary_green,
     borderRadius: moderateScale(50),
@@ -106,13 +106,13 @@ const styles = StyleSheet.create({
   checkedBox: {
     position: 'absolute',
     backgroundColor: theme.colors.primary_green,
-    width: horizontalScale(25),
+    width: horizontalScale(26),
     height: verticalScale(25),
     borderWidth: moderateScale(1),
     borderColor: theme.colors.primary_green,
     borderRadius: moderateScale(50),
-    right: horizontalScale(2),
-    top: verticalScale(2),
+    right: horizontalScale(0.5),
+    top: verticalScale(1),
     padding: horizontalScale(1),
   },
 });

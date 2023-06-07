@@ -27,7 +27,7 @@ const Header = ({
             <Text
               style={[
                 styles.headerButtonText,
-                {color: headerTextColor || theme.colors.primary_green},
+                { color: headerTextColor || theme.colors.primary_green },
               ]}>
               {left}
             </Text>
@@ -37,7 +37,7 @@ const Header = ({
           <Text
             style={[
               styles.headerText,
-              {color: headerTextColor || theme.colors.black},
+              { color: headerTextColor || theme.colors.black },
             ]}>
             {screen}
           </Text>
@@ -67,15 +67,12 @@ const Header = ({
           )}
         </View>
       </View>
-      <PermissionModal
-        isModalVisible={isModalVisible}
-        children={
-          <LogoutModal
-            navigation={navigation}
-            setModalVisible={setModalVisible}
-          />
-        }
-      />
+      <PermissionModal isModalVisible={isModalVisible}>
+        <LogoutModal 
+          navigation={navigation}
+          setModalVisible={setModalVisible} 
+        />
+      </PermissionModal>
     </>
   );
 };

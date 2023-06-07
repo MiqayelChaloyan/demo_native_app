@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modal: {
-    height: horizontalScale(170),
+    height: verticalScale(150),
     width: horizontalScale(343),
     paddingTop: verticalScale(10),
     backgroundColor: theme.colors.primary_white,
