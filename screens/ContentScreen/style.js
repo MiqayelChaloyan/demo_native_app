@@ -110,16 +110,6 @@ const styles = StyleSheet.create({
   titleContainer: {
     marginLeft: horizontalScale(10),
   },
-  warning: {
-    width: '100%',
-    marginTop: verticalScale(10),
-  },
-  warningText: {
-    fontSize: moderateScale(14),
-    ...theme.textVariants.Regular,
-    color: theme.colors.dark_gray,
-    textAlign: 'center',
-  },
 });
 
 export default styles;

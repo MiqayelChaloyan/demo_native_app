@@ -1,15 +1,17 @@
 import {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../../assets/metrics/Metrics';
+import FeedList from '../../../components/FeedList/FeedList';
 import {GlobalDataContext} from '../../../contexts/context';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils.android';
 import {launchImageLibrary} from 'react-native-image-picker';
-import SkeletonPosts from '../../../components/Skeleton/SkeletonPosts';
-import SkeletonPhotos from '../../../components/Skeleton/SkeletonPhotos';
-import Posts from '../page/Posts/Posts';
-import Photos from '../page/Photos/Photos';
 import Header from '../../../components/Header/Header';
 import {theme} from '../../../assets/theme/theme';
 import PermissionModal from '../../../components/Permission/Modal';
@@ -17,7 +19,7 @@ import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import styles from './style';
 
 const Profile = ({navigation}) => {
-  const [showHide, setShowHide] = useState(false);
+  const [showHide, setShowHide] = useState(true);
   const {
     arrayImages,
     setArrayImage,
@@ -62,14 +64,6 @@ const Profile = ({navigation}) => {
   };
 
   const accessCamera = async () => await requestCameraPermission(selectFile);
-
-  const renderSwitchValue = item => {
-    if (showHide) {
-      return loading ? <SkeletonPhotos /> : <Photos item={item} />;
-    } else {
-      return loading ? <SkeletonPosts /> : <Posts item={item} />;
-    }
-  };
 
   useEffect(() => {
     setModalVisible(false);
@@ -121,8 +115,8 @@ const Profile = ({navigation}) => {
               }}>
               <View style={styles.addProfileImage}>
                 <AddIcon
-                  width={40}
-                  height={40}
+                  width={horizontalScale(40)}
+                  height={verticalScale(40)}
                   fill={theme.colors.primary_green}
                 />
               </View>
@@ -144,26 +138,25 @@ const Profile = ({navigation}) => {
             backgroundColor={theme.colors.light_gray}
             buttonColor={theme.colors.primary_white}
             borderColor={theme.colors.gray}
-            borderWidth={1.5}
-            height={50}
-            borderRadius={100}
-            fontSize={16}
-            valuePadding={2}
+            borderWidth={moderateScale(1.5)}
+            height={verticalScale(50)}
+            borderRadius={moderateScale(100)}
+            fontSize={moderateScale(16)}
+            valuePadding={verticalScale(2)}
             hasPadding
             options={[
-              {label: 'Posts', value: false},
-              {label: 'Photos', value: true},
+              {label: 'Posts', value: true},
+              {label: 'Photos', value: false},
             ]}
           />
         </View>
+        <FeedList
+          state={feeds}
+          navigation={navigation}
+          loading={loading}
+          showHide={showHide}
+        />
       </View>
-      <FlatList
-        data={feeds}
-        key={item => item.id}
-        style={styles.contentsBlockContainer}
-        keyExtractor={item => item.id}
-        renderItem={({item}) => renderSwitchValue(item)}
-      />
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}

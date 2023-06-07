@@ -1,9 +1,7 @@
 import {useEffect, useState, useContext} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, View} from 'react-native';
-import Warning from '../../components/Warning/Warning';
-import FeedItem from './FeedItem';
-import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
+import {View} from 'react-native';
+import FeedList from '../../components/FeedList/FeedList';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import {GlobalDataContext} from '../../contexts/context';
@@ -44,27 +42,7 @@ const FeedScreen = ({navigation}) => {
             right="Filter"
           />
           <Search list={data} setState={setState} keyword="title" />
-          <View style={styles.contentsBlockContainer}>
-            <FlatList
-              data={state}
-              ListEmptyComponent={<Warning />}
-              key={item => item.id}
-              keyExtractor={item => item.id}
-              renderItem={({item, index}) => {
-                return loading ? (
-                  <View style={styles.skeleton}>
-                    <SkeletonPosts />
-                  </View>
-                ) : (
-                  <FeedItem
-                    item={item}
-                    itemIndex={index}
-                    navigation={navigation}
-                  />
-                );
-              }}
-            />
-          </View>
+          <FeedList state={state} navigation={navigation} loading={loading} />
         </View>
       </View>
     )

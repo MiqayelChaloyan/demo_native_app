@@ -1,37 +1,47 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
-} from '../../../../assets/metrics/Metrics';
+} from '../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
+  contentsBlockContainer: {
+    width: '100%',
+    height: verticalScale(356),
+    marginTop: verticalScale(16),
+  },
   contentContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    backgroundColor: theme.colors.primary_white,
   },
-  contentBlock: {
+  imageContainer: {
     width: horizontalScale(50),
     height: verticalScale(50),
   },
-  postImage: {
+  feedItemImage: {
     height: verticalScale(50),
     borderRadius: moderateScale(8),
   },
   contentInfo: {
     width: horizontalScale(269),
-    height: verticalScale(70),
+    height: verticalScale(77),
     borderBottomWidth: moderateScale(1),
     borderBottomColor: theme.colors.gray,
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(16),
   },
   headerContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: verticalScale(5),
+    marginBottom: verticalScale(8),
+  },
+  headerFeedText: {
+    fontSize: moderateScale(16),
+    lineHeight: verticalScale(19),
+    color: theme.colors.black,
+    ...theme.textVariants.SemiBold,
   },
   aboutContentDate: {
     fontSize: moderateScale(14),
@@ -49,10 +59,8 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(17),
     ...theme.textVariants.Regular,
   },
-  headerText: {
-    fontSize: moderateScale(16),
-    color: theme.colors.black,
-    ...theme.textVariants.SemiBold,
+  skeleton: {
+    marginTop: verticalScale(25),
   },
 });
 
