@@ -16,9 +16,7 @@ const Header = ({
   headerTextColor,
 }) => {
   const [isModalVisible, setModalVisible] = useState(false);
-  const handleLogout = () => {
-    setModalVisible(true);
-  };
+  const handleLogout = () => setModalVisible(true);
 
   return (
     <>

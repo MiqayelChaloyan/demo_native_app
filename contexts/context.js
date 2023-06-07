@@ -1,6 +1,5 @@
 import {createContext, useState} from 'react';
 import settings from '../data/settings';
-// import {user} from '../data/user';
 
 export const GlobalDataContext = createContext(undefined);
 
