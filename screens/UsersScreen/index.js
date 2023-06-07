@@ -54,7 +54,7 @@ const UsersScreen = ({navigation}) => {
         <TouchableOpacity
           onPress={() => navigation.navigate('Messages')}
           style={styles.messages}>
-          <ChatIcon width={25} height={25} fill={theme.colors.dark_gray} />
+          <ChatIcon width={25} height={25} fill={theme.colors.primary_green} />
         </TouchableOpacity>
       </View>
       <ScrollView>

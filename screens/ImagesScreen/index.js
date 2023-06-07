@@ -25,6 +25,7 @@ const ImagesScreen = ({navigation}) => {
     }
     setSheet('');
     return setBottomSheetVisible(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sheet, photoId]);
 
   useEffect(() => {

@@ -13,9 +13,7 @@ const MyBottomSheet = ({sheet}) => {
           <View>
             <ProfileIcon width={20} height={20} fill={theme.colors.dark_gray} />
           </View>
-          <Text style={[styles.modalText, {left: 7}]}>
-            Use ad profile Image
-          </Text>
+          <Text style={styles.modalText}>Use ad profile Image</Text>
         </TouchableOpacity>
       </View>
       <View>

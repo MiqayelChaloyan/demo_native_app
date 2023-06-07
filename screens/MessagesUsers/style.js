@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(5),
     marginBottom: verticalScale(250),
   },
-  navigate: { 
-    textAlign: 'left', 
-    top: verticalScale(27), 
+  navigate: {
+    textAlign: 'left',
+    top: verticalScale(27),
     fontSize: moderateScale(16),
     lineHeight: verticalScale(19.36),
     left: verticalScale(20),
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     width: horizontalScale(54),
     height: horizontalScale(54),
     borderRadius: verticalScale(100),
-    resizeMode: 'center'
   },
   userName: {
     fontSize: moderateScale(15),

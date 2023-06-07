@@ -3,6 +3,7 @@ import ContentScreen from '../screens/ContentScreen';
 import FeedScreen from '../screens/FeedScreen';
 import ItemDescriptionScreen from '../screens/ItemDescriptionScreen';
 import MarketScreen from '../screens/MarketScreen';
+import Profile from '../screens/ProfileScreen/profile';
 import UserOptionsScreen from '../screens/UserOptionsScreen';
 import SettingsNavigation from './SettingsNavigation';
 

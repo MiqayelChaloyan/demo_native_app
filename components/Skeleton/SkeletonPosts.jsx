@@ -25,12 +25,12 @@ const SkeletonPosts = () => {
           marginLeft={horizontalScale(20)}
           flexDirection="column">
           <SkeletonPlaceholder.Item
-            width={horizontalScale(20)}
+            width={horizontalScale(70)}
             height={verticalScale(20)}
             borderRadius={moderateScale(8)}
           />
           <SkeletonPlaceholder.Item
-            marginTop={verticalScale(60)}
+            marginTop={verticalScale(10)}
             width={horizontalScale(220)}
             height={verticalScale(40)}
             borderRadius={moderateScale(8)}

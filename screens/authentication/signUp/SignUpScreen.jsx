@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -10,12 +10,14 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Platform,
+  Alert,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {signUpValidationSchema} from './signUpValidationSchema';
 import CancelIcon from '../../../assets/icons/Cancel.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {theme} from '../../../assets/theme/theme';
+import {GlobalDataContext} from '../../../contexts/context';
 import styles from './style';
 import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
 
@@ -24,6 +26,7 @@ const SignUpScreen = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
   const checkBoxText =
     'I would like to receive your newsletter and other promotional information.';
+  const {setUserData, setLoggedIn} = useContext(GlobalDataContext);
 
   useEffect(() => {
     values.isChecked = isChecked;
@@ -46,10 +49,12 @@ const SignUpScreen = ({navigation}) => {
     },
     validationSchema: signUpValidationSchema,
     onSubmit: async data => {
-      // Here we get the data of filled user fields
+      // TODO: This part is for a test and will be changed lately.
       if (data.email && data.password && data.name) {
-        await setDataStorage('user_created', data);
-        return navigation.navigate('LogIn');
+        setUserData(data);
+        await setDataStorage('loggedIn', true);
+        setLoggedIn(true);
+        Alert.alert('Login successful');
       }
     },
   });

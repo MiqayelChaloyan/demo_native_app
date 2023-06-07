@@ -1,13 +1,6 @@
 import {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  FlatList,
-  BackHandler,
-} from 'react-native';
+import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import AddIcon from '../../../assets/icons/AddProfileImage.svg';
 import {GlobalDataContext} from '../../../contexts/context';
@@ -20,6 +13,7 @@ import Photos from '../page/Photos/Photos';
 import Header from '../../../components/Header/Header';
 import {theme} from '../../../assets/theme/theme';
 import PermissionModal from '../../../components/Permission/Modal';
+import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import styles from './style';
 
 const Profile = ({navigation}) => {
@@ -30,6 +24,7 @@ const Profile = ({navigation}) => {
     imageUrl,
     setImageUrl,
     feeds,
+    userData,
     loggedIn,
     setLoggedIn,
   } = useContext(GlobalDataContext);
@@ -42,6 +37,15 @@ const Profile = ({navigation}) => {
     const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
+
+  // TODO: This part is for a test and will be changed lately.
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getDataStorage('loggedIn');
+      setLoggedIn(result);
+    };
+    fetchData();
+  }, [navigation, setLoggedIn]);
 
   const selectFile = () => {
     const options = {
@@ -78,23 +82,8 @@ const Profile = ({navigation}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAnswer]);
 
-  // TODO: This part is for a test and will be changed lately.
-  // useEffect(() => {
-  //   const backAction = () => {
-  //     setLoggedIn(false);
-  //     return true;
-  //   };
-  //   const backHandler = BackHandler.addEventListener(
-  //     'hardwareBackPress',
-  //     backAction,
-  //   );
-  //   return () => backHandler.remove();
-  // }, [setLoggedIn]);
-
   return !loggedIn ? (
-    navigation.navigate('Auth', {
-      screen: 'LogIn',
-    })
+    navigation.navigate('Auth', {screen: 'LogIn'})
   ) : (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -143,7 +132,7 @@ const Profile = ({navigation}) => {
       </View>
       <View style={styles.section}>
         <View>
-          <Text style={styles.userFullName}>Victoria Robertson</Text>
+          <Text style={styles.userFullName}>{userData.name}</Text>
           <Text style={styles.aboutUser}>A mantra goes here</Text>
         </View>
         <View style={styles.switchContainer}>

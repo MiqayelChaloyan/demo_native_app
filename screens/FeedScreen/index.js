@@ -7,9 +7,7 @@ import SkeletonPosts from '../../components/Skeleton/SkeletonPosts';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import {GlobalDataContext} from '../../contexts/context';
-// import CustomModal from '../../components/Modal/Modal';
 import {getDataFeedsFromFile} from '../../utils/ApiUtils';
-// import { setDataStorage } from '../../utils/AsyncStorageApiUtils';
 import styles from './style';
 
 const FeedScreen = ({navigation}) => {
@@ -32,13 +30,6 @@ const FeedScreen = ({navigation}) => {
     const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
-
-  // TODO: This part is for a test and will be changed lately.
-  // const [isModalVisible, setModalVisible] = useState(false);
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setModalVisible(true), 3000);
-  //   return () => clearTimeout(timer);
-  // }, []);
 
   return (
     data.length > 0 && (

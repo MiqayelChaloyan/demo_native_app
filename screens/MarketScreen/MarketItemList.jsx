@@ -7,8 +7,7 @@ import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
 const MarketItemList = ({data, navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  //todo:This part of the code is temporary and should be removed
-  // after displaying the real date from the backend
+  // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);

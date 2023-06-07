@@ -29,6 +29,12 @@ function GlobalData({children}) {
   const [arrayImages, setArrayImage] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    isChecked: false,
+  });
 
   return (
     <GlobalDataContext.Provider
@@ -42,6 +48,8 @@ function GlobalData({children}) {
         setArrayImage,
         imageUrl,
         setImageUrl,
+        userData,
+        setUserData,
         loggedIn,
         setLoggedIn,
       }}>

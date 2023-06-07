@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -11,18 +11,19 @@ import {
   Keyboard,
   Platform,
   Alert,
+  BackHandler,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {loginValidationSchema} from './loginValidationSchema';
 import {theme} from '../../../assets/theme/theme';
-import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
-import ArrowIcon from '../../../assets/icons/Arrow.svg';
+import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import {GlobalDataContext} from '../../../contexts/context';
 import styles from './style';
 
 const LogInScreen = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
-  const {setLoggedIn} = useContext(GlobalDataContext);
+  const {userData, setLoggedIn, loggedIn} = useContext(GlobalDataContext);
+
   const {
     values,
     handleChange,
@@ -39,17 +40,33 @@ const LogInScreen = ({navigation}) => {
     validationSchema: loginValidationSchema,
     onSubmit: async data => {
       // TODO: This part is for a test and will be changed lately.
-      const {email, password} = await getDataStorage('user_created');
+      const {email, password} = userData;
       if (data.email === email && data.password === password) {
-        await getDataStorage('loggedIn', 'true');
+        await setDataStorage('loggedIn', true);
         setLoggedIn(true);
         Alert.alert('Login successful');
-        return navigation.navigate('Profile');
       } else {
         Alert.alert('Login failed', 'Invalid email or password');
       }
     },
   });
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        handleBackButtonClick,
+      );
+    };
+  }, [handleBackButtonClick, loggedIn]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleBackButtonClick = () => {
+    navigation.navigate('Feed');
+    setLoggedIn(false);
+    return true;
+  };
 
   return (
     <KeyboardAvoidingView
@@ -59,15 +76,6 @@ const LogInScreen = ({navigation}) => {
         <SafeAreaView>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
-              <View>
-                <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
-                  <ArrowIcon
-                    width={16}
-                    height={16}
-                    fill={theme.colors.cool_gray}
-                  />
-                </TouchableOpacity>
-              </View>
               <View style={styles.headerBox}>
                 <Text style={styles.logIn}>Log In</Text>
               </View>
