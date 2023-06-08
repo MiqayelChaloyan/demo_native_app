@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import {useContext, useMemo} from 'react';
+import {useContext, useMemo, useEffect} from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
 import {GlobalDataContext} from '../../contexts/context';
 import CheckIcon from '../../assets/icons/Check.svg';
-import {theme} from '../../assets/theme/theme';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import styles from './style';
+import {useState} from 'react';
 
 const Row = ({children}) => <View style={styles.row}>{children}</View>;
 
@@ -17,17 +17,29 @@ const RenderImagePairs = changeProfileImage => {
   const {arrayImages} = useContext(GlobalDataContext);
   const maximum = 4;
   const minimum = 1;
+  const [length1, setLength1] = useState(1);
+  const [length2, setLength2] = useState(4);
+
+  useEffect(() => {
+    const calculateLengths = () => {
+      const randomLength1 =
+        Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+      const randomLength2 = 5 - randomLength1;
+      setLength1(randomLength1);
+      setLength2(randomLength2);
+    };
+
+    calculateLengths();
+  }, [length1, length2]);
 
   const imagePairs = useMemo(() => {
     const pairs = [];
     for (let i = 0; i < arrayImages.length; i += 2) {
-      const length1 =
-        Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
-      const length2 = 5 - length1;
       const pair = (
         <Row key={i}>
-          <Col numRows={length1}>
+          <Col numRows={i % 2 === 0 ? length1 : length2}>
             <TouchableOpacity
+              style={arrayImages[i].isChecked && styles.specifiedImage}
               onPress={() => changeProfileImage(arrayImages[i].id)}>
               <Image source={{uri: arrayImages[i].url}} style={styles.image} />
               {arrayImages[i].isChecked && (
@@ -43,8 +55,9 @@ const RenderImagePairs = changeProfileImage => {
             </TouchableOpacity>
           </Col>
           {arrayImages[i + 1] && (
-            <Col numRows={length2}>
+            <Col numRows={i % 2 === 0 ? length2 : length1}>
               <TouchableOpacity
+                style={arrayImages[i + 1].isChecked && styles.specifiedImage}
                 onPress={() => changeProfileImage(arrayImages[i + 1].id)}>
                 <Image
                   source={{uri: arrayImages[i + 1].url}}

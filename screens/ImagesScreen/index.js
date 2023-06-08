@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {useState, useContext, useEffect} from 'react';
-import { Image, ScrollView, View } from 'react-native';
+import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import ImagesModal from '../../components/Permission/children/images';
 import PermissionModal from '../../components/Permission/Modal';
@@ -8,22 +8,26 @@ import {GlobalDataContext} from '../../contexts/context';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
 
-const ImagesScreen = ({ navigation }) => {
+const ImagesScreen = ({navigation}) => {
   const [sheet, setSheet] = useState('');
-  const { arrayImages, setArrayImage, setImageUrl } =
+  const {arrayImages, setArrayImage, setImageUrl} =
     useContext(GlobalDataContext);
   const [photoId, setPhotoId] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     if (sheet === 'Add') {
-      const result = arrayImages.filter(item => item.id === photoId);
-      setImageUrl(result[0].url);
-      return navigation.navigate('Profile');
+      const result = arrayImages.find(item => item.id === photoId);
+      if (result) {
+        setImageUrl(result.url);
+        navigation.navigate('Profile');
+      }
     } else if (sheet === 'Remove') {
-      const result = arrayImages.filter(item => item.id !== photoId);
-      setArrayImage(result);
-    } 
+      const updatedArrayImages = arrayImages.filter(
+        item => item.id !== photoId,
+      );
+      setArrayImage(updatedArrayImages);
+    }
     setModalVisible(false);
     setSheet('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,14 +35,10 @@ const ImagesScreen = ({ navigation }) => {
 
   const changeProfileImage = id => {
     setPhotoId(id);
-    const updatedArrayImages = arrayImages.map(item => {
-      if (item.id === id) {
-        item.isChecked = true;
-      } else {
-        item.isChecked = false;
-      }
-      return item;
-    });
+    const updatedArrayImages = arrayImages.map(item => ({
+      ...item,
+      isChecked: item.id === id,
+    }));
     setModalVisible(true);
     setArrayImage(updatedArrayImages);
   };
@@ -71,11 +71,9 @@ const ImagesScreen = ({ navigation }) => {
         </ScrollView>
       </View>
 
-
       <PermissionModal
         isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}
-      >
+        setModalVisible={setModalVisible}>
         <ImagesModal setSheet={setSheet} />
       </PermissionModal>
     </View>
