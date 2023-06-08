@@ -9,13 +9,14 @@ const User = ({userItem, navigation}) => {
 
   return (
     <TouchableOpacity
+      style={styles.swipeable}
       onPress={() => {
         navigation.navigate({
           name: 'Chat',
           params: {userItem},
         });
       }}>
-      <View style={styles.userRoot}>
+      <View>
         <View style={styles.user}>
           <View>
             <Image
@@ -39,7 +40,6 @@ const User = ({userItem, navigation}) => {
           </Text>
         </View>
       </View>
-      <View style={styles.line} />
     </TouchableOpacity>
   );
 };

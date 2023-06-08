@@ -49,7 +49,7 @@
       "id": 5,
       "fullName": "Alisa Rolland",
       "isActive": true,
-      "friend": false,
+      "friend": true,
       "friends": [],
       "emailAddress": "",
       "imageUrl": null
@@ -67,7 +67,7 @@
       "id": 7,
       "fullName": "Alisa Rolland",
       "isActive": false,
-      "friend": false,
+      "friend": true,
       "friends": [],
       "emailAddress": "",
       "imageUrl": "https://images.pexels.com/photos/3348129/pexels-photo-3348129.jpeg?auto=compress&cs=tinysrgb&w=1600"
@@ -76,7 +76,7 @@
       "id": 8,
       "fullName": "Lauriane Rolland",
       "isActive": false,
-      "friend": false,
+      "friend": true,
       "friends": [],
       "emailAddress": "",
       "imageUrl": "https://images.pexels.com/photos/6996168/pexels-photo-6996168.jpeg?auto=compress&cs=tinysrgb&w=1600"

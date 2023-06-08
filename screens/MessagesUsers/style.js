@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   listUsers: {
     marginTop: verticalScale(5),
-    marginBottom: verticalScale(250),
+    marginBottom: verticalScale(180),
   },
   navigate: {
     textAlign: 'left',
@@ -71,20 +71,56 @@ const styles = StyleSheet.create({
     bottom: verticalScale(12),
     ...theme.textVariants.Regular,
   },
-  line: {
-    borderWidth: moderateScale(0.4),
-    width: horizontalScale(290),
-    height: horizontalScale(1),
-    justifyContent: 'center',
-    backgroundColor: theme.colors.black,
-    left: verticalScale(60),
-    bottom: verticalScale(15),
-  },
   skeleton: {
     margin: verticalScale(2),
     marginTop: verticalScale(5),
     padding: verticalScale(5),
     paddingHorizontal: verticalScale(16),
+  },
+  contentContainerStyle: {
+    flexGrow: 1,
+    backgroundColor: theme.colors.primary_white,
+  },
+  qaContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  button: {
+    width: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    opacity: 0.7,
+    width: 40,
+    height: 50,
+    textAlign: 'center',
+    paddingTop: 10,
+    color: theme.colors.black,
+    bottom: 0,
+    left: 15,
+  },
+  swipeable: {
+    height: 75,
+    marginVertical: 10,
+    backgroundColor: '#ffffff',
+    justifyContent: 'center',
+    paddingLeft: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 1,
+  },
+  itemSeparator: {
+    height: 1,
+    width: 340,
+    marginHorizontal: 16,
+    backgroundColor: theme.colors.black,
   },
 });
 

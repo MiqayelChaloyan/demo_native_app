@@ -62,7 +62,7 @@ const Profile = ({navigation}) => {
       setImageUrl(url);
       setArrayImage([
         ...arrayImages,
-        { id: arrayImages.length + 1, url: url, isChecked: false },
+        {id: arrayImages.length + 1, url: url, isChecked: false},
       ]);
     });
   };
@@ -81,7 +81,7 @@ const Profile = ({navigation}) => {
   }, [isAnswer]);
 
   return !loggedIn ? (
-    navigation.navigate('Auth', { screen: 'LogIn' })
+    navigation.navigate('Auth', {screen: 'LogIn'})
   ) : (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -99,7 +99,7 @@ const Profile = ({navigation}) => {
           <View>
             {imageUrl ? (
               <View>
-                <Image style={styles.userImage} source={{ uri: imageUrl }} />
+                <Image style={styles.userImage} source={{uri: imageUrl}} />
               </View>
             ) : (
               <View>
@@ -163,8 +163,7 @@ const Profile = ({navigation}) => {
       </View>
       <PermissionModal
         isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}
-      >
+        setModalVisible={setModalVisible}>
         <ProfileModal setAnswer={setAnswer} />
       </PermissionModal>
     </View>

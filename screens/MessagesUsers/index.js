@@ -1,17 +1,25 @@
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {Pressable, Text, TouchableOpacity, View} from 'react-native';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
 import Warning from '../../components/Warning/Warning';
 import User from './User';
 import Search from '../../components/Search/Search';
+import DeleteIcon from '../../assets/icons/Delete.svg';
 import {getDataUsersFromFile} from '../../utils/ApiUtils';
+import SwipeableFlatList from 'react-native-swipeable-list';
+import {theme} from '../../assets/theme/theme';
+import PermissionModal from '../../components/Permission/Modal';
+import UsersMessagesModal from '../../components/Permission/children/remove';
 import styles from './style';
 
 const MessagesUsers = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [state, setState] = useState(data);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isAnswer, setAnswer] = useState('');
+  const [removeId, setRemoveId] = useState(null);
 
   useEffect(() => {
     const fetchData = () => {
@@ -28,6 +36,42 @@ const MessagesUsers = ({navigation}) => {
     return () => clearTimeout(timer);
   }, []);
 
+  // eslint-disable-next-line react/no-unstable-nested-components
+  const QuickActions = qaItem => {
+    return (
+      <View style={styles.qaContainer}>
+        <View style={styles.button}>
+          <Pressable onPress={() => deleteItem(qaItem.id)}>
+            <View style={styles.buttonText}>
+              <DeleteIcon width={30} height={30} fill={theme.colors.danger} />
+            </View>
+          </Pressable>
+        </View>
+      </View>
+    );
+  };
+
+  useEffect(() => {
+    setModalVisible(false);
+    if (isAnswer === 'YES') {
+      console.log(removeId);
+      const friends = data.filter(item => item.id !== removeId);
+      setData(friends);
+    }
+    setModalVisible(false);
+    return () => setAnswer('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAnswer]);
+
+  const deleteItem = qaItem => {
+    setModalVisible(true);
+    setRemoveId(qaItem);
+  };
+
+  const renderItemSeparator = () => {
+    return <View style={styles.itemSeparator} />;
+  };
+
   return (
     <View style={styles.listUsersRoot}>
       <TouchableOpacity onPress={() => navigation.navigate('Users')}>
@@ -37,11 +81,10 @@ const MessagesUsers = ({navigation}) => {
         <Search list={data} setState={setState} keyword="fullName" />
       </View>
       <View style={styles.listUsers}>
-        <FlatList
-          data={state}
-          ListEmptyComponent={<Warning />}
-          key={item => item.id}
+        <SwipeableFlatList
           keyExtractor={item => item.id}
+          ListEmptyComponent={<Warning />}
+          data={state}
           renderItem={({item}) => {
             return loading ? (
               <View style={styles.skeleton}>
@@ -51,8 +94,19 @@ const MessagesUsers = ({navigation}) => {
               <User userItem={item} navigation={navigation} />
             );
           }}
+          maxSwipeDistance={64}
+          leftOpenValue={20}
+          renderQuickActions={({_, item}) => QuickActions(item)}
+          contentContainerStyle={styles.contentContainerStyle}
+          shouldBounceOnMount={true}
+          ItemSeparatorComponent={renderItemSeparator}
         />
       </View>
+      <PermissionModal
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}>
+        <UsersMessagesModal setAnswer={setAnswer} />
+      </PermissionModal>
     </View>
   );
 };
