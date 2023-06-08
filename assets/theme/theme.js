@@ -12,6 +12,7 @@ const palette = {
   dark_gray: '#666666',
   transparent: 'transparent',
   orange: '#FFB84E',
+  blue: '#59d4b7',
 };
 
 export const theme = {
@@ -27,6 +28,7 @@ export const theme = {
     dark_gray: palette.dark_gray,
     transparent: palette.transparent,
     orange: palette.orange,
+    light_blue: palette.blue,
   },
   textVariants: {
     SemiBold: {

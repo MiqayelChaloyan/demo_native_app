@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: theme.colors.primary_green,
     width: horizontalScale(28),
-    height: horizontalScale(28),
+    height: verticalScale(28),
     right: horizontalScale(6),
     bottom: horizontalScale(5),
   },
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   empty: {
     width: horizontalScale(120),
-    height: horizontalScale(120),
+    height: verticalScale(120),
   },
   modalText: {
     fontSize: moderateScale(18),
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   sheetContainer: {
     backgroundColor: '#E8E8E8',
-    height: horizontalScale(90),
+    height: verticalScale(90),
     justifyContent: 'flex-start',
     paddingVertical: verticalScale(15),
   },
@@ -91,6 +91,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  checked: {
+    position: 'absolute',
+    backgroundColor: theme.colors.transparent,
+    width: horizontalScale(30),
+    height: verticalScale(30),
+    borderWidth: moderateScale(1.5),
+    borderColor: theme.colors.primary_green,
+    borderRadius: moderateScale(50),
+    right: horizontalScale(5),
+    bottom: verticalScale(5),
+  },
+  checkedBox: {
+    position: 'absolute',
+    backgroundColor: theme.colors.primary_green,
+    width: horizontalScale(26),
+    height: verticalScale(25),
+    borderWidth: moderateScale(1),
+    borderColor: theme.colors.primary_green,
+    borderRadius: moderateScale(50),
+    right: horizontalScale(0.5),
+    top: verticalScale(1),
+    padding: horizontalScale(1),
   },
 });
 

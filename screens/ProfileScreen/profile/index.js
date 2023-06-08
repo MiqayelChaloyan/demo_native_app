@@ -16,6 +16,7 @@ import Header from '../../../components/Header/Header';
 import {theme} from '../../../assets/theme/theme';
 import PermissionModal from '../../../components/Permission/Modal';
 import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
+import ProfileModal from '../../../components/Permission/children/profile';
 import styles from './style';
 
 const Profile = ({navigation}) => {
@@ -59,7 +60,10 @@ const Profile = ({navigation}) => {
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
       setImageUrl(url);
-      setArrayImage([...arrayImages, {id: arrayImages.length + 1, url: url}]);
+      setArrayImage([
+        ...arrayImages,
+        { id: arrayImages.length + 1, url: url, isChecked: false },
+      ]);
     });
   };
 
@@ -77,7 +81,7 @@ const Profile = ({navigation}) => {
   }, [isAnswer]);
 
   return !loggedIn ? (
-    navigation.navigate('Auth', {screen: 'LogIn'})
+    navigation.navigate('Auth', { screen: 'LogIn' })
   ) : (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -95,7 +99,7 @@ const Profile = ({navigation}) => {
           <View>
             {imageUrl ? (
               <View>
-                <Image style={styles.userImage} source={{uri: imageUrl}} />
+                <Image style={styles.userImage} source={{ uri: imageUrl }} />
               </View>
             ) : (
               <View>
@@ -160,8 +164,9 @@ const Profile = ({navigation}) => {
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}
-        setAnswer={setAnswer}
-      />
+      >
+        <ProfileModal setAnswer={setAnswer} />
+      </PermissionModal>
     </View>
   );
 };

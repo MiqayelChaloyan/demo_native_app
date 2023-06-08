@@ -14,13 +14,13 @@ import {
   BackHandler,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
-import {loginValidationSchema} from './loginValidationSchema';
+import {signInValidationSchema} from './signInValidationSchema';
 import {theme} from '../../../assets/theme/theme';
 import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import {GlobalDataContext} from '../../../contexts/context';
 import styles from './style';
 
-const LogInScreen = ({navigation}) => {
+const SignInScreen = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
   const {userData, setLoggedIn, loggedIn} = useContext(GlobalDataContext);
 
@@ -37,7 +37,7 @@ const LogInScreen = ({navigation}) => {
       email: '',
       password: '',
     },
-    validationSchema: loginValidationSchema,
+    validationSchema: signInValidationSchema,
     onSubmit: async data => {
       // TODO: This part is for a test and will be changed lately.
       const {email, password} = userData;
@@ -45,6 +45,7 @@ const LogInScreen = ({navigation}) => {
         await setDataStorage('loggedIn', true);
         setLoggedIn(true);
         Alert.alert('Login successful');
+        return navigation.navigate('Profile');
       } else {
         Alert.alert('Login failed', 'Invalid email or password');
       }
@@ -159,8 +160,8 @@ const LogInScreen = ({navigation}) => {
   );
 };
 
-LogInScreen.propTypes = {
+SignInScreen.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default LogInScreen;
+export default SignInScreen;

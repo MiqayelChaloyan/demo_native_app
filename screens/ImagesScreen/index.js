@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 import {useState, useContext, useEffect} from 'react';
-import {Image, ScrollView, View} from 'react-native';
+import { Image, ScrollView, View } from 'react-native';
 import Header from '../../components/Header/Header';
+import ImagesModal from '../../components/Permission/children/images';
+import PermissionModal from '../../components/Permission/Modal';
 import {GlobalDataContext} from '../../contexts/context';
-import MyBottomSheet from './BottomSheet';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
 
-const ImagesScreen = ({navigation}) => {
+const ImagesScreen = ({ navigation }) => {
   const [sheet, setSheet] = useState('');
-  const {arrayImages, setArrayImage, setImageUrl} =
+  const { arrayImages, setArrayImage, setImageUrl } =
     useContext(GlobalDataContext);
-  const [isBottomSheetVisible, setBottomSheetVisible] = useState(false);
   const [photoId, setPhotoId] = useState(null);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     if (sheet === 'Add') {
@@ -22,20 +23,24 @@ const ImagesScreen = ({navigation}) => {
     } else if (sheet === 'Remove') {
       const result = arrayImages.filter(item => item.id !== photoId);
       setArrayImage(result);
-    }
+    } 
+    setModalVisible(false);
     setSheet('');
-    return setBottomSheetVisible(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sheet, photoId]);
-
-  useEffect(() => {
-    setBottomSheetVisible(false);
-    setTimeout(() => setBottomSheetVisible(true), 150);
-  }, [photoId]);
+  }, [sheet]);
 
   const changeProfileImage = id => {
     setPhotoId(id);
-    setBottomSheetVisible(!isBottomSheetVisible);
+    const updatedArrayImages = arrayImages.map(item => {
+      if (item.id === id) {
+        item.isChecked = true;
+      } else {
+        item.isChecked = false;
+      }
+      return item;
+    });
+    setModalVisible(true);
+    setArrayImage(updatedArrayImages);
   };
 
   return (
@@ -52,11 +57,7 @@ const ImagesScreen = ({navigation}) => {
         <ScrollView>
           {arrayImages && (
             <View style={styles.app}>
-              {RenderImagePairs(
-                isBottomSheetVisible,
-                changeProfileImage,
-                photoId,
-              )}
+              {RenderImagePairs(changeProfileImage, photoId)}
             </View>
           )}
           {!arrayImages.length && (
@@ -69,7 +70,14 @@ const ImagesScreen = ({navigation}) => {
           )}
         </ScrollView>
       </View>
-      {isBottomSheetVisible && !sheet && <MyBottomSheet sheet={setSheet} />}
+
+
+      <PermissionModal
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+      >
+        <ImagesModal setSheet={setSheet} />
+      </PermissionModal>
     </View>
   );
 };
