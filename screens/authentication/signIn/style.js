@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
   },
   loginFooter: {
     alignItems: 'center',
-    marginTop: verticalScale(70),
     bottom: verticalScale(13.5),
+    marginTop: verticalScale(20),
   },
 });
 

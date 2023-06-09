@@ -8,12 +8,12 @@ import {
 import {theme} from '../../../../assets/theme/theme';
 import styles from './style';
 
-const ProfileModal = ({setAnswer}) => {
+const ProfileModal = ({setAddImage}) => {
   return (
     <View style={styles.container}>
       <View style={styles.modal}>
         <TouchableOpacity
-          onPress={() => setAnswer('Cancel')}
+          onPress={() => setAddImage('Cancel')}
           style={styles.cancel}>
           <CancelIcon
             width={horizontalScale(25)}
@@ -25,10 +25,10 @@ const ProfileModal = ({setAnswer}) => {
           Do you want to download the picture from your phone or storage?
         </Text>
         <View style={styles.contain}>
-          <TouchableOpacity onPress={() => setAnswer('STORAGE')}>
+          <TouchableOpacity onPress={() => setAddImage('STORAGE')}>
             <Text style={styles.answer}>Storage</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setAnswer('PHONE')}>
+          <TouchableOpacity onPress={() => setAddImage('PHONE')}>
             <Text style={styles.answer}>Phone</Text>
           </TouchableOpacity>
         </View>
@@ -38,7 +38,7 @@ const ProfileModal = ({setAnswer}) => {
 };
 
 ProfileModal.propTypes = {
-  setAnswer: PropTypes.func,
+  setAddImage: PropTypes.func,
 };
 
 export default ProfileModal;

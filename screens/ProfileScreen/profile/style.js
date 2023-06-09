@@ -40,14 +40,21 @@ const styles = StyleSheet.create({
   addProfileImage: {
     position: 'absolute',
     bottom: 0,
-    right: 0,
+    left: horizontalScale(30),
+    backgroundColor: theme.colors.primary_white,
+    borderRadius: moderateScale(50),
+    width: horizontalScale(42),
+    height: horizontalScale(42),
+    paddingTop: verticalScale(2),
+    paddingHorizontal: horizontalScale(1),
   },
   section: {
     paddingHorizontal: horizontalScale(16),
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: verticalScale(60),
+    marginTop: verticalScale(140),
     backgroundColor: theme.colors.primary_white,
+    flex: 1,
   },
   userFullName: {
     fontSize: moderateScale(30),
@@ -65,7 +72,10 @@ const styles = StyleSheet.create({
   switchContainer: {
     width: horizontalScale(343),
     height: horizontalScale(50),
-    marginTop: verticalScale(19),
+    marginTop: verticalScale(100),
+  },
+  userInfo: {
+    marginTop: verticalScale(16),
   },
 });
 

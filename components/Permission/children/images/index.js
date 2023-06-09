@@ -4,12 +4,11 @@ import DeleteIcon from '../../../../assets/icons/Delete.svg';
 import ProfileIcon from '../../../../assets/icons/ProfileAdd.svg';
 import {theme} from '../../../../assets/theme/theme';
 import CancelIcon from '../../../../assets/icons/Cancel.svg';
-
-import styles from './style';
 import {
   horizontalScale,
   verticalScale,
 } from '../../../../assets/metrics/Metrics';
+import styles from './style';
 
 const ImagesModal = ({setSheet}) => {
   return (
@@ -29,16 +28,16 @@ const ImagesModal = ({setSheet}) => {
             style={styles.button_1}
             onPress={() => setSheet('Add')}>
             <ProfileIcon
-              width={15}
-              height={15}
+              width={27}
+              height={27}
               fill={theme.colors.light_blue}
             />
-            <Text style={styles.text_1}>Change profile Image</Text>
+            <Text style={styles.text_1}>Upload Image</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button_2}
             onPress={() => setSheet('Remove')}>
-            <DeleteIcon width={20} height={20} fill={theme.colors.light_blue} />
+            <DeleteIcon width={30} height={30} fill={theme.colors.light_blue} />
             <Text style={styles.text_2}>Remove Image</Text>
           </TouchableOpacity>
         </View>

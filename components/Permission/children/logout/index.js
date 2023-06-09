@@ -14,7 +14,7 @@ const LogoutModal = ({navigation, setModalVisible}) => {
   return (
     <View style={styles.root}>
       <View style={styles.modal}>
-        <Text style={styles.question}>Log out from page?</Text>
+        <Text style={styles.question}>Are you sure you want to log out?</Text>
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.button_1}
