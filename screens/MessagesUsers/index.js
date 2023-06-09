@@ -47,9 +47,9 @@ const MessagesUsers = ({navigation}) => {
             style={styles.removedContain}>
             <View style={styles.buttonText}>
               <DeleteIcon
-                width={horizontalScale(40)}
-                height={verticalScale(40)}
-                fill={theme.colors.primary_white}
+                width={horizontalScale(35)}
+                height={verticalScale(35)}
+                fill={theme.colors.danger}
               />
             </View>
           </Pressable>

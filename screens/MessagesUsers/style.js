@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
   removedContain: {
     width: horizontalScale(70),
     height: verticalScale(72),
-    backgroundColor: theme.colors.danger,
   },
   buttonText: {
     opacity: 0.7,
