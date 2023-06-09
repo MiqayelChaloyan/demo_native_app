@@ -47,12 +47,12 @@ const ImagesScreen = ({navigation}) => {
     <View style={styles.images}>
       <View style={styles.container}>
         <Header
-          screen={'Images'}
+          screen="Images"
           navigation={navigation}
-          back={'Profile'}
-          continueTo={'Profile'}
-          left={'Back'}
-          right={'Next'}
+          back="Profile"
+          continueTo="Profile"
+          left="Back"
+          right="Next"
         />
         <ScrollView>
           {arrayImages && (

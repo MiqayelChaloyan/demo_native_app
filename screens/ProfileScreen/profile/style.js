@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   addProfileImage: {
     position: 'absolute',
     bottom: 0,
-    right: 0,
+    left: horizontalScale(30),
     backgroundColor: theme.colors.primary_white,
     borderRadius: moderateScale(50),
     width: horizontalScale(42),

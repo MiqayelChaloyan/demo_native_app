@@ -24,19 +24,17 @@ const ExpensesScreen = ({navigation}) => {
       <View style={styles.expenses}>
         <Header
           // TODO: This part is will increase later.
-          screen={'Expenses'}
+          screen="Expenses"
           navigation={navigation}
-          back={'Market'}
-          continueTo={'Insights'}
-          left={'Back'}
-          right={'New'}
+          back="Market"
+          continueTo="Insights"
+          left="Back"
+          right="New"
         />
         <BarChart data={data} />
-
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Expenses</Text>
         </View>
-
         <ListOfExpenses data={data} />
       </View>
     </View>

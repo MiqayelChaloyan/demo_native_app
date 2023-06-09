@@ -17,46 +17,40 @@ const HeaderBar = ({
   return (
     <View style={styles.header}>
       <Header
-        screen={'Profile'}
+        screen="Profile"
         navigation={navigation}
-        back={'SettingsNav'}
-        continueTo={'LogIn'}
-        root={'Auth'}
-        left={'Settings'}
-        right={'Logout'}
+        back="SettingsNav"
+        continueTo="LogIn"
+        root="Auth"
+        left="Settings"
+        right="Logout"
         headerTextColor={theme.colors.primary_white}
       />
       <View style={styles.profileImage}>
-        <View>
-          {imageUrl ? (
-            <View>
-              <Image style={styles.userImage} source={{uri: imageUrl}} />
-            </View>
-          ) : (
-            <View>
-              <Image
-                style={styles.defaultProfileImage}
-                source={require('../../../assets/images/Profile.png')}
-              />
-            </View>
-          )}
-          <TouchableOpacity
-            onPress={() => {
-              if (arrayImages.length !== 0) {
-                setModalVisible(true);
-              } else {
-                accessCamera();
-              }
-            }}>
-            <View style={styles.addProfileImage}>
-              <AddIcon
-                width={horizontalScale(40)}
-                height={verticalScale(40)}
-                fill={theme.colors.primary_green}
-              />
-            </View>
-          </TouchableOpacity>
-        </View>
+        {imageUrl ? (
+          <Image style={styles.userImage} source={{uri: imageUrl}} />
+        ) : (
+          <Image
+            style={styles.defaultProfileImage}
+            source={require('../../../assets/images/Profile.png')}
+          />
+        )}
+        <TouchableOpacity
+          onPress={() => {
+            if (arrayImages.length !== 0) {
+              setModalVisible(true);
+            } else {
+              accessCamera();
+            }
+          }}>
+          <View style={styles.addProfileImage}>
+            <AddIcon
+              width={horizontalScale(40)}
+              height={verticalScale(40)}
+              fill={theme.colors.primary_green}
+            />
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.userInfo}>
         <Text style={styles.userFullName}>{userData.name}</Text>

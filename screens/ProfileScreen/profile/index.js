@@ -25,7 +25,7 @@ const Profile = ({navigation}) => {
   const [showHide, setShowHide] = useState(true);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
-  const [isAnswer, setAnswer] = useState(null);
+  const [addImage, setAddImage] = useState('');
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -65,17 +65,17 @@ const Profile = ({navigation}) => {
     const handleAnswerChange = () => {
       setModalVisible(false);
 
-      if (isAnswer === 'PHONE') {
+      if (addImage === 'PHONE') {
         accessCamera();
-      } else if (isAnswer === 'STORAGE') {
+      } else if (addImage === 'STORAGE') {
         navigation.navigate('Images');
       }
 
-      setAnswer('');
+      setAddImage('');
     };
     handleAnswerChange();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAnswer]);
+  }, [addImage]);
 
   return !loggedIn ? (
     navigation.navigate('Auth', {screen: 'LogIn'})
@@ -99,7 +99,7 @@ const Profile = ({navigation}) => {
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}>
-        <ProfileModal setAnswer={setAnswer} />
+        <ProfileModal setAddImage={setAddImage} />
       </PermissionModal>
     </View>
   );
