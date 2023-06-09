@@ -21,9 +21,8 @@ import {GlobalDataContext} from '../../../contexts/context';
 import styles from './style';
 
 const SignInScreen = ({navigation}) => {
-  const [hidePassword, setHidePassword] = useState(true);
   const {userData, setLoggedIn, loggedIn} = useContext(GlobalDataContext);
-
+  const [hidePassword, setHidePassword] = useState(true);
   const {
     values,
     handleChange,

@@ -17,12 +17,16 @@ const ImagesScreen = ({navigation}) => {
 
   useEffect(() => {
     if (sheet === 'Add') {
-      const result = arrayImages.filter(item => item.id === photoId);
-      setImageUrl(result[0].url);
-      return navigation.navigate('Profile');
+      const result = arrayImages.find(item => item.id === photoId);
+      if (result) {
+        setImageUrl(result.url);
+        navigation.navigate('Profile');
+      }
     } else if (sheet === 'Remove') {
-      const result = arrayImages.filter(item => item.id !== photoId);
-      setArrayImage(result);
+      const updatedArrayImages = arrayImages.filter(
+        item => item.id !== photoId,
+      );
+      setArrayImage(updatedArrayImages);
     }
     setModalVisible(false);
     setSheet('');
@@ -31,14 +35,10 @@ const ImagesScreen = ({navigation}) => {
 
   const changeProfileImage = id => {
     setPhotoId(id);
-    const updatedArrayImages = arrayImages.map(item => {
-      if (item.id === id) {
-        item.isChecked = true;
-      } else {
-        item.isChecked = false;
-      }
-      return item;
-    });
+    const updatedArrayImages = arrayImages.map(item => ({
+      ...item,
+      isChecked: item.id === id,
+    }));
     setModalVisible(true);
     setArrayImage(updatedArrayImages);
   };
@@ -47,12 +47,12 @@ const ImagesScreen = ({navigation}) => {
     <View style={styles.images}>
       <View style={styles.container}>
         <Header
-          screen={'Images'}
+          screen="Images"
           navigation={navigation}
-          back={'Profile'}
-          continueTo={'Profile'}
-          left={'Back'}
-          right={'Next'}
+          back="Profile"
+          continueTo="Profile"
+          left="Back"
+          right="Next"
         />
         <ScrollView>
           {arrayImages && (

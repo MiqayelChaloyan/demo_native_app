@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
     borderRadius: verticalScale(10),
   },
   questionsContainer: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: verticalScale(40),
   },
   text_1: {
     fontSize: moderateScale(17),
@@ -44,17 +44,17 @@ const styles = StyleSheet.create({
     ...theme.textVariants.Regular,
   },
   button_1: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: 250,
+    width: horizontalScale(150),
   },
   button_2: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
-    padding: 10,
-    width: 200,
+    padding: verticalScale(10),
+    width: horizontalScale(160),
   },
   cancel: {
     position: 'absolute',

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: theme.colors.black,
     marginTop: verticalScale(35),
+    marginHorizontal: horizontalScale(15),
     ...theme.textVariants.Regular,
   },
   contain: {

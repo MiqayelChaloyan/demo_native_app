@@ -10,7 +10,7 @@ import styles from './style';
 
 const FeedList = ({state, navigation, loading, showHide}) => {
   const route = useRoute();
-  console.log(route.name);
+
   const renderSwitchValue = (item, index) => {
     if (route.name === 'Profile') {
       if (showHide) {
