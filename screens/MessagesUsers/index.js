@@ -11,21 +11,22 @@ import SwipeableFlatList from 'react-native-swipeable-list';
 import {theme} from '../../assets/theme/theme';
 import PermissionModal from '../../components/Permission/Modal';
 import UsersMessagesModal from '../../components/Permission/children/remove';
+import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import styles from './style';
 
 const MessagesUsers = ({navigation}) => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [state, setState] = useState(data);
+  const [initialData, setInitialData] = useState([]);
+  const [data, setData] = useState(initialData);
   const [isModalVisible, setModalVisible] = useState(false);
-  const [isAnswer, setAnswer] = useState('');
+  const [deleteFriendsList, setDeleteFriendsList] = useState('');
   const [removeId, setRemoveId] = useState(null);
 
   useEffect(() => {
     const fetchData = () => {
       const result = getDataUsersFromFile();
       const friends = result.filter(item => item.friend);
-      setData(friends);
+      setInitialData(friends);
     };
     fetchData();
   }, []);
@@ -41,9 +42,15 @@ const MessagesUsers = ({navigation}) => {
     return (
       <View style={styles.qaContainer}>
         <View style={styles.button}>
-          <Pressable onPress={() => deleteItem(qaItem.id)}>
+          <Pressable
+            onPress={() => deleteItem(qaItem.id)}
+            style={styles.removedContain}>
             <View style={styles.buttonText}>
-              <DeleteIcon width={30} height={30} fill={theme.colors.danger} />
+              <DeleteIcon
+                width={horizontalScale(40)}
+                height={verticalScale(40)}
+                fill={theme.colors.primary_white}
+              />
             </View>
           </Pressable>
         </View>
@@ -53,23 +60,18 @@ const MessagesUsers = ({navigation}) => {
 
   useEffect(() => {
     setModalVisible(false);
-    if (isAnswer === 'YES') {
-      console.log(removeId);
-      const friends = data.filter(item => item.id !== removeId);
-      setData(friends);
+    if (deleteFriendsList === 'YES') {
+      const friends = initialData.filter(item => item.id !== removeId);
+      setInitialData(friends);
     }
     setModalVisible(false);
-    return () => setAnswer('');
+    return () => setDeleteFriendsList('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAnswer]);
+  }, [deleteFriendsList, initialData]);
 
   const deleteItem = qaItem => {
     setModalVisible(true);
     setRemoveId(qaItem);
-  };
-
-  const renderItemSeparator = () => {
-    return <View style={styles.itemSeparator} />;
   };
 
   return (
@@ -78,13 +80,13 @@ const MessagesUsers = ({navigation}) => {
         <Text style={styles.navigate}>Back</Text>
       </TouchableOpacity>
       <View style={styles.root}>
-        <Search list={data} setState={setState} keyword="fullName" />
+        <Search list={initialData} setState={setData} keyword="fullName" />
       </View>
       <View style={styles.listUsers}>
         <SwipeableFlatList
           keyExtractor={item => item.id}
           ListEmptyComponent={<Warning />}
-          data={state}
+          data={data}
           renderItem={({item}) => {
             return loading ? (
               <View style={styles.skeleton}>
@@ -99,13 +101,12 @@ const MessagesUsers = ({navigation}) => {
           renderQuickActions={({_, item}) => QuickActions(item)}
           contentContainerStyle={styles.contentContainerStyle}
           shouldBounceOnMount={true}
-          ItemSeparatorComponent={renderItemSeparator}
         />
       </View>
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}>
-        <UsersMessagesModal setAnswer={setAnswer} />
+        <UsersMessagesModal setDeleteFriendsList={setDeleteFriendsList} />
       </PermissionModal>
     </View>
   );

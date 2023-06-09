@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {useState, useContext, useEffect} from 'react';
-import { Image, ScrollView, View } from 'react-native';
+import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import ImagesModal from '../../components/Permission/children/images';
 import PermissionModal from '../../components/Permission/Modal';
@@ -8,9 +8,9 @@ import {GlobalDataContext} from '../../contexts/context';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
 
-const ImagesScreen = ({ navigation }) => {
+const ImagesScreen = ({navigation}) => {
   const [sheet, setSheet] = useState('');
-  const { arrayImages, setArrayImage, setImageUrl } =
+  const {arrayImages, setArrayImage, setImageUrl} =
     useContext(GlobalDataContext);
   const [photoId, setPhotoId] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
@@ -23,7 +23,7 @@ const ImagesScreen = ({ navigation }) => {
     } else if (sheet === 'Remove') {
       const result = arrayImages.filter(item => item.id !== photoId);
       setArrayImage(result);
-    } 
+    }
     setModalVisible(false);
     setSheet('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,11 +71,9 @@ const ImagesScreen = ({ navigation }) => {
         </ScrollView>
       </View>
 
-
       <PermissionModal
         isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}
-      >
+        setModalVisible={setModalVisible}>
         <ImagesModal setSheet={setSheet} />
       </PermissionModal>
     </View>

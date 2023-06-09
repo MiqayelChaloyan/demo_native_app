@@ -8,12 +8,12 @@ import {
 import {theme} from '../../../../assets/theme/theme';
 import styles from './style';
 
-const UsersMessagesModal = ({setAnswer}) => {
+const UsersMessagesModal = ({setDeleteFriendsList}) => {
   return (
     <View style={styles.container}>
       <View style={styles.modal}>
         <TouchableOpacity
-          onPress={() => setAnswer('Cancel')}
+          onPress={() => setDeleteFriendsList('Cancel')}
           style={styles.cancel}>
           <CancelIcon
             width={horizontalScale(25)}
@@ -23,10 +23,10 @@ const UsersMessagesModal = ({setAnswer}) => {
         </TouchableOpacity>
         <Text style={styles.question}>Are you sure you want to delete?</Text>
         <View style={styles.contain}>
-          <TouchableOpacity onPress={() => setAnswer('YES')}>
+          <TouchableOpacity onPress={() => setDeleteFriendsList('YES')}>
             <Text style={styles.answer}>Yes</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setAnswer('Cancel')}>
+          <TouchableOpacity onPress={() => setDeleteFriendsList('Cancel')}>
             <Text style={styles.answer}>No</Text>
           </TouchableOpacity>
         </View>
