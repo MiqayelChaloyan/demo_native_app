@@ -23,7 +23,6 @@ const ExpensesScreen = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.expenses}>
         <Header
-          // TODO: This part is will increase later.
           screen="Expenses"
           navigation={navigation}
           back="Market"

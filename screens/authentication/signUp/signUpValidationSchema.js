@@ -11,4 +11,7 @@ export const signUpValidationSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, ({min}) => `Password must be at least ${min} characters`)
     .required('Password is required'),
+  isPrivacyPolicy: Yup.boolean()
+    .oneOf([true], 'You need to accept our  the Privacy Policy.')
+    .required(),
 });

@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     height: verticalScale(230),
     paddingHorizontal: horizontalScale(16),
     zIndex: 1,
+    marginBottom: verticalScale(60),
   },
   profileImage: {
     paddingTop: verticalScale(40),
@@ -48,14 +49,6 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(2),
     paddingHorizontal: horizontalScale(1),
   },
-  section: {
-    paddingHorizontal: horizontalScale(16),
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: verticalScale(140),
-    backgroundColor: theme.colors.primary_white,
-    flex: 1,
-  },
   userFullName: {
     fontSize: moderateScale(30),
     color: theme.colors.black,
@@ -69,13 +62,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     ...theme.textVariants.SemiBold,
   },
+  listContainer: {
+    paddingHorizontal: horizontalScale(16),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.colors.primary_white,
+    marginTop: verticalScale(24),
+  },
   switchContainer: {
     width: horizontalScale(343),
-    height: horizontalScale(50),
-    marginTop: verticalScale(100),
-  },
-  userInfo: {
-    marginTop: verticalScale(16),
   },
 });
 

@@ -8,7 +8,7 @@ import styles from './style';
 
 const ToggleSwitch = ({feeds, loading, showHide, setShowHide, navigation}) => {
   return (
-    <View style={styles.section}>
+    <View style={styles.listContainer}>
       <View style={styles.switchContainer}>
         <SwitchSelector
           initial={0}
@@ -35,6 +35,7 @@ const ToggleSwitch = ({feeds, loading, showHide, setShowHide, navigation}) => {
         navigation={navigation}
         loading={loading}
         showHide={showHide}
+        screen="Profile"
       />
     </View>
   );

@@ -6,7 +6,7 @@ import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
-const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
+const CustomModal = ({visible, navigation, onClose}) => {
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
 
@@ -17,7 +17,7 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
 
   return (
     <Modal
-      isVisible={isModalVisible}
+      isVisible={visible}
       coverScreen
       transparent
       backdropColor={theme.colors.primary_green}
@@ -25,8 +25,8 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
       backdropTransitionInTiming={500}
       backdropTransitionOutTiming={500}
       swipeDirection={['down', 'up', 'right', 'left']}
-      onSwipeComplete={() => setModalVisible(false)}
-      hideModal={() => setModalVisible(false)}>
+      onSwipeComplete={() => onClose()}
+      hideModal={() => onClose()}>
       <View style={styles.container}>
         <View style={styles.modal}>
           <View style={styles.appreciative}>
@@ -57,12 +57,16 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
             adipisicing sunt.
           </Text>
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => navigation.navigate('Options')}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Options');
+                return onClose();
+              }}>
               <Text style={styles.buttonText}>I love it!</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <TouchableOpacity onPress={() => onClose()}>
               <Text style={styles.text}>Don’t like the app? Let us know.</Text>
             </TouchableOpacity>
           </View>
@@ -73,9 +77,9 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
 };
 
 CustomModal.propTypes = {
+  visible: PropTypes.bool,
   navigation: PropTypes.object,
-  isModalVisible: PropTypes.bool,
-  setModalVisible: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 export default CustomModal;

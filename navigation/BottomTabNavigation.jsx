@@ -7,7 +7,7 @@ import {horizontalScale, verticalScale} from '../assets/metrics/Metrics';
 import ProfileScreen from '../screens/ProfileScreen/profile';
 import SupportMessageScreen from '../screens/SupportMessageScreen';
 import PageNavigation from './PageNavigator';
-import UsersScreen from '../screens/UsersScreen/index';
+import AllUsersListScreen from '../screens/AllUsersListScreen/index';
 import AuthNavigation from './AuthNavigation';
 import {theme} from '../assets/theme/theme';
 import {useContext} from 'react';
@@ -46,7 +46,7 @@ export default function BottomTabNavigation() {
         <>
           <Tab.Screen
             name="Users"
-            component={UsersScreen}
+            component={AllUsersListScreen}
             options={{
               title: '',
               tabBarIcon: ({focused}) => (

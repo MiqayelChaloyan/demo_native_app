@@ -30,7 +30,6 @@ const ImagesScreen = ({navigation}) => {
     }
     setModalVisible(false);
     setSheet('');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sheet]);
 
   const changeProfileImage = id => {

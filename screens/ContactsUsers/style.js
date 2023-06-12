@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
     width: horizontalScale(40),
     height: verticalScale(50),
     textAlign: 'center',
-    paddingTop: 10,
+    paddingTop: verticalScale(10),
     color: theme.colors.black,
-    bottom: -5,
-    left: verticalScale(18),
+    bottom: verticalScale(-12),
+    left: verticalScale(21),
   },
   swipeable: {
     height: verticalScale(75),

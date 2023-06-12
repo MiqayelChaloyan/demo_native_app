@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Image,
   ScrollView,
@@ -13,18 +14,31 @@ import {theme} from '../../assets/theme/theme';
 import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
-const UsersScreen = ({navigation}) => {
+const AllUsersListScreen = ({navigation}) => {
   const {imageUrl} = useContext(GlobalDataContext);
-  const [data, setData] = useState([]);
+  const [initialData, setInitialData] = useState([]);
+  const [data, setData] = useState(initialData);
   const [searchItemValue, setSearchItemValue] = useState('');
 
   useEffect(() => {
     const fetchData = () => {
       const result = getDataUsersFromFile();
-      setData(result);
+      setInitialData(result);
     };
     fetchData();
   }, []);
+
+  const handleSearch = () => {
+    const result = initialData.filter(item => {
+      let param = item.fullName.toLowerCase();
+      return param.indexOf(searchItemValue) > -1;
+    });
+    setData(result);
+  };
+
+  useEffect(() => {
+    return handleSearch();
+  }, [initialData, searchItemValue, setData]);
 
   return (
     <View style={styles.root}>
@@ -42,7 +56,6 @@ const UsersScreen = ({navigation}) => {
         <TextInput
           name="search"
           placeholder="Search"
-          placeholderTextColor={theme.colors.dark_gray}
           style={styles.input}
           variant="outlined"
           onChangeText={value => setSearchItemValue(value)}
@@ -64,4 +77,8 @@ const UsersScreen = ({navigation}) => {
   );
 };
 
-export default UsersScreen;
+AllUsersListScreen.propTypes = {
+  navigation: PropTypes.object,
+};
+
+export default AllUsersListScreen;

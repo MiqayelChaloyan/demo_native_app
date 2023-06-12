@@ -6,13 +6,16 @@ import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import {GlobalDataContext} from '../../contexts/context';
 import {getDataFeedsFromFile} from '../../utils/ApiUtils';
+import CustomModal from '../../components/Modal/Modal';
+import {getDataStorage, setDataStorage} from '../../utils/AsyncStorageApiUtils';
 import styles from './style';
 
 const FeedScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
-  const {setFeeds} = useContext(GlobalDataContext);
+  const {loggedIn, setFeeds} = useContext(GlobalDataContext);
   const [data, setData] = useState([]);
   const [state, setState] = useState(data);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchData = () => {
@@ -29,6 +32,35 @@ const FeedScreen = ({navigation}) => {
     return () => clearTimeout(timer);
   }, []);
 
+  // TODO: This part is for a test and will be changed lately.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (loggedIn) {
+        setShowModal(true);
+        checkModalStatus();
+      }
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, [loggedIn]);
+
+  const checkModalStatus = async () => {
+    try {
+      const value = await getDataStorage('@modalStatus');
+      setShowModal(value === 'closed');
+    } catch (error) {
+      console.error('Error retrieving modal status:', error);
+    }
+  };
+
+  const closeModal = async () => {
+    try {
+      await setDataStorage('@modalStatus', 'closed');
+      setShowModal(false);
+    } catch (error) {
+      console.error('Error storing modal status:', error);
+    }
+  };
+
   return (
     data.length > 0 && (
       <View style={styles.feedScreenContainer}>
@@ -42,8 +74,18 @@ const FeedScreen = ({navigation}) => {
             right="Filter"
           />
           <Search list={data} setState={setState} keyword="title" />
-          <FeedList state={state} navigation={navigation} loading={loading} />
+          <FeedList
+            state={state}
+            navigation={navigation}
+            loading={loading}
+            screen="Feed"
+          />
         </View>
+        <CustomModal
+          visible={showModal}
+          navigation={navigation}
+          onClose={closeModal}
+        />
       </View>
     )
   );
