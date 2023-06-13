@@ -12,6 +12,7 @@ import RenderImagePairs from './RenderImagePairs';
 import {getDataUsersFromFile} from '../../utils/ApiUtils';
 import {theme} from '../../assets/theme/theme';
 import {GlobalDataContext} from '../../contexts/context';
+import Warning from '../../components/Warning/Warning';
 import styles from './style';
 
 const AllUsersListScreen = ({navigation}) => {
@@ -70,6 +71,7 @@ const AllUsersListScreen = ({navigation}) => {
           <ChatIcon width={25} height={25} fill={theme.colors.primary_green} />
         </TouchableOpacity>
       </View>
+      {data.length < 1 && <Warning />}
       <ScrollView>
         {data.length > 0 && RenderImagePairs(data, navigation)}
       </ScrollView>

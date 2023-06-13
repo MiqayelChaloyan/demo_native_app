@@ -95,7 +95,7 @@ const ContactsUsers = ({navigation}) => {
               <User userItem={item} navigation={navigation} />
             );
           }}
-          maxSwipeDistance={64}
+          maxSwipeDistance={70}
           leftOpenValue={20}
           renderQuickActions={({_, item}) => QuickActions(item)}
           contentContainerStyle={styles.contentContainerStyle}
