@@ -72,8 +72,6 @@ const styles = StyleSheet.create({
     ...theme.textVariants.Regular,
   },
   skeleton: {
-    margin: verticalScale(2),
-    marginTop: verticalScale(5),
     padding: verticalScale(5),
     paddingHorizontal: verticalScale(16),
   },
@@ -103,7 +101,8 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(10),
     color: theme.colors.black,
     bottom: verticalScale(-12),
-    left: verticalScale(21),
+    left: verticalScale(328),
+    position: 'relative',
   },
   swipeable: {
     height: verticalScale(75),

@@ -40,11 +40,11 @@ const ContactsUsers = ({navigation}) => {
 
   const QuickActions = qaItem => {
     return (
-      <View style={styles.qaContainer}>
-        <View style={styles.button}>
-          <Pressable
-            onPress={() => deleteItem(qaItem.id)}
-            style={styles.removedContain}>
+      <TouchableOpacity
+        onPress={() => deleteItem(qaItem.id)}
+        style={styles.removedContain}>
+        <View style={styles.qaContainer}>
+          <View style={styles.button}>
             <View style={styles.buttonText}>
               <DeleteIcon
                 width={horizontalScale(35)}
@@ -52,9 +52,9 @@ const ContactsUsers = ({navigation}) => {
                 fill={theme.colors.danger}
               />
             </View>
-          </Pressable>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
