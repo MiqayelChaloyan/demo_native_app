@@ -1,17 +1,9 @@
 import PropTypes from 'prop-types';
-import {useContext, useMemo, useEffect} from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
+import {useContext, useMemo, useEffect, useState} from 'react';
 import {GlobalDataContext} from '../../contexts/context';
-import CheckIcon from '../../assets/icons/Check.svg';
-import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
-import styles from './style';
-import {useState} from 'react';
-
-const Row = ({children}) => <View style={styles.row}>{children}</View>;
-
-const Col = ({numRows, children}) => {
-  return <View style={styles[`${numRows}col`]}>{children}</View>;
-};
+import Row from '../../components/Row';
+import Col from '../../components/Col';
+import ImageItem from './ImageItem';
 
 const RenderImagePairs = changeProfileImage => {
   const {arrayImages} = useContext(GlobalDataContext);
@@ -38,42 +30,17 @@ const RenderImagePairs = changeProfileImage => {
       const pair = (
         <Row key={i}>
           <Col numRows={i % 2 === 0 ? minimumImageSize : maximumImageSize}>
-            <TouchableOpacity
-              style={arrayImages[i].isChecked && styles.specifiedImage}
-              onPress={() => changeProfileImage(arrayImages[i].id)}>
-              <Image source={{uri: arrayImages[i].url}} style={styles.image} />
-              {arrayImages[i].isChecked && (
-                <View style={styles.checked}>
-                  <View style={styles.checkedBox}>
-                    <CheckIcon
-                      width={horizontalScale(21)}
-                      height={verticalScale(21)}
-                    />
-                  </View>
-                </View>
-              )}
-            </TouchableOpacity>
+            <ImageItem
+              elem={arrayImages[i]}
+              changeProfileImage={changeProfileImage}
+            />
           </Col>
           {arrayImages[i + 1] && (
             <Col numRows={i % 2 === 0 ? maximumImageSize : minimumImageSize}>
-              <TouchableOpacity
-                style={arrayImages[i + 1].isChecked && styles.specifiedImage}
-                onPress={() => changeProfileImage(arrayImages[i + 1].id)}>
-                <Image
-                  source={{uri: arrayImages[i + 1].url}}
-                  style={styles.image}
-                />
-                {arrayImages[i + 1].isChecked && (
-                  <View style={styles.checked}>
-                    <View style={styles.checkedBox}>
-                      <CheckIcon
-                        width={horizontalScale(21)}
-                        height={verticalScale(21)}
-                      />
-                    </View>
-                  </View>
-                )}
-              </TouchableOpacity>
+              <ImageItem
+                elem={arrayImages[i + 1]}
+                changeProfileImage={changeProfileImage}
+              />
             </Col>
           )}
         </Row>

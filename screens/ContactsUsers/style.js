@@ -118,6 +118,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: verticalScale(3.84),
     elevation: 1,
+    paddingHorizontal: 16,
+  },
+  activeTime: {
+    position: 'absolute',
+    right: verticalScale(10),
+    bottom: verticalScale(26),
   },
 });
 

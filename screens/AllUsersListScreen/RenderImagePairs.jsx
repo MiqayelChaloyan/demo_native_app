@@ -1,12 +1,7 @@
-import {Image, Text, TouchableOpacity, View} from 'react-native';
-import InfinityIcon from '../../assets/icons/Infinity.svg';
-import styles from './style';
-
-const Row = ({children}) => <View style={styles.row}>{children}</View>;
-
-const Col = ({numRows, children}) => {
-  return <View style={styles[`${numRows}col`]}>{children}</View>;
-};
+import PropTypes from 'prop-types';
+import Row from '../../components/Row';
+import Col from '../../components/Col';
+import UserCard from './UserCard';
 
 const RenderImagePairs = (data, navigation) => {
   const pairs = [];
@@ -14,157 +9,11 @@ const RenderImagePairs = (data, navigation) => {
     const pair = (
       <Row key={i}>
         <Col numRows={1}>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <View
-              style={{
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                borderWidth: 1,
-                borderColor: '#5DB075',
-                width: 160,
-                height: 230,
-                borderRadius: 20,
-              }}>
-              <View style={{position: 'absolute'}}>
-                <Image
-                  style={{
-                    width: 157,
-                    height: 60,
-                    resizeMode: 'cover',
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
-                  }}
-                  source={require('../../assets/images/DefaultBackground.webp')}
-                />
-              </View>
-              <View style={{borderRadius: 50, marginVertical: 20}}>
-                <Image
-                  style={{width: 80, height: 80, borderRadius: 50}}
-                  source={
-                    data[i].imageUrl
-                      ? {uri: data[i].imageUrl}
-                      : require('../../assets/images/Profile.png')
-                  }
-                />
-              </View>
-              <View>
-                <Text style={{fontSize: 17, fontWeight: 500}}>
-                  {data[i].fullName}
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}>
-                <InfinityIcon width={15} height={15} fill={'gray'} />
-                <Text style={{marginLeft: 10, fontSize: 11}}>
-                  8 common contacts
-                </Text>
-              </View>
-              <TouchableOpacity>
-                <Text
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#5DB075',
-                    padding: 10,
-                    borderRadius: 20,
-                    width: 140,
-                    textAlign: 'center',
-                    marginVertical: 15,
-                    color: '#5DB075',
-                  }}
-                  onPress={() => {
-                    const userItem = data[i];
-                    navigation.navigate({
-                      name: 'Chat',
-                      params: {userItem},
-                    });
-                  }}>
-                  Messages
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+          <UserCard item={data[i]} navigation={navigation} />
         </Col>
         {data[i + 1] && (
           <Col numRows={1}>
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <View
-                style={{
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'flex-start',
-                  borderWidth: 1,
-                  borderColor: '#5DB075',
-                  width: 160,
-                  height: 230,
-                  borderRadius: 20,
-                }}>
-                <View style={{position: 'absolute'}}>
-                  <Image
-                    style={{
-                      width: 157,
-                      height: 60,
-                      resizeMode: 'cover',
-                      borderTopLeftRadius: 20,
-                      borderTopRightRadius: 20,
-                    }}
-                    source={require('../../assets/images/DefaultBackground.webp')}
-                  />
-                </View>
-                <View style={{borderRadius: 50, marginVertical: 20}}>
-                  <Image
-                    style={{width: 80, height: 80, borderRadius: 50}}
-                    source={
-                      data[i + 1].imageUrl
-                        ? {uri: data[i + 1].imageUrl}
-                        : require('../../assets/images/Profile.png')
-                    }
-                  />
-                </View>
-                <View>
-                  <Text style={{fontSize: 17, fontWeight: 500}}>
-                    {data[i + 1].fullName}
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}>
-                  <InfinityIcon width={15} height={15} fill={'gray'} />
-                  <Text style={{marginLeft: 10, fontSize: 11}}>
-                    8 common contacts
-                  </Text>
-                </View>
-                <TouchableOpacity>
-                  <Text
-                    style={{
-                      borderWidth: 1,
-                      borderColor: '#5DB075',
-                      padding: 10,
-                      borderRadius: 20,
-                      width: 140,
-                      textAlign: 'center',
-                      marginVertical: 15,
-                      color: '#5DB075',
-                    }}
-                    onPress={() => {
-                      const userItem = data[i + 1];
-                      navigation.navigate({
-                        name: 'Chat',
-                        params: {userItem},
-                      });
-                    }}>
-                    Messages
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
+            <UserCard item={data[i + 1]} navigation={navigation} />
           </Col>
         )}
       </Row>
@@ -172,6 +21,11 @@ const RenderImagePairs = (data, navigation) => {
     pairs.push(pair);
   }
   return pairs;
+};
+
+RenderImagePairs.propTypes = {
+  data: PropTypes.array,
+  navigation: PropTypes.object,
 };
 
 export default RenderImagePairs;

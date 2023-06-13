@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, TextInput} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
-const Search = ({list, setState, keyword}) => {
+const Search = React.memo(({list, setState, keyword}) => {
   const [searchItemValue, setSearchItemValue] = useState('');
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Search = ({list, setState, keyword}) => {
       return param.indexOf(searchItemValue) > -1;
     });
     setState(result);
-  }, [keyword, list, searchItemValue, setState]);
+  }, [list, keyword, searchItemValue]);
 
   return (
     <View style={styles.container}>
@@ -31,7 +31,7 @@ const Search = ({list, setState, keyword}) => {
       />
     </View>
   );
-};
+});
 
 Search.propTypes = {
   list: PropTypes.array,

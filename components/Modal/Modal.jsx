@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
@@ -6,7 +6,7 @@ import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
-const CustomModal = ({visible, navigation, onClose}) => {
+const CustomModal = React.memo(({visible, navigation, onClose}) => {
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
 
@@ -74,7 +74,7 @@ const CustomModal = ({visible, navigation, onClose}) => {
       </View>
     </Modal>
   );
-};
+});
 
 CustomModal.propTypes = {
   visible: PropTypes.bool,

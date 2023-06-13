@@ -6,6 +6,9 @@ import styles from './style';
 
 const User = ({userItem, navigation}) => {
   const {messages} = useContext(GlobalDataContext);
+  const today = new Date();
+  const curTime = today.getHours() + ':' + today.getMinutes();
+  const timestamp = userItem.isActive ? curTime : userItem.timestamp;
 
   return (
     <TouchableOpacity
@@ -38,6 +41,9 @@ const User = ({userItem, navigation}) => {
           <Text style={styles.messagesText}>
             {messages[messages.length - 1].content.slice(0, 25)}...
           </Text>
+        </View>
+        <View style={styles.activeTime}>
+          <Text>{timestamp}</Text>
         </View>
       </View>
     </TouchableOpacity>
