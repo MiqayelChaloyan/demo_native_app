@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {useContext, useEffect, useState} from 'react';
+import {useCallback, useContext, useEffect, useState} from 'react';
 import ChatIcon from '../../assets/icons/Chat.svg';
 import RenderImagePairs from './RenderImagePairs';
 import {getDataUsersFromFile} from '../../utils/ApiUtils';
@@ -19,27 +19,34 @@ const AllUsersListScreen = ({navigation}) => {
   const {imageUrl} = useContext(GlobalDataContext);
   const [initialData, setInitialData] = useState([]);
   const [data, setData] = useState(initialData);
-  const [searchItemValue, setSearchItemValue] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const fetchData = useCallback(() => {
+    const result = getDataUsersFromFile();
+    return setInitialData(result);
+  }, []);
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = getDataUsersFromFile();
-      setInitialData(result);
-    };
     fetchData();
   }, []);
 
   const handleSearch = () => {
-    const result = initialData.filter(item => {
-      let param = item.fullName.toLowerCase();
-      return param.indexOf(searchItemValue) > -1;
-    });
-    setData(result);
+    if (searchQuery.trim() !== '') {
+      const result = initialData.filter(item => {
+        let value = item.fullName.toLowerCase();
+        return value.includes(searchQuery.toLowerCase());
+      });
+      setData(result);
+    } else {
+      setData(initialData);
+    }
   };
 
   useEffect(() => {
     return handleSearch();
-  }, [initialData, searchItemValue, setData]);
+  }, [initialData, searchQuery, setData]);
+
+  console.log('render');
 
   return (
     <View style={styles.root}>
@@ -59,8 +66,8 @@ const AllUsersListScreen = ({navigation}) => {
           placeholder="Search"
           style={styles.input}
           variant="outlined"
-          onChangeText={value => setSearchItemValue(value)}
-          value={searchItemValue}
+          onChangeText={value => setSearchQuery(value)}
+          value={searchQuery}
           keyboardType="web-search"
           autoCapitalize="none"
           autoCorrect={false}

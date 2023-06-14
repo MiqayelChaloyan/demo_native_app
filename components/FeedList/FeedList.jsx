@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useRoute} from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
@@ -14,27 +14,30 @@ const FeedList = React.memo(
   ({state, navigation, loading, showHide, screen}) => {
     const route = useRoute();
 
-    const renderSwitchValue = (item, index) => {
-      if (route.name === 'Profile') {
-        if (showHide) {
+    const renderSwitchValue = useCallback(
+      (item, index) => {
+        if (route.name === 'Profile') {
+          if (showHide) {
+            return loading ? (
+              <SkeletonPosts />
+            ) : (
+              <FeedItem item={item} itemIndex={index} navigation={navigation} />
+            );
+          } else {
+            return loading ? <SkeletonPhotos /> : <Photos item={item} />;
+          }
+        } else {
           return loading ? (
             <SkeletonPosts />
           ) : (
             <FeedItem item={item} itemIndex={index} navigation={navigation} />
           );
-        } else {
-          return loading ? <SkeletonPhotos /> : <Photos item={item} />;
         }
-      } else {
-        return loading ? (
-          <SkeletonPosts />
-        ) : (
-          <FeedItem item={item} itemIndex={index} navigation={navigation} />
-        );
-      }
-    };
+      },
+      [loading],
+    );
 
-    console.log('>>> Fead List >>> Render >>> Child');
+    console.log('The child component is rendered >>>> list');
 
     return (
       <View

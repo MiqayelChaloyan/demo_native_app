@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect} from 'react';
+import {useContext, useState, useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {GlobalDataContext} from '../../../contexts/context';
@@ -8,8 +8,8 @@ import PermissionModal from '../../../components/Permission/Modal';
 import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import ProfileModal from '../../../components/Permission/children/profile';
 import HeaderBar from './HeaderBar';
-import styles from './style';
 import ToggleSwitch from './ToggleSwitch';
+import styles from './style';
 
 const Profile = ({navigation}) => {
   const {
@@ -61,20 +61,27 @@ const Profile = ({navigation}) => {
 
   const accessCamera = async () => await requestCameraPermission(selectFile);
 
+  const handleAnswerChange = useCallback(() => {
+    setModalVisible(false);
+
+    if (addImage === 'PHONE') {
+      accessCamera();
+    } else if (addImage === 'STORAGE') {
+      navigation.navigate('Images');
+    }
+
+    setAddImage('');
+  }, []);
+
   useEffect(() => {
-    const handleAnswerChange = () => {
-      setModalVisible(false);
-
-      if (addImage === 'PHONE') {
-        accessCamera();
-      } else if (addImage === 'STORAGE') {
-        navigation.navigate('Images');
-      }
-
-      setAddImage('');
-    };
     handleAnswerChange();
   }, [addImage]);
+
+  const handleHidden = useCallback(bool => {
+    setIsHidden(bool);
+  }, []);
+
+  console.log('The child component is rendered >>>> profile');
 
   return !loggedIn ? (
     navigation.navigate('Auth', {screen: 'LogIn'})
@@ -92,7 +99,7 @@ const Profile = ({navigation}) => {
         feeds={feeds}
         loading={loading}
         showHide={isHidden}
-        setShowHide={setIsHidden}
+        setShowHide={handleHidden}
         navigation={navigation}
       />
       <PermissionModal

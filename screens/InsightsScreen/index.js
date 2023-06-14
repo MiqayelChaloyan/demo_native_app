@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import Header from '../../components/Header/Header';
@@ -9,13 +9,16 @@ import styles from './style';
 const InsightsScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
+  const fetchData = useCallback(() => {
+    const result = getDataExpensesFromFile();
+    return setData(result);
+  }, []);
+
   useEffect(() => {
-    const fetchData = () => {
-      const result = getDataExpensesFromFile();
-      setData(result);
-    };
     fetchData();
   }, []);
+
+  console.log('Insights');
 
   return (
     <View style={styles.container}>
@@ -26,6 +29,7 @@ const InsightsScreen = ({navigation}) => {
           back="Expenses"
           left="Back"
           right="Filter"
+          continueTo="Expenses"
         />
         <View style={styles.progressCircle}>
           <ProgressCircle />

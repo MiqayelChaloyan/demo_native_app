@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import Row from '../../components/Row';
 import Col from '../../components/Col';

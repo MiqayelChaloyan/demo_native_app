@@ -23,6 +23,7 @@ import styles from './style';
 const SignInScreen = ({navigation}) => {
   const {userData, setLoggedIn, loggedIn} = useContext(GlobalDataContext);
   const [hidePassword, setHidePassword] = useState(true);
+
   const {
     values,
     handleChange,
@@ -66,6 +67,8 @@ const SignInScreen = ({navigation}) => {
     setLoggedIn(false);
     return true;
   };
+
+  console.log('render sign up');
 
   return (
     <KeyboardAvoidingView

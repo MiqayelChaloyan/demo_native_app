@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
   input: {
     width: horizontalScale(343),
     height: verticalScale(51),
+    paddingEnd: horizontalScale(80),
     borderWidth: 1,
     borderColor: theme.colors.gray,
     padding: verticalScale(16),
@@ -122,6 +123,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     bottom: verticalScale(13.5),
     marginTop: verticalScale(20),
+    backgroundColor: theme.colors.primary_white,
   },
 });
 

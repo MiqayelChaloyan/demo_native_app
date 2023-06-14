@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {useEffect, useState, useContext, useCallback, useMemo} from 'react';
+import React, {useEffect, useState, useContext, useCallback} from 'react';
 import {View} from 'react-native';
 import FeedList from '../../components/FeedList/FeedList';
 import Header from '../../components/Header/Header';
@@ -27,7 +27,7 @@ const FeedScreen = ({navigation}) => {
     fetchData();
   }, []);
 
-  const changeLoadingState = useMemo(() => () => setLoading(false), []);
+  const changeLoadingState = useCallback(() => setLoading(false), []);
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -36,14 +36,18 @@ const FeedScreen = ({navigation}) => {
   }, []);
 
   // TODO: This part is for a test and will be changed lately.
-  useEffect(() => {
+  const startModalTimer = useCallback(() => {
     const timer = setTimeout(() => {
       if (loggedIn) {
         setShowModal(true);
         checkModalStatus();
       }
-    }, 10000);
+    }, 20000);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    startModalTimer();
   }, [loggedIn]);
 
   const checkModalStatus = useCallback(async () => {
@@ -64,35 +68,39 @@ const FeedScreen = ({navigation}) => {
     }
   }, []);
 
+  const getFeedListData = useCallback(state => {
+    return setData(state);
+  }, []);
+
+  console.log('The parent component is rendered >>>> screen');
+
   return (
-    initialData.length > 0 && (
-      <View style={styles.feedScreenContainer}>
-        <View style={styles.feedScreen}>
-          <Header
-            screen="Feed"
-            navigation={navigation}
-            back="Auth"
-            continueTo="Market"
-            left="Back"
-            right="Filter"
-          />
-          <Search list={initialData} setState={setData} keyword="title" />
-          <FeedList
-            state={data}
-            navigation={navigation}
-            loading={loading}
-            screen="Feed"
-          />
-        </View>
-        {showModal && (
-          <CustomModal
-            visible={showModal}
-            navigation={navigation}
-            onClose={closeModal}
-          />
-        )}
+    <View style={styles.feedScreenContainer}>
+      <View style={styles.feedScreen}>
+        <Header
+          screen="Feed"
+          navigation={navigation}
+          back="Auth"
+          continueTo="Market"
+          left="Back"
+          right="Filter"
+        />
+        <Search list={initialData} setState={getFeedListData} keyword="title" />
+        <FeedList
+          state={data}
+          navigation={navigation}
+          loading={loading}
+          screen="Feed"
+        />
       </View>
-    )
+      {showModal && (
+        <CustomModal
+          visible={showModal}
+          navigation={navigation}
+          onClose={closeModal}
+        />
+      )}
+    </View>
   );
 };
 
@@ -101,3 +109,21 @@ FeedScreen.propTypes = {
 };
 
 export default FeedScreen;
+
+// // LOG  The parent component is rendered >>>> screen
+// // LOG  The child component is rendered >>>> header
+// // LOG  The child component is rendered >>>> search
+// // LOG  The child component is rendered >>>> list
+// // LOG  The parent component is rendered >>>> screen
+// // LOG  The child component is rendered >>>> search
+// // LOG  The parent component is rendered >>>> screen
+// // LOG  The child component is rendered >>>> list
+// // LOG  The child component is rendered >>>> search
+// // LOG  The parent component is rendered >>>> screen
+// // LOG  The child component is rendered >>>> list
+// // LOG  The child component is rendered >>>> item
+// // LOG  The child component is rendered >>>> item
+// // LOG  The child component is rendered >>>> item
+// // LOG  The child component is rendered >>>> item
+// // LOG  The child component is rendered >>>> item
+// // LOG  The child component is rendered >>>> item

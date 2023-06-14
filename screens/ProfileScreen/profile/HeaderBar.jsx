@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {View, TouchableOpacity, Image, Text} from 'react-native';
 import {horizontalScale, verticalScale} from '../../../assets/metrics/Metrics';
 import Header from '../../../components/Header/Header';
@@ -14,6 +15,8 @@ const HeaderBar = ({
   setModalVisible,
   accessCamera,
 }) => {
+  console.log('The child component is rendered >>>> HeaderBar');
+
   return (
     <>
       <View style={styles.header}>
@@ -71,4 +74,4 @@ HeaderBar.propTypes = {
   accessCamera: PropTypes.func,
 };
 
-export default HeaderBar;
+export default React.memo(HeaderBar);

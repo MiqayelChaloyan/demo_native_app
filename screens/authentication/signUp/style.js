@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
   input: {
     width: horizontalScale(343),
     height: verticalScale(51),
+    paddingEnd: horizontalScale(80),
     borderWidth: moderateScale(1),
     borderColor: theme.colors.gray,
     padding: verticalScale(10),

@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import InfinityIcon from '../../assets/icons/Infinity.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
-const UserCard = ({item, navigation}) => {
+const UserCard = React.memo(({item, navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.userOptions}>
@@ -52,7 +53,7 @@ const UserCard = ({item, navigation}) => {
       </View>
     </View>
   );
-};
+});
 
 UserCard.propTypes = {
   item: PropTypes.object,

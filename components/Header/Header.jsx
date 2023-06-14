@@ -20,6 +20,8 @@ const Header = React.memo(
     const [isModalVisible, setModalVisible] = useState(false);
     const handleLogout = () => setModalVisible(true);
 
+    console.log('The child component is rendered >>>> header');
+
     return (
       <>
         <View style={styles.headerContainer}>
@@ -76,6 +78,9 @@ const Header = React.memo(
         </PermissionModal>
       </>
     );
+  },
+  (prevProps, nextProps) => {
+    return prevProps.data === nextProps.data;
   },
 );
 

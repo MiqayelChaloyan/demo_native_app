@@ -5,15 +5,25 @@ import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
 const Search = React.memo(({list, setState, keyword}) => {
-  const [searchItemValue, setSearchItemValue] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = () => {
+    if (searchQuery.trim() !== '') {
+      const result = list.filter(item => {
+        let value = item[keyword].toLowerCase();
+        return value.includes(searchQuery.toLowerCase());
+      });
+      setState(result);
+    } else {
+      setState(list);
+    }
+  };
 
   useEffect(() => {
-    const result = list.filter(item => {
-      let param = item[keyword].toLowerCase();
-      return param.indexOf(searchItemValue) > -1;
-    });
-    setState(result);
-  }, [list, keyword, searchItemValue]);
+    handleSearch();
+  }, [list, searchQuery]);
+
+  console.log('The child component is rendered >>>> search');
 
   return (
     <View style={styles.container}>
@@ -23,8 +33,8 @@ const Search = React.memo(({list, setState, keyword}) => {
         placeholderTextColor={theme.colors.cool_gray}
         style={styles.input}
         variant="outlined"
-        onChangeText={value => setSearchItemValue(value)}
-        value={searchItemValue}
+        onChangeText={value => setSearchQuery(value)}
+        value={searchQuery}
         keyboardType="web-search"
         autoCapitalize="none"
         autoCorrect={false}

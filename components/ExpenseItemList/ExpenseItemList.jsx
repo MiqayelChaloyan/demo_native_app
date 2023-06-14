@@ -7,6 +7,8 @@ const ExpenseItemList = ({item, index}) => {
   let backgroundColorStyle =
     index % 2 === 1 ? theme.colors.dark_green : theme.colors.primary_green;
 
+  console.log('ExpenseItemList');
+
   return (
     <View style={styles.expenseItemOfList}>
       <View style={styles.leftSide}>

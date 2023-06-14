@@ -5,8 +5,11 @@ import {moderateScale, verticalScale} from '../../../assets/metrics/Metrics';
 import FeedList from '../../../components/FeedList/FeedList';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
+import React from 'react';
 
 const ToggleSwitch = ({feeds, loading, showHide, setShowHide, navigation}) => {
+  console.log('The child component is rendered >>>> ToggleSwitch');
+
   return (
     <View style={styles.listContainer}>
       <View style={styles.switchContainer}>
@@ -49,4 +52,4 @@ ToggleSwitch.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default ToggleSwitch;
+export default React.memo(ToggleSwitch);
