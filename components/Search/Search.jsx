@@ -1,27 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, TextInput} from 'react-native';
 import {theme} from '../../assets/theme/theme';
+import useEffectAfterMount from '../../customHooks/useEffectAfterMount';
+import useSearch from '../../customHooks/useSearch';
 import styles from './style';
 
-const Search = React.memo(({list, setState, keyword}) => {
+const Search = React.memo(({list: initialData, setState, keyword}) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const {data: filteredData, handleSearch} = useSearch(initialData, keyword);
 
-  const handleSearch = () => {
-    if (searchQuery.trim() !== '') {
-      const result = list.filter(item => {
-        let value = item[keyword].toLowerCase();
-        return value.includes(searchQuery.toLowerCase());
-      });
-      setState(result);
-    } else {
-      setState(list);
-    }
-  };
+  useEffectAfterMount(() => {
+    console.log('1');
+    handleSearch(searchQuery);
+  }, [searchQuery]);
 
-  useEffect(() => {
-    handleSearch();
-  }, [list, searchQuery]);
+  useEffectAfterMount(() => {
+    console.log('2');
+    setState(filteredData);
+  }, [handleSearch]);
 
   console.log('The child component is rendered >>>> search');
 

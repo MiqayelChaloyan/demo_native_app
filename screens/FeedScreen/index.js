@@ -8,6 +8,7 @@ import {GlobalDataContext} from '../../contexts/context';
 import {getDataFeedsFromFile} from '../../utils/ApiUtils';
 import CustomModal from '../../components/Modal/Modal';
 import {getDataStorage, setDataStorage} from '../../utils/AsyncStorageApiUtils';
+import useEffectAfterMount from '../../customHooks/useEffectAfterMount';
 import styles from './style';
 
 const FeedScreen = ({navigation}) => {
@@ -46,7 +47,7 @@ const FeedScreen = ({navigation}) => {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
+  useEffectAfterMount(() => {
     startModalTimer();
   }, [loggedIn]);
 
@@ -109,21 +110,3 @@ FeedScreen.propTypes = {
 };
 
 export default FeedScreen;
-
-// // LOG  The parent component is rendered >>>> screen
-// // LOG  The child component is rendered >>>> header
-// // LOG  The child component is rendered >>>> search
-// // LOG  The child component is rendered >>>> list
-// // LOG  The parent component is rendered >>>> screen
-// // LOG  The child component is rendered >>>> search
-// // LOG  The parent component is rendered >>>> screen
-// // LOG  The child component is rendered >>>> list
-// // LOG  The child component is rendered >>>> search
-// // LOG  The parent component is rendered >>>> screen
-// // LOG  The child component is rendered >>>> list
-// // LOG  The child component is rendered >>>> item
-// // LOG  The child component is rendered >>>> item
-// // LOG  The child component is rendered >>>> item
-// // LOG  The child component is rendered >>>> item
-// // LOG  The child component is rendered >>>> item
-// // LOG  The child component is rendered >>>> item

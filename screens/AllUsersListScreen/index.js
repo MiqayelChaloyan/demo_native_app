@@ -1,11 +1,5 @@
 import PropTypes from 'prop-types';
-import {
-  Image,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
 import {useCallback, useContext, useEffect, useState} from 'react';
 import ChatIcon from '../../assets/icons/Chat.svg';
 import RenderImagePairs from './RenderImagePairs';
@@ -13,13 +7,13 @@ import {getDataUsersFromFile} from '../../utils/ApiUtils';
 import {theme} from '../../assets/theme/theme';
 import {GlobalDataContext} from '../../contexts/context';
 import Warning from '../../components/Warning/Warning';
+import Search from '../../components/Search/Search';
 import styles from './style';
 
 const AllUsersListScreen = ({navigation}) => {
   const {imageUrl} = useContext(GlobalDataContext);
   const [initialData, setInitialData] = useState([]);
   const [data, setData] = useState(initialData);
-  const [searchQuery, setSearchQuery] = useState('');
 
   const fetchData = useCallback(() => {
     const result = getDataUsersFromFile();
@@ -30,23 +24,11 @@ const AllUsersListScreen = ({navigation}) => {
     fetchData();
   }, []);
 
-  const handleSearch = () => {
-    if (searchQuery.trim() !== '') {
-      const result = initialData.filter(item => {
-        let value = item.fullName.toLowerCase();
-        return value.includes(searchQuery.toLowerCase());
-      });
-      setData(result);
-    } else {
-      setData(initialData);
-    }
-  };
+  // console.log('render');
 
-  useEffect(() => {
-    return handleSearch();
-  }, [initialData, searchQuery, setData]);
-
-  console.log('render');
+  const getFeedListData = useCallback(state => {
+    return setData(state);
+  }, []);
 
   return (
     <View style={styles.root}>
@@ -61,16 +43,10 @@ const AllUsersListScreen = ({navigation}) => {
             }
           />
         </View>
-        <TextInput
-          name="search"
-          placeholder="Search"
-          style={styles.input}
-          variant="outlined"
-          onChangeText={value => setSearchQuery(value)}
-          value={searchQuery}
-          keyboardType="web-search"
-          autoCapitalize="none"
-          autoCorrect={false}
+        <Search
+          list={initialData}
+          setState={getFeedListData}
+          keyword="fullName"
         />
         <TouchableOpacity
           onPress={() => navigation.navigate('Messages')}

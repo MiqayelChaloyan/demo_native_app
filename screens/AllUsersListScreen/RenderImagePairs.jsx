@@ -5,6 +5,7 @@ import Col from '../../components/Col';
 import UserCard from './UserCard';
 
 const RenderImagePairs = (data, navigation) => {
+  console.log('RenderImagePairs');
   const pairs = [];
   for (let i = 0; i < data.length; i += 2) {
     const pair = (

@@ -16,7 +16,7 @@ const FeedItem = React.memo(
 
     const monthsAgo = diffMonths(item);
 
-    console.log('The child component is rendered >>>> item');
+    // console.log('The child component is rendered >>>> item');
 
     return (
       item.title && (
