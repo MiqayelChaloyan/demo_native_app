@@ -5,7 +5,7 @@ import styles from './style';
 const Col = ({numRows, children}) => {
   return <View style={styles[`${numRows}col`]}>{children}</View>;
 };
-
+//
 Col.propTypes = {
   numRows: PropTypes.number,
   children: PropTypes.object,
