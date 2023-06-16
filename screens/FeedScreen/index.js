@@ -10,8 +10,10 @@ import CustomModal from '../../components/Modal/Modal';
 import {getDataStorage, setDataStorage} from '../../utils/AsyncStorageApiUtils';
 import useEffectAfterMount from '../../customHooks/useEffectAfterMount';
 import styles from './style';
+import { useNavigation } from '@react-navigation/native';
 
-const FeedScreen = ({navigation}) => {
+const FeedScreen = () => {
+  const navigation = useNavigation();
   const [loading, setLoading] = useState(true);
   const [initialData, setInitialData] = useState([]);
   const [data, setData] = useState(initialData);
@@ -73,7 +75,7 @@ const FeedScreen = ({navigation}) => {
     return setData(state);
   }, []);
 
-  console.log('The parent component is rendered >>>> screen');
+  console.log('The parent component is rendered >>>> screen >>>>>');
 
   return (
     <View style={styles.feedScreenContainer}>

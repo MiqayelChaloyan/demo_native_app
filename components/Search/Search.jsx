@@ -6,21 +6,28 @@ import useEffectAfterMount from '../../customHooks/useEffectAfterMount';
 import useSearch from '../../customHooks/useSearch';
 import styles from './style';
 
+
+let delayDebounceFn = null;
+
 const Search = React.memo(({list: initialData, setState, keyword}) => {
-  const [searchQuery, setSearchQuery] = useState('');
   const {data: filteredData, handleSearch} = useSearch(initialData, keyword);
 
-  useEffectAfterMount(() => {
-    console.log('1');
-    handleSearch(searchQuery);
-  }, [searchQuery]);
+  const handleInputText = inputText => {
+    if (delayDebounceFn) {
+      clearTimeout(delayDebounceFn);
+    }
+
+    delayDebounceFn = setTimeout(() => {
+      handleSearch(inputText);
+      delayDebounceFn = null;
+    }, 1000);
+  };
 
   useEffectAfterMount(() => {
-    console.log('2');
     setState(filteredData);
-  }, [handleSearch]);
+  }, [handleInputText]);
 
-  console.log('The child component is rendered >>>> search');
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
 
   return (
     <View style={styles.container}>
@@ -30,8 +37,7 @@ const Search = React.memo(({list: initialData, setState, keyword}) => {
         placeholderTextColor={theme.colors.cool_gray}
         style={styles.input}
         variant="outlined"
-        onChangeText={value => setSearchQuery(value)}
-        value={searchQuery}
+        onChangeText={handleInputText}
         keyboardType="web-search"
         autoCapitalize="none"
         autoCorrect={false}
