@@ -1,7 +1,7 @@
-import {useRoute} from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import PropTypes from 'prop-types';
-import {FlatList, View} from 'react-native';
-import {verticalScale} from '../../assets/metrics/Metrics';
+import { FlatList, View } from 'react-native';
+import { verticalScale } from '../../assets/metrics/Metrics';
 import Photos from '../../screens/ProfileScreen/page/Photos/Photos';
 import SkeletonPhotos from '../Skeleton/SkeletonPhotos';
 import SkeletonPosts from '../Skeleton/SkeletonPosts';
@@ -9,7 +9,7 @@ import Warning from '../Warning/Warning';
 import FeedItem from './FeedItem';
 import styles from './style';
 
-const FeedList = ({state, navigation, loading, showHide, screen}) => {
+const FeedList = ({ state, navigation, loading, showHide, screen }) => {
   const route = useRoute();
 
   const renderSwitchValue = (item, index) => {
@@ -34,15 +34,13 @@ const FeedList = ({state, navigation, loading, showHide, screen}) => {
   return (
     <View
       style={[
-        styles.contentsBlockContainer,
-        {height: screen === 'Feed' ? verticalScale(356) : verticalScale(275)},
-      ]}>
+        styles.contentsBlockContainer]}>
       <FlatList
         data={state}
         ListEmptyComponent={<Warning />}
         key={item => item.id}
         keyExtractor={item => item.id}
-        renderItem={({item, index}) => renderSwitchValue(item, index)}
+        renderItem={({ item, index }) => renderSwitchValue(item, index)}
       />
     </View>
   );

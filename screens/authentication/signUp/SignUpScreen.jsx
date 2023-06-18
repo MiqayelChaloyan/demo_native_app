@@ -205,7 +205,7 @@ const SignUpScreen = ({navigation}) => {
           <View style={styles.signUpFooter}>
             <TouchableOpacity
               disabled={!isValid}
-              onPress={() => handleSubmit()}>
+              onPress={handleSubmit}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Sign Up</Text>
               </View>

@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  removedContain: {
+  buttonReset: {
     width: horizontalScale(70),
     height: verticalScale(72),
   },

@@ -1,12 +1,12 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, TouchableOpacity, FlatList} from 'react-native';
-import {theme} from '../../assets/theme/theme';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { theme } from '../../assets/theme/theme';
 import Header from '../../components/Header/Header';
-import {getDataOptionsFromFile} from '../../utils/ApiUtils';
+import { getDataOptionsFromFile } from '../../utils/ApiUtils';
 import styles from './style';
 
-const UserOptionsScreen = ({navigation}) => {
+const UserOptionsScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
   const [activated, setActivated] = useState(false);
 
@@ -32,7 +32,7 @@ const UserOptionsScreen = ({navigation}) => {
         <FlatList
           data={data}
           contentContainerStyle={styles.starsContainer}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <>
               <View style={styles.options}>
                 <Text style={styles.optionsText}>{item.label}</Text>
@@ -60,11 +60,13 @@ const UserOptionsScreen = ({navigation}) => {
           keyExtractor={(_, index) => index}
         />
       </View>
-      <View style={styles.button}>
-        <TouchableOpacity>
+      <TouchableOpacity onPress={() => {
+        navigation.navigate('Feed');
+      }}>
+        <View style={styles.button}>
           <Text style={styles.buttonText}>I love it!</Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

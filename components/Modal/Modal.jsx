@@ -1,12 +1,13 @@
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
-const CustomModal = ({visible, navigation, onClose}) => {
+const EvaluationModal = ({ isModalVisible, navigation, handleClose, onAskMeLaterClicked }) => {
+  const starsCount = [1, 2, 3, 4, 5];
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
 
@@ -15,9 +16,13 @@ const CustomModal = ({visible, navigation, onClose}) => {
     setStarsPlaced(count);
   };
 
+  useEffect(() => {
+    setStarsPlaced(0);
+  }, [handleClose, onAskMeLaterClicked]);
+
   return (
     <Modal
-      isVisible={visible}
+      isVisible={isModalVisible}
       coverScreen
       transparent
       backdropColor={theme.colors.primary_green}
@@ -25,21 +30,21 @@ const CustomModal = ({visible, navigation, onClose}) => {
       backdropTransitionInTiming={500}
       backdropTransitionOutTiming={500}
       swipeDirection={['down', 'up', 'right', 'left']}
-      onSwipeComplete={() => onClose()}
-      hideModal={() => onClose()}>
+      onSwipeComplete={handleClose}
+      hideModal={handleClose}>
       <View style={styles.container}>
         <View style={styles.modal}>
           <View style={styles.appreciative}>
             <FlatList
-              data={[1, 2, 3, 4, 5]}
+              data={starsCount}
               contentContainerStyle={styles.starsContainer}
-              renderItem={({item: starPlacedNumber}) => (
+              renderItem={({ item: starPlacedNumber }) => (
                 <TouchableOpacity
                   onPress={() => changeColorOfStars(starPlacedNumber)}>
                   <StarIcon
                     fill={
                       activeStarsColor &&
-                      starPlacedNumber <= numberOfStarsPlaced
+                        starPlacedNumber <= numberOfStarsPlaced
                         ? theme.colors.orange
                         : theme.colors.cool_gray
                     }
@@ -56,18 +61,24 @@ const CustomModal = ({visible, navigation, onClose}) => {
             duis sit esse aliqua esse ex dolore esse. Consequat velit qui
             adipisicing sunt.
           </Text>
-          <View style={styles.button}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Options');
-                return onClose();
-              }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Options');
+              return handleClose();
+            }}>
+            <View style={styles.button}>
               <Text style={styles.buttonText}>I love it!</Text>
+            </View>
+
+          </TouchableOpacity>
+          <View>
+            <TouchableOpacity onPress={handleClose}>
+              <Text style={styles.text}>Don’t like the app? Let us know.</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={() => onClose()}>
-              <Text style={styles.text}>Don’t like the app? Let us know.</Text>
+            <TouchableOpacity onPress={onAskMeLaterClicked}>
+              <Text style={styles.text}>Ask me later.</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -76,10 +87,11 @@ const CustomModal = ({visible, navigation, onClose}) => {
   );
 };
 
-CustomModal.propTypes = {
+EvaluationModal.propTypes = {
   visible: PropTypes.bool,
   navigation: PropTypes.object,
   onClose: PropTypes.func,
+  onAskMeLaterClicked: PropTypes.func,
 };
 
-export default CustomModal;
+export default EvaluationModal;

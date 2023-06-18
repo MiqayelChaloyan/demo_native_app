@@ -72,6 +72,10 @@ const styles = StyleSheet.create({
   switchContainer: {
     width: horizontalScale(343),
   },
+  containerProfileList: {
+    height:  verticalScale(340),
+    width: '100%'
+  }
 });
 
 export default styles;

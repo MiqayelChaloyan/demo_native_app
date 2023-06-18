@@ -39,7 +39,7 @@ const AllUsersListScreen = ({navigation}) => {
 
   useEffect(() => {
     return handleSearch();
-  }, [initialData, searchItemValue, setData]);
+  }, [initialData, searchItemValue]);
 
   return (
     <View style={styles.root}>

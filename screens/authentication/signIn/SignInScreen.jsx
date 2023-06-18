@@ -136,7 +136,7 @@ const SignInScreen = ({navigation}) => {
           <View style={styles.loginFooter}>
             <TouchableOpacity
               disabled={!isValid}
-              onPress={() => handleSubmit()}>
+              onPress={handleSubmit}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Log In</Text>
               </View>

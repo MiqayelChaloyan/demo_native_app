@@ -42,7 +42,7 @@ const ContactsUsers = ({navigation}) => {
     return (
       <TouchableOpacity
         onPress={() => deleteItem(qaItem.id)}
-        style={styles.removedContain}>
+        style={styles.buttonReset}>
         <View style={styles.qaContainer}>
           <View style={styles.button}>
             <View style={styles.buttonText}>
