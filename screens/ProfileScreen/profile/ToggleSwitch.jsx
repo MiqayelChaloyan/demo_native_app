@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import {View} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
-import { moderateScale, verticalScale } from '../../../assets/metrics/Metrics';
+import {moderateScale, verticalScale} from '../../../assets/metrics/Metrics';
 import FeedList from '../../../components/FeedList/FeedList';
-import { theme } from '../../../assets/theme/theme';
+import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
 const ToggleSwitch = ({ feeds, loading, showHide, setShowHide, navigation }) => {
