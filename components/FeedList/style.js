@@ -9,7 +9,6 @@ import {
 const styles = StyleSheet.create({
   contentsBlockContainer: {
     width: '100%',
-    height: verticalScale(356),
     marginTop: verticalScale(16),
   },
   contentContainer: {

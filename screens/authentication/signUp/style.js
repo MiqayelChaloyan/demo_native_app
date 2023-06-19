@@ -7,6 +7,9 @@ import {
 } from '../../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: horizontalScale(4),
+  },
   signUpRoot: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
@@ -102,6 +105,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(11),
     marginTop: verticalScale(7),
     marginBottom: verticalScale(-10),
+    textAlign: 'center',
     ...theme.textVariants.Regular,
   },
   button: {
@@ -141,11 +145,16 @@ const styles = StyleSheet.create({
     color: theme.colors.black,
   },
   textStyle: {
-    fontFamily: 'JosefinSans-Regular',
     textDecorationLine: 'none',
-    top: verticalScale(7),
+    top: verticalScale(10),
     color: theme.colors.dark_gray,
-    fontWeight: 400,
+    fontSize: moderateScale(14),
+    ...theme.textVariants.Regular,
+  },
+  textStylePolicy: {
+    textDecorationLine: 'none',
+    top: verticalScale(-1),
+    color: theme.colors.dark_gray,
     fontSize: moderateScale(14),
     ...theme.textVariants.Regular,
   },

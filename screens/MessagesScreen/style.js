@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   leftArrow: {
-    left: 18,
+    left: 19,
     bottom: 20,
     zIndex: -1,
     borderTopWidth: 30 / 2.0,
@@ -123,10 +123,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     left: verticalScale(15),
+    marginBottom: verticalScale(15),
     alignItems: 'flex-start',
   },
   userImageProfile: {
-    width: horizontalScale(47),
+    width: horizontalScale(46),
     height: verticalScale(50),
     borderRadius: moderateScale(100),
   },

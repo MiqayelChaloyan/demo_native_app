@@ -81,7 +81,6 @@ const RenderImagePairs = changeProfileImage => {
       pairs.push(pair);
     }
     return pairs;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [arrayImages]);
 
   return imagePairs;

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {Pressable, Text, TouchableOpacity, View} from 'react-native';
@@ -14,7 +15,7 @@ import UsersMessagesModal from '../../components/Permission/children/remove';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import styles from './style';
 
-const MessagesUsers = ({navigation}) => {
+const ContactsUsers = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [initialData, setInitialData] = useState([]);
   const [data, setData] = useState(initialData);
@@ -37,14 +38,13 @@ const MessagesUsers = ({navigation}) => {
     return () => clearTimeout(timer);
   }, []);
 
-  // eslint-disable-next-line react/no-unstable-nested-components
   const QuickActions = qaItem => {
     return (
-      <View style={styles.qaContainer}>
-        <View style={styles.button}>
-          <Pressable
-            onPress={() => deleteItem(qaItem.id)}
-            style={styles.removedContain}>
+      <TouchableOpacity
+        onPress={() => deleteItem(qaItem.id)}
+        style={styles.buttonReset}>
+        <View style={styles.qaContainer}>
+          <View style={styles.button}>
             <View style={styles.buttonText}>
               <DeleteIcon
                 width={horizontalScale(35)}
@@ -52,9 +52,9 @@ const MessagesUsers = ({navigation}) => {
                 fill={theme.colors.danger}
               />
             </View>
-          </Pressable>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -66,7 +66,6 @@ const MessagesUsers = ({navigation}) => {
     }
     setModalVisible(false);
     return () => setDeleteFriendsList('');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteFriendsList, initialData]);
 
   const deleteItem = qaItem => {
@@ -96,7 +95,7 @@ const MessagesUsers = ({navigation}) => {
               <User userItem={item} navigation={navigation} />
             );
           }}
-          maxSwipeDistance={64}
+          maxSwipeDistance={70}
           leftOpenValue={20}
           renderQuickActions={({_, item}) => QuickActions(item)}
           contentContainerStyle={styles.contentContainerStyle}
@@ -112,8 +111,8 @@ const MessagesUsers = ({navigation}) => {
   );
 };
 
-MessagesUsers.propTypes = {
+ContactsUsers.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default MessagesUsers;
+export default ContactsUsers;

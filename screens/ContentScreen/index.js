@@ -5,8 +5,8 @@ import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import {GlobalDataContext} from '../../contexts/context';
 import OutletList from './OutletList';
-import styles from './style';
 import SwiperList from './SwiperList';
+import styles from './style';
 
 const ContentScreen = ({navigation, route}) => {
   const {feeds} = useContext(GlobalDataContext);

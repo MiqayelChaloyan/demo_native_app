@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
   warning: {
     width: '100%',
     marginTop: verticalScale(10),
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   warningText: {
     fontSize: moderateScale(14),

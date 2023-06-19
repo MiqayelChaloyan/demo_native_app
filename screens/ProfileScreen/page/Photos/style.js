@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary_white,
   },
   itemImage: {
-    width: horizontalScale(335),
+    width: horizontalScale(343),
     height: verticalScale(240),
     borderRadius: moderateScale(8),
   },

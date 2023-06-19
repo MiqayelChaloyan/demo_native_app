@@ -22,7 +22,7 @@ const Profile = ({navigation}) => {
     loggedIn,
     setLoggedIn,
   } = useContext(GlobalDataContext);
-  const [showHide, setShowHide] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [addImage, setAddImage] = useState('');
@@ -74,7 +74,6 @@ const Profile = ({navigation}) => {
       setAddImage('');
     };
     handleAnswerChange();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addImage]);
 
   return !loggedIn ? (
@@ -92,8 +91,8 @@ const Profile = ({navigation}) => {
       <ToggleSwitch
         feeds={feeds}
         loading={loading}
-        showHide={showHide}
-        setShowHide={setShowHide}
+        showHide={isHidden}
+        setShowHide={setIsHidden}
         navigation={navigation}
       />
       <PermissionModal

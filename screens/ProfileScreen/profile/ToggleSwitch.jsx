@@ -6,9 +6,9 @@ import FeedList from '../../../components/FeedList/FeedList';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
-const ToggleSwitch = ({feeds, loading, showHide, setShowHide, navigation}) => {
+const ToggleSwitch = ({ feeds, loading, showHide, setShowHide, navigation }) => {
   return (
-    <View style={styles.section}>
+    <View style={styles.listContainer}>
       <View style={styles.switchContainer}>
         <SwitchSelector
           initial={0}
@@ -25,17 +25,20 @@ const ToggleSwitch = ({feeds, loading, showHide, setShowHide, navigation}) => {
           valuePadding={verticalScale(2)}
           hasPadding
           options={[
-            {label: 'Posts', value: true},
-            {label: 'Photos', value: false},
+            { label: 'Posts', value: true },
+            { label: 'Photos', value: false },
           ]}
         />
       </View>
-      <FeedList
-        state={feeds}
-        navigation={navigation}
-        loading={loading}
-        showHide={showHide}
-      />
+      <View style={styles.containerProfileList}>
+        <FeedList
+          state={feeds}
+          navigation={navigation}
+          loading={loading}
+          showHide={showHide}
+          screen="Profile"
+        />
+      </View>
     </View>
   );
 };

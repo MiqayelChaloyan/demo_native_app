@@ -72,8 +72,6 @@ const styles = StyleSheet.create({
     ...theme.textVariants.Regular,
   },
   skeleton: {
-    margin: verticalScale(2),
-    marginTop: verticalScale(5),
     padding: verticalScale(5),
     paddingHorizontal: verticalScale(16),
   },
@@ -91,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  removedContain: {
+  buttonReset: {
     width: horizontalScale(70),
     height: verticalScale(72),
   },
@@ -100,10 +98,11 @@ const styles = StyleSheet.create({
     width: horizontalScale(40),
     height: verticalScale(50),
     textAlign: 'center',
-    paddingTop: 10,
+    paddingTop: verticalScale(10),
     color: theme.colors.black,
-    bottom: -5,
-    left: verticalScale(18),
+    bottom: verticalScale(-12),
+    left: verticalScale(328),
+    position: 'relative',
   },
   swipeable: {
     height: verticalScale(75),

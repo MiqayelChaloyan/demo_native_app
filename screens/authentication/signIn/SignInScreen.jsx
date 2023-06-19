@@ -61,7 +61,6 @@ const SignInScreen = ({navigation}) => {
     };
   }, [handleBackButtonClick, loggedIn]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleBackButtonClick = () => {
     navigation.navigate('Feed');
     setLoggedIn(false);
@@ -135,13 +134,13 @@ const SignInScreen = ({navigation}) => {
             </View>
           </Formik>
           <View style={styles.loginFooter}>
-            <View style={styles.button}>
-              <TouchableOpacity
-                disabled={!isValid}
-                onPress={() => handleSubmit()}>
+            <TouchableOpacity
+              disabled={!isValid}
+              onPress={handleSubmit}>
+              <View style={styles.button}>
                 <Text style={styles.buttonText}>Log In</Text>
-              </TouchableOpacity>
-            </View>
+              </View>
+            </TouchableOpacity>
             <View style={styles.forgotPass}>
               <TouchableOpacity>
                 <Text style={styles.forgotPassText}>Forgot your password?</Text>

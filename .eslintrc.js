@@ -28,8 +28,9 @@ module.exports = {
     'react-native/no-raw-text': 2,
     'react-native/no-single-element-style-arrays': 2,
     'no-console': 0,
-    'react-hooks/exhaustive-deps': 2,
     disallowMultipleVarDecl: 0,
     'react/react-in-jsx-scope': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };

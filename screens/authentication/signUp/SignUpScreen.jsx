@@ -18,19 +18,25 @@ import CancelIcon from '../../../assets/icons/Cancel.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {theme} from '../../../assets/theme/theme';
 import {GlobalDataContext} from '../../../contexts/context';
-import styles from './style';
 import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
+import styles from './style';
 
 const SignUpScreen = ({navigation}) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
+  const [isPrivacyPolicy, setIsPrivacyPolicy] = useState(true);
   const [hidePassword, setHidePassword] = useState(true);
   const checkBoxText =
     'I would like to receive your newsletter and other promotional information.';
+  const privacyPolicyText = 'Sipining up you accept the Privacy Policy.';
   const {setUserData, setLoggedIn} = useContext(GlobalDataContext);
 
   useEffect(() => {
     values.isChecked = isChecked;
   }, [isChecked, values]);
+
+  useEffect(() => {
+    values.isPrivacyPolicy = isPrivacyPolicy;
+  }, [isPrivacyPolicy, values]);
 
   const {
     values,
@@ -46,11 +52,12 @@ const SignUpScreen = ({navigation}) => {
       email: '',
       password: '',
       isChecked,
+      isPrivacyPolicy,
     },
     validationSchema: signUpValidationSchema,
     onSubmit: async data => {
       // TODO: This part is for a test and will be changed lately.
-      if (data.email && data.password && data.name) {
+      if (data.email && data.password && data.name && data.isPrivacyPolicy) {
         setUserData(data);
         await setDataStorage('loggedIn', true);
         setLoggedIn(true);
@@ -59,15 +66,15 @@ const SignUpScreen = ({navigation}) => {
     },
   });
 
-  const changeBackgroundColor = () =>
-    isChecked ? theme.colors.primary_green : theme.colors.light_gray;
+  const changeCheckboxBackgroundColor = checkbox =>
+    checkbox ? theme.colors.primary_green : theme.colors.light_gray;
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.signUpRoot}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
@@ -168,21 +175,41 @@ const SignUpScreen = ({navigation}) => {
               isChecked={isChecked}
               iconStyle={[
                 styles.iconStyle,
-                {backgroundColor: changeBackgroundColor()},
+                {backgroundColor: changeCheckboxBackgroundColor(isChecked)},
               ]}
               innerIconStyle={styles.innerIconStyle}
               textStyle={styles.textStyle}
               onPress={() => setIsChecked(!isChecked)}
             />
           </View>
+          <View style={styles.checkBox}>
+            <BouncyCheckbox
+              size={16}
+              text={privacyPolicyText}
+              isChecked={isPrivacyPolicy}
+              iconStyle={[
+                styles.iconStyle,
+                {
+                  backgroundColor:
+                    changeCheckboxBackgroundColor(isPrivacyPolicy),
+                },
+              ]}
+              innerIconStyle={styles.innerIconStyle}
+              textStyle={styles.textStylePolicy}
+              onPress={() => setIsPrivacyPolicy(!isPrivacyPolicy)}
+            />
+            {touched.isPrivacyPolicy && errors.isPrivacyPolicy && (
+              <Text style={styles.inputError}>{errors.isPrivacyPolicy}</Text>
+            )}
+          </View>
           <View style={styles.signUpFooter}>
-            <View style={styles.button}>
-              <TouchableOpacity
-                disabled={!isValid}
-                onPress={() => handleSubmit()}>
+            <TouchableOpacity
+              disabled={!isValid}
+              onPress={handleSubmit}>
+              <View style={styles.button}>
                 <Text style={styles.buttonText}>Sign Up</Text>
-              </TouchableOpacity>
-            </View>
+              </View>
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
       </TouchableWithoutFeedback>

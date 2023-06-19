@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     ...theme.textVariants.Medium,
   },
   container: {
-    marginTop: verticalScale(47),
+    marginTop: verticalScale(7),
   },
   buttonText: {
     textAlign: 'center',
