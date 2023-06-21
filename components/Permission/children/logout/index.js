@@ -2,13 +2,18 @@ import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import {setDataStorage} from '../../../../utils/AsyncStorageApiUtils';
 import styles from './style';
+import {useContext} from 'react';
+import {GlobalDataContext} from '../../../../contexts/context';
 
-const LogoutModal = ({navigation, setModalVisible}) => {
+const LogoutModal = ({setModalVisible}) => {
+  const { setLoggedIn } = useContext(GlobalDataContext);
+
   const handleLogout = async key => {
     setModalVisible(false);
     await setDataStorage(key, false);
     Alert.alert('Logout successful');
-    navigation.navigate('Auth', {screen: 'SignIn'});
+    setLoggedIn(false);
+    
   };
 
   return (
@@ -33,7 +38,6 @@ const LogoutModal = ({navigation, setModalVisible}) => {
 };
 
 LogoutModal.propTypes = {
-  navigation: PropTypes.object,
   setModalVisible: PropTypes.func,
 };
 

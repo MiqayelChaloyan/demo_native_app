@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {View, Text, TouchableOpacity, FlatList} from 'react-native';
+import {theme} from '../../assets/theme/theme';
 import Header from '../../components/Header/Header';
-import { getDataOptionsFromFile } from '../../utils/ApiUtils';
+import {getDataOptionsFromFile} from '../../utils/ApiUtils';
 import styles from './style';
 
 const UserOptionsScreen = ({ navigation }) => {

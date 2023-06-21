@@ -1,7 +1,6 @@
-import { useRoute } from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 import PropTypes from 'prop-types';
-import { FlatList, View } from 'react-native';
-import { verticalScale } from '../../assets/metrics/Metrics';
+import {FlatList, View} from 'react-native';
 import Photos from '../../screens/ProfileScreen/page/Photos/Photos';
 import SkeletonPhotos from '../Skeleton/SkeletonPhotos';
 import SkeletonPosts from '../Skeleton/SkeletonPosts';
@@ -9,7 +8,7 @@ import Warning from '../Warning/Warning';
 import FeedItem from './FeedItem';
 import styles from './style';
 
-const FeedList = ({ state, navigation, loading, showHide, screen }) => {
+const FeedList = ({ state, navigation, loading, showHide, nothingData }) => {
   const route = useRoute();
 
   const renderSwitchValue = (item, index) => {
@@ -37,7 +36,7 @@ const FeedList = ({ state, navigation, loading, showHide, screen }) => {
         styles.contentsBlockContainer]}>
       <FlatList
         data={state}
-        ListEmptyComponent={<Warning />}
+        ListEmptyComponent={<Warning nothingData={nothingData}/>}
         key={item => item.id}
         keyExtractor={item => item.id}
         renderItem={({ item, index }) => renderSwitchValue(item, index)}
@@ -52,6 +51,7 @@ FeedList.propTypes = {
   loading: PropTypes.bool,
   showHide: PropTypes.bool,
   screen: PropTypes.string,
+  nothingData: PropTypes.string,
 };
 
 export default FeedList;

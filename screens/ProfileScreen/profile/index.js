@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect} from 'react';
+import {useContext, useState, useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {GlobalDataContext} from '../../../contexts/context';
@@ -8,8 +8,9 @@ import PermissionModal from '../../../components/Permission/Modal';
 import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import ProfileModal from '../../../components/Permission/children/profile';
 import HeaderBar from './HeaderBar';
-import styles from './style';
 import ToggleSwitch from './ToggleSwitch';
+import {useFocusEffect} from '@react-navigation/native';
+import styles from './style';
 
 const Profile = ({navigation}) => {
   const {
@@ -19,13 +20,22 @@ const Profile = ({navigation}) => {
     setImageUrl,
     feeds,
     userData,
-    loggedIn,
     setLoggedIn,
+    setChangeStatusBar,
   } = useContext(GlobalDataContext);
   const [isHidden, setIsHidden] = useState(true);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [addImage, setAddImage] = useState('');
+
+  useFocusEffect(
+    useCallback(() => {
+      setChangeStatusBar(true);
+      return () => {
+        setChangeStatusBar(false);
+      };
+    }, [])
+  );
 
   // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
@@ -76,9 +86,11 @@ const Profile = ({navigation}) => {
     handleAnswerChange();
   }, [addImage]);
 
-  return !loggedIn ? (
-    navigation.navigate('Auth', {screen: 'LogIn'})
-  ) : (
+  return (
+  //  !loggedIn ? (
+  //   navigation.navigate('Auth', {screen: 'LogIn'})
+  // ) : 
+ 
     <View style={styles.container}>
       <HeaderBar
         navigation={navigation}

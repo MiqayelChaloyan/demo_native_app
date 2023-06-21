@@ -1,19 +1,29 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
+import useSearch from '../../customHooks/useSearch';
 import PropTypes from 'prop-types';
 import {View, TextInput} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
-const Search = ({list, setState, keyword}) => {
-  const [searchItemValue, setSearchItemValue] = useState('');
+let delayDebounceFn = null;
+
+const Search = ({list: initialData, setState, keyword, setNothingData}) => {
+  const {data: searchResults, handleSearch} = useSearch(initialData, keyword);
+  const handleInputText = inputText => {
+    if (delayDebounceFn) {
+      clearTimeout(delayDebounceFn);
+    }
+
+    delayDebounceFn = setTimeout(() => {
+      handleSearch(inputText);
+      setNothingData(inputText);
+      delayDebounceFn = null;
+    }, 500);
+  };
 
   useEffect(() => {
-    const result = list.filter(item => {
-      let param = item[keyword].toLowerCase();
-      return param.indexOf(searchItemValue) > -1;
-    });
-    setState(result);
-  }, [keyword, list, searchItemValue, setState]);
+    setState(searchResults);
+  }, [handleInputText]);
 
   return (
     <View style={styles.container}>
@@ -23,8 +33,7 @@ const Search = ({list, setState, keyword}) => {
         placeholderTextColor={theme.colors.cool_gray}
         style={styles.input}
         variant="outlined"
-        onChangeText={value => setSearchItemValue(value)}
-        value={searchItemValue}
+        onChangeText={handleInputText}
         keyboardType="web-search"
         autoCapitalize="none"
         autoCorrect={false}

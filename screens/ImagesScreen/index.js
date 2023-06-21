@@ -8,9 +8,9 @@ import {GlobalDataContext} from '../../contexts/context';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
 
-const ImagesScreen = ({navigation}) => {
+const ImagesScreen = ({ navigation }) => {
   const [sheet, setSheet] = useState('');
-  const {arrayImages, setArrayImage, setImageUrl} =
+  const {arrayImages, setArrayImage, setImageUrl, imageUrl} =
     useContext(GlobalDataContext);
   const [photoId, setPhotoId] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
@@ -23,8 +23,12 @@ const ImagesScreen = ({navigation}) => {
         navigation.navigate('Profile');
       }
     } else if (sheet === 'Remove') {
-      const updatedArrayImages = arrayImages.filter(
-        item => item.id !== photoId,
+      const updatedArrayImages = arrayImages.filter(item => {
+        if (item.id === photoId && item.url === imageUrl) {
+          setImageUrl(null);
+        }
+        return item.id !== photoId
+      }
       );
       setArrayImage(updatedArrayImages);
     }

@@ -4,7 +4,7 @@
       "id": 0,
       "fullName": "Terry Dotson",
       "isActive": true,
-      "friend": true,
+      "friend": false,
       "friends": [],
       "emailAddress": "",
       "imageUrl": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -13,7 +13,7 @@
       "id": 1,
       "fullName": "Warren Belz",
       "isActive": true,
-      "friend": true,
+      "friend": false,
       "friends": [],
       "emailAddress": "",
       "imageUrl": "https://images.pexels.com/photos/1906157/pexels-photo-1906157.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -83,12 +83,70 @@
     },
     {
       "id": 9,
-      "fullName": "AnnaSophia Robb",
+      "fullName": "Diane Robb",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.pexels.com/photos/1310474/pexels-photo-1310474.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+
+
+    {
+      "id": 10,
+      "fullName": "Alexander Walker",
       "isActive": false,
       "friend": true,
       "friends": [],
       "emailAddress": "",
-      "imageUrl": "https://images.pexels.com/photos/1310474/pexels-photo-1310474.jpeg?auto=compress&cs=tinysrgb&w=1600"
+      "imageUrl": "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 11,
+      "fullName": "Alen Massey",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 12,
+      "fullName": "Emma Bright",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.unsplash.com/photo-1522228115018-d838bcce5c3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 13,
+      "fullName": "Alan Rhodes",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "imageUrl": "https://images.unsplash.com/photo-1529758146491-1e11fd721f77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 14,
+      "fullName": "Monroe Bennett",
+      "isActive": false,
+      "friend": false,
+      "friends": [],
+      "emailAddress": "",
+      "timestamp": "12:11",
+      "imageUrl": "https://images.unsplash.com/photo-1502323777036-f29e3972d82f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzV8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 15,
+      "fullName": "Hedley Jones",
+      "isActive": true,
+      "friend": true,
+      "friends": [],
+      "emailAddress": "",
+      "timestamp": "16:35",
+      "imageUrl": "https://images.unsplash.com/photo-1541290431335-1f4c2152e899?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
     }
   ]
 }

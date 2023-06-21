@@ -21,6 +21,7 @@ const PermissionModal = ({isModalVisible, setModalVisible, children}) => {
 PermissionModal.propTypes = {
   isModalVisible: PropTypes.bool,
   setModalVisible: PropTypes.func,
+  children: PropTypes.object,
 };
 
 export default PermissionModal;

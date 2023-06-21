@@ -15,34 +15,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: horizontalScale(16),
   },
-  row: {
-    flexDirection: 'row',
-  },
   app: {
     flex: 4,
     marginHorizontal: 'auto',
     width: horizontalScale(345),
     marginTop: 50,
-  },
-  '1col': {
-    borderColor: '#FAFAFA',
-    borderWidth: 5,
-    flex: 1,
-  },
-  '2col': {
-    borderColor: '#FAFAFA',
-    borderWidth: 5,
-    flex: 2,
-  },
-  '3col': {
-    borderColor: '#FAFAFA',
-    borderWidth: 5,
-    flex: 3,
-  },
-  '4col': {
-    borderColor: '#FAFAFA',
-    borderWidth: 5,
-    flex: 4,
   },
   image: {
     width: '100%',

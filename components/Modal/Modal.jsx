@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
@@ -69,7 +69,6 @@ const EvaluationModal = ({ isModalVisible, navigation, handleClose, onAskMeLater
             <View style={styles.button}>
               <Text style={styles.buttonText}>I love it!</Text>
             </View>
-
           </TouchableOpacity>
           <View>
             <TouchableOpacity onPress={handleClose}>

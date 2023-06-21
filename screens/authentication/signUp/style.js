@@ -8,7 +8,8 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: horizontalScale(4),
+    marginHorizontal: horizontalScale(0),
+    marginBottom: verticalScale(50),
   },
   signUpRoot: {
     flex: 1,
@@ -98,6 +99,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.light_gray,
     paddingVertical: horizontalScale(7),
     fontSize: moderateScale(15),
+    paddingEnd: horizontalScale(70),
     ...theme.textVariants.Medium,
   },
   inputError: {

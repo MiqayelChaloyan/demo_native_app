@@ -12,10 +12,10 @@ const ContentScreen = ({navigation, route}) => {
   const {feeds} = useContext(GlobalDataContext);
   const [keyboardStatus, setKeyboardStatus] = useState(true);
   const {itemIndex} = route.params;
-  const [state, setState] = useState(feeds);
+  const [newData, setNewData] = useState(feeds);
 
   useEffect(() => {
-    setState(feeds);
+    setNewData(feeds);
   }, [feeds]);
 
   useEffect(() => {
@@ -43,10 +43,10 @@ const ContentScreen = ({navigation, route}) => {
           left="Back"
           right="Filter"
         />
-        <Search list={feeds} setState={setState} keyword="title" />
+        <Search list={feeds} setState={setNewData} keyword="title" />
       </View>
       {keyboardStatus && <SwiperList itemIndex={itemIndex} feeds={feeds} />}
-      <OutletList state={state} feeds={feeds} />
+      <OutletList state={newData} feeds={feeds} />
     </View>
   );
 };

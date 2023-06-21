@@ -11,16 +11,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
+  back: {
+    width: horizontalScale(60),
+    paddingHorizontal: verticalScale(10),
+  },
   root: {
     marginTop: verticalScale(20),
     marginBottom: verticalScale(20),
     justifyContent: 'center',
     flexDirection: 'row',
-    paddingHorizontal: verticalScale(16),
+    paddingHorizontal: verticalScale(25),
   },
   listUsers: {
     marginTop: verticalScale(5),
     marginBottom: verticalScale(180),
+    paddingHorizontal: verticalScale(16),
+
   },
   navigate: {
     textAlign: 'left',

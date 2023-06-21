@@ -17,6 +17,7 @@ const FeedScreen = ({ navigation }) => {
   const [state, setState] = useState(data);
   const [showModal, setShowModal] = useState(false);
   const [modalStatus, setModalStatus] = useState(true);
+  const [nothingData, setNothingData] = useState('');
 
   const fetchData = async () => {
       const result = getDataFeedsFromFile();
@@ -57,7 +58,8 @@ const FeedScreen = ({ navigation }) => {
         await setDataStorage('@lastPopUpTime', currentTime);
         setTimeout(() => {
           setShowModal(true);
-        }, elapsedTime);}
+        }, elapsedHours);
+      }
     } catch (error) {
       console.error('Error storing/retrieving modal status:', error);
     }
@@ -87,7 +89,6 @@ const FeedScreen = ({ navigation }) => {
   };
 
   return (
-    data.length > 0 && (
       <View style={styles.feedScreenContainer}>
         <View style={styles.feedScreen}>
           <Header
@@ -98,12 +99,13 @@ const FeedScreen = ({ navigation }) => {
             left="Back"
             right="Filter"
           />
-          <Search list={data} setState={setState} keyword="title" />
+          <Search list={data} setState={setState} keyword="title" setNothingData={setNothingData}/>
           <FeedList
             state={state}
             navigation={navigation}
             loading={loading}
             screen="Feed"
+            nothingData={nothingData}
           />
         </View>
         <EvaluationModal
@@ -113,7 +115,6 @@ const FeedScreen = ({ navigation }) => {
           onAskMeLaterClicked={onAskMeLaterClicked}
         />
       </View>
-    )
   );
 };
 

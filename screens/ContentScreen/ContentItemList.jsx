@@ -17,12 +17,10 @@ const ContentItemList = ({item, index}) => {
         <View
           style={[styles.circle, {backgroundColor: backgroundColorStyle}]}
         />
-
         <View style={styles.titleContainer}>
           <Text style={styles.itemTitle}>{item.title}</Text>
         </View>
       </View>
-
       <TouchableOpacity
         onPress={() => {
           navigation.navigate({

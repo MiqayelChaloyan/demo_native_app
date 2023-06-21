@@ -26,6 +26,7 @@ const InsightsScreen = ({navigation}) => {
           back="Expenses"
           left="Back"
           right="Filter"
+          continueTo={"Feed"}
         />
         <View style={styles.progressCircle}>
           <ProgressCircle />

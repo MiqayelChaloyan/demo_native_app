@@ -69,7 +69,6 @@ const Header = ({
       </View>
       <PermissionModal isModalVisible={isModalVisible}>
         <LogoutModal
-          navigation={navigation}
           setModalVisible={setModalVisible}
         />
       </PermissionModal>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   Text,
   View,
-  SafeAreaView,
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
@@ -12,6 +11,7 @@ import {
   Platform,
   Alert,
   BackHandler,
+  ScrollView,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {signInValidationSchema} from './signInValidationSchema';
@@ -72,7 +72,7 @@ const SignInScreen = ({navigation}) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.loginRoot}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView>
+        <ScrollView style={styles.container}>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.headerBox}>
@@ -142,7 +142,7 @@ const SignInScreen = ({navigation}) => {
               </View>
             </TouchableOpacity>
             <View style={styles.forgotPass}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
                 <Text style={styles.forgotPassText}>Forgot your password?</Text>
               </TouchableOpacity>
               <View style={styles.navigateSignUp}>
@@ -152,7 +152,7 @@ const SignInScreen = ({navigation}) => {
               </View>
             </View>
           </View>
-        </SafeAreaView>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

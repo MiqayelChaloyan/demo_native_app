@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   Text,
   View,
-  SafeAreaView,
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
@@ -11,6 +10,7 @@ import {
   Keyboard,
   Platform,
   Alert,
+  ScrollView,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {signUpValidationSchema} from './signUpValidationSchema';
@@ -74,7 +74,7 @@ const SignUpScreen = ({navigation}) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.signUpRoot}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.container}>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
@@ -211,7 +211,7 @@ const SignUpScreen = ({navigation}) => {
               </View>
             </TouchableOpacity>
           </View>
-        </SafeAreaView>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

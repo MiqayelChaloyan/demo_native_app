@@ -7,6 +7,10 @@ import {
 } from '../../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: horizontalScale(0),
+    marginBottom: verticalScale(50),
+  },
   loginRoot: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
@@ -77,6 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.light_gray,
     paddingVertical: verticalScale(7),
     fontSize: moderateScale(15),
+    paddingEnd: horizontalScale(70),
     ...theme.textVariants.Medium,
   },
   inputError: {
