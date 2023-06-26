@@ -4,15 +4,16 @@ import {FlatList, View} from 'react-native';
 import MarketItem from './MarketItem';
 import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
 
-const MarketItemList = ({data, navigation}) => {
-  const [isLoading, setIsLoading] = useState(true);
+const MarketItemList = ({ data, navigation }) => {
+  const [isLoaded, setIsLoaded] = useState(true);
 
-  // TODO: This part is for a test and will be changed lately.
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
+  const loadedData = () => {
+    const timer = setTimeout(() => setIsLoaded(false), 2500);
     return () => clearTimeout(timer);
+  };
+
+  useEffect(() => {
+    loadedData()
   }, []);
 
   return (
@@ -22,8 +23,8 @@ const MarketItemList = ({data, navigation}) => {
         data={data}
         key={item => item.id}
         keyExtractor={item => item.id}
-        renderItem={({item}) => {
-          return isLoading ? (
+        renderItem={({ item }) => {
+          return isLoaded ? (
             <MarketSkeletonItem />
           ) : (
             <MarketItem item={item} navigation={navigation} />
@@ -36,6 +37,7 @@ const MarketItemList = ({data, navigation}) => {
 
 MarketItemList.propTypes = {
   data: PropTypes.array,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default MarketItemList;

@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import useSearch from '../../customHooks/useSearch';
 import PropTypes from 'prop-types';
 import {View, TextInput} from 'react-native';
@@ -7,8 +7,9 @@ import styles from './style';
 
 let delayDebounceFn = null;
 
-const Search = ({list: initialData, setState, keyword, setNothingData}) => {
-  const {data: searchResults, handleSearch} = useSearch(initialData, keyword);
+const Search = ({list: state, setState, keyword, setEmptyDataMessage}) => {
+  const {data: searchResults, handleSearch} = useSearch(state, keyword);
+
   const handleInputText = inputText => {
     if (delayDebounceFn) {
       clearTimeout(delayDebounceFn);
@@ -16,7 +17,7 @@ const Search = ({list: initialData, setState, keyword, setNothingData}) => {
 
     delayDebounceFn = setTimeout(() => {
       handleSearch(inputText);
-      setNothingData(inputText);
+      setEmptyDataMessage(inputText);
       delayDebounceFn = null;
     }, 500);
   };
@@ -45,7 +46,8 @@ const Search = ({list: initialData, setState, keyword, setNothingData}) => {
 Search.propTypes = {
   list: PropTypes.array,
   setState: PropTypes.func,
+  setEmptyDataMessage: PropTypes.func,
   keyword: PropTypes.string,
 };
 
-export default Search;
+export default React.memo(Search);

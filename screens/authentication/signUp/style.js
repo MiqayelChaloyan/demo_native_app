@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
   },
   cancel: {
     top: verticalScale(10),
-    height: verticalScale(50),
-    width: horizontalScale(2),
+    height: verticalScale(100),
+    width: horizontalScale(300),
     right: 0,
   },
   headerBox: {
@@ -88,27 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-  },
-  input: {
-    width: horizontalScale(343),
-    height: verticalScale(51),
-    borderWidth: moderateScale(1),
-    borderColor: theme.colors.gray,
-    padding: verticalScale(10),
-    borderRadius: moderateScale(8),
-    backgroundColor: theme.colors.light_gray,
-    paddingVertical: horizontalScale(7),
-    fontSize: moderateScale(15),
-    paddingEnd: horizontalScale(70),
-    ...theme.textVariants.Medium,
-  },
-  inputError: {
-    color: theme.colors.danger,
-    fontSize: moderateScale(11),
-    marginTop: verticalScale(7),
-    marginBottom: verticalScale(-10),
-    textAlign: 'center',
-    ...theme.textVariants.Regular,
   },
   button: {
     marginTop: verticalScale(43),

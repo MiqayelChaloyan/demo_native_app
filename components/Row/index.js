@@ -5,7 +5,7 @@ import styles from './style';
 const Row = ({children}) => <View style={styles.row}>{children}</View>;
 
 Row.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.array,
 };
 
 export default Row;

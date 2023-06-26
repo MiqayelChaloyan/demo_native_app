@@ -9,6 +9,7 @@ import styles from './style';
 
 const SettingsScreen = ({navigation}) => {
   const {settings} = useContext(GlobalDataContext);
+
   const renderItem = ({item}) => (
     <TouchableOpacity
       style={styles.settingsItem}
@@ -51,7 +52,7 @@ const SettingsScreen = ({navigation}) => {
 };
 
 SettingsScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default SettingsScreen;

@@ -1,21 +1,24 @@
 import PropTypes from 'prop-types';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
+import React from 'react';
 import styles from './style';
 
 const FeedItem = ({item, itemIndex, navigation}) => {
-  const diffMonths = () => {
+  const {title, imageUri, message, createdData} = item;
+
+  const diffMonths = (createdData) => {
     const currentDate = new Date();
-    const createdDate = new Date(item.createdData);
+    const createdDate = new Date(createdData);
     return (
       (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
       (currentDate.getMonth() - createdDate.getMonth())
     );
   };
 
-  const monthsAgo = diffMonths(item);
+  const monthsAgo = diffMonths(createdData);
 
   return (
-    item.title && (
+    title && (
       <View>
         <TouchableOpacity
           onPress={() => {
@@ -27,13 +30,13 @@ const FeedItem = ({item, itemIndex, navigation}) => {
           <View style={styles.contentContainer}>
             <View style={styles.imageContainer}>
               <Image
-                source={{uri: item.imageUri}}
+                source={{uri: imageUri}}
                 style={styles.feedItemImage}
               />
             </View>
             <View style={styles.contentInfo}>
               <View style={styles.headerContent}>
-                <Text style={styles.headerFeedText}>{item.title}</Text>
+                <Text style={styles.headerFeedText}>{title}</Text>
                 <Text style={styles.aboutContentDate}>{monthsAgo}m ago</Text>
               </View>
               <View style={styles.feedTextContainer}>
@@ -41,7 +44,7 @@ const FeedItem = ({item, itemIndex, navigation}) => {
                   style={styles.feedText}
                   numberOfLines={2}
                   ellipsizeMode="tail">
-                  {item.message}
+                  {message}
                 </Text>
               </View>
             </View>
@@ -55,7 +58,8 @@ const FeedItem = ({item, itemIndex, navigation}) => {
 FeedItem.propTypes = {
   item: PropTypes.object,
   itemIndex: PropTypes.number,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
-export default FeedItem;
+export default React.memo(FeedItem);
+

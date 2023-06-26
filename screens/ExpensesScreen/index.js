@@ -1,20 +1,21 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import BarChart from './BarChart';
-import ListOfExpenses from './ListOfExpenses';
-import {getDataExpensesFromFile} from '../../utils/ApiUtils';
+import {getDataFromFile} from '../../utils/ApiUtils';
+import ExpensesList from '../../components/ExpenseItemList/ExpensesList';
 import styles from './style';
 
 const ExpensesScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDataExpensesFromFile();
+  const fetchData = () => {
+      const result = getDataFromFile('expenses');
       setData(result);
-    };
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -33,14 +34,14 @@ const ExpensesScreen = ({navigation}) => {
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Expenses</Text>
         </View>
-        <ListOfExpenses data={data} />
+        <ExpensesList data={data} />
       </View>
     </View>
   );
 };
 
 ExpensesScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
-export default ExpensesScreen;
+export default React.memo(ExpensesScreen);

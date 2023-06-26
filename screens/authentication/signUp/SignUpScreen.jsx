@@ -19,16 +19,17 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {theme} from '../../../assets/theme/theme';
 import {GlobalDataContext} from '../../../contexts/context';
 import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
+import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import styles from './style';
 
-const SignUpScreen = ({navigation}) => {
+const SignUpScreen = ({ navigation }) => {
   const [isChecked, setIsChecked] = useState(true);
   const [isPrivacyPolicy, setIsPrivacyPolicy] = useState(true);
   const [hidePassword, setHidePassword] = useState(true);
   const checkBoxText =
     'I would like to receive your newsletter and other promotional information.';
   const privacyPolicyText = 'Sipining up you accept the Privacy Policy.';
-  const {setUserData, setLoggedIn} = useContext(GlobalDataContext);
+  const { setUserData, setLoggedIn } = useContext(GlobalDataContext);
 
   useEffect(() => {
     values.isChecked = isChecked;
@@ -69,6 +70,8 @@ const SignUpScreen = ({navigation}) => {
   const changeCheckboxBackgroundColor = checkbox =>
     checkbox ? theme.colors.primary_green : theme.colors.light_gray;
 
+  //  console.log('Sign up component rendered >>>>>>');
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -77,15 +80,15 @@ const SignUpScreen = ({navigation}) => {
         <ScrollView style={styles.container}>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
-              <View style={styles.cancel}>
                 <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
+                <View style={styles.cancel}>
                   <CancelIcon
                     width={16}
                     height={16}
                     fill={theme.colors.cool_gray}
                   />
+                </View>
                 </TouchableOpacity>
-              </View>
               <View style={styles.headerBox}>
                 <Text style={styles.signUp}>Sign Up</Text>
               </View>
@@ -99,61 +102,47 @@ const SignUpScreen = ({navigation}) => {
           <Formik>
             <View style={styles.inputsContainer}>
               <View style={styles.nameInputStyle}>
-                <TextInput
+                <CustomTextInput
                   name="name"
                   placeholder="Name"
-                  placeholderTextColor={theme.colors.cool_gray}
-                  style={styles.input}
-                  variant="standard"
                   onChangeText={handleChange('name')}
                   onBlur={() => setFieldTouched('name')}
-                  value={values.name}
                   keyboardType="default"
                   autoCapitalize="none"
                   autoCorrect={false}
                   secureTextEntry={false}
+                  errors={errors.name}
+                  touched={touched.name}
                 />
-                {touched.name && errors.name && (
-                  <Text style={styles.inputError}>{errors.name}</Text>
-                )}
               </View>
               <View style={styles.emailInputStyle}>
-                <TextInput
+                <CustomTextInput
                   name="email"
                   placeholder="Email"
-                  placeholderTextColor={theme.colors.cool_gray}
-                  style={styles.input}
-                  variant="standard"
                   onChangeText={handleChange('email')}
                   onBlur={() => setFieldTouched('email')}
-                  value={values.email}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoCorrect={false}
                   secureTextEntry={false}
+                  errors={errors.email}
+                  touched={touched.email}
                 />
-                {touched.email && errors.email && (
-                  <Text style={styles.inputError}>{errors.email}</Text>
-                )}
               </View>
               <View style={styles.passwordBox}>
                 <View style={styles.passwordInputStyle}>
-                  <TextInput
+                  <CustomTextInput
                     name="password"
-                    secureTextEntry={hidePassword}
                     placeholder="Password"
-                    placeholderTextColor={theme.colors.cool_gray}
-                    style={styles.input}
-                    variant="standard"
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
-                    value={values.password}
+                    keyboardType=""
                     autoCapitalize="none"
                     autoCorrect={false}
+                    secureTextEntry={hidePassword}
+                    errors={errors.password}
+                    touched={touched.password}
                   />
-                  {touched.password && errors.password && (
-                    <Text style={styles.inputError}>{errors.password}</Text>
-                  )}
                 </View>
                 <View style={styles.passHide}>
                   <TouchableOpacity
@@ -175,7 +164,7 @@ const SignUpScreen = ({navigation}) => {
               isChecked={isChecked}
               iconStyle={[
                 styles.iconStyle,
-                {backgroundColor: changeCheckboxBackgroundColor(isChecked)},
+                { backgroundColor: changeCheckboxBackgroundColor(isChecked) },
               ]}
               innerIconStyle={styles.innerIconStyle}
               textStyle={styles.textStyle}

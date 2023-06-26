@@ -3,6 +3,7 @@ import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
 const MarketItem = ({item, navigation}) => {
+
   return (
     <View>
       <TouchableOpacity
@@ -36,7 +37,7 @@ const MarketItem = ({item, navigation}) => {
 
 MarketItem.propTypes = {
   item: PropTypes.object,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default MarketItem;

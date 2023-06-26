@@ -1,14 +1,28 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { View, FlatList } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, FlatList} from 'react-native';
 import UserCard from './UserCard';
 import SkeletonAllUsersList from '../../components/Skeleton/SkeletonAllUsersList';
+import Warning from '../../components/Warning/Warning';
 import styles from './style';
 
-const UsersList = ({data, navigation, loading}) => {
+const UsersList = ({ data, navigation, emptyDataMessage }) => {
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  // console.log('Users List component rendered >>>>>>');
+
+  const loadedData = () => {
+     const timer = setTimeout(() => setIsLoaded(false), 2500);
+     return () => clearTimeout(timer);
+   };
+
+   useEffect(() => {
+     loadedData();
+   }, []);
+
   const renderItem = ({ item }) => (
     <View style={styles.col}>
-      {loading ? <SkeletonAllUsersList /> : <UserCard item={item} navigation={navigation} />}
+      {isLoaded ? <SkeletonAllUsersList /> : <UserCard item={item} navigation={navigation} />}
     </View>
   );
 
@@ -16,19 +30,20 @@ const UsersList = ({data, navigation, loading}) => {
     <View>
       <FlatList
         data={data}
+        ListEmptyComponent={<Warning emptyDataMessage={emptyDataMessage} />}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         numColumns={2}
         columnWrapperStyle={styles.column}
       />
     </View>
-  )
+  );
 };
 
 UsersList.propTypes = {
   data: PropTypes.array,
-  navigation: PropTypes.object,
-  loading: PropTypes.bool,
+  navigation: PropTypes.object.isRequired,
+  emptyDataMessage: PropTypes.string,
 };
 
-export default UsersList;
+export default React.memo(UsersList);

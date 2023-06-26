@@ -22,6 +22,13 @@ const styles = StyleSheet.create({
   image: {
     width: horizontalScale(200),
     height: verticalScale(170),
+  },
+  warningTextContent: {
+    fontSize: moderateScale(15),
+    color: theme.colors.dark_gray,
+    textAlign: 'center',
+    padding: verticalScale(50),
+    ...theme.textVariants.Regular,
   }
 });
 

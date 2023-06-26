@@ -25,7 +25,7 @@ const Chapter = ({data, navigation, header}) => {
 };
 
 Chapter.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
   data: PropTypes.array,
   header: PropTypes.string,
 };

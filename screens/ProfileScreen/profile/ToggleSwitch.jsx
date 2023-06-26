@@ -6,7 +6,7 @@ import FeedList from '../../../components/FeedList/FeedList';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
-const ToggleSwitch = ({ feeds, loading, showHide, setShowHide, navigation }) => {
+const ToggleSwitch = ({ showHide, setShowHide, navigation }) => {
   return (
     <View style={styles.listContainer}>
       <View style={styles.switchContainer}>
@@ -32,11 +32,8 @@ const ToggleSwitch = ({ feeds, loading, showHide, setShowHide, navigation }) => 
       </View>
       <View style={styles.containerProfileList}>
         <FeedList
-          state={feeds}
           navigation={navigation}
-          loading={loading}
           showHide={showHide}
-          screen="Profile"
         />
       </View>
     </View>
@@ -44,11 +41,9 @@ const ToggleSwitch = ({ feeds, loading, showHide, setShowHide, navigation }) => 
 };
 
 ToggleSwitch.propTypes = {
-  feeds: PropTypes.array,
-  loading: PropTypes.bool,
   showHide: PropTypes.bool,
   setShowHide: PropTypes.func,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default ToggleSwitch;

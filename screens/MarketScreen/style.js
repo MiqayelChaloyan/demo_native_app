@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
-import {theme} from '../../assets/theme/theme';
+import { theme } from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   marketContainer: {
@@ -61,6 +61,9 @@ const styles = StyleSheet.create({
     color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
+  searchView: {
+    marginHorizontal: horizontalScale(16),
+  }
 });
 
 export default styles;

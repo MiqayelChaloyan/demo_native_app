@@ -1,15 +1,27 @@
-import {useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
+import {useFocusEffect} from '@react-navigation/native';
+import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
-const EvaluationModal = ({ isModalVisible, navigation, handleClose, onAskMeLaterClicked }) => {
+const EvaluationModal = ({isModalVisible, navigation, handleClose, onAskMeLaterClicked}) => {
   const starsCount = [1, 2, 3, 4, 5];
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
+  const {setChangeStatusBar} = useContext(GlobalDataContext);
+
+  useFocusEffect(
+      useCallback(() => {
+        setChangeStatusBar(true);
+        return () => {
+          setChangeStatusBar(false);
+        };
+      }, [])
+    );
 
   const changeColorOfStars = count => {
     setActiveStarsColor(true);
@@ -88,9 +100,9 @@ const EvaluationModal = ({ isModalVisible, navigation, handleClose, onAskMeLater
 
 EvaluationModal.propTypes = {
   visible: PropTypes.bool,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
   onClose: PropTypes.func,
   onAskMeLaterClicked: PropTypes.func,
 };
 
-export default EvaluationModal;
+export default React.memo(EvaluationModal);

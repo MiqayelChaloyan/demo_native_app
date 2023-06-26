@@ -68,11 +68,6 @@ const styles = StyleSheet.create({
     color: theme.colors.black,
     ...theme.textVariants.Medium,
   },
-  itemListContainer: {
-    flex: 1,
-    width: '100%',
-    marginBottom: verticalScale(70),
-  },
 });
 
 export default styles;

@@ -63,7 +63,7 @@ const HeaderBar = ({
 };
 
 HeaderBar.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
   imageUrl: PropTypes.string,
   userData: PropTypes.object,
   arrayImages: PropTypes.array,

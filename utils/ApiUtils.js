@@ -1,63 +1,26 @@
-export const getDataUsersFromFile = () => {
+export const getDataFromFile = (fileName) => {
+  let jsonData;
   try {
-    const jsonData = require('../data/users.json');
-    if (jsonData !== null) {
-      return jsonData.users;
-    } else {
-      console.log('No data found in file.');
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
-
-export const getDataFeedsFromFile = () => {
-  try {
-    const jsonData = require('../data/feeds.json');
-    if (jsonData !== null) {
-      return jsonData.feeds;
-    } else {
-      console.log('No data found in file.');
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
-
-export const getDataMarketFromFile = () => {
-  try {
-    const jsonData = require('../data/market.json');
-    if (jsonData !== null) {
-      return jsonData.market;
-    } else {
-      console.log('No data found in file.');
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
-
-export const getDataExpensesFromFile = () => {
-  try {
-    const jsonData = require('../data/expenses.json');
-    if (jsonData !== null) {
-      return jsonData.expenses;
-    } else {
-      console.log('No data found in file.');
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
-
-export const getDataOptionsFromFile = () => {
-  try {
-    const jsonData = require('../data/options.json');
-    if (jsonData !== null) {
-      return jsonData.options;
-    } else {
-      console.log('No data found in file.');
-    }
+      switch (fileName) {
+        case 'users':
+           jsonData = require('../data/users.json');
+          return jsonData.users;
+        case 'feeds':
+           jsonData = require('../data/feeds.json');
+          return jsonData.feeds;
+        case 'market':
+           jsonData = require('../data/market.json');
+          return jsonData.market;
+        case 'expenses':
+           jsonData = require('../data/expenses.json');
+          return jsonData.expenses;
+        case 'options':
+           jsonData = require('../data/options.json');
+          return jsonData.options;
+        default:
+          console.log('Invalid file name:', fileName);
+          break;
+      }
   } catch (error) {
     console.error('Error fetching data:', error);
   }

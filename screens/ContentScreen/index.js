@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Keyboard} from 'react-native';
 import Header from '../../components/Header/Header';
@@ -8,17 +8,36 @@ import OutletList from './OutletList';
 import SwiperList from './SwiperList';
 import styles from './style';
 
+const getFilteredData = (data, index) => {
+  if (!data || data.length === 0) {
+    return null;
+  }
+
+  const length = data.length;
+  const previousIndex = (index - 1 + length) % length;
+  const nextIndex = (index + 1) % length;
+  return [data[previousIndex], data[index], data[nextIndex]];
+}
+
 const ContentScreen = ({navigation, route}) => {
   const {feeds} = useContext(GlobalDataContext);
   const [keyboardStatus, setKeyboardStatus] = useState(true);
   const {itemIndex} = route.params;
-  const [newData, setNewData] = useState(feeds);
+  const [outletData, setOutletData] = useState([]);
+  const [emptyDataMessage, setEmptyDataMessage] = useState('');
+  const [filteredArray, setFilteredArray] = useState([]);
 
   useEffect(() => {
-    setNewData(feeds);
-  }, [feeds]);
+    const result = feeds.map(item => {
+      return {
+       id: item.id,
+       title: item.title,
+      }
+    })
+    setOutletData(result);
+  }, []);
 
-  useEffect(() => {
+  const unsubscribeFromKeyboardEvents = useCallback(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardStatus(false);
     });
@@ -32,6 +51,12 @@ const ContentScreen = ({navigation, route}) => {
     };
   }, []);
 
+  useEffect(() => {
+    const result = getFilteredData(feeds, itemIndex);
+    setFilteredArray(result);
+    unsubscribeFromKeyboardEvents();
+  }, []);
+
   return (
     <View style={styles.contentContainer}>
       <View style={styles.contentBox}>
@@ -43,17 +68,28 @@ const ContentScreen = ({navigation, route}) => {
           left="Back"
           right="Filter"
         />
-        <Search list={feeds} setState={setNewData} keyword="title" />
+        <Search
+          list={feeds}
+          setState={setOutletData}
+          keyword="title"
+          setEmptyDataMessage={setEmptyDataMessage}
+        />
       </View>
-      {keyboardStatus && <SwiperList itemIndex={itemIndex} feeds={feeds} />}
-      <OutletList state={newData} feeds={feeds} />
+      {
+        keyboardStatus &&
+        <SwiperList
+          itemIndex={itemIndex}
+          feeds={filteredArray.length ? filteredArray : feeds}
+        />
+      }
+      <OutletList state={outletData} emptyDataMessage={emptyDataMessage} />
     </View>
   );
 };
 
 ContentScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
   route: PropTypes.object,
 };
 
-export default ContentScreen;
+export default React.memo(ContentScreen);

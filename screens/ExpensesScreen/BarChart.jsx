@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {FlatList, View} from 'react-native';
 import ExpenseItem from './ExpenseItem';
 import styles from './style';
@@ -19,7 +20,9 @@ const BarChart = ({data}) => {
     </View>
   );
 };
+
 BarChart.propTypes = {
   data: PropTypes.array,
 };
-export default BarChart;
+
+export default React.memo(BarChart);

@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     opacity: 0.5,
   },
-  contactsInormationText: {
+  contactsInformationText: {
     fontSize: moderateScale(10),
     color: theme.colors.black,
     left: verticalScale(5),
@@ -88,9 +88,7 @@ const styles = StyleSheet.create({
     padding: verticalScale(10),
     borderRadius: moderateScale(20),
     width: horizontalScale(140),
-    textAlign: 'center',
     marginVertical: verticalScale(15),
-    color: theme.colors.primary_green,
   },
   pairsContainer: {
     paddingHorizontal:  horizontalScale(20),
@@ -102,7 +100,11 @@ const styles = StyleSheet.create({
   col: {
     padding: verticalScale(5),
     paddingHorizontal:  horizontalScale(10),
-  }
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: theme.colors.primary_green,
+  },
 });
 
 export default styles;

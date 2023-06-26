@@ -1,9 +1,8 @@
-import {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
   View,
-  TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -15,13 +14,13 @@ import {
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {signInValidationSchema} from './signInValidationSchema';
-import {theme} from '../../../assets/theme/theme';
 import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import {GlobalDataContext} from '../../../contexts/context';
+import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import styles from './style';
 
-const SignInScreen = ({navigation}) => {
-  const {userData, setLoggedIn, loggedIn} = useContext(GlobalDataContext);
+const SignInScreen = ({ navigation }) => {
+  const { userData, setLoggedIn, loggedIn } = useContext(GlobalDataContext);
   const [hidePassword, setHidePassword] = useState(true);
   const {
     values,
@@ -39,7 +38,7 @@ const SignInScreen = ({navigation}) => {
     validationSchema: signInValidationSchema,
     onSubmit: async data => {
       // TODO: This part is for a test and will be changed lately.
-      const {email, password} = userData;
+      const { email, password } = userData;
       if (data.email === email && data.password === password) {
         await setDataStorage('loggedIn', true);
         setLoggedIn(true);
@@ -67,6 +66,8 @@ const SignInScreen = ({navigation}) => {
     return true;
   };
 
+  // console.log('Sign in component rendered >>>>>>');
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -83,42 +84,33 @@ const SignInScreen = ({navigation}) => {
           <Formik>
             <View style={styles.inputsContainer}>
               <View style={styles.emailInputStyle}>
-                <TextInput
+                <CustomTextInput
                   name="email"
                   placeholder="Email"
-                  placeholderTextColor={theme.colors.cool_gray}
-                  style={styles.input}
-                  variant="standard"
                   onChangeText={handleChange('email')}
                   onBlur={() => setFieldTouched('email')}
-                  value={values.email}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoCorrect={false}
                   secureTextEntry={false}
+                  errors={errors.email}
+                  touched={touched.email}
                 />
-                {touched.email && errors.email && (
-                  <Text style={styles.inputError}>{errors.email}</Text>
-                )}
               </View>
               <View>
                 <View style={styles.passwordInputStyle}>
-                  <TextInput
+                  <CustomTextInput
                     name="password"
-                    secureTextEntry={hidePassword}
                     placeholder="Password"
-                    placeholderTextColor={theme.colors.cool_gray}
-                    style={styles.input}
-                    variant="standard"
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
-                    value={values.password}
+                    keyboardType=""
                     autoCapitalize="none"
                     autoCorrect={false}
+                    secureTextEntry={hidePassword}
+                    errors={errors.password}
+                    touched={touched.password}
                   />
-                  {touched.password && errors.password && (
-                    <Text style={styles.inputError}>{errors.password}</Text>
-                  )}
                 </View>
                 <View>
                   <TouchableOpacity
@@ -159,7 +151,7 @@ const SignInScreen = ({navigation}) => {
 };
 
 SignInScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
-export default SignInScreen;
+export default React.memo(SignInScreen);

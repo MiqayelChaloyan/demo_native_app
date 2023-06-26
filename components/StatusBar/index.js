@@ -1,12 +1,12 @@
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {StatusBar} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import {GlobalDataContext} from '../../contexts/context';
-import {useContext} from 'react';
 
 
 
-const MyStatusBar = ({ children }) => {
+const MyStatusBar = ({children}) => {
     const {isChangeStatusBar} = useContext(GlobalDataContext);
 
     return (
@@ -25,8 +25,7 @@ const MyStatusBar = ({ children }) => {
 }
 
 MyStatusBar.propTypes = {
-    nothingData: PropTypes.element,
+    children: PropTypes.object,
   };
 
-
-export default MyStatusBar;
+export default React.memo(MyStatusBar);

@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
 import CheckIcon from '../../assets/icons/Check.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import styles from './style';
 
-const ImageItem = ({elem, changeProfileImage}) => {
+const ImageItem = ({elem, changeProfileImage, isModalVisible}) => {
+  const {url, id, isChecked} = elem;
+
   return (
     <TouchableOpacity
-      style={elem?.isChecked && styles.specifiedImage}
-      onPress={() => changeProfileImage(elem.id)}>
-      <Image source={{uri: elem.url}} style={styles.image} />
-      {elem.isChecked && (
+      style={isChecked && !isModalVisible && styles.specifiedImage}
+      onPress={() => changeProfileImage(id)}>
+      <Image source={{uri: url}} style={styles.image} />
+      {isChecked && !isModalVisible && (
         <View style={styles.checked}>
           <View style={styles.checkedBox}>
             <CheckIcon width={horizontalScale(21)} height={verticalScale(21)} />
@@ -24,6 +27,7 @@ const ImageItem = ({elem, changeProfileImage}) => {
 ImageItem.propTypes = {
   elem: PropTypes.object,
   changeProfileImage: PropTypes.func,
+  sheet: PropTypes.string,
 };
 
-export default ImageItem;
+export default React.memo(ImageItem);

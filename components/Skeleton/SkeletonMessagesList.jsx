@@ -31,7 +31,7 @@ const SkeletonMessagesList = () => {
           />
           <SkeletonPlaceholder.Item
             marginTop={verticalScale(6)}
-            width={horizontalScale(220)}
+            width={horizontalScale(235)}
             height={verticalScale(40)}
             borderRadius={moderateScale(8)}
           />

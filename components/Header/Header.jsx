@@ -1,6 +1,6 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import PermissionModal from '../Permission/Modal';
 import LogoutModal from '../Permission/children/logout';
@@ -87,4 +87,4 @@ Header.propTypes = {
   headerTextColor: PropTypes.string,
 };
 
-export default Header;
+export default React.memo(Header);

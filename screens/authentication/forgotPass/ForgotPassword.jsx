@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import {View, Text, Image, TouchableOpacity, TextInput, ScrollView} from 'react-native';
-import {theme} from '../../../assets/theme/theme';
+import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {forgotPassValidationSchema} from './forgotPassValidation';
 import {Formik, useFormik} from 'formik';
+import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import styles from './style';
 
 const ForgotPassword = ({ navigation }) => {
@@ -25,35 +25,32 @@ const ForgotPassword = ({ navigation }) => {
         }
     });
 
+    // console.log('Forgot Password component rendered >>>>>>');
+
     return (
         <ScrollView style={styles.root}>
             <View style={styles.centered}>
                 <Image
                     style={styles.image}
-                    source={require('../../../assets/images/forgotpassword-image.png')}
+                    source={require('../../../assets/images/ForgotPassword.png')}
                 />
                 <Text style={styles.option}>
                     Forgot Password
                 </Text>
                 <Formik>
                     <View style={styles.container}>
-                        <TextInput
+                        <CustomTextInput
                             name="email"
                             placeholder="Email or Username"
-                            placeholderTextColor={theme.colors.cool_gray}
-                            style={styles.input}
-                            variant="standard"
                             onChangeText={handleChange('email')}
                             onBlur={() => setFieldTouched('email')}
-                            value={values.email}
                             keyboardType="email-address"
                             autoCapitalize="none"
                             autoCorrect={false}
                             secureTextEntry={false}
+                            errors={errors.email}
+                            touched={touched.email}
                         />
-                        {touched.email && errors.email && (
-                            <Text style={styles.inputError}>{errors.email}</Text>
-                        )}
                         <Text style={styles.subtitle}>
                             Reset link will be sent to the email address you used during registration.
                         </Text>
@@ -76,7 +73,7 @@ const ForgotPassword = ({ navigation }) => {
 }
 
 ForgotPassword.propTypes = {
-    navigation: PropTypes.object,
+    navigation: PropTypes.object.isRequired,
 };
 
 

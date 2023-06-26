@@ -125,6 +125,11 @@ const styles = StyleSheet.create({
     shadowRadius: verticalScale(3.84),
     elevation: 1,
   },
+  activeTime: {
+    position: 'absolute',
+    right: verticalScale(10),
+    bottom: verticalScale(26),
+  },
 });
 
 export default styles;

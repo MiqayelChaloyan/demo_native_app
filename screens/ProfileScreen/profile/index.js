@@ -5,7 +5,6 @@ import {GlobalDataContext} from '../../../contexts/context';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils.android';
 import {launchImageLibrary} from 'react-native-image-picker';
 import PermissionModal from '../../../components/Permission/Modal';
-import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import ProfileModal from '../../../components/Permission/children/profile';
 import HeaderBar from './HeaderBar';
 import ToggleSwitch from './ToggleSwitch';
@@ -18,13 +17,10 @@ const Profile = ({navigation}) => {
     setArrayImage,
     imageUrl,
     setImageUrl,
-    feeds,
     userData,
-    setLoggedIn,
     setChangeStatusBar,
   } = useContext(GlobalDataContext);
   const [isHidden, setIsHidden] = useState(true);
-  const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [addImage, setAddImage] = useState('');
 
@@ -36,21 +32,6 @@ const Profile = ({navigation}) => {
       };
     }, [])
   );
-
-  // TODO: This part is for a test and will be changed lately.
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // TODO: This part is for a test and will be changed lately.
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getDataStorage('loggedIn');
-      setLoggedIn(result);
-    };
-    fetchData();
-  }, [navigation, setLoggedIn]);
 
   const selectFile = () => {
     const options = {
@@ -87,10 +68,6 @@ const Profile = ({navigation}) => {
   }, [addImage]);
 
   return (
-  //  !loggedIn ? (
-  //   navigation.navigate('Auth', {screen: 'LogIn'})
-  // ) : 
- 
     <View style={styles.container}>
       <HeaderBar
         navigation={navigation}
@@ -101,8 +78,6 @@ const Profile = ({navigation}) => {
         accessCamera={accessCamera}
       />
       <ToggleSwitch
-        feeds={feeds}
-        loading={loading}
         showHide={isHidden}
         setShowHide={setIsHidden}
         navigation={navigation}
@@ -117,7 +92,7 @@ const Profile = ({navigation}) => {
 };
 
 Profile.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default Profile;

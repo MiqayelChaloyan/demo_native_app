@@ -1,19 +1,21 @@
-import {useEffect, useState} from 'react';
-import {FlatList, Text, View} from 'react-native';
-import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
+import PropTypes from 'prop-types';
+import React, {useEffect, useState} from 'react';
+import {Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import ProgressCircle from '../../components/ProgressCircle/ProgressCircle';
-import {getDataExpensesFromFile} from '../../utils/ApiUtils';
+import {getDataFromFile} from '../../utils/ApiUtils';
+import ExpensesList from '../../components/ExpenseItemList/ExpensesList';
 import styles from './style';
 
 const InsightsScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDataExpensesFromFile();
+  const fetchData = () => {
+      const result = getDataFromFile('expenses');
       setData(result);
-    };
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -34,17 +36,14 @@ const InsightsScreen = ({navigation}) => {
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Expenses</Text>
         </View>
-        <View style={styles.itemListContainer}>
-          <FlatList
-            data={data}
-            keyExtractor={(_, index) => index.toString()}
-            renderItem={({item, index}) => {
-              return <ExpenseItemList item={item} index={index} />;
-            }}
-          />
-        </View>
+        <ExpensesList data={data} />
       </View>
     </View>
   );
 };
+
+InsightsScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
+
 export default InsightsScreen;

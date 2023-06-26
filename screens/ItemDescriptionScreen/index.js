@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {
   View,
   Image,
@@ -14,6 +15,7 @@ import styles from './style';
 
 const ItemDescriptionScreen = ({route}) => {
   const {item} = route.params;
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.itemDataBox}>
@@ -83,4 +85,4 @@ ItemDescriptionScreen.propTypes = {
   route: PropTypes.object,
 };
 
-export default ItemDescriptionScreen;
+export default React.memo(ItemDescriptionScreen);

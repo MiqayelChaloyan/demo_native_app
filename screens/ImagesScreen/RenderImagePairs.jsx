@@ -7,7 +7,7 @@ import Col from '../../components/Col';
 import ImageItem from './ImageItem';
 
 
-const RenderImagePairs = changeProfileImage => {
+const RenderImagePairs = (changeProfileImage, isModalVisible) => {
   const {arrayImages} = useContext(GlobalDataContext);
   const maximum = 4;
   const minimum = 1;
@@ -35,6 +35,7 @@ const RenderImagePairs = changeProfileImage => {
             <ImageItem
               elem={arrayImages[i]}
               changeProfileImage={changeProfileImage}
+              isModalVisible={isModalVisible}
             />
           </Col>
           {arrayImages[i + 1] && (
@@ -42,6 +43,7 @@ const RenderImagePairs = changeProfileImage => {
               <ImageItem
                 elem={arrayImages[i + 1]}
                 changeProfileImage={changeProfileImage}
+                isModalVisible={isModalVisible}
               />
             </Col>
           )}

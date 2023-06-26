@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import {setDataStorage} from '../../../../utils/AsyncStorageApiUtils';
-import styles from './style';
 import {useContext} from 'react';
 import {GlobalDataContext} from '../../../../contexts/context';
+import styles from './style';
 
 const LogoutModal = ({setModalVisible}) => {
   const { setLoggedIn } = useContext(GlobalDataContext);

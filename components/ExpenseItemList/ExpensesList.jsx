@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {FlatList, View} from 'react-native';
-import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
+import ExpenseItemList from './ExpenseItemList';
 import styles from './style';
 
-const ListOfExpenses = ({data}) => {
+const ExpenseList = ({data}) => {
   return (
     <View style={styles.itemListContainer}>
       <FlatList
@@ -16,7 +17,9 @@ const ListOfExpenses = ({data}) => {
     </View>
   );
 };
-ListOfExpenses.propTypes = {
+
+ExpenseList.propTypes = {
   data: PropTypes.array,
 };
-export default ListOfExpenses;
+
+export default React.memo(ExpenseList);

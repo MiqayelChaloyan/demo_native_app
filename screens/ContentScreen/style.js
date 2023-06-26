@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   itemListContainer: {
     flex: 1,
     width: '100%',
-    marginBottom: verticalScale(30),
+    marginBottom: verticalScale(10),
   },
   contentItemOfList: {
     flexDirection: 'row',

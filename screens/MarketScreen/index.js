@@ -1,22 +1,20 @@
 import PropTypes from 'prop-types';
 import {useEffect, useState} from 'react';
 import {View, ScrollView} from 'react-native';
-import Warning from '../../components/Warning/Warning';
-import Chapter from './Chapter';
 import Header from '../../components/Header/Header';
-import Search from '../../components/Search/Search';
-import {getDataMarketFromFile} from '../../utils/ApiUtils';
+import {getDataFromFile} from '../../utils/ApiUtils';
+import MarketContent from './MarketContent';
 import styles from './style';
 
-const MarketScreen = ({navigation}) => {
+const MarketScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
-  const [state, setState] = useState(data);
+
+  const fetchData = () => {
+    const result = getDataFromFile('market');
+    setData(result);
+  };
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = getDataMarketFromFile();
-      setData(result);
-    };
     fetchData();
   }, []);
 
@@ -31,23 +29,20 @@ const MarketScreen = ({navigation}) => {
           left="Back"
           right="Filter"
         />
-        <Search list={data} setState={setState} keyword="title" />
       </View>
-      {state.length ? (
-        <View style={styles.contentContainer}>
-          <Chapter data={state} navigation={navigation} header="Hot Deals" />
-          <Chapter data={state} navigation={navigation} header="Trending" />
-          <Chapter data={state} navigation={navigation} header="Deals" />
-        </View>
-      ) : (
-        <Warning />
-      )}
+      {
+        data.length > 0 &&
+        <MarketContent
+          navigation={navigation}
+          initialData={data}
+        />
+      }
     </ScrollView>
   );
 };
 
 MarketScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default MarketScreen;
