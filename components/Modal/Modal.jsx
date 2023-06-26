@@ -6,7 +6,7 @@ import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
-const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
+const EvaluationModal = ({isModalVisible, setModalVisible, navigation}) => {
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
 
@@ -72,10 +72,10 @@ const CustomModal = ({isModalVisible, setModalVisible, navigation}) => {
   );
 };
 
-CustomModal.propTypes = {
+EvaluationModal.propTypes = {
   navigation: PropTypes.object,
   isModalVisible: PropTypes.bool,
   setModalVisible: PropTypes.func,
 };
 
-export default CustomModal;
+export default EvaluationModal;

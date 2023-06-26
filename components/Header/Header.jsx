@@ -5,6 +5,7 @@ import {theme} from '../../assets/theme/theme';
 import PermissionModal from '../Permission/Modal';
 import LogoutModal from '../Permission/children/logout';
 import styles from './style';
+import {memo} from 'react';
 
 const Header = ({
   screen,
@@ -88,4 +89,4 @@ Header.propTypes = {
   headerTextColor: PropTypes.string,
 };
 
-export default Header;
+export default memo(Header);

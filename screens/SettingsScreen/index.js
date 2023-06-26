@@ -26,6 +26,7 @@ const SettingsScreen = ({navigation}) => {
       </View>
     </TouchableOpacity>
   );
+  console.log('SETTINGS SCREEN was updated');
 
   return (
     <View style={styles.container}>

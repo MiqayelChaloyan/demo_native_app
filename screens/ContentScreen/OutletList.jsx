@@ -3,8 +3,9 @@ import {FlatList, Text, View} from 'react-native';
 import Warning from '../../components/Warning/Warning';
 import ContentItemList from './ContentItemList';
 import styles from './style';
+import {memo} from 'react';
 
-const OutletList = ({state}) => {
+const OutletList = ({data}) => {
   return (
     <View style={styles.outletContainer}>
       <View style={styles.headerTextContainer}>
@@ -12,7 +13,7 @@ const OutletList = ({state}) => {
       </View>
       <View style={styles.itemListContainer}>
         <FlatList
-          data={state}
+          data={data}
           ListEmptyComponent={<Warning />}
           keyExtractor={(_, index) => index.toString()}
           renderItem={({item, index}) => (
@@ -25,7 +26,7 @@ const OutletList = ({state}) => {
 };
 
 OutletList.propTypes = {
-  state: PropTypes.array,
+  data: PropTypes.array,
 };
 
-export default OutletList;
+export default memo(OutletList);

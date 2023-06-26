@@ -47,7 +47,6 @@ const MessagesList = ({navigation, route}) => {
       message={item.content}
     />
   );
-
   return (
     <View style={styles.root}>
       <View style={styles.header}>

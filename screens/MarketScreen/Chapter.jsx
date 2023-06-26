@@ -5,6 +5,7 @@ import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import MarketItemList from './MarketItemList';
 import styles from './style';
+import {memo} from 'react';
 
 const Chapter = ({data, navigation, header}) => {
   return (
@@ -30,4 +31,4 @@ Chapter.propTypes = {
   header: PropTypes.string,
 };
 
-export default Chapter;
+export default memo(Chapter);

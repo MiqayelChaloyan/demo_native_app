@@ -7,31 +7,31 @@ import PermissionModal from '../../components/Permission/Modal';
 import {GlobalDataContext} from '../../contexts/context';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
-
+import {memo} from 'react';
 const ImagesScreen = ({navigation}) => {
-  const [sheet, setSheet] = useState('');
+  const [action, setAction] = useState('');
   const {arrayImages, setArrayImage, setImageUrl} =
     useContext(GlobalDataContext);
   const [photoId, setPhotoId] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    if (sheet === 'Add') {
+    if (action === 'Add') {
       const result = arrayImages.find(item => item.id === photoId);
       if (result) {
         setImageUrl(result.url);
         navigation.navigate('Profile');
       }
-    } else if (sheet === 'Remove') {
+    } else if (action === 'Remove') {
       const updatedArrayImages = arrayImages.filter(
         item => item.id !== photoId,
       );
       setArrayImage(updatedArrayImages);
     }
     setModalVisible(false);
-    setSheet('');
+    setAction('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sheet]);
+  }, [action]);
 
   const changeProfileImage = id => {
     setPhotoId(id);
@@ -42,7 +42,6 @@ const ImagesScreen = ({navigation}) => {
     setModalVisible(true);
     setArrayImage(updatedArrayImages);
   };
-
   return (
     <View style={styles.images}>
       <View style={styles.container}>
@@ -74,7 +73,7 @@ const ImagesScreen = ({navigation}) => {
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}>
-        <ImagesModal setSheet={setSheet} />
+        <ImagesModal setAction={setAction} />
       </PermissionModal>
     </View>
   );
@@ -84,4 +83,4 @@ ImagesScreen.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default ImagesScreen;
+export default memo(ImagesScreen);

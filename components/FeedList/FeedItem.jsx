@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
+import {useCallback} from 'react';
 
 const FeedItem = ({item, itemIndex, navigation}) => {
-  const diffMonths = () => {
+  const diffMonths = useCallback(() => {
     const currentDate = new Date();
     const createdDate = new Date(item.createdData);
     return (
       (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
       (currentDate.getMonth() - createdDate.getMonth())
     );
-  };
+  }, [item]);
 
   const monthsAgo = diffMonths(item);
-
   return (
     item.title && (
       <View>

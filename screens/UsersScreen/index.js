@@ -1,31 +1,25 @@
-import {
-  Image,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {useContext, useEffect, useState} from 'react';
+import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
+import {useContext, useState} from 'react';
 import ChatIcon from '../../assets/icons/Chat.svg';
 import RenderImagePairs from './RenderImagePairs';
-import {getDataUsersFromFile} from '../../utils/ApiUtils';
+import useDataFromAPI from '../../customHooks/UseDataFromAPI';
 import {theme} from '../../assets/theme/theme';
 import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
+import Search from '../../components/Search/Search';
+import useDataForUpdate from '../../customHooks/useDataForUpdate';
+import PropTypes from 'prop-types';
 
 const UsersScreen = ({navigation}) => {
   const {imageUrl} = useContext(GlobalDataContext);
-  const [data, setData] = useState([]);
-  const [searchItemValue, setSearchItemValue] = useState('');
+  const [usersData, setUsersData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDataUsersFromFile();
-      setData(result);
-    };
-    fetchData();
-  }, []);
+  const {data, error} = useDataFromAPI('users');
 
+  useDataForUpdate(data, setUsersData, error);
+
+  console.log('All Users List was rendered');
   return (
     <View style={styles.root}>
       <View style={styles.header}>
@@ -39,18 +33,9 @@ const UsersScreen = ({navigation}) => {
             }
           />
         </View>
-        <TextInput
-          name="search"
-          placeholder="Search"
-          placeholderTextColor={theme.colors.dark_gray}
-          style={styles.input}
-          variant="outlined"
-          onChangeText={value => setSearchItemValue(value)}
-          value={searchItemValue}
-          keyboardType="web-search"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
+
+        <Search list={data} setState={setFilteredData} keyword="fullName" />
+
         <TouchableOpacity
           onPress={() => navigation.navigate('Messages')}
           style={styles.messages}>
@@ -58,10 +43,13 @@ const UsersScreen = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        {data.length > 0 && RenderImagePairs(data, navigation)}
+        {usersData.length > 0 && RenderImagePairs(filteredData, navigation)}
       </ScrollView>
     </View>
   );
+};
+UsersScreen.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default UsersScreen;

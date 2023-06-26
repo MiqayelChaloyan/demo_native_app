@@ -6,13 +6,18 @@ import FeedList from '../../../components/FeedList/FeedList';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
-const ToggleSwitch = ({feeds, loading, showHide, setShowHide, navigation}) => {
+const ToggleSwitch = ({
+  loading,
+  showPostsOrPhotos,
+  setShowPostsOrPhotos,
+  navigation,
+}) => {
   return (
     <View style={styles.section}>
       <View style={styles.switchContainer}>
         <SwitchSelector
           initial={0}
-          onPress={value => setShowHide(value)}
+          onPress={value => setShowPostsOrPhotos(value)}
           textColor={theme.colors.cool_gray}
           selectedColor={theme.colors.primary_green}
           backgroundColor={theme.colors.light_gray}
@@ -31,10 +36,9 @@ const ToggleSwitch = ({feeds, loading, showHide, setShowHide, navigation}) => {
         />
       </View>
       <FeedList
-        state={feeds}
         navigation={navigation}
         loading={loading}
-        showHide={showHide}
+        showPostsOrPhotos={showPostsOrPhotos}
       />
     </View>
   );
@@ -43,8 +47,8 @@ const ToggleSwitch = ({feeds, loading, showHide, setShowHide, navigation}) => {
 ToggleSwitch.propTypes = {
   feeds: PropTypes.array,
   loading: PropTypes.bool,
-  showHide: PropTypes.bool,
-  setShowHide: PropTypes.func,
+  showPostsOrPhotos: PropTypes.bool,
+  setShowPostsOrPhotos: PropTypes.func,
   navigation: PropTypes.object,
 };
 

@@ -1,20 +1,23 @@
-import {useEffect, useState} from 'react';
+import {useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View, TextInput} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
+import {memo} from 'react';
+import useDelayedAction from '../../customHooks/useDelayedAction';
 
 const Search = ({list, setState, keyword}) => {
   const [searchItemValue, setSearchItemValue] = useState('');
 
-  useEffect(() => {
+  const handleSearch = useCallback(() => {
     const result = list.filter(item => {
       let param = item[keyword].toLowerCase();
-      return param.indexOf(searchItemValue) > -1;
+      return param.indexOf(searchItemValue.toLowerCase()) > -1;
     });
     setState(result);
-  }, [keyword, list, searchItemValue, setState]);
+  }, [list, setState, keyword, searchItemValue]);
 
+  useDelayedAction(handleSearch, 1000);
   return (
     <View style={styles.container}>
       <TextInput
@@ -39,4 +42,4 @@ Search.propTypes = {
   keyword: PropTypes.string,
 };
 
-export default Search;
+export default memo(Search);

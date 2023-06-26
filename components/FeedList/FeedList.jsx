@@ -4,16 +4,26 @@ import {FlatList, View} from 'react-native';
 import Photos from '../../screens/ProfileScreen/page/Photos/Photos';
 import SkeletonPhotos from '../Skeleton/SkeletonPhotos';
 import SkeletonPosts from '../Skeleton/SkeletonPosts';
-import Warning from '../Warning/Warning';
 import FeedItem from './FeedItem';
 import styles from './style';
+import {memo, useMemo, useState} from 'react';
+import Search from '../Search/Search';
+import Warning from '../Warning/Warning';
+import useDataFromAPI from '../../customHooks/UseDataFromAPI';
+import useDataForUpdate from '../../customHooks/useDataForUpdate';
 
-const FeedList = ({state, navigation, loading, showHide}) => {
+const FeedList = ({navigation, loading, showPostsOrPhotos}) => {
   const route = useRoute();
+  const [feedData, setFeedData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+
+  const {data, error} = useDataFromAPI('feeds');
+
+  useDataForUpdate(data, setFeedData, error);
 
   const renderSwitchValue = (item, index) => {
     if (route.name === 'Profile') {
-      if (showHide) {
+      if (showPostsOrPhotos) {
         return loading ? (
           <SkeletonPosts />
         ) : (
@@ -30,24 +40,33 @@ const FeedList = ({state, navigation, loading, showHide}) => {
       );
     }
   };
+
+  const dataOfList = useMemo(
+    () => (route.name === 'Feed' ? filteredData : feedData),
+    [route.name, filteredData, feedData],
+  );
+
   return (
-    <View style={styles.contentsBlockContainer}>
-      <FlatList
-        data={state}
-        ListEmptyComponent={<Warning />}
-        key={item => item.id}
-        keyExtractor={item => item.id}
-        renderItem={({item, index}) => renderSwitchValue(item, index)}
-      />
-    </View>
+    <>
+      {route.name === 'Feed' && (
+        <Search list={feedData} setState={setFilteredData} keyword="title" />
+      )}
+      <View style={styles.contentsBlockContainer}>
+        <FlatList
+          data={dataOfList}
+          ListEmptyComponent={<Warning />}
+          keyExtractor={item => item.id}
+          renderItem={({item, index}) => renderSwitchValue(item, index)}
+        />
+      </View>
+    </>
   );
 };
 
 FeedList.propTypes = {
-  state: PropTypes.array,
   navigation: PropTypes.object,
   loading: PropTypes.bool,
-  showHide: PropTypes.bool,
+  showPostsOrPhotos: PropTypes.bool,
 };
 
-export default FeedList;
+export default memo(FeedList);

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import {memo} from 'react';
 import {Text, View} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
 const ExpenseItemList = ({item, index}) => {
-  let backgroundColorStyle =
+  const backgroundColorStyle =
     index % 2 === 1 ? theme.colors.dark_green : theme.colors.primary_green;
 
   return (
@@ -29,4 +30,4 @@ ExpenseItemList.propTypes = {
   index: PropTypes.number,
 };
 
-export default ExpenseItemList;
+export default memo(ExpenseItemList);

@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
+import {memo} from 'react';
 
 const ContentItemList = ({item, index}) => {
   const navigation = useNavigation();
@@ -47,4 +48,4 @@ ContentItemList.propTypes = {
   index: PropTypes.number,
 };
 
-export default ContentItemList;
+export default memo(ContentItemList);

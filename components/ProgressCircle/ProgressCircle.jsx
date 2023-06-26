@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {memo, useEffect} from 'react';
 import {useRef} from 'react';
 import {Animated, View, Text} from 'react-native';
 import Svg, {G, Circle} from 'react-native-svg';
@@ -44,7 +44,6 @@ const ProgressCircle = () => {
       }
     });
   });
-
   return (
     <View>
       <Svg
@@ -83,5 +82,4 @@ const ProgressCircle = () => {
     </View>
   );
 };
-
-export default ProgressCircle;
+export default memo(ProgressCircle);

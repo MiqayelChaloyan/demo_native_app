@@ -1,12 +1,24 @@
-import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TextInput, TouchableOpacity, View, Alert} from 'react-native';
 import Header from '../../components/Header/Header';
 import Share from 'react-native-share';
 import styles from './style';
+import {useState} from 'react';
+
+let delayDebounceFn = null;
 
 const SupportMessageScreen = ({navigation}) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState();
+  const handleInputText = inputText => {
+    if (delayDebounceFn) {
+      clearTimeout(delayDebounceFn);
+    }
+    delayDebounceFn = setTimeout(() => {
+      setText(inputText);
+      delayDebounceFn = null;
+    }, 1000);
+  };
+
   const share = async () => {
     const options = {
       message: text,
@@ -31,11 +43,13 @@ const SupportMessageScreen = ({navigation}) => {
     }
   };
 
+  console.log('SUPPORT screen was rendering ++++++++++++++++++++++++++++');
+
   return (
     <View style={styles.supportScreenContainer}>
       <View style={styles.supportScreen}>
         <Header
-          // TODO: This part is will increase later.
+          // TODO: This part will increase later.
           screen="Compose"
           navigation={navigation}
           back="Market"
@@ -48,18 +62,17 @@ const SupportMessageScreen = ({navigation}) => {
           <TextInput
             multiline
             style={styles.input}
-            onChangeText={setText}
-            value={text}
+            onChangeText={handleInputText}
             placeholder="Compose your message here..."
           />
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={share}>
+        <TouchableOpacity onPress={share}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}>Send</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

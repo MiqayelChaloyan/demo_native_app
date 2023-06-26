@@ -1,36 +1,23 @@
-import {useContext, useEffect, useState} from 'react';
+import {useState, memo, useContext} from 'react';
 import PropTypes from 'prop-types';
-import {View, Keyboard} from 'react-native';
+import {View} from 'react-native';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
-import {GlobalDataContext} from '../../contexts/context';
 import OutletList from './OutletList';
 import styles from './style';
 import SwiperList from './SwiperList';
+import useDataFromAPI from '../../customHooks/UseDataFromAPI';
+import useDataForUpdate from '../../customHooks/useDataForUpdate';
+import {GlobalDataContext} from '../../contexts/context';
 
 const ContentScreen = ({navigation, route}) => {
-  const {feeds} = useContext(GlobalDataContext);
-  const [keyboardStatus, setKeyboardStatus] = useState(true);
   const {itemIndex} = route.params;
-  const [state, setState] = useState(feeds);
+  const [filteredData, setFilteredData] = useState([]);
+  const [feedData, setFeedData] = useState([]);
 
-  useEffect(() => {
-    setState(feeds);
-  }, [feeds]);
-
-  useEffect(() => {
-    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
-      setKeyboardStatus(false);
-    });
-    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
-      setKeyboardStatus(true);
-    });
-
-    return () => {
-      showSubscription.remove();
-      hideSubscription.remove();
-    };
-  }, []);
+  const {data, error} = useDataFromAPI('feeds');
+  useDataForUpdate(data, setFeedData, error);
+  const {feeds} = useContext(GlobalDataContext);
 
   return (
     <View style={styles.contentContainer}>
@@ -43,10 +30,10 @@ const ContentScreen = ({navigation, route}) => {
           left="Back"
           right="Filter"
         />
-        <Search list={feeds} setState={setState} keyword="title" />
+        <Search list={feedData} setState={setFilteredData} keyword="title" />
       </View>
-      {keyboardStatus && <SwiperList itemIndex={itemIndex} feeds={feeds} />}
-      <OutletList state={state} feeds={feeds} />
+      <SwiperList itemIndex={itemIndex} data={feeds} />
+      <OutletList data={filteredData} />
     </View>
   );
 };
@@ -56,4 +43,4 @@ ContentScreen.propTypes = {
   route: PropTypes.object,
 };
 
-export default ContentScreen;
+export default memo(ContentScreen);

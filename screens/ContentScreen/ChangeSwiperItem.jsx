@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import {Image, Text, View} from 'react-native';
 import styles from './style';
+import {memo} from 'react';
 
 const diffMonths = item => {
   const currentDate = new Date();
@@ -42,4 +43,4 @@ ChangeSwiperItem.propTypes = {
   item: PropTypes.object,
 };
 
-export default ChangeSwiperItem;
+export default memo(ChangeSwiperItem);

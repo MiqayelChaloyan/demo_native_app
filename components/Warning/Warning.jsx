@@ -1,5 +1,6 @@
 import {Text, View} from 'react-native';
 import styles from '../../screens/MarketScreen/style';
+import {memo} from 'react';
 
 const Warning = () => {
   return (
@@ -10,4 +11,4 @@ const Warning = () => {
     </View>
   );
 };
-export default Warning;
+export default memo(Warning);

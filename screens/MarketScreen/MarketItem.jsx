@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
+import {memo} from 'react';
 
 const MarketItem = ({item, navigation}) => {
   return (
@@ -39,4 +40,4 @@ MarketItem.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default MarketItem;
+export default memo(MarketItem);

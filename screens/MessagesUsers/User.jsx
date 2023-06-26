@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {memo, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View, Image} from 'react-native';
 import {GlobalDataContext} from '../../contexts/context';
@@ -49,4 +49,4 @@ User.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default User;
+export default memo(User);

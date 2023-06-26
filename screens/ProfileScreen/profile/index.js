@@ -10,6 +10,7 @@ import ProfileModal from '../../../components/Permission/children/profile';
 import HeaderBar from './HeaderBar';
 import styles from './style';
 import ToggleSwitch from './ToggleSwitch';
+import useDelayedAction from '../../../customHooks/useDelayedAction';
 
 const Profile = ({navigation}) => {
   const {
@@ -17,23 +18,17 @@ const Profile = ({navigation}) => {
     setArrayImage,
     imageUrl,
     setImageUrl,
-    feeds,
     userData,
     loggedIn,
     setLoggedIn,
   } = useContext(GlobalDataContext);
-  const [showHide, setShowHide] = useState(true);
+  const [showPostsOrPhotos, setShowPostsOrPhotos] = useState(true);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [addImage, setAddImage] = useState('');
 
   // TODO: This part is for a test and will be changed lately.
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // TODO: This part is for a test and will be changed lately.
+  useDelayedAction(() => setLoading(false), 2500);
   useEffect(() => {
     const fetchData = async () => {
       const result = await getDataStorage('loggedIn');
@@ -90,10 +85,9 @@ const Profile = ({navigation}) => {
         accessCamera={accessCamera}
       />
       <ToggleSwitch
-        feeds={feeds}
         loading={loading}
-        showHide={showHide}
-        setShowHide={setShowHide}
+        showPostsOrPhotos={showPostsOrPhotos}
+        setShowPostsOrPhotos={setShowPostsOrPhotos}
         navigation={navigation}
       />
       <PermissionModal

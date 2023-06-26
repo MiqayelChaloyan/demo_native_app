@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useMemo, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -59,9 +59,10 @@ const SignUpScreen = ({navigation}) => {
     },
   });
 
-  const changeBackgroundColor = () =>
-    isChecked ? theme.colors.primary_green : theme.colors.light_gray;
-
+  const changeBackgroundColor = useMemo(() => {
+    return isChecked ? theme.colors.primary_green : theme.colors.light_gray;
+  }, [isChecked]);
+  console.log('SIGNUP SCREEN WAS RENDERED');
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

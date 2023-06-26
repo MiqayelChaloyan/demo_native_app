@@ -1,19 +1,15 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
 import MarketItem from './MarketItem';
 import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
+import {memo} from 'react';
+import useDelayedAction from '../../customHooks/useDelayedAction';
 
 const MarketItemList = ({data, navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  // TODO: This part is for a test and will be changed lately.
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, []);
+  useDelayedAction(() => setIsLoading(false), 2500);
 
   return (
     <View>
@@ -36,6 +32,7 @@ const MarketItemList = ({data, navigation}) => {
 
 MarketItemList.propTypes = {
   data: PropTypes.array,
+  navigation: PropTypes.object,
 };
 
-export default MarketItemList;
+export default memo(MarketItemList);

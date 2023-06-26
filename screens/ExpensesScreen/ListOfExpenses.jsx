@@ -1,9 +1,11 @@
-import PropTypes from 'prop-types';
+import {memo} from 'react';
 import {FlatList, View} from 'react-native';
 import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
 import styles from './style';
+import useDataFromAPI from '../../customHooks/UseDataFromAPI';
 
-const ListOfExpenses = ({data}) => {
+const ListOfExpenses = () => {
+  const {data} = useDataFromAPI('expenses');
   return (
     <View style={styles.itemListContainer}>
       <FlatList
@@ -16,7 +18,4 @@ const ListOfExpenses = ({data}) => {
     </View>
   );
 };
-ListOfExpenses.propTypes = {
-  data: PropTypes.array,
-};
-export default ListOfExpenses;
+export default memo(ListOfExpenses);
