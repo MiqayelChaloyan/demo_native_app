@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(5),
     marginBottom: verticalScale(180),
   },
+  buttonContainer: {
+    marginBottom: verticalScale(32),
+  },
   navigate: {
     textAlign: 'left',
     top: verticalScale(27),

@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(32),
     marginBottom: verticalScale(16),
   },
+  warningContainer: {
+    marginTop: verticalScale(32),
+  },
   playButton: {
     paddingRight: horizontalScale(16),
   },

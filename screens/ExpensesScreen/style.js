@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: horizontalScale(16),
   },
   barChartContainer: {
-    marginVertical: verticalScale(32),
+    marginBottom: verticalScale(32),
     paddingTop: verticalScale(16),
     paddingBottom: verticalScale(25),
     height: verticalScale(232),
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     height: verticalScale(12),
     transform: [{rotate: '315deg'}],
     alignItems: 'center',
-    width: verticalScale(28),
   },
   expenseItem: {
     marginLeft: horizontalScale(14),
