@@ -9,7 +9,6 @@ import {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    marginTop: verticalScale(32),
   },
   input: {
     height: verticalScale(50),

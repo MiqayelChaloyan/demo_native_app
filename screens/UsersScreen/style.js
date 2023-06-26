@@ -7,54 +7,37 @@ import {
 import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
-  //index.js
   root: {
     flex: 1,
   },
   header: {
-    marginTop: 20,
-    marginBottom: 20,
+    marginVertical: verticalScale(20),
     justifyContent: 'center',
     flexDirection: 'row',
     marginHorizontal: 80,
     alignItems: 'stretch',
   },
-  input: {
-    width: '100%',
-    height: verticalScale(50),
-    borderWidth: moderateScale(1),
-    borderColor: theme.colors.gray,
-    borderRadius: moderateScale(100),
-    paddingTop: verticalScale(15),
-    paddingLeft: horizontalScale(16),
-    paddingBottom: verticalScale(14),
-    backgroundColor: theme.colors.light_gray,
-    fontSize: moderateScale(16),
-  },
   messages: {
-    top: 10,
-    left: 15,
+    top: verticalScale(10),
+    left: horizontalScale(15),
   },
   userImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 50,
-    top: 4,
-    right: 15,
-    borderWidth: 0.5,
+    width: horizontalScale(40),
+    height: verticalScale(40),
+    borderRadius: moderateScale(50),
+    top: verticalScale(4),
+    right: horizontalScale(15),
+    borderWidth: moderateScale(0.5),
     borderColor: theme.colors.primary_green,
   },
-
-  //RenderImagePairs.jsx
   row: {
     flexDirection: 'row',
-    marginHorizontal: 15,
-    marginBottom: 20,
+    marginHorizontal: horizontalScale(15),
+    marginBottom: verticalScale(20),
   },
   '1col': {
     flex: 2,
   },
-  //
 });
 
 export default styles;
