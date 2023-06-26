@@ -67,7 +67,6 @@ const SignInScreen = ({navigation}) => {
     setLoggedIn(false);
     return true;
   };
-  console.log('LOG IN SCREEN was rendered');
 
   return (
     <KeyboardAvoidingView

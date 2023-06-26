@@ -66,7 +66,6 @@ const MessagesUsers = ({navigation}) => {
     setModalVisible(true);
     setRemoveId(qaItem);
   };
-  console.log('==========MESSENGER WAS RENDERED=============');
   return (
     <View style={styles.listUsersRoot}>
       <View style={styles.buttonContainer}>

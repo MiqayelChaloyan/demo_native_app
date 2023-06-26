@@ -62,7 +62,6 @@ const SignUpScreen = ({navigation}) => {
   const changeBackgroundColor = useMemo(() => {
     return isChecked ? theme.colors.primary_green : theme.colors.light_gray;
   }, [isChecked]);
-  console.log('SIGNUP SCREEN WAS RENDERED');
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

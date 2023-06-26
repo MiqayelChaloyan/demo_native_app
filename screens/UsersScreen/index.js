@@ -19,7 +19,6 @@ const UsersScreen = ({navigation}) => {
 
   useDataForUpdate(data, setUsersData, error);
 
-  console.log('All Users List was rendered');
   return (
     <View style={styles.root}>
       <View style={styles.header}>
