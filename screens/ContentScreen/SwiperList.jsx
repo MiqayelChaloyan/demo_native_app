@@ -21,7 +21,6 @@ const SwiperList = ({itemIndex, data}) => {
       hideSubscription.remove();
     };
   }, [keyboardStatus]);
-  console.log('SWIPER LIST WAS RENDERED');
   return (
     <>
       {keyboardStatus && (

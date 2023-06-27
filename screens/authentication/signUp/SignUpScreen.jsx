@@ -168,7 +168,7 @@ const SignUpScreen = ({navigation}) => {
               isChecked={isChecked}
               iconStyle={[
                 styles.iconStyle,
-                {backgroundColor: changeBackgroundColor()},
+                {backgroundColor: changeBackgroundColor},
               ]}
               innerIconStyle={styles.innerIconStyle}
               textStyle={styles.textStyle}

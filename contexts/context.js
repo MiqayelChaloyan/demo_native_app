@@ -28,7 +28,7 @@ function GlobalData({children}) {
   const [feeds, setFeeds] = useState([]);
   const [arrayImages, setArrayImage] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [userData, setUserData] = useState({
     name: '',
     email: '',
