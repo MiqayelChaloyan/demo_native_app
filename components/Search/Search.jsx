@@ -1,9 +1,8 @@
-import {useState, useCallback} from 'react';
+import {useState, useCallback, memo} from 'react';
 import PropTypes from 'prop-types';
 import {View, TextInput} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
-import {memo} from 'react';
 import useDelayedAction from '../../customHooks/useDelayedAction';
 
 const Search = ({list, setState, keyword}) => {

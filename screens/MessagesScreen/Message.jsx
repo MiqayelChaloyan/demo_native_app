@@ -1,7 +1,7 @@
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text} from 'react-native';
 import styles from './style';
-import {memo} from 'react';
 
 const Message = ({isLeft, message}) => {
   return (

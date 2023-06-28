@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import {memo, useState} from 'react';
+import PropTypes from 'prop-types';
 import {ScrollView, View} from 'react-native';
 import Warning from '../../components/Warning/Warning';
 import Chapter from './Chapter';

@@ -1,10 +1,10 @@
+import {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
-import {useCallback} from 'react';
 
 const FeedItem = ({item, itemIndex, navigation}) => {
-  const diffMonths = useCallback(() => {
+  const diffMonths = useMemo(() => {
     const currentDate = new Date();
     const createdDate = new Date(item.createdData);
     return (
@@ -12,8 +12,6 @@ const FeedItem = ({item, itemIndex, navigation}) => {
       (currentDate.getMonth() - createdDate.getMonth())
     );
   }, [item]);
-
-  const monthsAgo = diffMonths(item);
   return (
     item.title && (
       <View>
@@ -34,7 +32,7 @@ const FeedItem = ({item, itemIndex, navigation}) => {
             <View style={styles.contentInfo}>
               <View style={styles.headerContent}>
                 <Text style={styles.headerFeedText}>{item.title}</Text>
-                <Text style={styles.aboutContentDate}>{monthsAgo}m ago</Text>
+                <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
               </View>
               <View style={styles.feedTextContainer}>
                 <Text

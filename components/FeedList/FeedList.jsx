@@ -41,10 +41,7 @@ const FeedList = ({navigation, loading, showPostsOrPhotos}) => {
     }
   };
 
-  const dataOfList = useMemo(
-    () => (route.name === 'Feed' ? filteredData : feedData),
-    [route.name, filteredData, feedData],
-  );
+  const dataOfList = route.name === 'Feed' ? filteredData : feedData;
 
   return (
     <>

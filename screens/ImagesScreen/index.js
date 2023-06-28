@@ -1,5 +1,5 @@
+import {useState, useContext, useEffect, memo} from 'react';
 import PropTypes from 'prop-types';
-import {useState, useContext, useEffect} from 'react';
 import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import ImagesModal from '../../components/Permission/children/images';
@@ -7,7 +7,7 @@ import PermissionModal from '../../components/Permission/Modal';
 import {GlobalDataContext} from '../../contexts/context';
 import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
-import {memo} from 'react';
+
 const ImagesScreen = ({navigation}) => {
   const [action, setAction] = useState('');
   const {arrayImages, setArrayImage, setImageUrl} =
@@ -30,7 +30,6 @@ const ImagesScreen = ({navigation}) => {
     }
     setModalVisible(false);
     setAction('');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [action]);
 
   const changeProfileImage = id => {
