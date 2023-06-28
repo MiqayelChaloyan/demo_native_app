@@ -1,30 +1,20 @@
 import React, {useEffect} from 'react';
-import useSearch from '../../customHooks/useSearch';
 import PropTypes from 'prop-types';
 import {View, TextInput} from 'react-native';
 import {theme} from '../../assets/theme/theme';
+import useDelayDebounce from '../../customHooks/useDebounce';
+import useSearch from '../../customHooks/useSearch';
 import styles from './style';
 
-let delayDebounceFn = null;
-
-const Search = ({list: state, setState, keyword, setEmptyDataMessage}) => {
-  const {data: searchResults, handleSearch} = useSearch(state, keyword);
-
-  const handleInputText = inputText => {
-    if (delayDebounceFn) {
-      clearTimeout(delayDebounceFn);
-    }
-
-    delayDebounceFn = setTimeout(() => {
-      handleSearch(inputText);
-      setEmptyDataMessage(inputText);
-      delayDebounceFn = null;
-    }, 500);
-  };
-
+const Search = ({ list: initialData, researchResult, keyword, setEmptyDataMessage }) => {
+  const { data: searchResults, handleSearch } = useSearch(initialData, keyword);
+  const [inputText, setInputText] = useDelayDebounce('', 500);
+  
   useEffect(() => {
-    setState(searchResults);
-  }, [handleInputText]);
+    handleSearch(inputText);
+    setEmptyDataMessage(inputText);
+    researchResult(searchResults);
+  }, [setInputText]);
 
   return (
     <View style={styles.container}>
@@ -34,7 +24,7 @@ const Search = ({list: state, setState, keyword, setEmptyDataMessage}) => {
         placeholderTextColor={theme.colors.cool_gray}
         style={styles.input}
         variant="outlined"
-        onChangeText={handleInputText}
+        onChangeText={setInputText}
         keyboardType="web-search"
         autoCapitalize="none"
         autoCorrect={false}
@@ -45,7 +35,7 @@ const Search = ({list: state, setState, keyword, setEmptyDataMessage}) => {
 
 Search.propTypes = {
   list: PropTypes.array,
-  setState: PropTypes.func,
+  researchResult: PropTypes.func,
   setEmptyDataMessage: PropTypes.func,
   keyword: PropTypes.string,
 };

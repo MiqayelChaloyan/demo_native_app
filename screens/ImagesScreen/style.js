@@ -1,10 +1,12 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
+
+const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   images: {
@@ -19,12 +21,24 @@ const styles = StyleSheet.create({
     flex: 4,
     marginHorizontal: 'auto',
     width: horizontalScale(345),
-    marginTop: 50,
+    marginTop: verticalScale(50),
   },
+
   image: {
+    // width: '100%',
+    // height: horizontalScale(150),
+    // borderRadius: moderateScale(7),
     width: '100%',
-    height: horizontalScale(150),
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: moderateScale(10),
   },
+  imageBlock : {
+    paddingHorizontal: 5,
+    marginBottom: 10,
+    width: windowWidth / 2,
+  },
+
   checkBox: {
     position: 'absolute',
     right: horizontalScale(1),
@@ -84,12 +98,10 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(50),
     padding: horizontalScale(2),
   },
-  specifiedImage: {
-    backgroundColor: theme.colors.primary_green,
-    borderWidth: moderateScale(1),
-    borderColor: theme.colors.primary_green,
-    width: '100%',
-  },
+  imageContainer: {
+    paddingVertical: verticalScale(10),
+    paddingHorizontal: horizontalScale(5),
+  }
 });
 
 export default styles;

@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import ImageList from './ImageList';
 import styles from './style';
 
-const ImagesScreen = ({ navigation }) => {
+const ImagesScreen = ({navigation}) => {
   return (
     <View style={styles.images}>
       <View style={styles.container}>

@@ -12,10 +12,8 @@ import Search from '../../components/Search/Search';
 import styles from './style';
 
 
-const HeaderList = ({data, handleSearch, setEmptyDataMessage, navigation}) => {
+const Header = ({data, handleSearch, setEmptyDataMessage, navigation}) => {
     const { imageUrl } = useContext(GlobalDataContext);
-
-    // console.log('Header List component rendered >>>>>>');
 
     return (
         <View style={styles.header}>
@@ -29,7 +27,7 @@ const HeaderList = ({data, handleSearch, setEmptyDataMessage, navigation}) => {
         </View>
         <Search
           list={data}
-          setState={handleSearch}
+          researchResult={handleSearch}
           keyword="fullName"
           setEmptyDataMessage={setEmptyDataMessage}
         />
@@ -42,11 +40,11 @@ const HeaderList = ({data, handleSearch, setEmptyDataMessage, navigation}) => {
     )
 }
 
-HeaderList.propTypes = {
+Header.propTypes = {
     data: PropTypes.array,
     handleSearch: PropTypes.func,
     setEmptyDataMessage: PropTypes.func,
     navigation: PropTypes.object.isRequired,
   };
 
-export default React.memo(HeaderList);
+export default React.memo(Header);

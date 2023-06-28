@@ -24,7 +24,7 @@ const MarketContent = ({ navigation, initialData }) => {
             <View style={styles.searchView}>
                 <Search
                     list={initialData}
-                    setState={searchResult}
+                    researchResult={searchResult}
                     keyword="title"
                     setEmptyDataMessage={specifiedResultText}
                 />

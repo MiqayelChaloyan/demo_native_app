@@ -38,7 +38,7 @@ const HeaderBar = ({
           )}
           <TouchableOpacity
             onPress={() => {
-              if (arrayImages.length !== 0) {
+              if (arrayImages.length >= 1) {
                 setModalVisible(true);
               } else {
                 accessCamera();

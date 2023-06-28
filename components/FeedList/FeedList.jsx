@@ -28,24 +28,23 @@ const FeedList = ({navigation, showHide}) => {
   }, []);
 
   const renderSwitchValue = (item, index) => {
-    switch (route.name) {
-      case "Profile":
-        if (showHide) {
-          return isLoaded ? (
-            <SkeletonPosts />
-          ) : (
-            <FeedItem item={item} itemIndex={index} navigation={navigation} />
-          );
-        } else {
-          return isLoaded ? <SkeletonPhotos /> : <Photos item={item} />;
-        }
-      default:
+    if (route.name === "Profile") {
+      if (showHide) {
         return isLoaded ? (
           <SkeletonPosts />
         ) : (
           <FeedItem item={item} itemIndex={index} navigation={navigation} />
         );
+      } else {
+        return isLoaded ? <SkeletonPhotos /> : <Photos item={item} />;
+      }
     }
+
+    return isLoaded ? (
+      <SkeletonPosts />
+    ) : (
+      <FeedItem item={item} itemIndex={index} navigation={navigation} />
+    );
   };
 
   const searchResult = useCallback((result) => {
@@ -60,7 +59,7 @@ const FeedList = ({navigation, showHide}) => {
     <>
       {
         route.name === 'Feed' && feeds.length > 0 &&
-        <Search list={feeds} setState={searchResult} keyword="title" setEmptyDataMessage={specifiedResultText} />
+        <Search list={feeds} researchResult={searchResult} keyword="title" setEmptyDataMessage={specifiedResultText} />
       }
       <View
         style={[

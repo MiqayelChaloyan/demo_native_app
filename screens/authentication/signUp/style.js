@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {theme} from '../../../assets/theme/theme';
+import { StyleSheet } from 'react-native';
+import { theme } from '../../../assets/theme/theme';
 import {
   horizontalScale,
   moderateScale,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   cancel: {
     top: verticalScale(10),
     height: verticalScale(100),
-    width: horizontalScale(300),
+    width: horizontalScale(30),
     right: 0,
   },
   headerBox: {
@@ -137,6 +137,14 @@ const styles = StyleSheet.create({
     top: verticalScale(-1),
     color: theme.colors.dark_gray,
     fontSize: moderateScale(14),
+    ...theme.textVariants.Regular,
+  },
+  inputError: {
+    textAlign: 'center',
+    color: theme.colors.danger,
+    fontSize: moderateScale(11),
+    marginTop: verticalScale(5),
+    marginBottom: verticalScale(10),
     ...theme.textVariants.Regular,
   },
 });

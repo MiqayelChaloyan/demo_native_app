@@ -3,13 +3,14 @@ import Modal from 'react-native-modal';
 import {theme} from '../../assets/theme/theme';
 
 const PermissionModal = ({isModalVisible, setModalVisible, children}) => {
+
   return (
     <Modal
       isVisible={isModalVisible}
       coverScreen
       transparent
       backdropColor={theme.colors.primary_green}
-      backdropOpacity={0.3}
+      backdropOpacity={0.5}
       backdropTransitionInTiming={500}
       backdropTransitionOutTiming={600}
       onSwipeComplete={() => setModalVisible(false)}>

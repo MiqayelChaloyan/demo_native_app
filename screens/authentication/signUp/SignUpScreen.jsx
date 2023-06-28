@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   Text,
   View,
-  TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -70,8 +69,6 @@ const SignUpScreen = ({ navigation }) => {
   const changeCheckboxBackgroundColor = checkbox =>
     checkbox ? theme.colors.primary_green : theme.colors.light_gray;
 
-  //  console.log('Sign up component rendered >>>>>>');
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -136,7 +133,7 @@ const SignUpScreen = ({ navigation }) => {
                     placeholder="Password"
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
-                    keyboardType=""
+                    keyboardType={null}
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={hidePassword}

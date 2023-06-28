@@ -42,28 +42,31 @@ const Profile = ({navigation}) => {
 
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
-      setImageUrl(url);
-      setArrayImage([
-        ...arrayImages,
-        {id: arrayImages.length + 1, url: url, isChecked: false},
-      ]);
+      if(url) {
+        setImageUrl(url);
+        setArrayImage([
+          ...arrayImages,
+          {id: arrayImages.length + 1, imageSource: url, isChecked: false},
+        ]);
+      }
     });
   };
 
   const accessCamera = async () => await requestCameraPermission(selectFile);
 
+  const handleAnswerChange = () => {
+    setModalVisible(false);
+
+    if (addImage === 'PHONE') {
+      accessCamera();
+    } else if (addImage === 'STORAGE') {
+      navigation.navigate('Images');
+    }
+
+    setAddImage('');
+  };
+  
   useEffect(() => {
-    const handleAnswerChange = () => {
-      setModalVisible(false);
-
-      if (addImage === 'PHONE') {
-        accessCamera();
-      } else if (addImage === 'STORAGE') {
-        navigation.navigate('Images');
-      }
-
-      setAddImage('');
-    };
     handleAnswerChange();
   }, [addImage]);
 

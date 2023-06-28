@@ -66,8 +66,6 @@ const SignInScreen = ({ navigation }) => {
     return true;
   };
 
-  // console.log('Sign in component rendered >>>>>>');
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -104,7 +102,7 @@ const SignInScreen = ({ navigation }) => {
                     placeholder="Password"
                     onChangeText={handleChange('password')}
                     onBlur={() => setFieldTouched('password')}
-                    keyboardType=""
+                    keyboardType={null}
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={hidePassword}

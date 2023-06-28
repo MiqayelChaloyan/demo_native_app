@@ -1,26 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {View, TextInput, TouchableOpacity} from 'react-native';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
+import useDelayDebounce from '../../customHooks/useDebounce';
 import styles from './style';
 
-let delayDebounceFn = null;
-
-const MessageInput = ({ messages, setMessages }) => {
-    const [message, setMessage] = useState('');
-
-    const handleInputText = inputText => {
-        if (delayDebounceFn) {
-            clearTimeout(delayDebounceFn);
-        }
-
-        delayDebounceFn = setTimeout(() => {
-            setMessage(inputText);
-            delayDebounceFn = null;
-        }, 500);
-    };  
+const MessageInput = ({messages, setMessages}) => {
+    const [message, setMessage] = useDelayDebounce('', 500);
 
     const getMessage = () => {
         if (message.trim() !== '') {
@@ -31,8 +19,8 @@ const MessageInput = ({ messages, setMessages }) => {
                     message,
                 },
             ]);
-          return setMessage('');
         };
+        setMessage('');
     };
 
     return (
@@ -44,7 +32,7 @@ const MessageInput = ({ messages, setMessages }) => {
                     placeholderTextColor={theme.colors.cool_gray}
                     style={styles.input}
                     variant="standard"
-                    onChangeText={handleInputText}
+                    onChangeText={setMessage}
                     keyboardType="web-search"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -62,7 +50,8 @@ const MessageInput = ({ messages, setMessages }) => {
                                         ? theme.colors.dark_green
                                         : theme.colors.cool_gray,
                             },
-                        ]}>
+                        ]}
+                    >
                         <ArrowIcon
                             width={horizontalScale(16)}
                             height={verticalScale(25)}
@@ -72,8 +61,8 @@ const MessageInput = ({ messages, setMessages }) => {
                 </TouchableOpacity>
             </View>
         </View>
-    )
-}
+    );
+};
 
 MessageInput.propTypes = {
     messages: PropTypes.array,

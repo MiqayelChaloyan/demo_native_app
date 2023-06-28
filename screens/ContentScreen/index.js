@@ -70,7 +70,7 @@ const ContentScreen = ({navigation, route}) => {
         />
         <Search
           list={feeds}
-          setState={setOutletData}
+          researchResult={setOutletData}
           keyword="title"
           setEmptyDataMessage={setEmptyDataMessage}
         />

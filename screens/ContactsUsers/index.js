@@ -34,7 +34,7 @@ const ContactsUsers = ({ navigation }) => {
       <View style={styles.root}>
         <Search
           list={data}
-          setState={handleSearch}
+          researchResult={handleSearch}
           keyword="fullName"
           setEmptyDataMessage={setEmptyDataMessage}
         />

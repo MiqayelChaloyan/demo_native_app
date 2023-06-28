@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, {useCallback, useEffect, useState} from 'react';
 import {View} from 'react-native';
 import UsersList from './UsersList';
-import HeaderList from './HeaderList';
+import Header from './Header';
 import {getDataFromFile} from '../../utils/ApiUtils';
 import styles from './style';
 
@@ -10,8 +10,6 @@ const AllUsersListScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [emptyDataMessage, setEmptyDataMessage] = useState('');
-
-  // console.log('All Users List Screen component rendered>>>>>>');
 
   const fetchData = () => {
     const result =  getDataFromFile('users');
@@ -22,14 +20,14 @@ const AllUsersListScreen = ({ navigation }) => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  
   const handleSearch = useCallback((searchData) => {
     setFilteredData(searchData);
   }, [handleSearch]);
 
   return (
     <View style={styles.root}>
-      <HeaderList
+      <Header
         data={data}
         handleSearch={handleSearch}
         setEmptyDataMessage={setEmptyDataMessage}

@@ -9,8 +9,6 @@ import styles from './style';
 const UsersList = ({ data, navigation, emptyDataMessage }) => {
   const [isLoaded, setIsLoaded] = useState(true);
 
-  // console.log('Users List component rendered >>>>>>');
-
   const loadedData = () => {
      const timer = setTimeout(() => setIsLoaded(false), 2500);
      return () => clearTimeout(timer);

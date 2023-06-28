@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {TextInput, Text} from 'react-native';
 import {theme} from '../../assets/theme/theme';
+import useDelayDebounce from '../../customHooks/useDebounce';
 import styles from './style';
-
-
-let delayDebounceFn = null;
 
 const CustomTextInput = ({
   name,
@@ -19,17 +17,11 @@ const CustomTextInput = ({
   touched,
   errors,
 }) => {
+  const [inputValue, setInputValue] = useDelayDebounce('', 500);
 
-  const handleInputText = (inputText) => {
-    if (delayDebounceFn) {
-      clearTimeout(delayDebounceFn);
-    }
-
-    delayDebounceFn = setTimeout(() => {
-      onChangeText(inputText);
-      delayDebounceFn = null;
-    }, 500);
-  };
+  useEffect(() => {
+    onChangeText(inputValue);
+  }, [inputValue])
 
   return (
     <>
@@ -39,9 +31,9 @@ const CustomTextInput = ({
         placeholderTextColor={theme.colors.cool_gray}
         style={styles.input}
         variant={'standard'}
-        onChangeText={handleInputText}
+        onChangeText={setInputValue}
         onBlur={onBlur}
-        keyboardType={keyboardType ? keyboardType : null}
+        keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
         autoCorrect={autoCorrect}
         secureTextEntry={secureTextEntry}
@@ -58,7 +50,7 @@ CustomTextInput.propTypes = {
   placeholder: PropTypes.string,
   onChangeText: PropTypes.func,
   onBlur: PropTypes.func,
-  keyboardType: PropTypes?.string,
+  keyboardType: PropTypes.string,
   autoCapitalize: PropTypes.string,
   autoCorrect: PropTypes.bool,
   secureTextEntry: PropTypes.bool,
@@ -66,5 +58,8 @@ CustomTextInput.propTypes = {
   errors: PropTypes.string,
 };
 
+CustomTextInput.defaultProps = {
+  keyboardType: "default",
+};
 
 export default React.memo(CustomTextInput);
