@@ -30,7 +30,7 @@ const ImagesScreen = ({navigation}) => {
     }
     setModalVisible(false);
     setAction('');
-  }, [action]);
+  }, [action, arrayImages, navigation, photoId, setArrayImage, setImageUrl]);
 
   const changeProfileImage = id => {
     setPhotoId(id);

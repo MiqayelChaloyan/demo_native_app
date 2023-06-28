@@ -6,7 +6,7 @@ import SkeletonPhotos from '../Skeleton/SkeletonPhotos';
 import SkeletonPosts from '../Skeleton/SkeletonPosts';
 import FeedItem from './FeedItem';
 import styles from './style';
-import {memo, useMemo, useState} from 'react';
+import {memo, useState} from 'react';
 import Search from '../Search/Search';
 import Warning from '../Warning/Warning';
 import useDataFromAPI from '../../customHooks/UseDataFromAPI';
