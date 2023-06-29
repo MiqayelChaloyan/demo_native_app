@@ -5,7 +5,7 @@ import Warning from '../../components/Warning/Warning';
 import ContentItemList from './ContentItemList';
 import styles from './style';
 
-const OutletList = ({state, emptyDataMessage}) => {
+const OutletList = ({data, emptyDataMessage}) => {
   return (
     <View style={styles.outletContainer}>
       <View style={styles.headerTextContainer}>
@@ -13,7 +13,7 @@ const OutletList = ({state, emptyDataMessage}) => {
       </View>
       <View style={styles.itemListContainer}>
         <FlatList
-          data={state}
+          data={data}
           ListEmptyComponent={<Warning emptyDataMessage={emptyDataMessage} screen='Content'/>}
           keyExtractor={(_, index) => index.toString()}
           renderItem={({item, index}) => (
@@ -26,7 +26,7 @@ const OutletList = ({state, emptyDataMessage}) => {
 };
 
 OutletList.propTypes = {
-  state: PropTypes.array,
+  data: PropTypes.array.isRequired,
   emptyDataMessage: PropTypes.string,
 };
 

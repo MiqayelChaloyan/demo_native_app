@@ -11,7 +11,6 @@ import {GlobalDataContext} from '../../contexts/context';
 import Search from '../../components/Search/Search';
 import styles from './style';
 
-
 const Header = ({data, handleSearch, setEmptyDataMessage, navigation}) => {
     const { imageUrl } = useContext(GlobalDataContext);
 
@@ -41,10 +40,10 @@ const Header = ({data, handleSearch, setEmptyDataMessage, navigation}) => {
 }
 
 Header.propTypes = {
-    data: PropTypes.array,
+    data: PropTypes.array.isRequired,
     handleSearch: PropTypes.func,
     setEmptyDataMessage: PropTypes.func,
     navigation: PropTypes.object.isRequired,
-  };
+};
 
 export default React.memo(Header);

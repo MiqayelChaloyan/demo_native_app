@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {forgotPassValidationSchema} from './forgotPassValidation';
 import {Formik, useFormik} from 'formik';
 import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import styles from './style';
 
-const ForgotPassword = ({ navigation }) => {
+const ForgotPassword = ({navigation}) => {
     const {
-        values,
         handleChange,
         errors,
         setFieldTouched,
@@ -24,8 +24,6 @@ const ForgotPassword = ({ navigation }) => {
             return navigation.navigate('SignIn');
         }
     });
-
-    // console.log('Forgot Password component rendered >>>>>>');
 
     return (
         <ScrollView style={styles.root}>
@@ -76,5 +74,4 @@ ForgotPassword.propTypes = {
     navigation: PropTypes.object.isRequired,
 };
 
-
-export default ForgotPassword;
+export default React.memo(ForgotPassword);

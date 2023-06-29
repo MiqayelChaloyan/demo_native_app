@@ -56,8 +56,8 @@ const FeedItem = ({item, itemIndex, navigation}) => {
 };
 
 FeedItem.propTypes = {
-  item: PropTypes.object,
-  itemIndex: PropTypes.number,
+  item: PropTypes.object.isRequired,
+  itemIndex: PropTypes.number.isRequired,
   navigation: PropTypes.object.isRequired,
 };
 

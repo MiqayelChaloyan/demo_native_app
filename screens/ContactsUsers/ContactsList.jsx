@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
@@ -16,13 +16,19 @@ const ContactsList = ({ filteredData, emptyDataMessage, navigation }) => {
   }, []);
 
   const rednerUserItem = (item) =>
-    isLoaded ? (
+    isLoaded ? renderSkeletonMessagesList() : renderUser(item);
+
+  const renderUser = useCallback((item) => {
+    return <User userItem={item} navigation={navigation} />;
+  }, []);
+
+  const renderSkeletonMessagesList = useCallback(() => {
+    return (
       <View style={styles.skeleton}>
         <SkeletonMessagesList />
       </View>
-    ) : (
-      <User userItem={item} navigation={navigation} />
     );
+  }, []);
 
   return (
     <View style={styles.listUsers}>
@@ -38,7 +44,7 @@ const ContactsList = ({ filteredData, emptyDataMessage, navigation }) => {
 }
 
 ContactsList.propTypes = {
-  filteredData: PropTypes.array,
+  filteredData: PropTypes.array.isRequired,
   emptyDataMessage: PropTypes.string,
   navigation: PropTypes.object.isRequired,
 };

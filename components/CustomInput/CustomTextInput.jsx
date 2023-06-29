@@ -59,6 +59,11 @@ CustomTextInput.propTypes = {
 };
 
 CustomTextInput.defaultProps = {
+  name: "",
+  placeholder: "",
+  autoCapitalize: "none",
+  autoCorrect: false,
+  secureTextEntry: false,  
   keyboardType: "default",
 };
 

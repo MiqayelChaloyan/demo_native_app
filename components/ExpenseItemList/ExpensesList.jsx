@@ -19,7 +19,7 @@ const ExpenseList = ({data}) => {
 };
 
 ExpenseList.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
 };
 
 export default React.memo(ExpenseList);

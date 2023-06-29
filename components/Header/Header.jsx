@@ -78,13 +78,23 @@ const Header = ({
 
 Header.propTypes = {
   screen: PropTypes.string,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
   back: PropTypes.string,
   continueTo: PropTypes.string,
   root: PropTypes.string,
   left: PropTypes.string,
   right: PropTypes.string,
   headerTextColor: PropTypes.string,
+};
+
+Header.defaultProps = {
+  screen: "",
+  back: "",
+  continueTo: "",
+  root: "",
+  left: "",  
+  right: "",
+  headerTextColor: "",
 };
 
 export default React.memo(Header);

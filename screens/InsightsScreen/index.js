@@ -46,4 +46,4 @@ InsightsScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default InsightsScreen;
+export default React.memo(InsightsScreen);

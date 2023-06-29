@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, ScrollView} from 'react-native';
 import Header from '../../components/Header/Header';
 import {getDataFromFile} from '../../utils/ApiUtils';
@@ -45,4 +45,4 @@ MarketScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default MarketScreen;
+export default React.memo(MarketScreen);

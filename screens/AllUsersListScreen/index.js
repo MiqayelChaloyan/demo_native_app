@@ -48,4 +48,4 @@ AllUsersListScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default AllUsersListScreen;
+export default React.memo(AllUsersListScreen);

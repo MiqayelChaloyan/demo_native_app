@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import BuyIcon from '../../assets/icons/Buy.svg';
 import {useNavigation} from '@react-navigation/native';
@@ -45,4 +46,4 @@ ContentItemList.propTypes = {
   index: PropTypes.number,
 };
 
-export default ContentItemList;
+export default React.memo(ContentItemList);

@@ -82,14 +82,14 @@ const ContentScreen = ({navigation, route}) => {
           feeds={filteredArray.length ? filteredArray : feeds}
         />
       }
-      <OutletList state={outletData} emptyDataMessage={emptyDataMessage} />
+      <OutletList data={outletData} emptyDataMessage={emptyDataMessage} />
     </View>
   );
 };
 
 ContentScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
-  route: PropTypes.object,
+  route: PropTypes.object.isRequired,
 };
 
 export default React.memo(ContentScreen);

@@ -35,7 +35,6 @@ const FeedScreen = ({navigation}) => {
     fetchData();
   }, []);
 
-  // TODO: This part is for a test and will be changed lately.
   const openModal = async () => {
     try {
       const currentTime = new Date();
@@ -108,5 +107,5 @@ FeedScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default FeedScreen;
+export default React.memo(FeedScreen);
 

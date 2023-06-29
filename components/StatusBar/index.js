@@ -4,8 +4,6 @@ import {StatusBar} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import {GlobalDataContext} from '../../contexts/context';
 
-
-
 const MyStatusBar = ({children}) => {
     const {isChangeStatusBar} = useContext(GlobalDataContext);
 
@@ -25,7 +23,7 @@ const MyStatusBar = ({children}) => {
 }
 
 MyStatusBar.propTypes = {
-    children: PropTypes.object,
-  };
+    children: PropTypes.node.isRequired,
+};
 
 export default React.memo(MyStatusBar);

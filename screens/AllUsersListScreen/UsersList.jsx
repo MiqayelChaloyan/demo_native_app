@@ -6,7 +6,7 @@ import SkeletonAllUsersList from '../../components/Skeleton/SkeletonAllUsersList
 import Warning from '../../components/Warning/Warning';
 import styles from './style';
 
-const UsersList = ({ data, navigation, emptyDataMessage }) => {
+const UsersList = ({data, navigation, emptyDataMessage}) => {
   const [isLoaded, setIsLoaded] = useState(true);
 
   const loadedData = () => {
@@ -39,7 +39,7 @@ const UsersList = ({ data, navigation, emptyDataMessage }) => {
 };
 
 UsersList.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
   navigation: PropTypes.object.isRequired,
   emptyDataMessage: PropTypes.string,
 };

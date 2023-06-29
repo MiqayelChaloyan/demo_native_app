@@ -19,11 +19,10 @@ import {GlobalDataContext} from '../../../contexts/context';
 import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import styles from './style';
 
-const SignInScreen = ({ navigation }) => {
+const SignInScreen = ({navigation}) => {
   const { userData, setLoggedIn, loggedIn } = useContext(GlobalDataContext);
   const [hidePassword, setHidePassword] = useState(true);
   const {
-    values,
     handleChange,
     errors,
     setFieldTouched,

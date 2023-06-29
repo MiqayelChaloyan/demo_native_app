@@ -7,7 +7,7 @@ import Search from '../../components/Search/Search';
 import styles from './style';
 
 
-const MarketContent = ({ navigation, initialData }) => {
+const MarketContent = ({navigation, initialData}) => {
     const [data, setData] = useState(initialData);
     const [emptyDataMessage, setEmptyDataMessage] = useState('');
 
@@ -44,7 +44,7 @@ const MarketContent = ({ navigation, initialData }) => {
 
 MarketContent.propTypes = {
     navigation: PropTypes.object.isRequired,
-    initialData: PropTypes.array,
+    initialData: PropTypes.array.isRequired,
 };
 
 export default React.memo(MarketContent);

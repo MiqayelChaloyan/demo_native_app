@@ -1,4 +1,5 @@
 import {Image, Text, View} from 'react-native';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style';
 
@@ -29,4 +30,4 @@ Warning.propTypes = {
   screen: PropTypes.string,
 };
 
-export default Warning;
+export default React.memo(Warning);

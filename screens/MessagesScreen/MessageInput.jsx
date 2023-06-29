@@ -65,7 +65,7 @@ const MessageInput = ({messages, setMessages}) => {
 };
 
 MessageInput.propTypes = {
-    messages: PropTypes.array,
+    messages: PropTypes.array.isRequired,
     setMessages: PropTypes.func,
 };
 

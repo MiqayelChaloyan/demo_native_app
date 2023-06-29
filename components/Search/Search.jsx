@@ -34,7 +34,7 @@ const Search = ({ list: initialData, researchResult, keyword, setEmptyDataMessag
 };
 
 Search.propTypes = {
-  list: PropTypes.array,
+  list: PropTypes.array.isRequired,
   researchResult: PropTypes.func,
   setEmptyDataMessage: PropTypes.func,
   keyword: PropTypes.string,

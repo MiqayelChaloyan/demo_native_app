@@ -31,7 +31,7 @@ const Message = ({isLeft, message}) => {
 
 Message.propTypes = {
   isLeft: PropTypes.bool,
-  message: PropTypes.string,
+  message: PropTypes.string.isRequired,
 };
 
 export default React.memo(Message);

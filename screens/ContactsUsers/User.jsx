@@ -4,7 +4,7 @@ import {Text, TouchableOpacity, View, Image} from 'react-native';
 import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
-const User = ({ userItem, navigation }) => {
+const User = ({userItem, navigation}) => {
   const {messages} = useContext(GlobalDataContext);
   const {imageUrl, fullName, isActive} = userItem;
   const today = new Date();

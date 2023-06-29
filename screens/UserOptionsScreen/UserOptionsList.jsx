@@ -44,7 +44,7 @@ const UserOptionsList = ({data}) => {
 }
 
 UserOptionsList.propTypes = {
-    data: PropTypes.array,
+    data: PropTypes.array.isRequired,
   };
 
 export default React.memo(UserOptionsList);

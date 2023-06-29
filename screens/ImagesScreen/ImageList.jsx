@@ -25,7 +25,7 @@ const ImageList = ({navigation}) => {
         break;
       case 'Remove':
         const updatedArrayImages = arrayImages.filter(item => {
-          if (item.id === photoId && item.url === imageUrl) {
+          if (item.id === photoId) {
             setImageUrl(null);
           }
           return item.id !== photoId;

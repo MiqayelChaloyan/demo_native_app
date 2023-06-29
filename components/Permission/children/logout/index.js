@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+import React, {useContext} from 'react';
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import {setDataStorage} from '../../../../utils/AsyncStorageApiUtils';
-import {useContext} from 'react';
 import {GlobalDataContext} from '../../../../contexts/context';
 import styles from './style';
 
@@ -41,4 +41,4 @@ LogoutModal.propTypes = {
   setModalVisible: PropTypes.func,
 };
 
-export default LogoutModal;
+export default React.memo(LogoutModal);

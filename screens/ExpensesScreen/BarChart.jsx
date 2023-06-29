@@ -22,7 +22,7 @@ const BarChart = ({data}) => {
 };
 
 BarChart.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
 };
 
 export default React.memo(BarChart);

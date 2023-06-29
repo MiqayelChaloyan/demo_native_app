@@ -25,20 +25,16 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    // width: '100%',
-    // height: horizontalScale(150),
-    // borderRadius: moderateScale(7),
     width: '100%',
-    height: 200,
+    height: verticalScale(200),
     resizeMode: 'cover',
     borderRadius: moderateScale(10),
   },
   imageBlock : {
-    paddingHorizontal: 5,
-    marginBottom: 10,
-    width: windowWidth / 2,
+    paddingHorizontal: horizontalScale(5),
+    marginBottom: horizontalScale(10),
+    width: horizontalScale(windowWidth / 2),
   },
-
   checkBox: {
     position: 'absolute',
     right: horizontalScale(1),

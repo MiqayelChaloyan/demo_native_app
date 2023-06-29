@@ -33,7 +33,7 @@ const PictureGridItem = ({image, changeProfileImage, isModalVisible}) => {
 };
 
 PictureGridItem.propTypes = {
-  image: PropTypes.object,
+  image: PropTypes.object.isRequired,
   changeProfileImage: PropTypes.func,
   isModalVisible: PropTypes.bool,
 };

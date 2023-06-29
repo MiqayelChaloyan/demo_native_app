@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {View} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
 import {moderateScale, verticalScale} from '../../../assets/metrics/Metrics';
@@ -6,7 +7,7 @@ import FeedList from '../../../components/FeedList/FeedList';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
-const ToggleSwitch = ({ showHide, setShowHide, navigation }) => {
+const ToggleSwitch = ({showHide, setShowHide, navigation}) => {
   return (
     <View style={styles.listContainer}>
       <View style={styles.switchContainer}>
@@ -46,4 +47,4 @@ ToggleSwitch.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default ToggleSwitch;
+export default React.memo(ToggleSwitch);

@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect, useCallback} from 'react';
+import React, {useContext, useState, useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {GlobalDataContext} from '../../../contexts/context';
@@ -98,4 +98,4 @@ Profile.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default Profile;
+export default React.memo(Profile);

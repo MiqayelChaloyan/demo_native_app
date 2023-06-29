@@ -6,8 +6,8 @@ import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
-const UserCard = ({ item, navigation }) => {
-  const { imageUrl, fullName } = item;
+const UserCard = ({item, navigation}) => {
+  const {imageUrl, fullName} = item;
 
   return (
     <View style={styles.container}>
@@ -47,6 +47,10 @@ const UserCard = ({ item, navigation }) => {
 UserCard.propTypes = {
   item: PropTypes.object,
   navigation: PropTypes.object.isRequired,
+};
+
+UserCard.defaultProps = {
+  item: {},
 };
 
 export default React.memo(UserCard);

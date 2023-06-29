@@ -5,7 +5,7 @@ import styles from './style';
 
 let delayDebounceFn = null;
 
-const SupportMessage = ({handleChangeText}) => {
+const SupportMessage = ({setText}) => {
 
     const handleInputText = inputText => {
         if (delayDebounceFn) {
@@ -13,7 +13,7 @@ const SupportMessage = ({handleChangeText}) => {
         }
 
         delayDebounceFn = setTimeout(() => {
-            handleChangeText(inputText);
+            setText(inputText);
             delayDebounceFn = null;
         }, 500);
     };
@@ -31,7 +31,7 @@ const SupportMessage = ({handleChangeText}) => {
 }
 
 SupportMessage.propTypes = {
-    handleChangeText: PropTypes.func,
+    setText: PropTypes.func,
 };
 
 export default React.memo(SupportMessage);

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View, Alert} from 'react-native';
 import Header from '../../components/Header/Header';
@@ -6,8 +6,7 @@ import Share from 'react-native-share';
 import SupportMessage from './SupportMessage';
 import styles from './style';
 
-
-const SupportMessageScreen = ({navigation}) => {
+const SupportMessageScreen = ({ navigation }) => {
   const [text, setText] = useState('');
 
   const share = async () => {
@@ -34,10 +33,6 @@ const SupportMessageScreen = ({navigation}) => {
     }
   };
 
-  const handleChangeText = useCallback((textInput) => {
-    setText(textInput);
-  }, []);
-
   return (
     <View style={styles.supportScreenContainer}>
       <View style={styles.supportScreen}>
@@ -49,14 +44,15 @@ const SupportMessageScreen = ({navigation}) => {
           left="Back"
           right="New"
         />
-        <SupportMessage handleChangeText={handleChangeText}/>
+        <SupportMessage setText={setText} />
       </View>
       <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={share}>
+        <TouchableOpacity onPress={share}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}>Send</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
+
       </View>
     </View>
   );
@@ -66,4 +62,4 @@ SupportMessageScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default SupportMessageScreen;
+export default React.memo(SupportMessageScreen);

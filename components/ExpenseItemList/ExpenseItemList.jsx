@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Text, View} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
@@ -29,4 +30,4 @@ ExpenseItemList.propTypes = {
   index: PropTypes.number,
 };
 
-export default ExpenseItemList;
+export default React.memo(ExpenseItemList);

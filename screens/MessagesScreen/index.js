@@ -1,5 +1,5 @@
-import {useContext} from 'react';
 import PropTypes from 'prop-types';
+import React, {useContext} from 'react';
 import {View, Text, Image} from 'react-native';
 import {GlobalDataContext} from '../../contexts/context';
 import Header from '../../components/Header/Header';
@@ -48,4 +48,4 @@ MessagesList.propTypes = {
   route: PropTypes.object,
 };
 
-export default MessagesList;
+export default React.memo(MessagesList);

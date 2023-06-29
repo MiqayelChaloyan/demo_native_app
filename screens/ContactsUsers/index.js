@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View} from 'react-native';
 import Search from '../../components/Search/Search';
 import {getDataFromFile} from '../../utils/ApiUtils';
-import styles from './style';
 import ContactsList from './ContactsList';
+import styles from './style';
 
 const ContactsUsers = ({ navigation }) => {
   const [data, setData] = useState([]);
@@ -52,4 +52,4 @@ ContactsUsers.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default ContactsUsers;
+export default React.memo(ContactsUsers);

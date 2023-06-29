@@ -29,7 +29,7 @@ const SwiperList = ({feeds}) => {
 };
 
 SwiperList.propTypes = {
-  feeds: PropTypes.array,
+  feeds: PropTypes.array.isRequired,
 };
 
 export default React.memo(SwiperList);

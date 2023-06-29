@@ -82,7 +82,7 @@ const ItemDescriptionScreen = ({route}) => {
 };
 
 ItemDescriptionScreen.propTypes = {
-  route: PropTypes.object,
+  route: PropTypes.object.isRequired,
 };
 
 export default React.memo(ItemDescriptionScreen);

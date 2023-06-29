@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {View, TouchableOpacity, Image, Text} from 'react-native';
 import {horizontalScale, verticalScale} from '../../../assets/metrics/Metrics';
 import Header from '../../../components/Header/Header';
@@ -65,10 +66,10 @@ const HeaderBar = ({
 HeaderBar.propTypes = {
   navigation: PropTypes.object.isRequired,
   imageUrl: PropTypes.string,
-  userData: PropTypes.object,
-  arrayImages: PropTypes.array,
+  userData: PropTypes.object.isRequired,
+  arrayImages: PropTypes.array.isRequired,
   setModalVisible: PropTypes.func,
   accessCamera: PropTypes.func,
 };
 
-export default HeaderBar;
+export default React.memo(HeaderBar);

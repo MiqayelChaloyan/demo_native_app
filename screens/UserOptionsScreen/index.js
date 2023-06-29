@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Header from '../../components/Header/Header';
@@ -6,7 +6,7 @@ import {getDataFromFile} from '../../utils/ApiUtils';
 import UserOptionsList from './UserOptionsList';
 import styles from './style';
 
-const UserOptionsScreen = ({ navigation }) => {
+const UserOptionsScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
   const fetchData = () => {
@@ -44,4 +44,4 @@ UserOptionsScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default UserOptionsScreen;
+export default React.memo(UserOptionsScreen);
