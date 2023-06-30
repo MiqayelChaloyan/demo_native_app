@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
@@ -12,6 +13,10 @@ const ToggleSwitch = ({
   setShowPostsOrPhotos,
   navigation,
 }) => {
+  const options = [
+    {label: 'Posts', value: true},
+    {label: 'Photos', value: false},
+  ];
   return (
     <View style={styles.section}>
       <View style={styles.switchContainer}>
@@ -29,10 +34,7 @@ const ToggleSwitch = ({
           fontSize={moderateScale(16)}
           valuePadding={verticalScale(2)}
           hasPadding
-          options={[
-            {label: 'Posts', value: true},
-            {label: 'Photos', value: false},
-          ]}
+          options={options}
         />
       </View>
       <FeedList
@@ -52,4 +54,4 @@ ToggleSwitch.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default ToggleSwitch;
+export default memo(ToggleSwitch);

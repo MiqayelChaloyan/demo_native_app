@@ -5,13 +5,18 @@ import {useNavigation} from '@react-navigation/native';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
-import {memo} from 'react';
+import {memo, useCallback} from 'react';
 
 const ContentItemList = ({item, index}) => {
   const navigation = useNavigation();
   let backgroundColorStyle =
     index % 2 === 1 ? theme.colors.light_gray : theme.colors.cool_gray;
-
+  const handlePress = useCallback(() => {
+    navigation.navigate({
+      name: 'Feed',
+      params: {index},
+    });
+  }, []);
   return (
     <View style={styles.contentItemOfList}>
       <View style={styles.leftSide}>
@@ -24,13 +29,7 @@ const ContentItemList = ({item, index}) => {
         </View>
       </View>
 
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate({
-            name: 'Feed',
-            params: {index},
-          });
-        }}>
+      <TouchableOpacity onPress={handlePress}>
         <View>
           <BuyIcon
             width={horizontalScale(45)}

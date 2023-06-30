@@ -1,4 +1,4 @@
-import {useContext, useRef, useEffect} from 'react';
+import {useContext, useRef, useEffect, useCallback, memo} from 'react';
 import PropTypes from 'prop-types';
 import {View, FlatList, Text, Image} from 'react-native';
 import {GlobalDataContext} from '../../contexts/context';
@@ -24,6 +24,12 @@ const MessagesList = ({navigation, route}) => {
       message={item.content}
     />
   );
+  const userImage = userItem.imageUrl
+    ? {uri: userItem.imageUrl}
+    : require('../../assets/images/Profile.png');
+  const onContentSizeChange = useCallback(() => {
+    flatListRef.current.scrollToEnd({animated: true});
+  }, []);
   return (
     <View style={styles.root}>
       <View style={styles.header}>
@@ -37,14 +43,7 @@ const MessagesList = ({navigation, route}) => {
         />
       </View>
       <View style={styles.userContainer}>
-        <Image
-          style={styles.userImageProfile}
-          source={
-            userItem.imageUrl
-              ? {uri: userItem.imageUrl}
-              : require('../../assets/images/Profile.png')
-          }
-        />
+        <Image style={styles.userImageProfile} source={userImage} />
         {userItem.isActive && <View style={styles.activeChat} />}
         <Text style={styles.userFullName}>{userItem.fullName}</Text>
       </View>
@@ -53,11 +52,9 @@ const MessagesList = ({navigation, route}) => {
         data={messages}
         renderItem={renderItem}
         keyExtractor={(_, index) => index.toString()}
-        onContentSizeChange={() =>
-          flatListRef.current.scrollToEnd({animated: true})
-        }
+        onContentSizeChange={onContentSizeChange}
       />
-      <NewMessage setMessages={setMessages} messages={messages} />
+      <NewMessage setMessages={setMessages} />
     </View>
   );
 };
@@ -67,4 +64,4 @@ MessagesList.propTypes = {
   route: PropTypes.object,
 };
 
-export default MessagesList;
+export default memo(MessagesList);

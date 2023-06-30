@@ -2,16 +2,11 @@ import {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
+import {calculateMonthDifference} from '../../assets/features/calculateDiffmonts';
 
 const FeedItem = ({item, itemIndex, navigation}) => {
-  const diffMonths = useMemo(() => {
-    const currentDate = new Date();
-    const createdDate = new Date(item.createdData);
-    return (
-      (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
-      (currentDate.getMonth() - createdDate.getMonth())
-    );
-  }, [item]);
+  const diffMonths = useMemo(() => calculateMonthDifference(item), [item]);
+
   return (
     item.title && (
       <View>

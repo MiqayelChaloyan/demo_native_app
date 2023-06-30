@@ -1,7 +1,7 @@
+import {memo, useState, useCallback} from 'react';
 import styles from './style';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import {theme} from '../../assets/theme/theme';
-import {memo, useState} from 'react';
 import useDataFromAPI from '../../customHooks/UseDataFromAPI';
 
 const OptionsList = () => {
@@ -9,37 +9,46 @@ const OptionsList = () => {
 
   const {data} = useDataFromAPI('options');
 
+  const getBorderColor = useCallback(selected => {
+    return selected ? theme.colors.primary_green : theme.colors.cool_gray;
+  }, []);
+
+  const handleOptionPress = useCallback(item => {
+    setActivated(prevActivated => !prevActivated);
+    item.selected = !item.selected;
+  }, []);
+
+  const renderOption = useCallback(
+    ({item}) => {
+      const borderColor = getBorderColor(item.selected);
+      const selectedView = item.selected ? (
+        <View style={styles.selected} />
+      ) : null;
+
+      return (
+        <>
+          <View style={styles.options}>
+            <Text style={styles.optionsText}>{item.label}</Text>
+            <TouchableOpacity onPress={() => handleOptionPress(item)}>
+              <View style={[{borderColor}, styles.radioBoxContainer]}>
+                {selectedView}
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.line} />
+        </>
+      );
+    },
+    [getBorderColor, handleOptionPress],
+  );
+
   return (
     <View style={styles.container}>
       <FlatList
         data={data}
         contentContainerStyle={styles.starsContainer}
-        renderItem={({item}) => (
-          <>
-            <View style={styles.options}>
-              <Text style={styles.optionsText}>{item.label}</Text>
-              <TouchableOpacity
-                onPress={() => {
-                  setActivated(!activated);
-                  item.selected = !item.selected;
-                }}>
-                <View
-                  style={[
-                    {
-                      borderColor: item.selected
-                        ? theme.colors.primary_green
-                        : theme.colors.cool_gray,
-                    },
-                    styles.radioBoxContainer,
-                  ]}>
-                  {item.selected ? <View style={styles.selected} /> : null}
-                </View>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.line} />
-          </>
-        )}
-        keyExtractor={(_, index) => index}
+        renderItem={renderOption}
+        keyExtractor={(_, index) => index.toString()}
       />
     </View>
   );

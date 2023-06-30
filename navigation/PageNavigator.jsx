@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ContentScreen from '../screens/ContentScreen';
 import FeedScreen from '../screens/FeedScreen';
@@ -8,7 +9,7 @@ import SettingsNavigation from './SettingsNavigation';
 
 const Stack = createNativeStackNavigator();
 
-export default function PageNavigation() {
+function PageNavigation() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Feed" component={FeedScreen} />
@@ -24,3 +25,4 @@ export default function PageNavigation() {
     </Stack.Navigator>
   );
 }
+export default memo(PageNavigation);

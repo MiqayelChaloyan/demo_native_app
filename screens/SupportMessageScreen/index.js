@@ -1,23 +1,26 @@
+import {memo, useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TextInput, TouchableOpacity, View, Alert} from 'react-native';
 import Header from '../../components/Header/Header';
 import Share from 'react-native-share';
 import styles from './style';
-import {useState} from 'react';
 
 let delayDebounceFn = null;
 
 const SupportMessageScreen = ({navigation}) => {
   const [text, setText] = useState();
-  const handleInputText = inputText => {
-    if (delayDebounceFn) {
-      clearTimeout(delayDebounceFn);
-    }
-    delayDebounceFn = setTimeout(() => {
-      setText(inputText);
-      delayDebounceFn = null;
-    }, 1000);
-  };
+  const handleInputText = useCallback(
+    inputText => {
+      if (delayDebounceFn) {
+        clearTimeout(delayDebounceFn);
+      }
+      delayDebounceFn = setTimeout(() => {
+        setText(inputText);
+        delayDebounceFn = null;
+      }, 1000);
+    },
+    [setText],
+  );
 
   const share = async () => {
     const options = {
@@ -42,9 +45,6 @@ const SupportMessageScreen = ({navigation}) => {
       }
     }
   };
-
-  console.log('SUPPORT screen was rendering ++++++++++++++++++++++++++++');
-
   return (
     <View style={styles.supportScreenContainer}>
       <View style={styles.supportScreen}>
@@ -82,4 +82,4 @@ SupportMessageScreen.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default SupportMessageScreen;
+export default memo(SupportMessageScreen);

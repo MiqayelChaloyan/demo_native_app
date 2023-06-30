@@ -1,9 +1,8 @@
-import {useState} from 'react';
+import {useState, memo} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, View} from 'react-native';
 import MarketItem from './MarketItem';
 import MarketSkeletonItem from '../../components/Skeleton/MarketSkeletonItem';
-import {memo} from 'react';
 import useDelayedAction from '../../customHooks/useDelayedAction';
 
 const MarketItemList = ({data, navigation}) => {
@@ -11,20 +10,20 @@ const MarketItemList = ({data, navigation}) => {
 
   useDelayedAction(() => setIsLoading(false), 2500);
 
+  const renderMarketItem = ({item}) => {
+    return isLoading ? (
+      <MarketSkeletonItem />
+    ) : (
+      <MarketItem item={item} navigation={navigation} />
+    );
+  };
   return (
     <View>
       <FlatList
         horizontal
         data={data}
-        key={item => item.id}
-        keyExtractor={item => item.id}
-        renderItem={({item}) => {
-          return isLoading ? (
-            <MarketSkeletonItem />
-          ) : (
-            <MarketItem item={item} navigation={navigation} />
-          );
-        }}
+        keyExtractor={item => item.id.toString()}
+        renderItem={renderMarketItem}
       />
     </View>
   );

@@ -1,3 +1,4 @@
+import {memo, useContext} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
@@ -10,11 +11,10 @@ import PageNavigation from './PageNavigator';
 import UsersScreen from '../screens/UsersScreen/index';
 import AuthNavigation from './AuthNavigation';
 import {theme} from '../assets/theme/theme';
-import {useContext} from 'react';
 import {GlobalDataContext} from '../contexts/context';
 
 const Tab = createBottomTabNavigator();
-export default function BottomTabNavigation() {
+function BottomTabNavigation() {
   const {loggedIn} = useContext(GlobalDataContext);
 
   return (
@@ -120,3 +120,4 @@ export default function BottomTabNavigation() {
     </Tab.Navigator>
   );
 }
+export default memo(BottomTabNavigation);

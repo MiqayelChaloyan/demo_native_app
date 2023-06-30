@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect} from 'react';
+import {useContext, useState, useEffect, useCallback, memo} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {GlobalDataContext} from '../../../contexts/context';
@@ -29,15 +29,16 @@ const Profile = ({navigation}) => {
 
   // TODO: This part is for a test and will be changed lately.
   useDelayedAction(() => setLoading(false), 2500);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getDataStorage('loggedIn');
-      setLoggedIn(result);
-    };
-    fetchData();
-  }, [navigation, setLoggedIn]);
+  const fetchData = useCallback(async () => {
+    const result = await getDataStorage('loggedIn');
+    setLoggedIn(result);
+  }, [setLoggedIn]);
 
-  const selectFile = () => {
+  useEffect(() => {
+    fetchData();
+  }, [navigation, fetchData]);
+
+  const selectFile = useCallback(() => {
     const options = {
       saveToPhotos: true,
       mediaType: 'photo',
@@ -52,26 +53,27 @@ const Profile = ({navigation}) => {
         {id: arrayImages.length + 1, url: url, isChecked: false},
       ]);
     });
-  };
+  }, [arrayImages]);
 
-  const accessCamera = async () => await requestCameraPermission(selectFile);
+  const accessCamera = useCallback(async () => {
+    await requestCameraPermission(selectFile);
+  }, [selectFile]);
+
+  const handleAnswerChange = useCallback(() => {
+    setModalVisible(false);
+
+    if (addImage === 'PHONE') {
+      accessCamera();
+    } else if (addImage === 'STORAGE') {
+      navigation.navigate('Images');
+    }
+
+    setAddImage('');
+  }, [addImage, setModalVisible, accessCamera, navigation, setAddImage]);
 
   useEffect(() => {
-    const handleAnswerChange = () => {
-      setModalVisible(false);
-
-      if (addImage === 'PHONE') {
-        accessCamera();
-      } else if (addImage === 'STORAGE') {
-        navigation.navigate('Images');
-      }
-
-      setAddImage('');
-    };
     handleAnswerChange();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [addImage]);
-
+  }, [handleAnswerChange]);
   return !loggedIn ? (
     navigation.navigate('Auth', {screen: 'LogIn'})
   ) : (
@@ -103,4 +105,4 @@ Profile.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default Profile;
+export default memo(Profile);

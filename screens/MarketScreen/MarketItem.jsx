@@ -1,7 +1,7 @@
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
-import {memo} from 'react';
 
 const MarketItem = ({item, navigation}) => {
   return (

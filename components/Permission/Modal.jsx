@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 import {theme} from '../../assets/theme/theme';
@@ -23,4 +24,4 @@ PermissionModal.propTypes = {
   setModalVisible: PropTypes.func,
 };
 
-export default PermissionModal;
+export default memo(PermissionModal);

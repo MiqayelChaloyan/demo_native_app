@@ -6,7 +6,9 @@ import styles from './style';
 
 const User = ({userItem, navigation}) => {
   const {messages} = useContext(GlobalDataContext);
-
+  const userImage = userItem.imageUrl
+    ? {uri: userItem.imageUrl}
+    : require('../../assets/images/Profile.png');
   return (
     <TouchableOpacity
       style={styles.swipeable}
@@ -19,14 +21,7 @@ const User = ({userItem, navigation}) => {
       <View>
         <View style={styles.user}>
           <View>
-            <Image
-              style={styles.profileImage}
-              source={
-                userItem.imageUrl
-                  ? {uri: userItem.imageUrl}
-                  : require('../../assets/images/Profile.png')
-              }
-            />
+            <Image style={styles.profileImage} source={userImage} />
           </View>
           <Text style={styles.userName}>{userItem.fullName}</Text>
           {userItem.isActive && <View style={styles.activeChat} />}

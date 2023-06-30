@@ -1,11 +1,10 @@
+import {useCallback, useState, memo} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import {useState} from 'react';
 import {theme} from '../../assets/theme/theme';
 import PermissionModal from '../Permission/Modal';
 import LogoutModal from '../Permission/children/logout';
 import styles from './style';
-import {memo} from 'react';
 
 const Header = ({
   screen,
@@ -18,8 +17,9 @@ const Header = ({
   headerTextColor,
 }) => {
   const [isModalVisible, setModalVisible] = useState(false);
-  const handleLogout = () => setModalVisible(true);
-
+  const handleLogout = useCallback(() => {
+    setModalVisible(true);
+  }, []);
   return (
     <>
       <View style={styles.headerContainer}>

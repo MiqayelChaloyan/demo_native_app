@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect, memo} from 'react';
+import React, {useState, useContext, useEffect, memo} from 'react';
 import PropTypes from 'prop-types';
 import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
@@ -41,6 +41,11 @@ const ImagesScreen = ({navigation}) => {
     setModalVisible(true);
     setArrayImage(updatedArrayImages);
   };
+
+  const handleSetAction = () => {
+    setAction(action);
+  };
+
   return (
     <View style={styles.images}>
       <View style={styles.container}>
@@ -72,7 +77,7 @@ const ImagesScreen = ({navigation}) => {
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}>
-        <ImagesModal setAction={setAction} />
+        <ImagesModal handleSetAction={handleSetAction} />
       </PermissionModal>
     </View>
   );

@@ -59,9 +59,20 @@ const MessagesUsers = ({navigation}) => {
     }
     setModalVisible(false);
     return () => setDeleteFriendsList('');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteFriendsList, data]);
+  const handleDeleteFriendsList = () => {
+    setModalVisible(false);
+    if (deleteFriendsList === 'YES') {
+      const friends = data.filter(item => item.id !== removeId);
+      setFilteredData(friends);
+    }
+    setModalVisible(false);
+  };
 
+  useEffect(() => {
+    handleDeleteFriendsList();
+    return () => setDeleteFriendsList('');
+  }, [deleteFriendsList, data]);
   const deleteItem = qaItem => {
     setModalVisible(true);
     setRemoveId(qaItem);

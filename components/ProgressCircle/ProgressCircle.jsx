@@ -1,5 +1,4 @@
-import {memo, useEffect} from 'react';
-import {useRef} from 'react';
+import React, {memo, useEffect, useRef} from 'react';
 import {Animated, View, Text} from 'react-native';
 import Svg, {G, Circle} from 'react-native-svg';
 import {verticalScale} from '../../assets/metrics/Metrics';
@@ -30,20 +29,27 @@ const ProgressCircle = () => {
     }).start();
   };
 
+  const handleAnimationValueChange = v => {
+    if (circleRef?.current) {
+      const maxPercent = (100 * v.value) / max;
+      const strokeDashoffset =
+        circleCircumference - (circleCircumference * maxPercent) / 100;
+      circleRef.current.setNativeProps({
+        strokeDashoffset,
+      });
+    }
+  };
+
   useEffect(() => {
     animation(percentage);
 
-    animatedValue.addListener(v => {
-      if (circleRef?.current) {
-        const maxPercent = (100 * v.value) / max;
-        const strokeDashoffset =
-          circleCircumference - (circleCircumference * maxPercent) / 100;
-        circleRef.current.setNativeProps({
-          strokeDashoffset,
-        });
-      }
-    });
-  });
+    animatedValue.addListener(handleAnimationValueChange);
+
+    return () => {
+      animatedValue.removeAllListeners();
+    };
+  }, []);
+
   return (
     <View>
       <Svg
@@ -57,7 +63,7 @@ const ProgressCircle = () => {
             stroke={inactiveColor}
             strokeWidth={strokeWidth}
             r={radius}
-            fill={'transparent'}
+            fill="transparent"
             strokeOpacity={0.7}
           />
           <AnimatedCircle
@@ -67,7 +73,7 @@ const ProgressCircle = () => {
             stroke={color}
             strokeWidth={strokeWidth}
             r={radius}
-            fill={'transparent'}
+            fill="transparent"
             strokeOpacity={0.9}
             strokeDasharray={circleCircumference}
             strokeDashoffset={circleCircumference / 2}
@@ -82,4 +88,5 @@ const ProgressCircle = () => {
     </View>
   );
 };
+
 export default memo(ProgressCircle);

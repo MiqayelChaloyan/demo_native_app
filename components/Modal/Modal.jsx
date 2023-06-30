@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {memo, useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
@@ -78,4 +78,4 @@ EvaluationModal.propTypes = {
   setModalVisible: PropTypes.func,
 };
 
-export default EvaluationModal;
+export default memo(EvaluationModal);

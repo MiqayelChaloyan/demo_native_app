@@ -1,17 +1,17 @@
+import {memo, useCallback, useState} from 'react';
 import styles from './style';
 import {TextInput, TouchableOpacity, View} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import ArrowIcon from '../../assets/icons/Arrow.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
-import {memo, useState} from 'react';
 import PropTypes from 'prop-types';
 
-const NewMessage = ({setMessages, messages}) => {
+const NewMessage = ({setMessages}) => {
   const [value, setValue] = useState('');
-  const getMessage = () => {
+  const getMessage = useCallback(() => {
     if (value.trim() !== '') {
-      setMessages([
-        ...messages,
+      setMessages(prevMessages => [
+        ...prevMessages,
         {
           user: 0,
           content: value,
@@ -19,7 +19,9 @@ const NewMessage = ({setMessages, messages}) => {
       ]);
       setValue('');
     }
-  };
+  }, [setMessages, value]);
+  const backgroundColor =
+    value.trim() !== '' ? theme.colors.dark_green : theme.colors.cool_gray;
   return (
     <View style={styles.newMessage}>
       <View style={styles.inputBox}>
@@ -39,16 +41,7 @@ const NewMessage = ({setMessages, messages}) => {
       </View>
       <View style={styles.sendBox}>
         <TouchableOpacity onPress={getMessage}>
-          <View
-            style={[
-              styles.send,
-              {
-                backgroundColor:
-                  value.trim() !== ''
-                    ? theme.colors.dark_green
-                    : theme.colors.cool_gray,
-              },
-            ]}>
+          <View style={[styles.send, {backgroundColor}]}>
             <ArrowIcon
               width={horizontalScale(16)}
               height={verticalScale(25)}
