@@ -23,6 +23,7 @@ const InsightsScreen = ({navigation}) => {
         <Header
           screen="Insights"
           navigation={navigation}
+          continueTo="Calendar"
           back="Expenses"
           left="Back"
           right="Filter"

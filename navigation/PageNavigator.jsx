@@ -5,6 +5,7 @@ import ItemDescriptionScreen from '../screens/ItemDescriptionScreen';
 import MarketScreen from '../screens/MarketScreen';
 import UserOptionsScreen from '../screens/UserOptionsScreen';
 import SettingsNavigation from './SettingsNavigation';
+import CalendarScreen from '../screens/CalendarScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ export default function PageNavigation() {
       <Stack.Screen name="Market" component={MarketScreen} />
       <Stack.Screen name="SettingsNav" component={SettingsNavigation} />
       <Stack.Screen name="Options" component={UserOptionsScreen} />
+      <Stack.Screen name="Calendar" component={CalendarScreen} />
       <Stack.Screen
         name="Description"
         component={ItemDescriptionScreen}

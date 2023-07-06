@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import BarChart from './BarChart';
-
 import ListOfExpenses from './ListOfExpenses';
 import styles from './style';
 import {getDataExpensesFromFile} from '../../utils/ApiUtils';

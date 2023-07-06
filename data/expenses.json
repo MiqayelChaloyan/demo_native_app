@@ -2,35 +2,43 @@
     "expenses": [
         {
             "title": "Item1",
-            "price": 15
+            "price": 15,
+            "time": 30
         },
         {
             "title": "Item2",
-            "price": 30
+            "price": 30,
+            "time": 60
         },
         {
             "title": "Item3",
-            "price": 28
+            "price": 28,
+            "time": 18
         },
         {
             "title": "Item4",
-            "price": 35
+            "price": 35,
+            "time": 47
         },
         {
             "title": "Item5",
-            "price": 12
+            "price": 12,
+            "time": 25
         },
         {
             "title": "Item6",
-            "price": 48
+            "price": 48,
+            "time": 44
         },
         {
             "title": "Item7",
-            "price": 32
+            "price": 32,
+            "time": 30
         },
         {
             "title": "Item8",
-            "price": 25
+            "price": 25,
+            "time": 12
         }
     ]
 }
