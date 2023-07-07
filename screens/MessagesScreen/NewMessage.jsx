@@ -10,18 +10,17 @@ const NewMessage = ({setMessages}) => {
   const [value, setValue] = useState('');
   const getMessage = useCallback(() => {
     if (value.trim() !== '') {
-      setMessages(prevMessages => [
-        ...prevMessages,
-        {
-          user: 0,
-          content: value,
-        },
-      ]);
+      const newMessage = {
+        user: 0,
+        content: value,
+      };
+      setMessages(prevMessages => [...prevMessages, newMessage]);
       setValue('');
     }
   }, [setMessages, value]);
   const backgroundColor =
     value.trim() !== '' ? theme.colors.dark_green : theme.colors.cool_gray;
+  const handleChangeText = useCallback(text => setValue(text), []);
   return (
     <View style={styles.newMessage}>
       <View style={styles.inputBox}>
@@ -31,7 +30,7 @@ const NewMessage = ({setMessages}) => {
           placeholderTextColor={theme.colors.cool_gray}
           style={styles.input}
           variant="standard"
-          onChangeText={text => setValue(text)}
+          onChangeText={handleChangeText}
           value={value}
           keyboardType="web-search"
           autoCapitalize="none"
@@ -56,7 +55,6 @@ const NewMessage = ({setMessages}) => {
 
 NewMessage.propTypes = {
   setMessages: PropTypes.func,
-  messages: PropTypes.array,
 };
 
 export default memo(NewMessage);

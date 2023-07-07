@@ -9,9 +9,9 @@ const OptionsList = () => {
 
   const {data} = useDataFromAPI('options');
 
-  const getBorderColor = useCallback(selected => {
-    return selected ? theme.colors.primary_green : theme.colors.cool_gray;
-  }, []);
+  const getBorderColor = activated
+    ? theme.colors.primary_green
+    : theme.colors.cool_gray;
 
   const handleOptionPress = useCallback(item => {
     setActivated(prevActivated => !prevActivated);

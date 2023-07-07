@@ -1,4 +1,4 @@
-import {memo, useContext} from 'react';
+import {memo, useCallback, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View, Image} from 'react-native';
 import {GlobalDataContext} from '../../contexts/context';
@@ -9,15 +9,14 @@ const User = ({userItem, navigation}) => {
   const userImage = userItem.imageUrl
     ? {uri: userItem.imageUrl}
     : require('../../assets/images/Profile.png');
+  const navigateTo = useCallback(() => {
+    navigation.navigate({
+      name: 'Chat',
+      params: {userItem},
+    });
+  }, [userItem]);
   return (
-    <TouchableOpacity
-      style={styles.swipeable}
-      onPress={() => {
-        navigation.navigate({
-          name: 'Chat',
-          params: {userItem},
-        });
-      }}>
+    <TouchableOpacity style={styles.swipeable} onPress={navigateTo}>
       <View>
         <View style={styles.user}>
           <View>

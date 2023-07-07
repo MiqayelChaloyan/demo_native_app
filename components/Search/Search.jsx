@@ -17,6 +17,8 @@ const Search = ({list, setState, keyword}) => {
   }, [list, setState, keyword, searchItemValue]);
 
   useDelayedAction(handleSearch, 1000);
+  const handleChangeText = useCallback(value => setSearchItemValue(value), []);
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -25,7 +27,7 @@ const Search = ({list, setState, keyword}) => {
         placeholderTextColor={theme.colors.cool_gray}
         style={styles.input}
         variant="outlined"
-        onChangeText={value => setSearchItemValue(value)}
+        onChangeText={handleChangeText}
         value={searchItemValue}
         keyboardType="web-search"
         autoCapitalize="none"

@@ -1,18 +1,18 @@
-import {memo} from 'react';
+import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
 const MarketItem = ({item, navigation}) => {
+  const navigateTo = useCallback(() => {
+    navigation.navigate({
+      name: 'Description',
+      params: {item},
+    });
+  }, [item]);
   return (
     <View>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate({
-            name: 'Description',
-            params: {item},
-          });
-        }}>
+      <TouchableOpacity onPress={navigateTo}>
         <View style={styles.itemImageContainer}>
           <Image
             source={{uri: item.imageUri}}

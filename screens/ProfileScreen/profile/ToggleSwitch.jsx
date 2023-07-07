@@ -1,4 +1,4 @@
-import {memo} from 'react';
+import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
@@ -17,12 +17,13 @@ const ToggleSwitch = ({
     {label: 'Posts', value: true},
     {label: 'Photos', value: false},
   ];
+  const toggleSwitch = useCallback(value => setShowPostsOrPhotos(value), []);
   return (
     <View style={styles.section}>
       <View style={styles.switchContainer}>
         <SwitchSelector
           initial={0}
-          onPress={value => setShowPostsOrPhotos(value)}
+          onPress={toggleSwitch}
           textColor={theme.colors.cool_gray}
           selectedColor={theme.colors.primary_green}
           backgroundColor={theme.colors.light_gray}

@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect, memo} from 'react';
+import {useState, useContext, useEffect, memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
@@ -10,7 +10,7 @@ import styles from './style';
 
 const ImagesScreen = ({navigation}) => {
   const [action, setAction] = useState('');
-  const {arrayImages, setArrayImage, setImageUrl} =
+  const {arrayImages, setArrayImages, setImageUrl} =
     useContext(GlobalDataContext);
   const [photoId, setPhotoId] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
@@ -26,26 +26,21 @@ const ImagesScreen = ({navigation}) => {
       const updatedArrayImages = arrayImages.filter(
         item => item.id !== photoId,
       );
-      setArrayImage(updatedArrayImages);
+      setArrayImages(updatedArrayImages);
     }
     setModalVisible(false);
     setAction('');
-  }, [action, arrayImages, navigation, photoId, setArrayImage, setImageUrl]);
+  }, [action]);
 
-  const changeProfileImage = id => {
+  const changeProfileImage = useCallback(id => {
     setPhotoId(id);
     const updatedArrayImages = arrayImages.map(item => ({
       ...item,
       isChecked: item.id === id,
     }));
     setModalVisible(true);
-    setArrayImage(updatedArrayImages);
-  };
-
-  const handleSetAction = () => {
-    setAction(action);
-  };
-
+    setArrayImages(updatedArrayImages);
+  }, []);
   return (
     <View style={styles.images}>
       <View style={styles.container}>
@@ -77,7 +72,7 @@ const ImagesScreen = ({navigation}) => {
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}>
-        <ImagesModal handleSetAction={handleSetAction} />
+        <ImagesModal setAction={setAction} />
       </PermissionModal>
     </View>
   );

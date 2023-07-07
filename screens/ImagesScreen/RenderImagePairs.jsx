@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import {useContext, useEffect, useMemo, useState} from 'react';
+import PropTypes from 'prop-types';
 import {Image, TouchableOpacity, View} from 'react-native';
 import {GlobalDataContext} from '../../contexts/context';
 import CheckIcon from '../../assets/icons/Check.svg';
@@ -31,7 +31,7 @@ const RenderImagePairs = changeProfileImage => {
     calculateLengths();
   }, [minimumImageSize, maximumImageSize]);
 
-  return useMemo(() => {
+  const imagePairs = useMemo(() => {
     const pairs = [];
     for (let i = 0; i < arrayImages.length; i += 2) {
       const pair = (
@@ -80,8 +80,9 @@ const RenderImagePairs = changeProfileImage => {
       pairs.push(pair);
     }
     return pairs;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [arrayImages]);
+
+  return imagePairs;
 };
 
 RenderImagePairs.propTypes = {

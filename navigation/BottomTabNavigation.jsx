@@ -1,4 +1,4 @@
-import {memo, useContext} from 'react';
+import React, {memo, useContext} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
@@ -16,6 +16,11 @@ import {GlobalDataContext} from '../contexts/context';
 const Tab = createBottomTabNavigator();
 function BottomTabNavigation() {
   const {loggedIn} = useContext(GlobalDataContext);
+  const getIconProps = focused => ({
+    width: horizontalScale(25),
+    height: verticalScale(25),
+    fill: focused ? theme.colors.primary_green : theme.colors.cool_gray,
+  });
 
   return (
     <Tab.Navigator
@@ -31,15 +36,7 @@ function BottomTabNavigation() {
         component={PageNavigation}
         options={{
           title: '',
-          tabBarIcon: ({focused}) => (
-            <HomeIcon
-              width={horizontalScale(25)}
-              height={verticalScale(25)}
-              fill={
-                focused ? theme.colors.primary_green : theme.colors.cool_gray
-              }
-            />
-          ),
+          tabBarIcon: ({focused}) => <HomeIcon {...getIconProps(focused)} />,
         }}
       />
       {loggedIn ? (
@@ -50,15 +47,7 @@ function BottomTabNavigation() {
             options={{
               title: '',
               tabBarIcon: ({focused}) => (
-                <MessagesIcon
-                  width={horizontalScale(25)}
-                  height={verticalScale(25)}
-                  fill={
-                    focused
-                      ? theme.colors.primary_green
-                      : theme.colors.cool_gray
-                  }
-                />
+                <MessagesIcon {...getIconProps(focused)} />
               ),
             }}
           />
@@ -68,15 +57,7 @@ function BottomTabNavigation() {
             options={{
               title: '',
               tabBarIcon: ({focused}) => (
-                <ProfileIcon
-                  width={horizontalScale(25)}
-                  height={verticalScale(25)}
-                  fill={
-                    focused
-                      ? theme.colors.primary_green
-                      : theme.colors.cool_gray
-                  }
-                />
+                <ProfileIcon {...getIconProps(focused)} />
               ),
             }}
           />
@@ -86,15 +67,7 @@ function BottomTabNavigation() {
             options={{
               title: '',
               tabBarIcon: ({focused}) => (
-                <SupportIcon
-                  width={horizontalScale(25)}
-                  height={verticalScale(25)}
-                  fill={
-                    focused
-                      ? theme.colors.primary_green
-                      : theme.colors.cool_gray
-                  }
-                />
+                <SupportIcon {...getIconProps(focused)} />
               ),
             }}
           />
@@ -106,13 +79,7 @@ function BottomTabNavigation() {
           options={{
             title: '',
             tabBarIcon: ({focused}) => (
-              <ProfileIcon
-                width={horizontalScale(25)}
-                height={verticalScale(25)}
-                fill={
-                  focused ? theme.colors.primary_green : theme.colors.cool_gray
-                }
-              />
+              <ProfileIcon {...getIconProps(focused)} />
             ),
           }}
         />
@@ -120,4 +87,5 @@ function BottomTabNavigation() {
     </Tab.Navigator>
   );
 }
+
 export default memo(BottomTabNavigation);

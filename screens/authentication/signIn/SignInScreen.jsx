@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react';
+import {useCallback, useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -68,6 +68,22 @@ const SignInScreen = ({navigation}) => {
     return true;
   };
 
+  const handleTouchOnField = useCallback(
+    field => {
+      return () => {
+        setFieldTouched(field);
+      };
+    },
+    [setFieldTouched],
+  );
+
+  const togglePasswordVisibility = useCallback(() => {
+    setHidePassword(!hidePassword);
+  }, [hidePassword]);
+
+  const navigateToSignupScreen = useCallback(() => {
+    navigation.navigate('SignUp');
+  }, [navigation]);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -91,7 +107,7 @@ const SignInScreen = ({navigation}) => {
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('email')}
-                  onBlur={() => setFieldTouched('email')}
+                  onBlur={handleTouchOnField('email')}
                   value={values.email}
                   keyboardType="email-address"
                   autoCapitalize="none"
@@ -112,7 +128,7 @@ const SignInScreen = ({navigation}) => {
                     style={styles.input}
                     variant="standard"
                     onChangeText={handleChange('password')}
-                    onBlur={() => setFieldTouched('password')}
+                    onBlur={handleTouchOnField('password')}
                     value={values.password}
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -125,7 +141,7 @@ const SignInScreen = ({navigation}) => {
                   <TouchableOpacity
                     activeOpacity={0.8}
                     style={styles.visibilityBtn}
-                    onPress={() => setHidePassword(!hidePassword)}>
+                    onPress={togglePasswordVisibility}>
                     <Text style={styles.hidePassword}>
                       {hidePassword ? 'Show' : 'Hide'}
                     </Text>
@@ -147,7 +163,7 @@ const SignInScreen = ({navigation}) => {
                 <Text style={styles.forgotPassText}>Forgot your password?</Text>
               </TouchableOpacity>
               <View style={styles.navigateSignUp}>
-                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                <TouchableOpacity onPress={navigateToSignupScreen}>
                   <Text style={styles.forgotPassText}>Create account</Text>
                 </TouchableOpacity>
               </View>

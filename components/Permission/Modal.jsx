@@ -22,6 +22,7 @@ const PermissionModal = ({isModalVisible, setModalVisible, children}) => {
 PermissionModal.propTypes = {
   isModalVisible: PropTypes.bool,
   setModalVisible: PropTypes.func,
+  children: PropTypes.any,
 };
 
 export default memo(PermissionModal);

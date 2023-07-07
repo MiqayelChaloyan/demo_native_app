@@ -1,4 +1,10 @@
-import React, {useContext, useEffect, useMemo, useState} from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -54,6 +60,8 @@ const SignUpScreen = ({navigation}) => {
         setUserData(data);
         await setDataStorage('loggedIn', true);
         setLoggedIn(true);
+        navigation.navigate('Profile');
+
         Alert.alert('Login successful');
       }
     },
@@ -63,6 +71,24 @@ const SignUpScreen = ({navigation}) => {
     () => (isChecked ? theme.colors.primary_green : theme.colors.light_gray),
     [isChecked],
   );
+  const handleNavigateToScreen = useCallback(screen => {
+    return () => {
+      navigation.navigate(screen);
+    };
+  }, []);
+  const handleTouchOnField = useCallback(field => {
+    return () => {
+      setFieldTouched(field);
+    };
+  }, []);
+
+  const togglePasswordVisibility = useCallback(() => {
+    setHidePassword(!hidePassword);
+  }, [hidePassword]);
+  const toggleCheckboxStatus = useCallback(() => {
+    setIsChecked(!isChecked);
+  }, [isChecked]);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -72,7 +98,7 @@ const SignUpScreen = ({navigation}) => {
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.cancel}>
-                <TouchableOpacity onPress={() => navigation.navigate('Feed')}>
+                <TouchableOpacity onPress={handleNavigateToScreen('Feed')}>
                   <CancelIcon
                     width={16}
                     height={16}
@@ -84,7 +110,7 @@ const SignUpScreen = ({navigation}) => {
                 <Text style={styles.signUp}>Sign Up</Text>
               </View>
               <View style={styles.headerBox}>
-                <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+                <TouchableOpacity onPress={handleNavigateToScreen('SignIn')}>
                   <Text style={styles.login}>Login</Text>
                 </TouchableOpacity>
               </View>
@@ -100,7 +126,7 @@ const SignUpScreen = ({navigation}) => {
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('name')}
-                  onBlur={() => setFieldTouched('name')}
+                  onBlur={handleTouchOnField('name')}
                   value={values.name}
                   keyboardType="default"
                   autoCapitalize="none"
@@ -119,7 +145,7 @@ const SignUpScreen = ({navigation}) => {
                   style={styles.input}
                   variant="standard"
                   onChangeText={handleChange('email')}
-                  onBlur={() => setFieldTouched('email')}
+                  onBlur={handleTouchOnField('email')}
                   value={values.email}
                   keyboardType="email-address"
                   autoCapitalize="none"
@@ -140,7 +166,7 @@ const SignUpScreen = ({navigation}) => {
                     style={styles.input}
                     variant="standard"
                     onChangeText={handleChange('password')}
-                    onBlur={() => setFieldTouched('password')}
+                    onBlur={handleTouchOnField('password')}
                     value={values.password}
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -153,7 +179,7 @@ const SignUpScreen = ({navigation}) => {
                   <TouchableOpacity
                     activeOpacity={0.8}
                     style={styles.visibilityBtn}
-                    onPress={() => setHidePassword(!hidePassword)}>
+                    onPress={togglePasswordVisibility}>
                     <Text style={styles.hidePassword}>
                       {hidePassword ? 'Show' : 'Hide'}
                     </Text>
@@ -173,7 +199,7 @@ const SignUpScreen = ({navigation}) => {
               ]}
               innerIconStyle={styles.innerIconStyle}
               textStyle={styles.textStyle}
-              onPress={() => setIsChecked(!isChecked)}
+              onPress={toggleCheckboxStatus}
             />
           </View>
           <View style={styles.signUpFooter}>

@@ -1,4 +1,4 @@
-import {useEffect, useState, memo} from 'react';
+import {useEffect, useState, memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {Pressable, Text, TouchableOpacity, View} from 'react-native';
 import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
@@ -77,6 +77,20 @@ const MessagesUsers = ({navigation}) => {
     setModalVisible(true);
     setRemoveId(qaItem);
   };
+  const renderItem = useCallback(
+    ({item}) => {
+      if (loading) {
+        return (
+          <View style={styles.skeleton}>
+            <SkeletonMessagesList />
+          </View>
+        );
+      } else {
+        return <User userItem={item} navigation={navigation} />;
+      }
+    },
+    [loading],
+  );
   return (
     <View style={styles.listUsersRoot}>
       <View style={styles.buttonContainer}>
@@ -95,15 +109,7 @@ const MessagesUsers = ({navigation}) => {
             keyExtractor={item => item.id}
             ListEmptyComponent={<Warning />}
             data={filteredData}
-            renderItem={({item}) => {
-              return loading ? (
-                <View style={styles.skeleton}>
-                  <SkeletonMessagesList />
-                </View>
-              ) : (
-                <User userItem={item} navigation={navigation} />
-              );
-            }}
+            renderItem={renderItem}
             maxSwipeDistance={64}
             leftOpenValue={20}
             renderQuickActions={({_, item}) => QuickActions(item)}

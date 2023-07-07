@@ -1,4 +1,4 @@
-import {memo} from 'react';
+import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View} from 'react-native';
 import DeleteIcon from '../../../../assets/icons/Delete.svg';
@@ -10,7 +10,13 @@ import {
   verticalScale,
 } from '../../../../assets/metrics/Metrics';
 import styles from './style';
-const ImagesModal = ({handleSetAction}) => {
+
+const ImagesModal = ({setAction}) => {
+  const handleSetAction = useCallback(action => {
+    return () => {
+      setAction(action);
+    };
+  }, []);
   return (
     <View style={styles.root}>
       <View style={styles.modal}>
@@ -48,6 +54,6 @@ const ImagesModal = ({handleSetAction}) => {
 
 ImagesModal.propTypes = {
   setAction: PropTypes.func,
-  handleSetAction: PropTypes.func,
 };
+
 export default memo(ImagesModal);

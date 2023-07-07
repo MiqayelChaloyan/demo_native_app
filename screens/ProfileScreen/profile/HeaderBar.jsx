@@ -5,6 +5,7 @@ import Header from '../../../components/Header/Header';
 import {theme} from '../../../assets/theme/theme';
 import AddIcon from '../../../assets/icons/Add.svg';
 import styles from './style';
+import {useCallback} from 'react';
 
 const HeaderBar = ({
   navigation,
@@ -14,6 +15,13 @@ const HeaderBar = ({
   setModalVisible,
   accessCamera,
 }) => {
+  const handlePressImageOrAccessCamera = useCallback(() => {
+    if (arrayImages.length !== 0) {
+      setModalVisible(true);
+    } else {
+      accessCamera();
+    }
+  }, [arrayImages]);
   return (
     <View style={styles.header}>
       <Header
@@ -35,14 +43,7 @@ const HeaderBar = ({
             source={require('../../../assets/images/Profile.png')}
           />
         )}
-        <TouchableOpacity
-          onPress={() => {
-            if (arrayImages.length !== 0) {
-              setModalVisible(true);
-            } else {
-              accessCamera();
-            }
-          }}>
+        <TouchableOpacity onPress={handlePressImageOrAccessCamera}>
           <View style={styles.addProfileImage}>
             <AddIcon
               width={horizontalScale(40)}

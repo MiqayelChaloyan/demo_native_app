@@ -15,7 +15,7 @@ import useDelayedAction from '../../../customHooks/useDelayedAction';
 const Profile = ({navigation}) => {
   const {
     arrayImages,
-    setArrayImage,
+    setArrayImages,
     imageUrl,
     setImageUrl,
     userData,
@@ -48,32 +48,30 @@ const Profile = ({navigation}) => {
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
       setImageUrl(url);
-      setArrayImage([
+      setArrayImages([
         ...arrayImages,
         {id: arrayImages.length + 1, url: url, isChecked: false},
       ]);
     });
   }, [arrayImages]);
 
-  const accessCamera = useCallback(async () => {
-    await requestCameraPermission(selectFile);
-  }, [selectFile]);
-
-  const handleAnswerChange = useCallback(() => {
-    setModalVisible(false);
-
-    if (addImage === 'PHONE') {
-      accessCamera();
-    } else if (addImage === 'STORAGE') {
-      navigation.navigate('Images');
-    }
-
-    setAddImage('');
-  }, [addImage, setModalVisible, accessCamera, navigation, setAddImage]);
+  const accessCamera = async () => await requestCameraPermission(selectFile);
 
   useEffect(() => {
+    const handleAnswerChange = () => {
+      setModalVisible(false);
+
+      if (addImage === 'PHONE') {
+        accessCamera();
+      } else if (addImage === 'STORAGE') {
+        navigation.navigate('Images');
+      }
+
+      setAddImage('');
+    };
     handleAnswerChange();
-  }, [handleAnswerChange]);
+  }, [addImage]);
+
   return !loggedIn ? (
     navigation.navigate('Auth', {screen: 'LogIn'})
   ) : (

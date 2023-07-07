@@ -1,5 +1,5 @@
 import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
-import {useContext, useState} from 'react';
+import {useCallback, useContext, useState} from 'react';
 import ChatIcon from '../../assets/icons/Chat.svg';
 import RenderImagePairs from './RenderImagePairs';
 import useDataFromAPI from '../../customHooks/UseDataFromAPI';
@@ -18,26 +18,20 @@ const UsersScreen = ({navigation}) => {
   const {data, error} = useDataFromAPI('users');
 
   useDataForUpdate(data, setUsersData, error);
-
+  const navigateTo = useCallback(() => navigation.navigate('Messages'), []);
+  const userImageUrl = imageUrl
+    ? {uri: imageUrl}
+    : require('../../assets/images/Profile.png');
   return (
     <View style={styles.root}>
       <View style={styles.header}>
         <View>
-          <Image
-            style={styles.userImage}
-            source={
-              imageUrl
-                ? {uri: imageUrl}
-                : require('../../assets/images/Profile.png')
-            }
-          />
+          <Image style={styles.userImage} source={userImageUrl} />
         </View>
 
         <Search list={data} setState={setFilteredData} keyword="fullName" />
 
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Messages')}
-          style={styles.messages}>
+        <TouchableOpacity onPress={navigateTo} style={styles.messages}>
           <ChatIcon width={25} height={25} fill={theme.colors.primary_green} />
         </TouchableOpacity>
       </View>

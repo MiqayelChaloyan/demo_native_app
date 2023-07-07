@@ -9,9 +9,9 @@ import {memo, useCallback} from 'react';
 
 const ContentItemList = ({item, index}) => {
   const navigation = useNavigation();
-  let backgroundColorStyle =
+  const backgroundColorStyle =
     index % 2 === 1 ? theme.colors.light_gray : theme.colors.cool_gray;
-  const handlePress = useCallback(() => {
+  const navigateTo = useCallback(() => {
     navigation.navigate({
       name: 'Feed',
       params: {index},
@@ -29,7 +29,7 @@ const ContentItemList = ({item, index}) => {
         </View>
       </View>
 
-      <TouchableOpacity onPress={handlePress}>
+      <TouchableOpacity onPress={navigateTo}>
         <View>
           <BuyIcon
             width={horizontalScale(45)}

@@ -14,6 +14,19 @@ const EvaluationModal = ({isModalVisible, setModalVisible, navigation}) => {
     setActiveStarsColor(true);
     setStarsPlaced(count);
   };
+  const handleNavigateToOptions = () => navigation.navigate('Options');
+  const handleCloseModal = () => setModalVisible(false);
+  const renderItem = ({item: starPlacedNumber}) => (
+    <TouchableOpacity onPress={() => changeColorOfStars(starPlacedNumber)}>
+      <StarIcon
+        fill={
+          activeStarsColor && starPlacedNumber <= numberOfStarsPlaced
+            ? theme.colors.orange
+            : theme.colors.cool_gray
+        }
+      />
+    </TouchableOpacity>
+  );
 
   return (
     <Modal
@@ -25,27 +38,15 @@ const EvaluationModal = ({isModalVisible, setModalVisible, navigation}) => {
       backdropTransitionInTiming={500}
       backdropTransitionOutTiming={500}
       swipeDirection={['down', 'up', 'right', 'left']}
-      onSwipeComplete={() => setModalVisible(false)}
-      hideModal={() => setModalVisible(false)}>
+      onSwipeComplete={handleCloseModal}
+      hideModal={handleCloseModal}>
       <View style={styles.container}>
         <View style={styles.modal}>
           <View style={styles.appreciative}>
             <FlatList
               data={[1, 2, 3, 4, 5]}
               contentContainerStyle={styles.starsContainer}
-              renderItem={({item: starPlacedNumber}) => (
-                <TouchableOpacity
-                  onPress={() => changeColorOfStars(starPlacedNumber)}>
-                  <StarIcon
-                    fill={
-                      activeStarsColor &&
-                      starPlacedNumber <= numberOfStarsPlaced
-                        ? theme.colors.orange
-                        : theme.colors.cool_gray
-                    }
-                  />
-                </TouchableOpacity>
-              )}
+              renderItem={renderItem}
               keyExtractor={(_, index) => index}
             />
           </View>
@@ -57,12 +58,12 @@ const EvaluationModal = ({isModalVisible, setModalVisible, navigation}) => {
             adipisicing sunt.
           </Text>
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => navigation.navigate('Options')}>
+            <TouchableOpacity onPress={handleNavigateToOptions}>
               <Text style={styles.buttonText}>I love it!</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <TouchableOpacity onPress={handleCloseModal}>
               <Text style={styles.text}>Don’t like the app? Let us know.</Text>
             </TouchableOpacity>
           </View>
