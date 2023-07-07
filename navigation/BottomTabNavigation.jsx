@@ -16,7 +16,17 @@ import {GlobalDataContext} from '../contexts/context';
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigation() {
-  const {loggedIn} = useContext(GlobalDataContext);
+  const { loggedIn } = useContext(GlobalDataContext);
+
+  const renderTabBarIcon = (IconComponent, focused) => {
+    return (
+      <IconComponent
+        width={horizontalScale(20)}
+        height={verticalScale(20)}
+        fill={focused ? theme.colors.primary_green : theme.colors.cool_gray}
+      />
+    );
+  };
 
   return (
     <Tab.Navigator
@@ -32,15 +42,8 @@ export default function BottomTabNavigation() {
         component={PageNavigation}
         options={{
           title: '',
-          tabBarIcon: ({ focused }) => (
-            <HomeIcon
-              width={horizontalScale(21)}
-              height={verticalScale(21)}
-              fill={
-                focused ? theme.colors.primary_green : theme.colors.cool_gray
-              }
-            />
-          ),
+          tabBarIcon: ({ focused }) =>
+            renderTabBarIcon(HomeIcon, focused),
         }}
       />
       <Tab.Screen
@@ -48,43 +51,28 @@ export default function BottomTabNavigation() {
         component={loggedIn ? AllUsersListScreen : AuthNavigation}
         options={{
           title: '',
-          tabBarIcon: ({ focused }) => (
-            <UsersListIcon
-              width={horizontalScale(22)}
-              height={verticalScale(22)}
-              fill={focused
-                ? theme.colors.primary_green
-                : theme.colors.cool_gray} />
-          ),
-        }} />
+          tabBarIcon: ({ focused }) =>
+            renderTabBarIcon(UsersListIcon, focused),
+        }}
+      />
       <Tab.Screen
         name="Support"
         component={loggedIn ? SupportMessageScreen : AuthNavigation}
         options={{
           title: '',
-          tabBarIcon: ({ focused }) => (
-            <SupportIcon
-              width={horizontalScale(23)}
-              height={verticalScale(23)}
-              fill={focused
-                ? theme.colors.primary_green
-                : theme.colors.cool_gray} />
-          ),
-        }} />
+          tabBarIcon: ({ focused }) =>
+            renderTabBarIcon(SupportIcon,focused),
+        }}
+      />
       <Tab.Screen
         name="Profile"
         component={loggedIn ? ProfileScreen : AuthNavigation}
         options={{
           title: '',
-          tabBarIcon: ({ focused }) => (
-            <ProfileIcon
-              width={horizontalScale(20)}
-              height={verticalScale(20)}
-              fill={focused
-                ? theme.colors.primary_green
-                : theme.colors.cool_gray} />
-          ),
-        }} />
+          tabBarIcon: ({ focused }) =>
+            renderTabBarIcon(ProfileIcon,  focused),
+        }}
+      />
     </Tab.Navigator>
   );
 }

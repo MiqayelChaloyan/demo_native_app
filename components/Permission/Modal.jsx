@@ -10,7 +10,7 @@ const PermissionModal = ({isModalVisible, setModalVisible, children}) => {
       coverScreen
       transparent
       backdropColor={theme.colors.primary_green}
-      backdropOpacity={0.5}
+      backdropOpacity={0.4}
       backdropTransitionInTiming={500}
       backdropTransitionOutTiming={600}
       onSwipeComplete={() => setModalVisible(false)}>

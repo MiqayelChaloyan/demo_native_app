@@ -5,6 +5,8 @@ import ItemDescriptionScreen from '../screens/ItemDescriptionScreen';
 import MarketScreen from '../screens/MarketScreen';
 import UserOptionsScreen from '../screens/UserOptionsScreen';
 import SettingsNavigation from './SettingsNavigation';
+import AccountSettings from '../screens/AccountSettingsScreen';
+import PaymentScreen from '../screens/PaymentScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,9 @@ export default function PageNavigation() {
         component={ItemDescriptionScreen}
         options={{headerShown: true}}
       />
+      <Stack.Screen name="AccountSettings" component={AccountSettings} />
+      <Stack.Screen name="Payment" component={PaymentScreen} />
+
     </Stack.Navigator>
   );
 }

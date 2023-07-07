@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {useEffect} from 'react';
-import {TextInput, Text} from 'react-native';
+import {TextInput, Text, View} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import useDelayDebounce from '../../customHooks/useDebounce';
 import styles from './style';
@@ -16,20 +16,21 @@ const CustomTextInput = ({
   secureTextEntry,
   touched,
   errors,
+  style
 }) => {
   const [inputValue, setInputValue] = useDelayDebounce('', 500);
 
   useEffect(() => {
     onChangeText(inputValue);
-  }, [inputValue])
+  }, [inputValue]);
 
   return (
-    <>
+    <View style={styles.container}>
       <TextInput
         name={name}
         placeholder={placeholder}
         placeholderTextColor={theme.colors.cool_gray}
-        style={styles.input}
+        style={style || styles.input}
         variant={'standard'}
         onChangeText={setInputValue}
         onBlur={onBlur}
@@ -41,7 +42,7 @@ const CustomTextInput = ({
       {touched && errors && (
         <Text style={styles.inputError}>{errors}</Text>
       )}
-    </>
+    </View>
   );
 };
 

@@ -9,12 +9,14 @@ function GlobalData({ children }) {
   const [feeds, setFeeds] = useState([]);
   const [arrayImages, setArrayImage] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isChangeStatusBar, setChangeStatusBar] = useState(false);
+  const [creditCardData, setCreditCardData] = useState([]);
   const [userData, setUserData] = useState({
     name: '',
     email: '',
     password: '',
+    address: '',
     isChecked: false,
   });
 
@@ -35,7 +37,9 @@ function GlobalData({ children }) {
         loggedIn,
         setLoggedIn,
         setChangeStatusBar,
-        isChangeStatusBar
+        isChangeStatusBar,
+        creditCardData,
+        setCreditCardData
       }}>
       {typeof children === 'function' ? children() : children}
     </GlobalDataContext.Provider>
