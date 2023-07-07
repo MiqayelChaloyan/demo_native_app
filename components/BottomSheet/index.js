@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, {useState, useCallback} from 'react';
 import {View, Text, TouchableOpacity, Dimensions} from 'react-native';
 import styles from './style';
+import DeleteButton from '../DeleteButton';
 
 const BottomSheet = ({children, onClose}) => {
   const [sheetHeight, setSheetHeight] = useState(Dimensions.get('window').height * 2);
@@ -12,19 +13,17 @@ const BottomSheet = ({children, onClose}) => {
     }, [onClose]);
 
   return (
-    <TouchableOpacity
+    <View
       activeOpacity={1}
       style={[styles.container, { height: sheetHeight }]}
     >
       <View style={styles.sheet}>
-        <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
-          <Text style={styles.closeButtonText}>✖️</Text>
-        </TouchableOpacity>
+        <DeleteButton onPress={handleClose} small={false}/>
         <View>
           {children}
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 

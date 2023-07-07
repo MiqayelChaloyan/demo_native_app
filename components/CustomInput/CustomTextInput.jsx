@@ -24,13 +24,15 @@ const CustomTextInput = ({
     onChangeText(inputValue);
   }, [inputValue]);
 
+  const inputStyle = style ? style : styles.input;
+
   return (
     <View style={styles.container}>
       <TextInput
         name={name}
         placeholder={placeholder}
         placeholderTextColor={theme.colors.cool_gray}
-        style={style || styles.input}
+        style={inputStyle}
         variant={'standard'}
         onChangeText={setInputValue}
         onBlur={onBlur}
@@ -57,6 +59,7 @@ CustomTextInput.propTypes = {
   secureTextEntry: PropTypes.bool,
   touched: PropTypes.bool,
   errors: PropTypes.string,
+  style: PropTypes.object,
 };
 
 CustomTextInput.defaultProps = {
@@ -66,6 +69,7 @@ CustomTextInput.defaultProps = {
   autoCorrect: false,
   secureTextEntry: false,  
   keyboardType: "default",
+  style: null,
 };
 
 export default React.memo(CustomTextInput);

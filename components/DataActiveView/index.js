@@ -4,6 +4,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import CheckIcon from '../../assets/icons/Check.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import CreditCardDeletion from '../../screens/AccountSettingsScreen/CreditCardDeletion';
+import DeleteButton from '../DeleteButton';
 import styles from './style';
 
 const DataActiveView = ({ item, isCreditCard, id }) => {
@@ -31,9 +32,7 @@ const DataActiveView = ({ item, isCreditCard, id }) => {
             </Text>
             <View style={styles.checked}>
                 {isCreditCard ? (
-                    <TouchableOpacity style={styles.checkedRemove} onPress={handleDeleteCard}>
-                        <Text style={styles.removeCard}>✖️</Text>
-                    </TouchableOpacity>
+                    <DeleteButton onPress={handleDeleteCard} small={true}/>
                 ) : (
                     <View style={styles.checkedBox}>
                         <CheckIcon width={horizontalScale(17)} height={verticalScale(17)} />

@@ -22,19 +22,6 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: horizontalScale(25),
         borderTopRightRadius: horizontalScale(25),
     },
-    closeButton: {
-        alignSelf: 'flex-end',
-        marginBottom: verticalScale(10),
-    },
-    closeButtonText: {
-        fontSize: moderateScale(10),
-        color: theme.colors.black,
-        backgroundColor: theme.colors.light_gray,
-        padding: verticalScale(8),
-        borderRadius: verticalScale(50),
-        width: horizontalScale(30),
-        height: verticalScale(30),
-    },
 });
 
 export default styles;

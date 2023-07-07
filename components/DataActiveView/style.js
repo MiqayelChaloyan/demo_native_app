@@ -24,20 +24,6 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         ...theme.textVariants.Medium,
     },
-    checkedRemove: {
-        position: 'absolute',
-        width: horizontalScale(20),
-        height: verticalScale(21),
-        borderRadius: moderateScale(50),
-        padding: horizontalScale(2),
-    },
-    removeCard: {
-        width: horizontalScale(40),
-        height: verticalScale(40),
-        borderRadius: moderateScale(10),
-        fontSize:  moderateScale(10),
-        ...theme.textVariants.Medium,
-    },
     checkedBox: {
         position: 'absolute',
         backgroundColor: theme.colors.primary_green,
