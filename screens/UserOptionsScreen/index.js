@@ -9,14 +9,16 @@ import styles from './style';
 const UserOptionsScreen = ({navigation}) => {
   const [data, setData] = useState([]);
 
-  const fetchData = () => {
-    const result = getDataFromFile('options');
+  const fetchData = async () => {
+    const result = await getDataFromFile('options');
     setData(result);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleNavigation = () => navigation.navigate('Feed')
 
   return (
     <View style={styles.optionsContainer}>
@@ -28,10 +30,8 @@ const UserOptionsScreen = ({navigation}) => {
         left="Back"
         right="Next"
       />
-      <UserOptionsList data={data}/>
-      <TouchableOpacity onPress={() => {
-        navigation.navigate('Feed');
-      }}>
+      <UserOptionsList data={data} />
+      <TouchableOpacity onPress={handleNavigation}>
         <View style={styles.button}>
           <Text style={styles.buttonText}>I love it!</Text>
         </View>

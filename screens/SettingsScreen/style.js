@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: moderateScale(14),
-    ...theme.textVariants.Medium,
     lineHeight: verticalScale(19),
     color: theme.colors.black,
+    ...theme.textVariants.Medium,
   },
 });
 

@@ -10,9 +10,7 @@ const ExpenseList = ({data}) => {
       <FlatList
         data={data}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({item, index}) => {
-          return <ExpenseItemList item={item} index={index} />;
-        }}
+        renderItem={(props) => <ExpenseItemList {...props} />}
       />
     </View>
   );

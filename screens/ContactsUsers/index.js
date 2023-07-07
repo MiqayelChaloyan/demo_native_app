@@ -6,7 +6,7 @@ import {getDataFromFile} from '../../utils/ApiUtils';
 import ContactsList from './ContactsList';
 import styles from './style';
 
-const ContactsUsers = ({ navigation }) => {
+const ContactsUsers = ({navigation}) => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [emptyDataMessage, setEmptyDataMessage] = useState('');

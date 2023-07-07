@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
   },
   swipeable: {
     height: verticalScale(75),
-    marginVertical: verticalScale(10),
+    marginVertical: verticalScale(5),
     backgroundColor: theme.colors.primary_white,
     justifyContent: 'center',
     paddingLeft: horizontalScale(10),
-    shadowColor: theme.colors.black,
+    shadowColor: theme.colors.light_grey,
     shadowOffset: {
       width: horizontalScale(0),
-      height: verticalScale(2),
+      height: verticalScale(1),
     },
     shadowOpacity: 0.25,
     shadowRadius: verticalScale(3.84),

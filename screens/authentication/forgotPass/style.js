@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     image: {
-        width: horizontalScale(270),
-        height: verticalScale(200),
+        width: horizontalScale(180),
+        height: verticalScale(170),
         marginTop: verticalScale(50),
     },
     centered: {

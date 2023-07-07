@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -22,28 +22,19 @@ import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import styles from './style';
 
 const SignUpScreen = ({ navigation }) => {
-  const [isChecked, setIsChecked] = useState(true);
-  const [isPrivacyPolicy, setIsPrivacyPolicy] = useState(true);
   const [hidePassword, setHidePassword] = useState(true);
   const checkBoxText =
     'I would like to receive your newsletter and other promotional information.';
   const privacyPolicyText = 'Sipining up you accept the Privacy Policy.';
-  const { setUserData, setLoggedIn } = useContext(GlobalDataContext);
-
-  useEffect(() => {
-    values.isChecked = isChecked;
-  }, [isChecked, values]);
-
-  useEffect(() => {
-    values.isPrivacyPolicy = isPrivacyPolicy;
-  }, [isPrivacyPolicy, values]);
+  const { setUserData, setLoggedIn, setArrayImage } = useContext(GlobalDataContext);
 
   const {
     values,
     handleChange,
     errors,
-    setFieldTouched,
+    handleBlur,
     touched,
+    setFieldValue,
     isValid,
     handleSubmit,
   } = useFormik({
@@ -51,14 +42,15 @@ const SignUpScreen = ({ navigation }) => {
       name: '',
       email: '',
       password: '',
-      isChecked,
-      isPrivacyPolicy,
+      isChecked: true,
+      isPrivacyPolicy: true,
     },
     validationSchema: signUpValidationSchema,
     onSubmit: async data => {
       // TODO: This part is for a test and will be changed lately.
       if (data.email && data.password && data.name && data.isPrivacyPolicy) {
-        setUserData(data);
+        setUserData({...data});
+        setArrayImage([]);
         await setDataStorage('loggedIn', true);
         setLoggedIn(true);
         Alert.alert('Login successful');
@@ -66,8 +58,11 @@ const SignUpScreen = ({ navigation }) => {
     },
   });
 
-  const changeCheckboxBackgroundColor = checkbox =>
-    checkbox ? theme.colors.primary_green : theme.colors.light_gray;
+  const selectAppropriateStyle = (className, isActive) =>
+  ([
+    styles[className],
+    { backgroundColor: isActive ? theme.colors.primary_green : theme.colors.light_gray},
+  ]);
 
   return (
     <KeyboardAvoidingView
@@ -103,7 +98,7 @@ const SignUpScreen = ({ navigation }) => {
                   name="name"
                   placeholder="Name"
                   onChangeText={handleChange('name')}
-                  onBlur={() => setFieldTouched('name')}
+                  onBlur={() => handleBlur('name')}
                   keyboardType="default"
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -117,7 +112,7 @@ const SignUpScreen = ({ navigation }) => {
                   name="email"
                   placeholder="Email"
                   onChangeText={handleChange('email')}
-                  onBlur={() => setFieldTouched('email')}
+                  onBlur={() => handleBlur('email')}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -132,7 +127,7 @@ const SignUpScreen = ({ navigation }) => {
                     name="password"
                     placeholder="Password"
                     onChangeText={handleChange('password')}
-                    onBlur={() => setFieldTouched('password')}
+                    onBlur={() => handleBlur('password')}
                     keyboardType={null}
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -158,31 +153,22 @@ const SignUpScreen = ({ navigation }) => {
             <BouncyCheckbox
               size={16}
               text={checkBoxText}
-              isChecked={isChecked}
-              iconStyle={[
-                styles.iconStyle,
-                { backgroundColor: changeCheckboxBackgroundColor(isChecked) },
-              ]}
+              isChecked={values.isChecked}
+              iconStyle={selectAppropriateStyle('iconStyle', values.isChecked)}
               innerIconStyle={styles.innerIconStyle}
               textStyle={styles.textStyle}
-              onPress={() => setIsChecked(!isChecked)}
+              onPress={() => setFieldValue('isChecked', !values.isChecked)}
             />
           </View>
           <View style={styles.checkBox}>
             <BouncyCheckbox
               size={16}
               text={privacyPolicyText}
-              isChecked={isPrivacyPolicy}
-              iconStyle={[
-                styles.iconStyle,
-                {
-                  backgroundColor:
-                    changeCheckboxBackgroundColor(isPrivacyPolicy),
-                },
-              ]}
+              isChecked={values.isPrivacyPolicy}
+              iconStyle={selectAppropriateStyle('iconStyle', values.isPrivacyPolicy)}
               innerIconStyle={styles.innerIconStyle}
               textStyle={styles.textStylePolicy}
-              onPress={() => setIsPrivacyPolicy(!isPrivacyPolicy)}
+              onPress={() => setFieldValue('isPrivacyPolicy', !values.isPrivacyPolicy)}
             />
             {touched.isPrivacyPolicy && errors.isPrivacyPolicy && (
               <Text style={styles.inputError}>{errors.isPrivacyPolicy}</Text>
@@ -204,7 +190,7 @@ const SignUpScreen = ({ navigation }) => {
 };
 
 SignUpScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default SignUpScreen;

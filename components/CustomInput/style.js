@@ -4,6 +4,10 @@ import {theme} from '../../assets/theme/theme';
 
 
 const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
     input: {
         width: horizontalScale(343),
         height: verticalScale(51),

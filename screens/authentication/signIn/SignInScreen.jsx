@@ -25,7 +25,7 @@ const SignInScreen = ({navigation}) => {
   const {
     handleChange,
     errors,
-    setFieldTouched,
+    handleBlur,
     touched,
     isValid,
     handleSubmit,
@@ -85,7 +85,7 @@ const SignInScreen = ({navigation}) => {
                   name="email"
                   placeholder="Email"
                   onChangeText={handleChange('email')}
-                  onBlur={() => setFieldTouched('email')}
+                  onBlur={() => handleBlur('email')}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -100,7 +100,7 @@ const SignInScreen = ({navigation}) => {
                     name="password"
                     placeholder="Password"
                     onChangeText={handleChange('password')}
-                    onBlur={() => setFieldTouched('password')}
+                    onBlur={() => handleBlur('password')}
                     keyboardType={null}
                     autoCapitalize="none"
                     autoCorrect={false}

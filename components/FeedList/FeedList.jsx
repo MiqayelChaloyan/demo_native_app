@@ -23,33 +23,17 @@ const FeedList = ({navigation, showHide}) => {
     return () => clearTimeout(timer);
   }, []);
 
-  const renderPosts = useCallback((item, index) => {
-    return <FeedItem item={item} itemIndex={index} navigation={navigation} />;
-  }, []);
-
-  const renderPhotos = useCallback((item) => {
-    return <Photos item={item} />;
-  }, []);
-
-  const renderSkeletonPosts = useCallback(() => {
-    return <SkeletonPosts />;
-  }, []);
-
-  const renderSkeletonPhotos = useCallback(() => {
-    return <SkeletonPhotos />;
-  }, []);
-
-  const renderSwitchValue = (item, index) => {
+  const renderSwitchValue = useCallback((item, index) => {
     if (route.name === 'Profile') {
       if (showHide) {
-        return isLoaded ? renderSkeletonPosts() : renderPosts(item, index);
+        return isLoaded ? <SkeletonPosts /> : <FeedItem item={item} itemIndex={index} navigation={navigation} />;
       } else {
-        return isLoaded ? renderSkeletonPhotos() : renderPhotos(item);
+        return isLoaded ? <SkeletonPhotos /> : <Photos item={item} />;
       }
     }
 
-    return isLoaded ? renderSkeletonPosts() : renderPosts(item, index);
-  };
+    return isLoaded ? <SkeletonPosts /> : <FeedItem item={item} itemIndex={index} navigation={navigation} />;
+  }, [isLoaded, navigation, route.name, showHide]);
 
   const searchResult = useCallback((result) => {
     setData(result);
@@ -69,10 +53,10 @@ const FeedList = ({navigation, showHide}) => {
           setEmptyDataMessage={specifiedResultText}
         />
       )}
-      <View style={[styles.contentsBlockContainer]}>
+      <View style={styles.contentsBlockContainer}>
         <FlatList
           data={route.name === 'Feed' ? data : feeds}
-          ListEmptyComponent={<Warning emptyDataMessage={emptyDataMessage} />}
+          ListEmptyComponent={() => <Warning emptyDataMessage={emptyDataMessage} />}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item, index }) => renderSwitchValue(item, index)}
         />

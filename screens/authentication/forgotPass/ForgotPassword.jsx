@@ -6,11 +6,11 @@ import {Formik, useFormik} from 'formik';
 import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import styles from './style';
 
-const ForgotPassword = ({navigation}) => {
+const ForgotPassword = ({ navigation }) => {
     const {
         handleChange,
         errors,
-        setFieldTouched,
+        handleBlur,
         touched,
         isValid,
         handleSubmit,
@@ -40,8 +40,8 @@ const ForgotPassword = ({navigation}) => {
                         <CustomTextInput
                             name="email"
                             placeholder="Email or Username"
-                            onChangeText={handleChange('email')}
-                            onBlur={() => setFieldTouched('email')}
+                            onChangeText={handleChange}
+                            onBlur={() => handleBlur('email')}
                             keyboardType="email-address"
                             autoCapitalize="none"
                             autoCorrect={false}

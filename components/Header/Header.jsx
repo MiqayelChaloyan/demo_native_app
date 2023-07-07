@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {theme} from '../../assets/theme/theme';
@@ -19,26 +19,26 @@ const Header = ({
   const [isModalVisible, setModalVisible] = useState(false);
   const handleLogout = () => setModalVisible(true);
 
+  const selectAppropriateStyle = (className, color) => ([
+    styles[className],
+    { color: headerTextColor || theme.colors[color] },
+  ]);
+
+
   return (
     <>
       <View style={styles.headerContainer}>
         <View>
           <TouchableOpacity onPress={() => navigation.navigate(back)}>
             <Text
-              style={[
-                styles.headerButtonText,
-                {color: headerTextColor || theme.colors.primary_green},
-              ]}>
+              style={selectAppropriateStyle("headerButtonText", "primary_green")}>
               {left}
             </Text>
           </TouchableOpacity>
         </View>
         <View>
           <Text
-            style={[
-              styles.headerText,
-              {color: headerTextColor || theme.colors.black},
-            ]}>
+            style={selectAppropriateStyle("headerText", "black")}>
             {screen}
           </Text>
         </View>
@@ -55,12 +55,7 @@ const Header = ({
                 }
               }}>
               <Text
-                style={[
-                  styles.headerButtonText,
-                  {
-                    color: headerTextColor || theme.colors.primary_green,
-                  },
-                ]}>
+                style={selectAppropriateStyle("headerButtonText", "primary_green")}>
                 {right}
               </Text>
             </TouchableOpacity>
@@ -92,7 +87,7 @@ Header.defaultProps = {
   back: "",
   continueTo: "",
   root: "",
-  left: "",  
+  left: "",
   right: "",
   headerTextColor: "",
 };

@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
-import React, {useMemo} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 import CheckIcon from '../../assets/icons/Check.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
+import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
 const PictureGridItem = ({image, changeProfileImage, isModalVisible}) => {
+  const {imageUrl, arrayImages} = useContext(GlobalDataContext);
   const {imageSource, id, isChecked} = image;
 
   const flexSize = useMemo(() => {
@@ -15,6 +17,9 @@ const PictureGridItem = ({image, changeProfileImage, isModalVisible}) => {
   }, []);
 
   const handlePress = () => {
+    if(arrayImages.length === 1 && arrayImages[0].imageSource === imageUrl) {
+      return;
+    }
     changeProfileImage(id);
   };
 

@@ -4,7 +4,8 @@ import {Text, View} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 
-const ExpenseItemList = ({item, index}) => {
+const ExpenseItemList = (props) => {
+  const {item, index} = props;
   const backgroundColorStyle =
     index % 2 === 1 ? theme.colors.dark_green : theme.colors.primary_green;
 

@@ -9,7 +9,7 @@ import useEffectAfterMount from '../../customHooks/useEffectAfterMount';
 import styles from './style';
 
 const ImageList = ({navigation}) => {
-  const {arrayImages, setArrayImage, setImageUrl, imageUrl} = useContext(GlobalDataContext);
+  const {arrayImages, setArrayImage, setImageUrl} = useContext(GlobalDataContext);
   const [action, setAction] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
   const [photoId, setPhotoId] = useState(null);
