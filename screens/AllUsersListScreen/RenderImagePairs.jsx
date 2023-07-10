@@ -154,7 +154,7 @@ const RenderImagePairs = (data, navigation) => {
                       color: '#5DB075',
                     }}
                     onPress={() => {
-                      const userItem = data[i + 1];
+                      const userItem = data[i];
                       navigation.navigate({
                         name: 'Chat',
                         params: {userItem},

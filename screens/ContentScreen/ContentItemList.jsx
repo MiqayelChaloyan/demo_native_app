@@ -5,12 +5,18 @@ import {useNavigation} from '@react-navigation/native';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
+import {memo, useCallback} from 'react';
 
 const ContentItemList = ({item, index}) => {
   const navigation = useNavigation();
-  let backgroundColorStyle =
+  const backgroundColorStyle =
     index % 2 === 1 ? theme.colors.light_gray : theme.colors.cool_gray;
-
+  const navigateTo = useCallback(() => {
+    navigation.navigate({
+      name: 'Feed',
+      params: {index},
+    });
+  }, []);
   return (
     <View style={styles.contentItemOfList}>
       <View style={styles.leftSide}>
@@ -23,13 +29,7 @@ const ContentItemList = ({item, index}) => {
         </View>
       </View>
 
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate({
-            name: 'Feed',
-            params: {index},
-          });
-        }}>
+      <TouchableOpacity onPress={navigateTo}>
         <View>
           <BuyIcon
             width={horizontalScale(45)}
@@ -47,4 +47,4 @@ ContentItemList.propTypes = {
   index: PropTypes.number,
 };
 
-export default ContentItemList;
+export default memo(ContentItemList);

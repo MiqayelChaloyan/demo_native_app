@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AuthNavigation from './AuthNavigation';
 import ExpensesScreen from '../screens/ExpensesScreen';
@@ -9,7 +10,7 @@ import ContactsUsers from '../screens/ContactsUsers';
 
 const Stack = createNativeStackNavigator();
 
-export default function StackNavigation() {
+function StackNavigation() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Bottom" component={BottomTabNavigation} />
@@ -22,3 +23,4 @@ export default function StackNavigation() {
     </Stack.Navigator>
   );
 }
+export default memo(StackNavigation);

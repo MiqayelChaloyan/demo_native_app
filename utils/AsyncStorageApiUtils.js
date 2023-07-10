@@ -14,19 +14,9 @@ export const getDataStorage = async key => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
-      const parsedValue = JSON.parse(value);
-      return parsedValue;
+      return JSON.parse(value);
     }
   } catch (error) {
     console.log('Error retrieving data:', error);
-  }
-};
-
-export const removeItem = async key => {
-  try {
-    await AsyncStorage.removeItem(key);
-    console.log('Logout successful');
-  } catch (error) {
-    console.log(error);
   }
 };

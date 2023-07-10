@@ -1,18 +1,12 @@
+import {memo, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {Image, Text, View} from 'react-native';
 import styles from './style';
-
-const diffMonths = item => {
-  const currentDate = new Date();
-  const createdDate = new Date(item.createdData);
-  return (
-    (currentDate.getFullYear() - createdDate.getFullYear()) * 12 +
-    (currentDate.getMonth() - createdDate.getMonth())
-  );
-};
+import {calculateMonthDifference} from '../../assets/features/calculateDiffmonts';
 
 const ChangeSwiperItem = ({item}) => {
-  const monthsAgo = diffMonths(item);
+  const diffMonths = useMemo(() => calculateMonthDifference(item), [item]);
+
   return (
     <View style={styles.contentItem}>
       <View style={styles.imageContainer}>
@@ -31,7 +25,7 @@ const ChangeSwiperItem = ({item}) => {
             {item.message}
           </Text>
 
-          <Text style={styles.dateStyle}>{monthsAgo}m ago</Text>
+          <Text style={styles.dateStyle}>{diffMonths}m ago</Text>
         </View>
       </View>
     </View>
@@ -42,4 +36,4 @@ ChangeSwiperItem.propTypes = {
   item: PropTypes.object,
 };
 
-export default ChangeSwiperItem;
+export default memo(ChangeSwiperItem);

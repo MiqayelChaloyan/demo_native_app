@@ -11,9 +11,14 @@ import CartIcon from '../../assets/icons/Cart.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
+import {useCallback} from 'react';
 
 const ItemDescriptionScreen = ({route}) => {
   const {item} = route.params;
+  const handlePress = useCallback(
+    () => Alert.alert(`${item.title} was added to your cart`),
+    [],
+  );
   return (
     <View style={styles.container}>
       <ScrollView style={styles.itemDataBox}>
@@ -26,8 +31,7 @@ const ItemDescriptionScreen = ({route}) => {
               {item.title}
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={() => Alert.alert(`${item.title} was added to your cart`)}>
+          <TouchableOpacity onPress={handlePress}>
             <CartIcon
               width={horizontalScale(30)}
               height={verticalScale(30)}

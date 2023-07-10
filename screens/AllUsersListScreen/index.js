@@ -1,79 +1,44 @@
-import PropTypes from 'prop-types';
-import {
-  Image,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {useContext, useEffect, useState} from 'react';
+import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
+import {useCallback, useContext, useState} from 'react';
 import ChatIcon from '../../assets/icons/Chat.svg';
 import RenderImagePairs from './RenderImagePairs';
-import {getDataUsersFromFile} from '../../utils/ApiUtils';
+import useDataFromAPI from '../../customHooks/UseDataFromAPI';
 import {theme} from '../../assets/theme/theme';
 import {GlobalDataContext} from '../../contexts/context';
 import Warning from '../../components/Warning/Warning';
 import styles from './style';
+import Search from '../../components/Search/Search';
+import useDataForUpdate from '../../customHooks/useDataForUpdate';
+import PropTypes from 'prop-types';
 
 const AllUsersListScreen = ({navigation}) => {
   const {imageUrl} = useContext(GlobalDataContext);
-  const [initialData, setInitialData] = useState([]);
-  const [data, setData] = useState(initialData);
-  const [searchItemValue, setSearchItemValue] = useState('');
+  const [usersData, setUsersData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDataUsersFromFile();
-      setInitialData(result);
-    };
-    fetchData();
-  }, []);
+  const {data, error} = useDataFromAPI('users');
 
-  const handleSearch = () => {
-    const result = initialData.filter(item => {
-      let param = item.fullName.toLowerCase();
-      return param.indexOf(searchItemValue) > -1;
-    });
-    setData(result);
-  };
-
-  useEffect(() => {
-    return handleSearch();
-  }, [initialData, searchItemValue]);
-
+  useDataForUpdate(data, setUsersData, error);
+  const navigateTo = useCallback(() => navigation.navigate('Messages'), []);
+  const userImageUrl = imageUrl
+    ? {uri: imageUrl}
+    : require('../../assets/images/Profile.png');
   return (
     <View style={styles.root}>
       <View style={styles.header}>
         <View>
-          <Image
-            style={styles.userImage}
-            source={
-              imageUrl
-                ? {uri: imageUrl}
-                : require('../../assets/images/Profile.png')
-            }
-          />
+          <Image style={styles.userImage} source={userImageUrl} />
         </View>
-        <TextInput
-          name="search"
-          placeholder="Search"
-          style={styles.input}
-          variant="outlined"
-          onChangeText={value => setSearchItemValue(value)}
-          value={searchItemValue}
-          keyboardType="web-search"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Messages')}
-          style={styles.messages}>
+
+        <Search list={data} setState={setFilteredData} keyword="fullName" />
+
+        <TouchableOpacity onPress={navigateTo} style={styles.messages}>
           <ChatIcon width={25} height={25} fill={theme.colors.primary_green} />
         </TouchableOpacity>
       </View>
       {data.length < 1 && <Warning />}
       <ScrollView>
-        {data.length > 0 && RenderImagePairs(data, navigation)}
+        {usersData.length > 0 && RenderImagePairs(filteredData, navigation)}
       </ScrollView>
     </View>
   );

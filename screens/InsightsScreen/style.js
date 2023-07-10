@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   progressCircle: {
     justifyContent: 'center',
     alignItems: 'center',
-    margin: verticalScale(32),
+    marginBottom: verticalScale(32),
   },
 });
 

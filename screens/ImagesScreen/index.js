@@ -1,5 +1,5 @@
+import {useState, useContext, useEffect, memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
-import {useState, useContext, useEffect} from 'react';
 import {Image, ScrollView, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import ImagesModal from '../../components/Permission/children/images';
@@ -9,39 +9,38 @@ import RenderImagePairs from './RenderImagePairs';
 import styles from './style';
 
 const ImagesScreen = ({navigation}) => {
-  const [sheet, setSheet] = useState('');
-  const {arrayImages, setArrayImage, setImageUrl} =
+  const [action, setAction] = useState('');
+  const {arrayImages, setArrayImages, setImageUrl} =
     useContext(GlobalDataContext);
   const [photoId, setPhotoId] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    if (sheet === 'Add') {
+    if (action === 'Add') {
       const result = arrayImages.find(item => item.id === photoId);
       if (result) {
         setImageUrl(result.url);
         navigation.navigate('Profile');
       }
-    } else if (sheet === 'Remove') {
+    } else if (action === 'Remove') {
       const updatedArrayImages = arrayImages.filter(
         item => item.id !== photoId,
       );
-      setArrayImage(updatedArrayImages);
+      setArrayImages(updatedArrayImages);
     }
     setModalVisible(false);
-    setSheet('');
-  }, [sheet]);
+    setAction('');
+  }, [action]);
 
-  const changeProfileImage = id => {
+  const changeProfileImage = useCallback(id => {
     setPhotoId(id);
     const updatedArrayImages = arrayImages.map(item => ({
       ...item,
       isChecked: item.id === id,
     }));
     setModalVisible(true);
-    setArrayImage(updatedArrayImages);
-  };
-
+    setArrayImages(updatedArrayImages);
+  }, []);
   return (
     <View style={styles.images}>
       <View style={styles.container}>
@@ -73,7 +72,7 @@ const ImagesScreen = ({navigation}) => {
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}>
-        <ImagesModal setSheet={setSheet} />
+        <ImagesModal setAction={setAction} />
       </PermissionModal>
     </View>
   );
@@ -83,4 +82,4 @@ ImagesScreen.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default ImagesScreen;
+export default memo(ImagesScreen);

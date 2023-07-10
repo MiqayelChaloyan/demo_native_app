@@ -1,22 +1,12 @@
-import {useEffect, useState} from 'react';
-import {FlatList, Text, View} from 'react-native';
-import ExpenseItemList from '../../components/ExpenseItemList/ExpenseItemList';
+import {memo} from 'react';
+import {Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import ProgressCircle from '../../components/ProgressCircle/ProgressCircle';
-import {getDataExpensesFromFile} from '../../utils/ApiUtils';
 import styles from './style';
+import ListOfExpenses from '../ExpensesScreen/ListOfExpenses';
+import PropTypes from 'prop-types';
 
 const InsightsScreen = ({navigation}) => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDataExpensesFromFile();
-      setData(result);
-    };
-    fetchData();
-  }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.insights}>
@@ -33,17 +23,13 @@ const InsightsScreen = ({navigation}) => {
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Expenses</Text>
         </View>
-        <View style={styles.itemListContainer}>
-          <FlatList
-            data={data}
-            keyExtractor={(_, index) => index.toString()}
-            renderItem={({item, index}) => {
-              return <ExpenseItemList item={item} index={index} />;
-            }}
-          />
-        </View>
+
+        <ListOfExpenses />
       </View>
     </View>
   );
 };
-export default InsightsScreen;
+InsightsScreen.propTypes = {
+  navigation: PropTypes.object,
+};
+export default memo(InsightsScreen);

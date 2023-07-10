@@ -1,3 +1,4 @@
+import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View} from 'react-native';
 import DeleteIcon from '../../../../assets/icons/Delete.svg';
@@ -10,13 +11,18 @@ import {
 } from '../../../../assets/metrics/Metrics';
 import styles from './style';
 
-const ImagesModal = ({setSheet}) => {
+const ImagesModal = ({setAction}) => {
+  const handleSetAction = useCallback(action => {
+    return () => {
+      setAction(action);
+    };
+  }, []);
   return (
     <View style={styles.root}>
       <View style={styles.modal}>
         <TouchableOpacity
           style={styles.cancel}
-          onPress={() => setSheet('Cancel')}>
+          onPress={handleSetAction('Cancel')}>
           <CancelIcon
             width={horizontalScale(25)}
             height={verticalScale(25)}
@@ -26,7 +32,7 @@ const ImagesModal = ({setSheet}) => {
         <View style={styles.questionsContainer}>
           <TouchableOpacity
             style={styles.button_1}
-            onPress={() => setSheet('Add')}>
+            onPress={handleSetAction('Add')}>
             <ProfileIcon
               width={27}
               height={27}
@@ -36,7 +42,7 @@ const ImagesModal = ({setSheet}) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button_2}
-            onPress={() => setSheet('Remove')}>
+            onPress={handleSetAction('Remove')}>
             <DeleteIcon width={30} height={30} fill={theme.colors.light_blue} />
             <Text style={styles.text_2}>Remove Image</Text>
           </TouchableOpacity>
@@ -47,7 +53,7 @@ const ImagesModal = ({setSheet}) => {
 };
 
 ImagesModal.propTypes = {
-  setSheet: PropTypes.func,
+  setAction: PropTypes.func,
 };
 
-export default ImagesModal;
+export default memo(ImagesModal);

@@ -9,7 +9,7 @@ import {
 const styles = StyleSheet.create({
   headerContainer: {
     width: '100%',
-    marginTop: verticalScale(32),
+    marginVertical: verticalScale(32),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

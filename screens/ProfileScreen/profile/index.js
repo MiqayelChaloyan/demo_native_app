@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect} from 'react';
+import {useContext, useState, useEffect, useCallback, memo} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {GlobalDataContext} from '../../../contexts/context';
@@ -10,39 +10,35 @@ import ProfileModal from '../../../components/Permission/children/profile';
 import HeaderBar from './HeaderBar';
 import styles from './style';
 import ToggleSwitch from './ToggleSwitch';
+import useDelayedAction from '../../../customHooks/useDelayedAction';
 
 const Profile = ({navigation}) => {
   const {
     arrayImages,
-    setArrayImage,
+    setArrayImages,
     imageUrl,
     setImageUrl,
-    feeds,
     userData,
     loggedIn,
     setLoggedIn,
   } = useContext(GlobalDataContext);
-  const [isHidden, setIsHidden] = useState(true);
+  const [showPostsOrPhotos, setShowPostsOrPhotos] = useState(true);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [addImage, setAddImage] = useState('');
 
   // TODO: This part is for a test and will be changed lately.
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500);
-    return () => clearTimeout(timer);
-  }, []);
+  useDelayedAction(() => setLoading(false), 2500);
+  const fetchData = useCallback(async () => {
+    const result = await getDataStorage('loggedIn');
+    setLoggedIn(result);
+  }, [setLoggedIn]);
 
-  // TODO: This part is for a test and will be changed lately.
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await getDataStorage('loggedIn');
-      setLoggedIn(result);
-    };
     fetchData();
-  }, [navigation, setLoggedIn]);
+  }, [navigation, fetchData]);
 
-  const selectFile = () => {
+  const selectFile = useCallback(() => {
     const options = {
       saveToPhotos: true,
       mediaType: 'photo',
@@ -52,12 +48,12 @@ const Profile = ({navigation}) => {
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
       setImageUrl(url);
-      setArrayImage([
+      setArrayImages([
         ...arrayImages,
         {id: arrayImages.length + 1, url: url, isChecked: false},
       ]);
     });
-  };
+  }, [arrayImages]);
 
   const accessCamera = async () => await requestCameraPermission(selectFile);
 
@@ -89,10 +85,9 @@ const Profile = ({navigation}) => {
         accessCamera={accessCamera}
       />
       <ToggleSwitch
-        feeds={feeds}
         loading={loading}
-        showHide={isHidden}
-        setShowHide={setIsHidden}
+        showPostsOrPhotos={showPostsOrPhotos}
+        setShowPostsOrPhotos={setShowPostsOrPhotos}
         navigation={navigation}
       />
       <PermissionModal
@@ -108,4 +103,4 @@ Profile.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default Profile;
+export default memo(Profile);

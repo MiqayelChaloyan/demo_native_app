@@ -1,12 +1,17 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
-import { theme } from '../../assets/theme/theme';
+import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
 import styles from './style';
 
-const EvaluationModal = ({ isModalVisible, navigation, handleClose, onAskMeLaterClicked }) => {
+const EvaluationModal = ({
+  isModalVisible,
+  navigation,
+  handleClose,
+  onAskMeLaterClicked,
+}) => {
   const starsCount = [1, 2, 3, 4, 5];
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
@@ -15,6 +20,19 @@ const EvaluationModal = ({ isModalVisible, navigation, handleClose, onAskMeLater
     setActiveStarsColor(true);
     setStarsPlaced(count);
   };
+  const handleNavigateToOptions = () => navigation.navigate('Options');
+  // const handleCloseModal = () => setModalVisible(false);
+  const renderItem = ({item: starPlacedNumber}) => (
+    <TouchableOpacity onPress={() => changeColorOfStars(starPlacedNumber)}>
+      <StarIcon
+        fill={
+          activeStarsColor && starPlacedNumber <= numberOfStarsPlaced
+            ? theme.colors.orange
+            : theme.colors.cool_gray
+        }
+      />
+    </TouchableOpacity>
+  );
 
   useEffect(() => {
     setStarsPlaced(0);
@@ -38,13 +56,13 @@ const EvaluationModal = ({ isModalVisible, navigation, handleClose, onAskMeLater
             <FlatList
               data={starsCount}
               contentContainerStyle={styles.starsContainer}
-              renderItem={({ item: starPlacedNumber }) => (
+              renderItem={({item: starPlacedNumber}) => (
                 <TouchableOpacity
                   onPress={() => changeColorOfStars(starPlacedNumber)}>
                   <StarIcon
                     fill={
                       activeStarsColor &&
-                        starPlacedNumber <= numberOfStarsPlaced
+                      starPlacedNumber <= numberOfStarsPlaced
                         ? theme.colors.orange
                         : theme.colors.cool_gray
                     }
@@ -69,7 +87,6 @@ const EvaluationModal = ({ isModalVisible, navigation, handleClose, onAskMeLater
             <View style={styles.button}>
               <Text style={styles.buttonText}>I love it!</Text>
             </View>
-
           </TouchableOpacity>
           <View>
             <TouchableOpacity onPress={handleClose}>

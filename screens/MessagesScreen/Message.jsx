@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text} from 'react-native';
 import styles from './style';
@@ -33,4 +34,4 @@ Message.propTypes = {
   message: PropTypes.string,
 };
 
-export default Message;
+export default memo(Message);

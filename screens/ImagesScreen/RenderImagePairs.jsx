@@ -1,11 +1,10 @@
+import {useContext, useEffect, useMemo, useState} from 'react';
 import PropTypes from 'prop-types';
-import {useContext, useMemo, useEffect} from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
 import {GlobalDataContext} from '../../contexts/context';
 import CheckIcon from '../../assets/icons/Check.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import styles from './style';
-import {useState} from 'react';
 
 const Row = ({children}) => <View style={styles.row}>{children}</View>;
 

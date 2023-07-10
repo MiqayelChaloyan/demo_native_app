@@ -6,6 +6,7 @@ import {
   verticalScale,
 } from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
+import {memo} from 'react';
 
 const MarketSkeletonItem = () => {
   return (
@@ -39,4 +40,4 @@ const MarketSkeletonItem = () => {
   );
 };
 
-export default MarketSkeletonItem;
+export default memo(MarketSkeletonItem);

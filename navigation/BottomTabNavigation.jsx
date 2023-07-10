@@ -1,3 +1,4 @@
+import React, {memo, useContext} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIcon from '../assets/icons/Home.svg';
 import ProfileIcon from '../assets/icons/Profile.svg';
@@ -10,12 +11,16 @@ import PageNavigation from './PageNavigator';
 import AllUsersListScreen from '../screens/AllUsersListScreen/index';
 import AuthNavigation from './AuthNavigation';
 import {theme} from '../assets/theme/theme';
-import {useContext} from 'react';
 import {GlobalDataContext} from '../contexts/context';
 
 const Tab = createBottomTabNavigator();
-export default function BottomTabNavigation() {
+function BottomTabNavigation() {
   const {loggedIn} = useContext(GlobalDataContext);
+  const getIconProps = focused => ({
+    width: horizontalScale(25),
+    height: verticalScale(25),
+    fill: focused ? theme.colors.primary_green : theme.colors.cool_gray,
+  });
 
   return (
     <Tab.Navigator
@@ -31,15 +36,7 @@ export default function BottomTabNavigation() {
         component={PageNavigation}
         options={{
           title: '',
-          tabBarIcon: ({focused}) => (
-            <HomeIcon
-              width={horizontalScale(25)}
-              height={verticalScale(25)}
-              fill={
-                focused ? theme.colors.primary_green : theme.colors.cool_gray
-              }
-            />
-          ),
+          tabBarIcon: ({focused}) => <HomeIcon {...getIconProps(focused)} />,
         }}
       />
       {loggedIn ? (
@@ -50,15 +47,7 @@ export default function BottomTabNavigation() {
             options={{
               title: '',
               tabBarIcon: ({focused}) => (
-                <MessagesIcon
-                  width={horizontalScale(25)}
-                  height={verticalScale(25)}
-                  fill={
-                    focused
-                      ? theme.colors.primary_green
-                      : theme.colors.cool_gray
-                  }
-                />
+                <MessagesIcon {...getIconProps(focused)} />
               ),
             }}
           />
@@ -68,15 +57,7 @@ export default function BottomTabNavigation() {
             options={{
               title: '',
               tabBarIcon: ({focused}) => (
-                <ProfileIcon
-                  width={horizontalScale(25)}
-                  height={verticalScale(25)}
-                  fill={
-                    focused
-                      ? theme.colors.primary_green
-                      : theme.colors.cool_gray
-                  }
-                />
+                <ProfileIcon {...getIconProps(focused)} />
               ),
             }}
           />
@@ -86,15 +67,7 @@ export default function BottomTabNavigation() {
             options={{
               title: '',
               tabBarIcon: ({focused}) => (
-                <SupportIcon
-                  width={horizontalScale(25)}
-                  height={verticalScale(25)}
-                  fill={
-                    focused
-                      ? theme.colors.primary_green
-                      : theme.colors.cool_gray
-                  }
-                />
+                <SupportIcon {...getIconProps(focused)} />
               ),
             }}
           />
@@ -106,13 +79,7 @@ export default function BottomTabNavigation() {
           options={{
             title: '',
             tabBarIcon: ({focused}) => (
-              <ProfileIcon
-                width={horizontalScale(25)}
-                height={verticalScale(25)}
-                fill={
-                  focused ? theme.colors.primary_green : theme.colors.cool_gray
-                }
-              />
+              <ProfileIcon {...getIconProps(focused)} />
             ),
           }}
         />
@@ -120,3 +87,5 @@ export default function BottomTabNavigation() {
     </Tab.Navigator>
   );
 }
+
+export default memo(BottomTabNavigation);

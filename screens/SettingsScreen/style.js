@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.3,
     borderColor: theme.colors.cool_gray,
     marginBottom: verticalScale(16),
     paddingVertical: verticalScale(8),

@@ -1,57 +1,54 @@
-import { useRoute } from '@react-navigation/native';
+import {memo, useState} from 'react';
+import {useRoute} from '@react-navigation/native';
 import PropTypes from 'prop-types';
-import { FlatList, View } from 'react-native';
-import { verticalScale } from '../../assets/metrics/Metrics';
-import Photos from '../../screens/ProfileScreen/page/Photos/Photos';
-import SkeletonPhotos from '../Skeleton/SkeletonPhotos';
-import SkeletonPosts from '../Skeleton/SkeletonPosts';
-import Warning from '../Warning/Warning';
-import FeedItem from './FeedItem';
+import {FlatList, View} from 'react-native';
 import styles from './style';
+import Search from '../Search/Search';
+import Warning from '../Warning/Warning';
+import useDataFromAPI from '../../customHooks/UseDataFromAPI';
+import useDataForUpdate from '../../customHooks/useDataForUpdate';
+import renderSwitchValue from './renderSwitchValue';
 
-const FeedList = ({ state, navigation, loading, showHide, screen }) => {
+const FeedList = ({navigation, loading, showPostsOrPhotos}) => {
   const route = useRoute();
+  const [feedData, setFeedData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  const renderSwitchValue = (item, index) => {
-    if (route.name === 'Profile') {
-      if (showHide) {
-        return loading ? (
-          <SkeletonPosts />
-        ) : (
-          <FeedItem item={item} itemIndex={index} navigation={navigation} />
-        );
-      } else {
-        return loading ? <SkeletonPhotos /> : <Photos item={item} />;
-      }
-    } else {
-      return loading ? (
-        <SkeletonPosts />
-      ) : (
-        <FeedItem item={item} itemIndex={index} navigation={navigation} />
-      );
-    }
-  };
+  const {data, error} = useDataFromAPI('feeds');
+
+  useDataForUpdate(data, setFeedData, error);
+
+  const dataOfList = route.name === 'Feed' ? filteredData : feedData;
   return (
-    <View
-      style={[
-        styles.contentsBlockContainer]}>
-      <FlatList
-        data={state}
-        ListEmptyComponent={<Warning />}
-        key={item => item.id}
-        keyExtractor={item => item.id}
-        renderItem={({ item, index }) => renderSwitchValue(item, index)}
-      />
-    </View>
+    <>
+      {route.name === 'Feed' && (
+        <Search list={feedData} setState={setFilteredData} keyword="title" />
+      )}
+      <View style={styles.contentsBlockContainer}>
+        <FlatList
+          data={dataOfList}
+          ListEmptyComponent={<Warning />}
+          keyExtractor={item => item.id}
+          renderItem={({item, index}) =>
+            renderSwitchValue(
+              item,
+              index,
+              navigation,
+              loading,
+              showPostsOrPhotos,
+              route,
+            )
+          }
+        />
+      </View>
+    </>
   );
 };
 
 FeedList.propTypes = {
-  state: PropTypes.array,
   navigation: PropTypes.object,
   loading: PropTypes.bool,
-  showHide: PropTypes.bool,
-  screen: PropTypes.string,
+  showPostsOrPhotos: PropTypes.bool,
 };
 
-export default FeedList;
+export default memo(FeedList);

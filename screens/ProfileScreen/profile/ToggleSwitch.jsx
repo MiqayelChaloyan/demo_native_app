@@ -1,3 +1,4 @@
+import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import SwitchSelector from 'react-native-switch-selector';
@@ -6,13 +7,23 @@ import FeedList from '../../../components/FeedList/FeedList';
 import {theme} from '../../../assets/theme/theme';
 import styles from './style';
 
-const ToggleSwitch = ({ feeds, loading, showHide, setShowHide, navigation }) => {
+const ToggleSwitch = ({
+  loading,
+  showPostsOrPhotos,
+  setShowPostsOrPhotos,
+  navigation,
+}) => {
+  const options = [
+    {label: 'Posts', value: true},
+    {label: 'Photos', value: false},
+  ];
+  const toggleSwitch = useCallback(value => setShowPostsOrPhotos(value), []);
   return (
     <View style={styles.listContainer}>
       <View style={styles.switchContainer}>
         <SwitchSelector
           initial={0}
-          onPress={value => setShowHide(value)}
+          onPress={toggleSwitch}
           textColor={theme.colors.cool_gray}
           selectedColor={theme.colors.primary_green}
           backgroundColor={theme.colors.light_gray}
@@ -24,21 +35,14 @@ const ToggleSwitch = ({ feeds, loading, showHide, setShowHide, navigation }) => 
           fontSize={moderateScale(16)}
           valuePadding={verticalScale(2)}
           hasPadding
-          options={[
-            { label: 'Posts', value: true },
-            { label: 'Photos', value: false },
-          ]}
+          options={options}
         />
       </View>
-      <View style={styles.containerProfileList}>
-        <FeedList
-          state={feeds}
-          navigation={navigation}
-          loading={loading}
-          showHide={showHide}
-          screen="Profile"
-        />
-      </View>
+      <FeedList
+        navigation={navigation}
+        loading={loading}
+        showPostsOrPhotos={showPostsOrPhotos}
+      />
     </View>
   );
 };
@@ -46,9 +50,9 @@ const ToggleSwitch = ({ feeds, loading, showHide, setShowHide, navigation }) => 
 ToggleSwitch.propTypes = {
   feeds: PropTypes.array,
   loading: PropTypes.bool,
-  showHide: PropTypes.bool,
-  setShowHide: PropTypes.func,
+  showPostsOrPhotos: PropTypes.bool,
+  setShowPostsOrPhotos: PropTypes.func,
   navigation: PropTypes.object,
 };
 
-export default ToggleSwitch;
+export default memo(ToggleSwitch);

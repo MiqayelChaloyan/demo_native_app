@@ -26,9 +26,9 @@ function GlobalData({children}) {
   ]);
 
   const [feeds, setFeeds] = useState([]);
-  const [arrayImages, setArrayImage] = useState([]);
+  const [arrayImages, setArrayImages] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [userData, setUserData] = useState({
     name: '',
     email: '',
@@ -45,7 +45,7 @@ function GlobalData({children}) {
         messages,
         settings,
         arrayImages,
-        setArrayImage,
+        setArrayImages,
         imageUrl,
         setImageUrl,
         userData,
