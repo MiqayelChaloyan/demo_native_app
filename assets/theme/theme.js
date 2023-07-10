@@ -13,6 +13,7 @@ const palette = {
   transparent: 'transparent',
   orange: '#FFB84E',
   blue: '#59d4b7',
+  grey: 'rgba(0, 0, 0, 0.5)',
 };
 
 export const theme = {
@@ -29,6 +30,7 @@ export const theme = {
     transparent: palette.transparent,
     orange: palette.orange,
     light_blue: palette.blue,
+    light_grey: palette.grey,
   },
   textVariants: {
     SemiBold: {

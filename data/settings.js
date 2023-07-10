@@ -12,7 +12,7 @@ const settings = [
     key: 'account',
     icon: AccountIcon,
     title: 'Account',
-    onPress: () => Alert.alert('Navigated to Account page'),
+    onPress: navigation => navigation.navigate('AccountSettings'),
   },
   {
     key: 'notifications',

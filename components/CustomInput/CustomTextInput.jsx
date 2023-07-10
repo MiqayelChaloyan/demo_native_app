@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {useEffect} from 'react';
-import {TextInput, Text} from 'react-native';
+import {TextInput, Text, View} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import useDelayDebounce from '../../customHooks/useDebounce';
 import styles from './style';
@@ -16,20 +16,23 @@ const CustomTextInput = ({
   secureTextEntry,
   touched,
   errors,
+  style
 }) => {
   const [inputValue, setInputValue] = useDelayDebounce('', 500);
 
   useEffect(() => {
     onChangeText(inputValue);
-  }, [inputValue])
+  }, [inputValue]);
+
+  const inputStyle = style ? style : styles.input;
 
   return (
-    <>
+    <View style={styles.container}>
       <TextInput
         name={name}
         placeholder={placeholder}
         placeholderTextColor={theme.colors.cool_gray}
-        style={styles.input}
+        style={inputStyle}
         variant={'standard'}
         onChangeText={setInputValue}
         onBlur={onBlur}
@@ -41,7 +44,7 @@ const CustomTextInput = ({
       {touched && errors && (
         <Text style={styles.inputError}>{errors}</Text>
       )}
-    </>
+    </View>
   );
 };
 
@@ -56,6 +59,7 @@ CustomTextInput.propTypes = {
   secureTextEntry: PropTypes.bool,
   touched: PropTypes.bool,
   errors: PropTypes.string,
+  style: PropTypes.object,
 };
 
 CustomTextInput.defaultProps = {
@@ -65,6 +69,7 @@ CustomTextInput.defaultProps = {
   autoCorrect: false,
   secureTextEntry: false,  
   keyboardType: "default",
+  style: null,
 };
 
 export default React.memo(CustomTextInput);
