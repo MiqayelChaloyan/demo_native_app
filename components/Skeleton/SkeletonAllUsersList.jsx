@@ -12,11 +12,12 @@ const SkeletonAllUsersList = () => {
       borderRadius={moderateScale(4)}
       speed={1500}
       backgroundColor={theme.colors.light_gray}>
-       <SkeletonPlaceholder.Item
-          width={horizontalScale(150)}
-          height={verticalScale(230)}
-          borderRadius={moderateScale(20)}
-        />
+      <SkeletonPlaceholder.Item
+        width={horizontalScale(150)}
+        height={verticalScale(240)}
+        borderRadius={moderateScale(20)}
+        marginHorizontal={horizontalScale(12)}
+      />
     </SkeletonPlaceholder>
   );
 };

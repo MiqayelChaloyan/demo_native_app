@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import {memo} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import CancelIcon from '../../../../assets/icons/Cancel.svg';
 import {
@@ -42,4 +42,4 @@ ProfileModal.propTypes = {
   setAddImage: PropTypes.func,
 };
 
-export default React.memo(ProfileModal);
+export default memo(ProfileModal);

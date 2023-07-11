@@ -1,23 +1,39 @@
-import {useState, memo, useContext} from 'react';
+import {useState, memo, useContext, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import Header from '../../components/Header/Header';
 import Search from '../../components/Search/Search';
 import OutletList from './OutletList';
-import styles from './style';
 import SwiperList from './SwiperList';
 import useDataFromAPI from '../../customHooks/UseDataFromAPI';
 import useDataForUpdate from '../../customHooks/useDataForUpdate';
 import {GlobalDataContext} from '../../contexts/context';
+import styles from './style';
+
+// TODO: In the future, it is planned to transform the SwiperList
+// data, and show only 3 elements - previous , current and next .
+
+const getFilteredData = (data, index) => {
+  if (!data || data.length === 0) {
+    return null;
+  }
+
+  const length = data.length;
+  const previousIndex = (index - 1 + length) % length;
+  const nextIndex = (index + 1) % length;
+  return [data[previousIndex], data[index], data[nextIndex]];
+};
 
 const ContentScreen = ({navigation, route}) => {
   const {itemIndex} = route.params;
   const [filteredData, setFilteredData] = useState([]);
   const [feedData, setFeedData] = useState([]);
+  const [emptyDataMessage, setEmptyDataMessage] = useState('');
 
   const {data, error} = useDataFromAPI('feeds');
   useDataForUpdate(data, setFeedData, error);
   const {feeds} = useContext(GlobalDataContext);
+  const result = getFilteredData(feeds, itemIndex);
 
   return (
     <View style={styles.contentContainer}>
@@ -30,10 +46,15 @@ const ContentScreen = ({navigation, route}) => {
           left="Back"
           right="Filter"
         />
-        <Search list={feedData} setState={setFilteredData} keyword="title" />
+        <Search
+          list={feedData}
+          setState={setFilteredData}
+          keyword="title"
+          setEmptyDataMessage={setEmptyDataMessage}
+        />
       </View>
-      <SwiperList itemIndex={itemIndex} data={feeds} />
-      <OutletList data={filteredData} />
+      <SwiperList itemIndex={itemIndex} data={result} />
+      <OutletList data={filteredData} emptyDataMessage={emptyDataMessage} />
     </View>
   );
 };

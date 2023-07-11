@@ -26,7 +26,7 @@ const SignUpScreen = ({navigation}) => {
   const checkBoxText =
     'I would like to receive your newsletter and other promotional information.';
   const privacyPolicyText = 'Sipining up you accept the Privacy Policy.';
-  const {setUserData, setLoggedIn, setArrayImage} =
+  const {setUserData, setLoggedIn, setArrayImages} =
     useContext(GlobalDataContext);
 
   const {
@@ -48,16 +48,12 @@ const SignUpScreen = ({navigation}) => {
     },
     validationSchema: signUpValidationSchema,
     onSubmit: async data => {
-      console.log(data, '>>>>>>>>>>>>>>>>');
       // TODO: This part is for a test and will be changed lately.
       if (data.email && data.password && data.name && data.isPrivacyPolicy) {
-        console.log('>>>>>>>>>>>>>>>>');
         setUserData({...data});
-        setArrayImage([]);
+        setArrayImages([]);
         await setDataStorage('loggedIn', true);
         setLoggedIn(true);
-        navigation.navigate('Profile');
-
         Alert.alert('Login successful');
       }
     },
@@ -69,11 +65,11 @@ const SignUpScreen = ({navigation}) => {
     };
   }, []);
 
-  // const handleTouchOnField = useCallback(field => {
-  //   return () => {
-  //     handleBlur(field);
-  //   };
-  // }, []);
+  const handleBlurField = useCallback(field => {
+    return () => {
+      handleBlur(field);
+    };
+  }, []);
 
   const togglePasswordVisibility = useCallback(() => {
     setHidePassword(!hidePassword);
@@ -125,7 +121,7 @@ const SignUpScreen = ({navigation}) => {
                   name="name"
                   placeholder="Name"
                   onChangeText={handleChange('name')}
-                  onBlur={() => handleBlur('name')}
+                  onBlur={handleBlurField('name')}
                   autoCapitalize="none"
                   autoCorrect={false}
                   secureTextEntry={false}
@@ -138,7 +134,7 @@ const SignUpScreen = ({navigation}) => {
                   name="email"
                   placeholder="Email"
                   onChangeText={handleChange('email')}
-                  onBlur={() => handleBlur('email')}
+                  onBlur={handleBlurField('email')}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -153,7 +149,7 @@ const SignUpScreen = ({navigation}) => {
                     name="password"
                     placeholder="Password"
                     onChangeText={handleChange('password')}
-                    onBlur={() => handleBlur('password')}
+                    onBlur={handleBlurField('password')}
                     keyboardType={null}
                     autoCapitalize="none"
                     autoCorrect={false}

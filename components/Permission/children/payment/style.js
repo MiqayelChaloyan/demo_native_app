@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '../../../../assets/metrics/Metrics';
-import { theme } from '../../../../assets/theme/theme';
+import {theme} from '../../../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   root: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     ...theme.textVariants.Regular,
   },
-  contain:  {
+  contain: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

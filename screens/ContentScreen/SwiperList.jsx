@@ -8,6 +8,7 @@ import styles from './style';
 
 const SwiperList = ({itemIndex, data}) => {
   const [keyboardStatus, setKeyboardStatus] = useState(true);
+
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardStatus(false);
@@ -29,7 +30,7 @@ const SwiperList = ({itemIndex, data}) => {
             autoplay
             autoplayDelay={3}
             autoplayLoop
-            index={itemIndex}
+            index={1}
             showPagination
             paginationStyle={styles.paginationStyle}
             paginationStyleItemInactive={styles.dotStyle}

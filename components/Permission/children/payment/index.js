@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types';
-import React, {useContext} from 'react';
+import {memo, useContext} from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {determineCardType} from '../../../../utils/CreditCardTypeUtils';
 import {GlobalDataContext} from '../../../../contexts/context';
 import styles from './style';
 
 const PaymentModal = ({setModalVisible, handleRemove, id}) => {
-  const { creditCardData } = useContext(GlobalDataContext);
+  const {creditCardData} = useContext(GlobalDataContext);
   const result = creditCardData.filter(item => item.id === id);
   const number = result[0].number.slice(-4);
   const url = determineCardType(result[0].number);
-
 
   return (
     <View style={styles.root}>
@@ -42,4 +41,4 @@ PaymentModal.propTypes = {
   handleRemove: PropTypes.func,
 };
 
-export default React.memo(PaymentModal);
+export default memo(PaymentModal);

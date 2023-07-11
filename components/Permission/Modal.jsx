@@ -1,6 +1,5 @@
 import {memo} from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import Modal from 'react-native-modal';
 import {theme} from '../../assets/theme/theme';
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, {useContext} from 'react';
+import {memo, useContext} from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
 import ChatIcon from '../../assets/icons/Chat.svg';
 import {theme} from '../../assets/theme/theme';
@@ -48,4 +48,4 @@ Header.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default React.memo(Header);
+export default memo(Header);

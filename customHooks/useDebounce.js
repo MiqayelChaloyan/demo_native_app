@@ -2,11 +2,10 @@ import {useState, useEffect} from 'react';
 
 const useDelayDebounce = (initialValue, delay) => {
   const [value, setValue] = useState(initialValue);
-  
+
   let delayDebounceFn = null;
 
   useEffect(() => {
-    
     return () => {
       if (delayDebounceFn) {
         clearTimeout(delayDebounceFn);
@@ -30,10 +29,10 @@ const useDelayDebounce = (initialValue, delay) => {
 
 export default useDelayDebounce;
 
-// This useDelayDebounce hook is used to delay the execution of a 
+// This useDelayDebounce hook is used to delay the execution of a
 // function based on the provided delay value.
 
-// The hook is used to delay the execution of handleInputText function 
-// by 500 milliseconds each time the input value changes. 
-// The final value is stored in the value state variable and can 
+// The hook is used to delay the execution of handleInputText function
+// by 500 milliseconds each time the input value changes.
+// The final value is stored in the value state variable and can
 // be accessed within the component.

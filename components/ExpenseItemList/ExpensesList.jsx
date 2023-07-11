@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import {memo} from 'react';
 import {FlatList, View} from 'react-native';
 import ExpenseItemList from './ExpenseItemList';
 import styles from './style';
@@ -10,7 +10,7 @@ const ExpenseList = ({data}) => {
       <FlatList
         data={data}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={(props) => <ExpenseItemList {...props} />}
+        renderItem={props => <ExpenseItemList {...props} />}
       />
     </View>
   );
@@ -20,4 +20,4 @@ ExpenseList.propTypes = {
   data: PropTypes.array.isRequired,
 };
 
-export default React.memo(ExpenseList);
+export default memo(ExpenseList);

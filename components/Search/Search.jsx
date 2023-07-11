@@ -19,12 +19,10 @@ const Search = ({list, setState, keyword, setEmptyDataMessage}) => {
       return param.indexOf(searchItemValue.toLowerCase()) > -1;
     });
 
-    if (result.length) {
-      return setState(result);
-    }
+    setState(result);
 
-    setEmptyDataMessage(searchItemValue);
-  }, [list, setState, keyword, searchItemValue]);
+    return setEmptyDataMessage(searchItemValue);
+  }, [searchItemValue, list, setEmptyDataMessage, setState, keyword]);
 
   useDelayedAction(handleSearch, 1000);
   const handleChangeText = useCallback(value => setSearchItemValue(value), []);

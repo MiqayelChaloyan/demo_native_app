@@ -59,14 +59,11 @@ const SignInScreen = ({navigation}) => {
     return true;
   };
 
-  const handleTouchOnField = useCallback(
-    field => {
-      return () => {
-        handleBlur(field);
-      };
-    },
-    [handleBlur],
-  );
+  const handleBlurField = useCallback(field => {
+    return () => {
+      handleBlur(field);
+    };
+  }, []);
 
   const togglePasswordVisibility = useCallback(() => {
     setHidePassword(!hidePassword);
@@ -96,7 +93,7 @@ const SignInScreen = ({navigation}) => {
                   name="email"
                   placeholder="Email"
                   onChangeText={handleChange('email')}
-                  onBlur={handleTouchOnField('email')}
+                  onBlur={handleBlurField('email')}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -111,7 +108,7 @@ const SignInScreen = ({navigation}) => {
                     name="password"
                     placeholder="Password"
                     onChangeText={handleChange('password')}
-                    onBlur={handleTouchOnField('password')}
+                    onBlur={handleBlurField('password')}
                     keyboardType={null}
                     autoCapitalize="none"
                     autoCorrect={false}

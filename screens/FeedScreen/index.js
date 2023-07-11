@@ -83,7 +83,6 @@ const FeedScreen = ({navigation}) => {
             handleClose={handleCloseModal}
             onAskMeLaterClicked={onAskMeLaterClicked}
           />
-          <FeedList navigation={navigation} />
         </>
       )}
     </View>

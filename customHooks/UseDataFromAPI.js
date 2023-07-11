@@ -5,6 +5,7 @@ const useDataFromAPI = keyword => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
   const {setFeeds} = useContext(GlobalDataContext);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

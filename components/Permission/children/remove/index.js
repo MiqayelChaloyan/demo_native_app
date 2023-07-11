@@ -1,4 +1,4 @@
-import {useCallback} from 'react';
+import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity} from 'react-native';
 import CancelIcon from '../../../../assets/icons/Cancel.svg';
@@ -43,7 +43,7 @@ const UsersMessagesModal = ({setDeleteFriendsList}) => {
 };
 
 UsersMessagesModal.propTypes = {
-  setAnswer: PropTypes.func,
+  setDeleteFriendsList: PropTypes.func,
 };
 
-export default UsersMessagesModal;
+export default memo(UsersMessagesModal);

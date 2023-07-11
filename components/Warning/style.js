@@ -1,11 +1,14 @@
 import {StyleSheet} from 'react-native';
-import {horizontalScale, moderateScale, verticalScale} from '../../assets/metrics/Metrics';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 
 const styles = StyleSheet.create({
   warning: {
     width: '100%',
-    marginTop: verticalScale(10),
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -29,7 +32,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: verticalScale(50),
     ...theme.textVariants.Regular,
-  }
+  },
 });
 
 export default styles;

@@ -16,7 +16,7 @@ const CustomTextInput = ({
   secureTextEntry,
   touched,
   errors,
-  style
+  style,
 }) => {
   const [inputValue, setInputValue] = useDelayDebounce('', 500);
 
@@ -41,9 +41,7 @@ const CustomTextInput = ({
         autoCorrect={autoCorrect}
         secureTextEntry={secureTextEntry}
       />
-      {touched && errors && (
-        <Text style={styles.inputError}>{errors}</Text>
-      )}
+      {touched && errors && <Text style={styles.inputError}>{errors}</Text>}
     </View>
   );
 };
@@ -63,12 +61,12 @@ CustomTextInput.propTypes = {
 };
 
 CustomTextInput.defaultProps = {
-  name: "",
-  placeholder: "",
-  autoCapitalize: "none",
+  name: '',
+  placeholder: '',
+  autoCapitalize: 'none',
   autoCorrect: false,
-  secureTextEntry: false,  
-  keyboardType: "default",
+  secureTextEntry: false,
+  keyboardType: 'default',
   style: null,
 };
 

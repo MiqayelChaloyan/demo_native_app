@@ -77,6 +77,9 @@ const styles = StyleSheet.create({
     height: verticalScale(280),
     width: '100%',
   },
+  userInfo: {
+    marginVertical: verticalScale(15),
+  },
 });
 
 export default styles;
