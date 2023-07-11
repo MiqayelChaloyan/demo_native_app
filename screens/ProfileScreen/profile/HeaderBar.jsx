@@ -16,7 +16,7 @@ const HeaderBar = ({
   accessCamera,
 }) => {
   const handlePressImageOrAccessCamera = useCallback(() => {
-    if (arrayImages.length !== 0) {
+    if (arrayImages.length >= 0) {
       setModalVisible(true);
     } else {
       accessCamera();

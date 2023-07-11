@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
     marginVertical: verticalScale(20),
     justifyContent: 'center',
     flexDirection: 'row',
-    marginHorizontal: horizontalScale(80),
-    alignItems: 'stretch',
+    // marginHorizontal: horizontalScale(80),
+    // alignItems: 'stretch',
   },
   messages: {
     top: verticalScale(10),

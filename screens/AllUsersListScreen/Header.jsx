@@ -24,12 +24,14 @@ const Header = ({
       <View>
         <Image style={styles.userImage} source={userImageUrl} />
       </View>
-      <Search
-        list={data}
-        setState={setFilteredUsersData}
-        keyword="fullName"
-        setEmptyDataMessage={setEmptyDataMessage}
-      />
+      <View style={{width: 200}}>
+        <Search
+          list={data}
+          setState={setFilteredUsersData}
+          keyword="fullName"
+          setEmptyDataMessage={setEmptyDataMessage}
+        />
+      </View>
       <TouchableOpacity
         onPress={() => navigation.navigate('Messages')}
         style={styles.messages}>

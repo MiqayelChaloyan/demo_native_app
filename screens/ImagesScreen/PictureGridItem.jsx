@@ -17,15 +17,17 @@ const PictureGridItem = ({image, changeProfileImage, isModalVisible}) => {
   }, []);
 
   const handlePress = () => {
-    if(arrayImages.length === 1 && arrayImages[0].imageSource === imageUrl) {
+    if (arrayImages.length === 1 && arrayImages[0].imageSource === imageUrl) {
       return;
     }
     changeProfileImage(id);
   };
 
   return (
-    <TouchableOpacity style={[styles.imageBlock, { flex: flexSize }]} onPress={handlePress}>
-      <Image source={{ uri: imageSource }} style={styles.image} />
+    <TouchableOpacity
+      style={[styles.imageBlock, {flex: flexSize}]}
+      onPress={handlePress}>
+      <Image source={{uri: imageSource}} style={styles.image} />
       {isChecked && isModalVisible && (
         <View style={styles.checked}>
           <View style={styles.checkedBox}>

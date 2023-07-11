@@ -9,7 +9,7 @@ function GlobalData({children}) {
   const [feeds, setFeeds] = useState([]);
   const [arrayImages, setArrayImages] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isChangeStatusBar, setChangeStatusBar] = useState(false);
   const [creditCardData, setCreditCardData] = useState([]);
   const [userData, setUserData] = useState({

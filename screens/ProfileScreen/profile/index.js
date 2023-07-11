@@ -14,7 +14,7 @@ import styles from './style';
 const Profile = ({navigation}) => {
   const {
     arrayImages,
-    setArrayImage,
+    setArrayImages,
     imageUrl,
     setImageUrl,
     userData,
@@ -41,9 +41,10 @@ const Profile = ({navigation}) => {
 
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
+
       if (url) {
         setImageUrl(url);
-        setArrayImage([
+        setArrayImages([
           ...arrayImages,
           {id: arrayImages.length + 1, imageSource: url, isChecked: false},
         ]);

@@ -14,7 +14,8 @@ export const getDataStorage = async key => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
-      return JSON.parse(value);
+      const parsedValue = JSON.parse(value);
+      return parsedValue;
     }
   } catch (error) {
     console.log('Error retrieving data:', error);

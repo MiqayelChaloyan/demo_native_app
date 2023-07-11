@@ -50,15 +50,16 @@ const SignUpScreen = ({navigation}) => {
     onSubmit: async data => {
       console.log(data, '>>>>>>>>>>>>>>>>');
       // TODO: This part is for a test and will be changed lately.
-      // if (data.email && data.password && data.name && data.isPrivacyPolicy) {
-      //   setUserData({...data});
-      //   setArrayImage([]);
-      //   await setDataStorage('loggedIn', true);
-      //   setLoggedIn(true);
-      //   navigation.navigate('Profile');
+      if (data.email && data.password && data.name && data.isPrivacyPolicy) {
+        console.log('>>>>>>>>>>>>>>>>');
+        setUserData({...data});
+        setArrayImage([]);
+        await setDataStorage('loggedIn', true);
+        setLoggedIn(true);
+        navigation.navigate('Profile');
 
-      //   Alert.alert('Login successful');
-      // }
+        Alert.alert('Login successful');
+      }
     },
   });
 

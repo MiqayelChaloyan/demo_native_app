@@ -27,7 +27,7 @@ const ExpenseItemList = props => {
 };
 
 ExpenseItemList.propTypes = {
-  props: PropTypes.object.isRequired,
+  props: PropTypes.object,
 };
 
 export default memo(ExpenseItemList);

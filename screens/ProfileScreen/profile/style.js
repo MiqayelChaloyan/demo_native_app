@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
     width: horizontalScale(343),
   },
   containerProfileList: {
-    height:  verticalScale(280),
-    width: '100%'
-  }
+    height: verticalScale(280),
+    width: '100%',
+  },
 });
 
 export default styles;

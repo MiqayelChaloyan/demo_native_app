@@ -11,7 +11,7 @@ const MarketItem = ({item, navigation}) => {
       params: {item},
     });
   }, [item]);
-  
+
   return (
     <View>
       <TouchableOpacity onPress={navigateTo}>

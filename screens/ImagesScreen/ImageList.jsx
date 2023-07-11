@@ -9,7 +9,8 @@ import useEffectAfterMount from '../../customHooks/useEffectAfterMount';
 import styles from './style';
 
 const ImageList = ({navigation}) => {
-  const {arrayImages, setArrayImage, setImageUrl} = useContext(GlobalDataContext);
+  const {arrayImages, setArrayImages, setImageUrl} =
+    useContext(GlobalDataContext);
   const [action, setAction] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
   const [photoId, setPhotoId] = useState(null);
@@ -30,14 +31,14 @@ const ImageList = ({navigation}) => {
           }
           return item.id !== photoId;
         });
-        setArrayImage(updatedArrayImages);
+        setArrayImages(updatedArrayImages);
         break;
       default:
         const updated = arrayImages.map(item => ({
           ...item,
           isChecked: !item.isChecked,
         }));
-        setArrayImage(updated);
+        setArrayImages(updated);
         break;
     }
 
@@ -53,14 +54,23 @@ const ImageList = ({navigation}) => {
     <>
       {arrayImages.length ? (
         <View style={styles.app}>
-          <PictureGrid isModalVisible={isModalVisible} setModalVisible={setModalVisible} setPhotoId={setPhotoId} />
+          <PictureGrid
+            isModalVisible={isModalVisible}
+            setModalVisible={setModalVisible}
+            setPhotoId={setPhotoId}
+          />
         </View>
       ) : (
         <View style={styles.contain}>
-          <Image style={styles.empty} source={require('../../assets/images/EmptyFile.png')} />
+          <Image
+            style={styles.empty}
+            source={require('../../assets/images/EmptyFile.png')}
+          />
         </View>
       )}
-      <PermissionModal isModalVisible={isModalVisible} setModalVisible={setModalVisible}>
+      <PermissionModal
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}>
         <ImagesModal setAction={setAction} />
       </PermissionModal>
     </>

@@ -1,6 +1,6 @@
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, Image} from 'react-native';
-import React from 'react';
 import styles from './style';
 
 const Photos = ({item}) => {
@@ -16,4 +16,4 @@ Photos.propTypes = {
   item: PropTypes.object,
 };
 
-export default React.memo(Photos);
+export default memo(Photos);

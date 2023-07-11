@@ -6,7 +6,7 @@ import {FlatList} from 'react-native';
 import styles from './style';
 
 const PictureGrid = ({isModalVisible, setModalVisible, setPhotoId}) => {
-  const {arrayImages, setArrayImage} = useContext(GlobalDataContext);
+  const {arrayImages, setArrayImages} = useContext(GlobalDataContext);
 
   const changeProfileImage = id => {
     setPhotoId(id);
@@ -15,11 +15,15 @@ const PictureGrid = ({isModalVisible, setModalVisible, setPhotoId}) => {
       isChecked: item.id === id,
     }));
     setModalVisible(true);
-    setArrayImage(updatedArrayImages);
+    setArrayImages(updatedArrayImages);
   };
 
-  const renderItem = ({ item }) => (
-    <PictureGridItem image={item} changeProfileImage={changeProfileImage} isModalVisible={isModalVisible} />
+  const renderItem = ({item}) => (
+    <PictureGridItem
+      image={item}
+      changeProfileImage={changeProfileImage}
+      isModalVisible={isModalVisible}
+    />
   );
 
   const keyExtractor = (_, index) => String(index);
@@ -44,4 +48,3 @@ PictureGrid.propTypes = {
 };
 
 export default React.memo(PictureGrid);
-
