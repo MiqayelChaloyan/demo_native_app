@@ -1,22 +1,15 @@
-import { useState, useEffect } from 'react';
+import {memo} from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
-import { theme } from '../../assets/theme/theme';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Header from '../../components/Header/Header';
-import { getDataOptionsFromFile } from '../../utils/ApiUtils';
+import UserOptionsList from './UserOptionsList';
+import useDataFromAPI from '../../customHooks/UseDataFromAPI';
 import styles from './style';
 
-const UserOptionsScreen = ({ navigation }) => {
-  const [data, setData] = useState([]);
-  const [activated, setActivated] = useState(false);
+const UserOptionsScreen = ({navigation}) => {
+  const {data} = useDataFromAPI('options');
 
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDataOptionsFromFile();
-      setData(result);
-    };
-    fetchData();
-  }, []);
+  const handleNavigation = () => navigation.navigate('Feed');
 
   return (
     <View style={styles.optionsContainer}>
@@ -28,41 +21,8 @@ const UserOptionsScreen = ({ navigation }) => {
         left="Back"
         right="Next"
       />
-      <View style={styles.container}>
-        <FlatList
-          data={data}
-          contentContainerStyle={styles.starsContainer}
-          renderItem={({ item }) => (
-            <>
-              <View style={styles.options}>
-                <Text style={styles.optionsText}>{item.label}</Text>
-                <TouchableOpacity
-                  onPress={() => {
-                    setActivated(!activated);
-                    item.selected = !item.selected;
-                  }}>
-                  <View
-                    style={[
-                      {
-                        borderColor: item.selected
-                          ? theme.colors.primary_green
-                          : theme.colors.cool_gray,
-                      },
-                      styles.radioBoxContainer,
-                    ]}>
-                    {item.selected ? <View style={styles.selected} /> : null}
-                  </View>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.line} />
-            </>
-          )}
-          keyExtractor={(_, index) => index}
-        />
-      </View>
-      <TouchableOpacity onPress={() => {
-        navigation.navigate('Feed');
-      }}>
+      <UserOptionsList data={data} />
+      <TouchableOpacity onPress={handleNavigation}>
         <View style={styles.button}>
           <Text style={styles.buttonText}>I love it!</Text>
         </View>
@@ -72,7 +32,7 @@ const UserOptionsScreen = ({ navigation }) => {
 };
 
 UserOptionsScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
-export default UserOptionsScreen;
+export default memo(UserOptionsScreen);

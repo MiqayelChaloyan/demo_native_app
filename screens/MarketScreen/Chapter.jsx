@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {memo} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import VideoIcon from '../../assets/icons/Video.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
@@ -25,9 +26,9 @@ const Chapter = ({data, navigation, header}) => {
 };
 
 Chapter.propTypes = {
-  navigation: PropTypes.object,
-  data: PropTypes.array,
+  navigation: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
   header: PropTypes.string,
 };
 
-export default Chapter;
+export default memo(Chapter);

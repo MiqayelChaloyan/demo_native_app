@@ -7,6 +7,10 @@ import {
 } from '../../../assets/metrics/Metrics';
 
 const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: horizontalScale(0),
+    marginBottom: verticalScale(50),
+  },
   loginRoot: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
@@ -66,25 +70,6 @@ const styles = StyleSheet.create({
     color: theme.colors.primary_green,
     lineHeight: verticalScale(19.36),
     ...theme.textVariants.SemiBold,
-  },
-  input: {
-    width: horizontalScale(343),
-    height: verticalScale(51),
-    borderWidth: 1,
-    borderColor: theme.colors.gray,
-    padding: verticalScale(16),
-    borderRadius: moderateScale(8),
-    backgroundColor: theme.colors.light_gray,
-    paddingVertical: verticalScale(7),
-    fontSize: moderateScale(15),
-    ...theme.textVariants.Medium,
-  },
-  inputError: {
-    color: theme.colors.danger,
-    fontSize: moderateScale(11),
-    marginTop: verticalScale(7),
-    marginBottom: verticalScale(-10),
-    ...theme.textVariants.Regular,
   },
   button: {
     marginTop: verticalScale(167),

@@ -1,28 +1,32 @@
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text} from 'react-native';
 import styles from './style';
 
 const Message = ({isLeft, message}) => {
+  const selectAppropriateStyle = (right, left) => [
+    isLeft ? styles[left] : styles[right],
+  ];
+
   return (
     <View style={styles.container}>
       <View
-        style={
-          !isLeft
-            ? styles.messageContainerIsRight
-            : styles.messageContainerIsLeft
-        }>
+        style={selectAppropriateStyle(
+          'messageContainerIsLeft',
+          'messageContainerIsRight',
+        )}>
         <View style={styles.messageView}>
           <Text
             style={[
               styles.message,
-              !isLeft ? styles.messageIsRight : styles.messageIsLeft,
+              selectAppropriateStyle('messageIsLeft', 'messageIsRight'),
             ]}>
             {message}
           </Text>
         </View>
       </View>
       <View>
-        <View style={isLeft ? styles.leftArrow : styles.rightArrow} />
+        <View style={selectAppropriateStyle('leftArrow', 'rightArrow')} />
       </View>
     </View>
   );
@@ -30,7 +34,7 @@ const Message = ({isLeft, message}) => {
 
 Message.propTypes = {
   isLeft: PropTypes.bool,
-  message: PropTypes.string,
+  message: PropTypes.string.isRequired,
 };
 
-export default Message;
+export default memo(Message);

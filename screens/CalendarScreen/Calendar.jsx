@@ -1,6 +1,5 @@
-import {LocaleConfig} from 'react-native-calendars';
-import React, {useState} from 'react';
-import {Calendar} from 'react-native-calendars';
+import {LocaleConfig, Calendar} from 'react-native-calendars';
+import {memo, useState} from 'react';
 import {theme} from '../../assets/theme/theme';
 
 LocaleConfig.locales.fr = {
@@ -84,4 +83,4 @@ const CalendarComponent = () => {
   );
 };
 
-export default CalendarComponent;
+export default memo(CalendarComponent);

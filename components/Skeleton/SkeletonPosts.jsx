@@ -37,7 +37,7 @@ const SkeletonPosts = () => {
           />
         </SkeletonPlaceholder.Item>
         <SkeletonPlaceholder.Item
-          width={horizontalScale(45)}
+          width={horizontalScale(40)}
           height={verticalScale(20)}
           borderRadius={moderateScale(8)}
         />

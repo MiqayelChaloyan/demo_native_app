@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
+import {memo} from 'react';
 import {Text, View} from 'react-native';
 import {theme} from '../../assets/theme/theme';
 import styles from './style';
 import {useRoute} from '@react-navigation/native';
 
-const ExpenseItemList = ({item, index}) => {
-  let backgroundColorStyle =
+const ExpenseItemList = props => {
+  const {item, index} = props;
+  const backgroundColorStyle =
     index % 2 === 1 ? theme.colors.dark_green : theme.colors.primary_green;
   const route = useRoute();
   return (
@@ -32,8 +34,7 @@ const ExpenseItemList = ({item, index}) => {
 };
 
 ExpenseItemList.propTypes = {
-  item: PropTypes.object,
-  index: PropTypes.number,
+  props: PropTypes.object,
 };
 
-export default ExpenseItemList;
+export default memo(ExpenseItemList);

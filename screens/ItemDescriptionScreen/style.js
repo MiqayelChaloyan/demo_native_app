@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    height: verticalScale(196),
+    height: verticalScale(251),
     marginTop: verticalScale(48),
     marginBottom: verticalScale(32),
   },
   image: {
     width: '100%',
-    height: verticalScale(196),
+    height: verticalScale(250),
     borderRadius: moderateScale(8),
   },
   headDescContainer: {

@@ -21,12 +21,3 @@ export const getDataStorage = async key => {
     console.log('Error retrieving data:', error);
   }
 };
-
-export const removeItem = async key => {
-  try {
-    await AsyncStorage.removeItem(key);
-    console.log('Logout successful');
-  } catch (error) {
-    console.log(error);
-  }
-};

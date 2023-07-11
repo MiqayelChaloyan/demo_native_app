@@ -1,3 +1,4 @@
+import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {Text, TouchableOpacity, View} from 'react-native';
 import BuyIcon from '../../assets/icons/Buy.svg';
@@ -8,8 +9,15 @@ import styles from './style';
 
 const ContentItemList = ({item, index}) => {
   const navigation = useNavigation();
-  let backgroundColorStyle =
+
+  const backgroundColorStyle =
     index % 2 === 1 ? theme.colors.light_gray : theme.colors.cool_gray;
+  const navigateTo = useCallback(() => {
+    navigation.navigate({
+      name: 'Feed',
+      params: {index},
+    });
+  }, []);
 
   return (
     <View style={styles.contentItemOfList}>
@@ -17,19 +25,11 @@ const ContentItemList = ({item, index}) => {
         <View
           style={[styles.circle, {backgroundColor: backgroundColorStyle}]}
         />
-
         <View style={styles.titleContainer}>
           <Text style={styles.itemTitle}>{item.title}</Text>
         </View>
       </View>
-
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate({
-            name: 'Feed',
-            params: {index},
-          });
-        }}>
+      <TouchableOpacity onPress={navigateTo}>
         <View>
           <BuyIcon
             width={horizontalScale(45)}
@@ -47,4 +47,4 @@ ContentItemList.propTypes = {
   index: PropTypes.number,
 };
 
-export default ContentItemList;
+export default memo(ContentItemList);

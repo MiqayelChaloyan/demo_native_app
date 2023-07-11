@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {memo, useCallback} from 'react';
 import {
   View,
   Image,
@@ -14,6 +15,12 @@ import styles from './style';
 
 const ItemDescriptionScreen = ({route}) => {
   const {item} = route.params;
+
+  const handlePress = useCallback(
+    () => Alert.alert(`${item.title} was added to your cart`),
+    [],
+  );
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.itemDataBox}>
@@ -26,8 +33,7 @@ const ItemDescriptionScreen = ({route}) => {
               {item.title}
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={() => Alert.alert(`${item.title} was added to your cart`)}>
+          <TouchableOpacity onPress={handlePress}>
             <CartIcon
               width={horizontalScale(30)}
               height={verticalScale(30)}
@@ -80,7 +86,7 @@ const ItemDescriptionScreen = ({route}) => {
 };
 
 ItemDescriptionScreen.propTypes = {
-  route: PropTypes.object,
+  route: PropTypes.object.isRequired,
 };
 
-export default ItemDescriptionScreen;
+export default memo(ItemDescriptionScreen);

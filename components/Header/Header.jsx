@@ -1,6 +1,6 @@
+import {useCallback, useState, memo} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import {useState} from 'react';
 import {theme} from '../../assets/theme/theme';
 import PermissionModal from '../Permission/Modal';
 import LogoutModal from '../Permission/children/logout';
@@ -17,61 +17,60 @@ const Header = ({
   headerTextColor,
 }) => {
   const [isModalVisible, setModalVisible] = useState(false);
-  const handleLogout = () => setModalVisible(true);
+
+  const handleLogout = useCallback(() => {
+    setModalVisible(true);
+  }, []);
+
+  const handleGoBack = useCallback(() => {
+    navigation.navigate(back);
+  }, []);
+
+  const handleNavigationOrLogout = useCallback(() => {
+    if (right === 'Logout') {
+      handleLogout();
+    } else {
+      navigation.navigate(!root ? continueTo : root, {
+        screen: continueTo,
+      });
+    }
+  }, []);
+
+  const getHeaderButtonStyle = useCallback(() => {
+    const defaultColor = theme.colors.primary_green;
+
+    return [styles.headerButtonText, {color: headerTextColor || defaultColor}];
+  }, [headerTextColor]);
+
+  const getHeaderTextStyle = useCallback(() => {
+    const defaultColor = theme.colors.black;
+
+    return [styles.headerText, {color: headerTextColor || defaultColor}];
+  }, [headerTextColor]);
+  const buttonStyle = getHeaderButtonStyle();
+  const textStyle = getHeaderTextStyle();
 
   return (
     <>
       <View style={styles.headerContainer}>
         <View>
-          <TouchableOpacity onPress={() => navigation.navigate(back)}>
-            <Text
-              style={[
-                styles.headerButtonText,
-                {color: headerTextColor || theme.colors.primary_green},
-              ]}>
-              {left}
-            </Text>
+          <TouchableOpacity onPress={handleGoBack}>
+            <Text style={buttonStyle}>{left}</Text>
           </TouchableOpacity>
         </View>
         <View>
-          <Text
-            style={[
-              styles.headerText,
-              {color: headerTextColor || theme.colors.black},
-            ]}>
-            {screen}
-          </Text>
+          <Text style={textStyle}>{screen}</Text>
         </View>
         <View>
           {right && (
-            <TouchableOpacity
-              onPress={() => {
-                if (right === 'Logout') {
-                  handleLogout();
-                } else {
-                  navigation.navigate(!root ? continueTo : root, {
-                    screen: continueTo,
-                  });
-                }
-              }}>
-              <Text
-                style={[
-                  styles.headerButtonText,
-                  {
-                    color: headerTextColor || theme.colors.primary_green,
-                  },
-                ]}>
-                {right}
-              </Text>
+            <TouchableOpacity onPress={handleNavigationOrLogout}>
+              <Text style={buttonStyle}>{right}</Text>
             </TouchableOpacity>
           )}
         </View>
       </View>
       <PermissionModal isModalVisible={isModalVisible}>
-        <LogoutModal
-          navigation={navigation}
-          setModalVisible={setModalVisible}
-        />
+        <LogoutModal setModalVisible={setModalVisible} />
       </PermissionModal>
     </>
   );
@@ -79,7 +78,7 @@ const Header = ({
 
 Header.propTypes = {
   screen: PropTypes.string,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
   back: PropTypes.string,
   continueTo: PropTypes.string,
   root: PropTypes.string,
@@ -88,4 +87,14 @@ Header.propTypes = {
   headerTextColor: PropTypes.string,
 };
 
-export default Header;
+Header.defaultProps = {
+  screen: '',
+  back: '',
+  continueTo: '',
+  root: '',
+  left: '',
+  right: '',
+  headerTextColor: '',
+};
+
+export default memo(Header);
