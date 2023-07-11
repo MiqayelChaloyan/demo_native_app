@@ -24,7 +24,7 @@ const Header = ({
       <View>
         <Image style={styles.userImage} source={userImageUrl} />
       </View>
-      <View style={{width: 200}}>
+      <View style={styles.searchContainer}>
         <Search
           list={data}
           setState={setFilteredUsersData}

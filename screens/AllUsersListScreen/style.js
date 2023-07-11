@@ -10,33 +10,34 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: theme.colors.primary_white,
+    paddingHorizontal: horizontalScale(16),
   },
   header: {
     marginVertical: verticalScale(20),
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
-    // marginHorizontal: horizontalScale(80),
-    // alignItems: 'stretch',
+  },
+  searchContainer: {
+    marginHorizontal: horizontalScale(16),
+    flex: 1,
   },
   messages: {
     top: verticalScale(10),
     marginBottom: verticalScale(20),
     justifyContent: 'center',
     flexDirection: 'row',
-    marginHorizontal: horizontalScale(80),
     alignItems: 'center',
   },
   userImage: {
     width: horizontalScale(40),
     height: verticalScale(40),
     borderRadius: moderateScale(50),
-    top: verticalScale(16),
-    right: horizontalScale(15),
     borderWidth: moderateScale(0.5),
     borderColor: theme.colors.primary_green,
   },
   container: {
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   userOptions: {
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     width: horizontalScale(150),
     height: verticalScale(240),
     borderRadius: moderateScale(20),
+    marginRight: horizontalScale(40),
   },
   imageContain: {
     position: 'absolute',
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
   contactsInformationText: {
     fontSize: moderateScale(10),
     color: theme.colors.black,
-    left: verticalScale(5),
+    marginLeft: horizontalScale(5),
     ...theme.textVariants.Medium,
   },
   messagesButton: {
@@ -95,15 +97,15 @@ const styles = StyleSheet.create({
     marginVertical: verticalScale(15),
   },
   pairsContainer: {
-    paddingHorizontal: horizontalScale(20),
     marginBottom: verticalScale(110),
+    flexDirection: 'row',
   },
   column: {
     flex: 1,
+    justifyContent: 'space-between',
   },
   col: {
-    padding: verticalScale(5),
-    paddingHorizontal: horizontalScale(10),
+    paddingTop: verticalScale(10),
   },
   buttonText: {
     textAlign: 'center',

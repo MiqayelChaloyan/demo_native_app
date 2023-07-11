@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect, memo} from 'react';
 import {View, FlatList} from 'react-native';
 import UserCard from './UserCard';
 import SkeletonAllUsersList from '../../components/Skeleton/SkeletonAllUsersList';
@@ -29,7 +29,7 @@ const UsersList = ({data, navigation, emptyDataMessage}) => {
   );
 
   return (
-    <View>
+    <View style={{justifyContent: 'space-between'}}>
       <FlatList
         data={data}
         ListEmptyComponent={<Warning emptyDataMessage={emptyDataMessage} />}
@@ -48,4 +48,4 @@ UsersList.propTypes = {
   emptyDataMessage: PropTypes.string,
 };
 
-export default React.memo(UsersList);
+export default memo(UsersList);
