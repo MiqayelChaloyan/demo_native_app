@@ -29,7 +29,7 @@ const UsersList = ({data, navigation, emptyDataMessage}) => {
   );
 
   return (
-    <View style={{justifyContent: 'space-between'}}>
+    <View>
       <FlatList
         data={data}
         ListEmptyComponent={<Warning emptyDataMessage={emptyDataMessage} />}
