@@ -7,19 +7,19 @@ const renderSwitchValue = (
   item,
   index,
   navigation,
-  loading,
+  isLoading,
   showPostsOrPhotos,
   route,
 ) => {
   const renderPosts = () =>
-    loading ? (
+    isLoading ? (
       <SkeletonPosts />
     ) : (
       <FeedItem item={item} itemIndex={index} navigation={navigation} />
     );
 
   const renderPhotos = () =>
-    loading ? <SkeletonPhotos /> : <Photos item={item} />;
+    isLoading ? <SkeletonPhotos /> : <Photos item={item} />;
 
   if (route.name === 'Profile') {
     return showPostsOrPhotos ? renderPosts() : renderPhotos();

@@ -1,10 +1,8 @@
-import {useCallback, useContext, useEffect, useState} from 'react';
+import {memo, useCallback, useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
   View,
-  SafeAreaView,
-  TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -12,44 +10,38 @@ import {
   Platform,
   Alert,
   BackHandler,
+  ScrollView,
 } from 'react-native';
 import {Formik, useFormik} from 'formik';
 import {signInValidationSchema} from './signInValidationSchema';
-import {theme} from '../../../assets/theme/theme';
 import {setDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import {GlobalDataContext} from '../../../contexts/context';
+import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import styles from './style';
 
 const SignInScreen = ({navigation}) => {
   const {userData, setLoggedIn, loggedIn} = useContext(GlobalDataContext);
   const [hidePassword, setHidePassword] = useState(true);
-  const {
-    values,
-    handleChange,
-    errors,
-    setFieldTouched,
-    touched,
-    isValid,
-    handleSubmit,
-  } = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: signInValidationSchema,
-    onSubmit: async data => {
-      // TODO: This part is for a test and will be changed lately.
-      const {email, password} = userData;
-      if (data.email === email && data.password === password) {
-        await setDataStorage('loggedIn', true);
-        setLoggedIn(true);
-        Alert.alert('Login successful');
-        return navigation.navigate('Profile');
-      } else {
-        Alert.alert('Login failed', 'Invalid email or password');
-      }
-    },
-  });
+  const {handleChange, errors, handleBlur, touched, isValid, handleSubmit} =
+    useFormik({
+      initialValues: {
+        email: '',
+        password: '',
+      },
+      validationSchema: signInValidationSchema,
+      onSubmit: async data => {
+        // TODO: This part is for a test and will be changed lately.
+        const {email, password} = userData;
+        if (data.email === email && data.password === password) {
+          await setDataStorage('loggedIn', true);
+          setLoggedIn(true);
+          Alert.alert('Login successful');
+          return navigation.navigate('Profile');
+        } else {
+          Alert.alert('Login failed', 'Invalid email or password');
+        }
+      },
+    });
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
@@ -70,25 +62,26 @@ const SignInScreen = ({navigation}) => {
   const handleTouchOnField = useCallback(
     field => {
       return () => {
-        setFieldTouched(field);
+        handleBlur(field);
       };
     },
-    [setFieldTouched],
+    [handleBlur],
   );
 
   const togglePasswordVisibility = useCallback(() => {
     setHidePassword(!hidePassword);
   }, [hidePassword]);
 
-  const navigateToSignupScreen = useCallback(() => {
+  const navigateToSignUpScreen = useCallback(() => {
     navigation.navigate('SignUp');
   }, [navigation]);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.loginRoot}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView>
+        <ScrollView style={styles.container}>
           <View style={styles.headerContainer}>
             <View style={styles.header}>
               <View style={styles.headerBox}>
@@ -99,42 +92,33 @@ const SignInScreen = ({navigation}) => {
           <Formik>
             <View style={styles.inputsContainer}>
               <View style={styles.emailInputStyle}>
-                <TextInput
+                <CustomTextInput
                   name="email"
                   placeholder="Email"
-                  placeholderTextColor={theme.colors.cool_gray}
-                  style={styles.input}
-                  variant="standard"
                   onChangeText={handleChange('email')}
                   onBlur={handleTouchOnField('email')}
-                  value={values.email}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoCorrect={false}
                   secureTextEntry={false}
+                  errors={errors.email}
+                  touched={touched.email}
                 />
-                {touched.email && errors.email && (
-                  <Text style={styles.inputError}>{errors.email}</Text>
-                )}
               </View>
               <View>
                 <View style={styles.passwordInputStyle}>
-                  <TextInput
+                  <CustomTextInput
                     name="password"
-                    secureTextEntry={hidePassword}
                     placeholder="Password"
-                    placeholderTextColor={theme.colors.cool_gray}
-                    style={styles.input}
-                    variant="standard"
                     onChangeText={handleChange('password')}
                     onBlur={handleTouchOnField('password')}
-                    value={values.password}
+                    keyboardType={null}
                     autoCapitalize="none"
                     autoCorrect={false}
+                    secureTextEntry={hidePassword}
+                    errors={errors.password}
+                    touched={touched.password}
                   />
-                  {touched.password && errors.password && (
-                    <Text style={styles.inputError}>{errors.password}</Text>
-                  )}
                 </View>
                 <View>
                   <TouchableOpacity
@@ -150,32 +134,31 @@ const SignInScreen = ({navigation}) => {
             </View>
           </Formik>
           <View style={styles.loginFooter}>
-            <TouchableOpacity
-              disabled={!isValid}
-              onPress={handleSubmit}>
+            <TouchableOpacity disabled={!isValid} onPress={handleSubmit}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Log In</Text>
               </View>
             </TouchableOpacity>
             <View style={styles.forgotPass}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('ForgotPassword')}>
                 <Text style={styles.forgotPassText}>Forgot your password?</Text>
               </TouchableOpacity>
               <View style={styles.navigateSignUp}>
-                <TouchableOpacity onPress={navigateToSignupScreen}>
+                <TouchableOpacity onPress={navigateToSignUpScreen}>
                   <Text style={styles.forgotPassText}>Create account</Text>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
-        </SafeAreaView>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 };
 
 SignInScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
-export default SignInScreen;
+export default memo(SignInScreen);

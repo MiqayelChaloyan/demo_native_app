@@ -1,9 +1,11 @@
-import {useEffect, useState} from 'react';
+import {memo, useEffect, useState, useContext, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import {theme} from '../../assets/theme/theme';
 import StarIcon from '../../assets/icons/Star.svg';
+import {useFocusEffect} from '@react-navigation/native';
+import {GlobalDataContext} from '../../contexts/context';
 import styles from './style';
 
 const EvaluationModal = ({
@@ -15,12 +17,25 @@ const EvaluationModal = ({
   const starsCount = [1, 2, 3, 4, 5];
   const [activeStarsColor, setActiveStarsColor] = useState(false);
   const [numberOfStarsPlaced, setStarsPlaced] = useState(0);
+  const {setChangeStatusBar} = useContext(GlobalDataContext);
+
+  useFocusEffect(
+    useCallback(() => {
+      setChangeStatusBar(true);
+      return () => {
+        setChangeStatusBar(false);
+      };
+    }, []),
+  );
 
   const changeColorOfStars = count => {
     setActiveStarsColor(true);
     setStarsPlaced(count);
   };
-  const handleNavigateToOptions = () => navigation.navigate('Options');
+  const handleNavigateToOptions = () => {
+    navigation.navigate('Options');
+    return handleClose();
+  };
   // const handleCloseModal = () => setModalVisible(false);
   const renderItem = ({item: starPlacedNumber}) => (
     <TouchableOpacity onPress={() => changeColorOfStars(starPlacedNumber)}>
@@ -56,19 +71,7 @@ const EvaluationModal = ({
             <FlatList
               data={starsCount}
               contentContainerStyle={styles.starsContainer}
-              renderItem={({item: starPlacedNumber}) => (
-                <TouchableOpacity
-                  onPress={() => changeColorOfStars(starPlacedNumber)}>
-                  <StarIcon
-                    fill={
-                      activeStarsColor &&
-                      starPlacedNumber <= numberOfStarsPlaced
-                        ? theme.colors.orange
-                        : theme.colors.cool_gray
-                    }
-                  />
-                </TouchableOpacity>
-              )}
+              renderItem={renderItem}
               keyExtractor={(_, index) => index}
             />
           </View>
@@ -79,11 +82,7 @@ const EvaluationModal = ({
             duis sit esse aliqua esse ex dolore esse. Consequat velit qui
             adipisicing sunt.
           </Text>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Options');
-              return handleClose();
-            }}>
+          <TouchableOpacity onPress={handleNavigateToOptions}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>I love it!</Text>
             </View>
@@ -106,9 +105,9 @@ const EvaluationModal = ({
 
 EvaluationModal.propTypes = {
   visible: PropTypes.bool,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
   onClose: PropTypes.func,
   onAskMeLaterClicked: PropTypes.func,
 };
 
-export default EvaluationModal;
+export default memo(EvaluationModal);

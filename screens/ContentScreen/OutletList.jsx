@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import {FlatList, Text, View} from 'react-native';
 import Warning from '../../components/Warning/Warning';
 import ContentItemList from './ContentItemList';
-import styles from './style';
 import {memo} from 'react';
+import styles from './style';
 
-const OutletList = ({data}) => {
+const OutletList = ({data, emptyDataMessage}) => {
   return (
     <View style={styles.outletContainer}>
       <View style={styles.headerTextContainer}>
@@ -14,7 +15,9 @@ const OutletList = ({data}) => {
       <View style={styles.itemListContainer}>
         <FlatList
           data={data}
-          ListEmptyComponent={<Warning />}
+          ListEmptyComponent={
+            <Warning emptyDataMessage={emptyDataMessage} screen="Content" />
+          }
           keyExtractor={(_, index) => index.toString()}
           renderItem={({item, index}) => (
             <ContentItemList item={item} index={index} />
@@ -26,7 +29,8 @@ const OutletList = ({data}) => {
 };
 
 OutletList.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
+  emptyDataMessage: PropTypes.string,
 };
 
 export default memo(OutletList);

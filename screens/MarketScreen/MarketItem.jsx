@@ -1,5 +1,6 @@
 import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 
@@ -10,6 +11,7 @@ const MarketItem = ({item, navigation}) => {
       params: {item},
     });
   }, [item]);
+  
   return (
     <View>
       <TouchableOpacity onPress={navigateTo}>
@@ -37,7 +39,7 @@ const MarketItem = ({item, navigation}) => {
 
 MarketItem.propTypes = {
   item: PropTypes.object,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default memo(MarketItem);

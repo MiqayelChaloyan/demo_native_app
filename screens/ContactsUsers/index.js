@@ -1,134 +1,46 @@
-import {useEffect, useState, memo, useCallback} from 'react';
+import {useState, memo} from 'react';
 import PropTypes from 'prop-types';
-import {Pressable, Text, TouchableOpacity, View} from 'react-native';
-import SkeletonMessagesList from '../../components/Skeleton/SkeletonMessagesList';
-import Warning from '../../components/Warning/Warning';
-import User from './User';
+import {Text, TouchableOpacity, View} from 'react-native';
 import Search from '../../components/Search/Search';
-import DeleteIcon from '../../assets/icons/Delete.svg';
 import useDataFromAPI from '../../customHooks/UseDataFromAPI';
-import SwipeableFlatList from 'react-native-swipeable-list';
-import {theme} from '../../assets/theme/theme';
-import PermissionModal from '../../components/Permission/Modal';
-import UsersMessagesModal from '../../components/Permission/children/remove';
-import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
-import styles from './style';
+import ContactsList from './ContactsList';
 import useDataForUpdate from '../../customHooks/useDataForUpdate';
-import useDelayedAction from '../../customHooks/useDelayedAction';
+import styles from './style';
 
 const ContactsUsers = ({navigation}) => {
-  const [loading, setLoading] = useState(true);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [deleteFriendsList, setDeleteFriendsList] = useState('');
-  const [removeId, setRemoveId] = useState(null);
-
-  const [usersData, setUsersData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [emptyDataMessage, setEmptyDataMessage] = useState('');
 
   const {data, error} = useDataFromAPI('users');
 
-  useDataForUpdate(data, setUsersData, error);
+  useDataForUpdate(data, setFilteredData, error);
 
-  useDelayedAction(() => setLoading(false), 2500);
-
-  const QuickActions = qaItem => {
-    return (
-      <TouchableOpacity
-        onPress={() => deleteItem(qaItem.id)}
-        style={styles.buttonReset}>
-        <View style={styles.qaContainer}>
-          <View style={styles.button}>
-            <View style={styles.buttonText}>
-              <DeleteIcon
-                width={horizontalScale(35)}
-                height={verticalScale(35)}
-                fill={theme.colors.danger}
-              />
-            </View>
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
-  useEffect(() => {
-    setModalVisible(false);
-    if (deleteFriendsList === 'YES') {
-      const friends = data.filter(item => item.id !== removeId);
-      setFilteredData(friends);
-    }
-    setModalVisible(false);
-    return () => setDeleteFriendsList('');
-  }, [deleteFriendsList, data]);
-  const handleDeleteFriendsList = () => {
-    setModalVisible(false);
-    if (deleteFriendsList === 'YES') {
-      const friends = data.filter(item => item.id !== removeId);
-      setFilteredData(friends);
-    }
-    setModalVisible(false);
-  };
-
-  useEffect(() => {
-    handleDeleteFriendsList();
-    return () => setDeleteFriendsList('');
-  }, [deleteFriendsList, data]);
-  const deleteItem = qaItem => {
-    setModalVisible(true);
-    setRemoveId(qaItem);
-  };
-  const renderItem = useCallback(
-    ({item}) => {
-      if (loading) {
-        return (
-          <View style={styles.skeleton}>
-            <SkeletonMessagesList />
-          </View>
-        );
-      } else {
-        return <User userItem={item} navigation={navigation} />;
-      }
-    },
-    [loading],
-  );
   return (
     <View style={styles.listUsersRoot}>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('Users')}>
-          <Text style={styles.navigate}>Back</Text>
-        </TouchableOpacity>
-      </View>
-
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Users')}
+        style={styles.back}>
+        <Text style={styles.navigate}>Back</Text>
+      </TouchableOpacity>
       <View style={styles.root}>
-        <Search list={data} setState={setFilteredData} keyword="fullName" />
+        <Search
+          list={data}
+          setState={setFilteredData}
+          keyword="fullName"
+          setEmptyDataMessage={setEmptyDataMessage}
+        />
       </View>
-
-      <View style={styles.listUsers}>
-        {usersData.length > 0 && (
-          <SwipeableFlatList
-            keyExtractor={item => item.id}
-            ListEmptyComponent={<Warning />}
-            data={filteredData}
-            renderItem={renderItem}
-            maxSwipeDistance={64}
-            leftOpenValue={20}
-            renderQuickActions={({_, item}) => QuickActions(item)}
-            contentContainerStyle={styles.contentContainerStyle}
-            shouldBounceOnMount={true}
-          />
-        )}
-      </View>
-      <PermissionModal
-        isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}>
-        <UsersMessagesModal setDeleteFriendsList={setDeleteFriendsList} />
-      </PermissionModal>
+      <ContactsList
+        filteredData={filteredData}
+        emptyDataMessage={emptyDataMessage}
+        navigation={navigation}
+      />
     </View>
   );
 };
 
 ContactsUsers.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default memo(ContactsUsers);

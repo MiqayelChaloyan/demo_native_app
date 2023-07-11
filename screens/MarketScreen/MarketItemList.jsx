@@ -17,6 +17,7 @@ const MarketItemList = ({data, navigation}) => {
       <MarketItem item={item} navigation={navigation} />
     );
   };
+
   return (
     <View>
       <FlatList

@@ -8,37 +8,48 @@ import Warning from '../Warning/Warning';
 import useDataFromAPI from '../../customHooks/UseDataFromAPI';
 import useDataForUpdate from '../../customHooks/useDataForUpdate';
 import renderSwitchValue from './renderSwitchValue';
+import {useCallback} from 'react';
 
-const FeedList = ({navigation, loading, showPostsOrPhotos}) => {
+const FeedList = ({navigation, isLoading, showPostsOrPhotos}) => {
   const route = useRoute();
   const [feedData, setFeedData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-
+  const [emptyDataMessage, setEmptyDataMessage] = useState('');
   const {data, error} = useDataFromAPI('feeds');
 
   useDataForUpdate(data, setFeedData, error);
 
   const dataOfList = route.name === 'Feed' ? filteredData : feedData;
+
+  const renderItem = useCallback(
+    ({item, index}) =>
+      renderSwitchValue(
+        item,
+        index,
+        navigation,
+        isLoading,
+        showPostsOrPhotos,
+        route,
+      ),
+    [isLoading, navigation, route, showPostsOrPhotos],
+  );
+
   return (
     <>
       {route.name === 'Feed' && (
-        <Search list={feedData} setState={setFilteredData} keyword="title" />
+        <Search
+          list={feedData}
+          setState={setFilteredData}
+          keyword="title"
+          setEmptyDataMessage={setEmptyDataMessage}
+        />
       )}
       <View style={styles.contentsBlockContainer}>
         <FlatList
           data={dataOfList}
-          ListEmptyComponent={<Warning />}
+          ListEmptyComponent={<Warning emptyDataMessage={emptyDataMessage} />}
           keyExtractor={item => item.id}
-          renderItem={({item, index}) =>
-            renderSwitchValue(
-              item,
-              index,
-              navigation,
-              loading,
-              showPostsOrPhotos,
-              route,
-            )
-          }
+          renderItem={renderItem}
         />
       </View>
     </>
@@ -46,8 +57,8 @@ const FeedList = ({navigation, loading, showPostsOrPhotos}) => {
 };
 
 FeedList.propTypes = {
-  navigation: PropTypes.object,
-  loading: PropTypes.bool,
+  navigation: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool,
   showPostsOrPhotos: PropTypes.bool,
 };
 

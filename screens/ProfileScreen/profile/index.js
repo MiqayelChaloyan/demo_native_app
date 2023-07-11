@@ -1,44 +1,38 @@
-import {useContext, useState, useEffect, useCallback, memo} from 'react';
+import {memo, useContext, useState, useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {GlobalDataContext} from '../../../contexts/context';
 import requestCameraPermission from '../../../utils/CameraPermissionUtils.android';
 import {launchImageLibrary} from 'react-native-image-picker';
 import PermissionModal from '../../../components/Permission/Modal';
-import {getDataStorage} from '../../../utils/AsyncStorageApiUtils';
 import ProfileModal from '../../../components/Permission/children/profile';
 import HeaderBar from './HeaderBar';
-import styles from './style';
 import ToggleSwitch from './ToggleSwitch';
-import useDelayedAction from '../../../customHooks/useDelayedAction';
+import {useFocusEffect} from '@react-navigation/native';
+import styles from './style';
 
 const Profile = ({navigation}) => {
   const {
     arrayImages,
-    setArrayImages,
+    setArrayImage,
     imageUrl,
     setImageUrl,
     userData,
-    loggedIn,
-    setLoggedIn,
+    setChangeStatusBar,
   } = useContext(GlobalDataContext);
-  const [showPostsOrPhotos, setShowPostsOrPhotos] = useState(true);
-  const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
   const [addImage, setAddImage] = useState('');
 
-  // TODO: This part is for a test and will be changed lately.
-  useDelayedAction(() => setLoading(false), 2500);
-  const fetchData = useCallback(async () => {
-    const result = await getDataStorage('loggedIn');
-    setLoggedIn(result);
-  }, [setLoggedIn]);
+  useFocusEffect(
+    useCallback(() => {
+      setChangeStatusBar(true);
+      return () => {
+        setChangeStatusBar(false);
+      };
+    }, []),
+  );
 
-  useEffect(() => {
-    fetchData();
-  }, [navigation, fetchData]);
-
-  const selectFile = useCallback(() => {
+  const selectFile = () => {
     const options = {
       saveToPhotos: true,
       mediaType: 'photo',
@@ -47,34 +41,35 @@ const Profile = ({navigation}) => {
 
     launchImageLibrary(options, res => {
       const url = res.assets && res.assets[0].uri;
-      setImageUrl(url);
-      setArrayImages([
-        ...arrayImages,
-        {id: arrayImages.length + 1, url: url, isChecked: false},
-      ]);
+      if (url) {
+        setImageUrl(url);
+        setArrayImage([
+          ...arrayImages,
+          {id: arrayImages.length + 1, imageSource: url, isChecked: false},
+        ]);
+      }
     });
-  }, [arrayImages]);
+  };
 
   const accessCamera = async () => await requestCameraPermission(selectFile);
 
+  const handleAnswerChange = () => {
+    setModalVisible(false);
+
+    if (addImage === 'PHONE') {
+      accessCamera();
+    } else if (addImage === 'STORAGE') {
+      navigation.navigate('Images');
+    }
+
+    setAddImage('');
+  };
+
   useEffect(() => {
-    const handleAnswerChange = () => {
-      setModalVisible(false);
-
-      if (addImage === 'PHONE') {
-        accessCamera();
-      } else if (addImage === 'STORAGE') {
-        navigation.navigate('Images');
-      }
-
-      setAddImage('');
-    };
     handleAnswerChange();
   }, [addImage]);
 
-  return !loggedIn ? (
-    navigation.navigate('Auth', {screen: 'LogIn'})
-  ) : (
+  return (
     <View style={styles.container}>
       <HeaderBar
         navigation={navigation}
@@ -84,12 +79,7 @@ const Profile = ({navigation}) => {
         setModalVisible={setModalVisible}
         accessCamera={accessCamera}
       />
-      <ToggleSwitch
-        loading={loading}
-        showPostsOrPhotos={showPostsOrPhotos}
-        setShowPostsOrPhotos={setShowPostsOrPhotos}
-        navigation={navigation}
-      />
+      <ToggleSwitch navigation={navigation} />
       <PermissionModal
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}>
@@ -100,7 +90,7 @@ const Profile = ({navigation}) => {
 };
 
 Profile.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default memo(Profile);

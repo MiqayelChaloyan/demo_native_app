@@ -6,8 +6,13 @@ import styles from './style';
 
 const User = ({userItem, navigation}) => {
   const {messages} = useContext(GlobalDataContext);
-  const userImage = userItem.imageUrl
-    ? {uri: userItem.imageUrl}
+  const {imageUrl, fullName, isActive} = userItem;
+  const today = new Date();
+  const curTime = today.getHours() + ':' + today.getMinutes();
+  const timestamp = userItem.isActive ? curTime : userItem.timestamp;
+
+  const userImage = imageUrl
+    ? {uri: imageUrl}
     : require('../../assets/images/Profile.png');
   const navigateTo = useCallback(() => {
     navigation.navigate({
@@ -15,6 +20,7 @@ const User = ({userItem, navigation}) => {
       params: {userItem},
     });
   }, [userItem]);
+
   return (
     <TouchableOpacity style={styles.swipeable} onPress={navigateTo}>
       <View>
@@ -22,16 +28,19 @@ const User = ({userItem, navigation}) => {
           <View>
             <Image style={styles.profileImage} source={userImage} />
           </View>
-          <Text style={styles.userName}>{userItem.fullName}</Text>
-          {userItem.isActive && <View style={styles.activeChat} />}
+          <Text style={styles.userName}>{fullName}</Text>
+          {isActive && <View style={styles.activeChat} />}
         </View>
         <View style={styles.messages}>
           {messages[messages.length - 1].user === 0 && (
             <Text style={styles.messagesText}>You: </Text>
           )}
           <Text style={styles.messagesText}>
-            {messages[messages.length - 1].content.slice(0, 25)}...
+            {messages[messages.length - 1].message.slice(0, 25)}...
           </Text>
+        </View>
+        <View style={styles.activeTime}>
+          <Text>{timestamp}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -40,7 +49,7 @@ const User = ({userItem, navigation}) => {
 
 User.propTypes = {
   item: PropTypes.object,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default memo(User);

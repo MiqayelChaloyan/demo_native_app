@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {Text, View} from 'react-native';
 import {verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
-import styles from './style';
 import useTimeout from '../../customHooks/useTimeout';
+import styles from './style';
 
 const ExpenseItem = ({item, index, data}) => {
   const [percent, setPercent] = useState(0);
@@ -25,6 +25,7 @@ const ExpenseItem = ({item, index, data}) => {
   }, [percent, progressPercent]);
 
   useTimeout(updatePercent, 15);
+
   return (
     <View style={styles.expenseItem}>
       <View style={styles.progressContainer}>

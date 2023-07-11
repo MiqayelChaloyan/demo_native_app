@@ -2,9 +2,9 @@ import {memo} from 'react';
 import {Text, View} from 'react-native';
 import Header from '../../components/Header/Header';
 import ProgressCircle from '../../components/ProgressCircle/ProgressCircle';
-import styles from './style';
 import ListOfExpenses from '../ExpensesScreen/ListOfExpenses';
 import PropTypes from 'prop-types';
+import styles from './style';
 
 const InsightsScreen = ({navigation}) => {
   return (
@@ -16,6 +16,7 @@ const InsightsScreen = ({navigation}) => {
           back="Expenses"
           left="Back"
           right="Filter"
+          continueTo="Feed"
         />
         <View style={styles.progressCircle}>
           <ProgressCircle />
@@ -23,13 +24,14 @@ const InsightsScreen = ({navigation}) => {
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Expenses</Text>
         </View>
-
         <ListOfExpenses />
       </View>
     </View>
   );
 };
+
 InsightsScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
+
 export default memo(InsightsScreen);

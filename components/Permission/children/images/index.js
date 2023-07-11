@@ -1,5 +1,6 @@
 import {memo, useCallback} from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import DeleteIcon from '../../../../assets/icons/Delete.svg';
 import ProfileIcon from '../../../../assets/icons/ProfileAdd.svg';
@@ -17,6 +18,7 @@ const ImagesModal = ({setAction}) => {
       setAction(action);
     };
   }, []);
+
   return (
     <View style={styles.root}>
       <View style={styles.modal}>
@@ -34,8 +36,8 @@ const ImagesModal = ({setAction}) => {
             style={styles.button_1}
             onPress={handleSetAction('Add')}>
             <ProfileIcon
-              width={27}
-              height={27}
+              width={horizontalScale(27)}
+              height={verticalScale(27)}
               fill={theme.colors.light_blue}
             />
             <Text style={styles.text_1}>Upload Image</Text>
@@ -43,7 +45,11 @@ const ImagesModal = ({setAction}) => {
           <TouchableOpacity
             style={styles.button_2}
             onPress={handleSetAction('Remove')}>
-            <DeleteIcon width={30} height={30} fill={theme.colors.light_blue} />
+            <DeleteIcon
+              width={horizontalScale(30)}
+              height={verticalScale(30)}
+              fill={theme.colors.light_blue}
+            />
             <Text style={styles.text_2}>Remove Image</Text>
           </TouchableOpacity>
         </View>

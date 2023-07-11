@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useRef} from 'react';
+import {memo, useEffect, useRef} from 'react';
 import {Animated, View, Text} from 'react-native';
 import Svg, {G, Circle} from 'react-native-svg';
 import {verticalScale} from '../../assets/metrics/Metrics';

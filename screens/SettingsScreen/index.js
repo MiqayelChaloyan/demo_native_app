@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {useContext} from 'react';
+import React, {useContext} from 'react';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import GoIcon from '../../assets/icons/Go.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
@@ -9,12 +9,13 @@ import styles from './style';
 
 const SettingsScreen = ({navigation}) => {
   const {settings} = useContext(GlobalDataContext);
+
   const renderItem = ({item}) => (
     <TouchableOpacity
       style={styles.settingsItem}
       onPress={() => item.onPress(navigation)}>
       <View style={styles.leftSide}>
-        <item.icon width={horizontalScale(30)} height={verticalScale(30)} />
+        <item.icon width={horizontalScale(25)} height={verticalScale(25)} />
         <View style={styles.titleContainer}>
           <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
             {item.title}
@@ -22,7 +23,7 @@ const SettingsScreen = ({navigation}) => {
         </View>
       </View>
       <View>
-        <GoIcon width={horizontalScale(30)} height={verticalScale(30)} />
+        <GoIcon width={horizontalScale(25)} height={verticalScale(25)} />
       </View>
     </TouchableOpacity>
   );
@@ -51,7 +52,7 @@ const SettingsScreen = ({navigation}) => {
 };
 
 SettingsScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
-export default SettingsScreen;
+export default React.memo(SettingsScreen);

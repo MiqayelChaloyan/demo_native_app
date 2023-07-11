@@ -1,31 +1,33 @@
-import {useCallback, useMemo} from 'react';
+import {memo, useCallback, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {calculateMonthDifference} from '../../assets/features/calculateDiffMonths';
 import styles from './style';
-import {calculateMonthDifference} from '../../assets/features/calculateDiffmonts';
 
 const FeedItem = ({item, itemIndex, navigation}) => {
-  const diffMonths = useMemo(() => calculateMonthDifference(item), [item]);
+  const {title, imageUri, message, createdData} = item;
+  const diffMonths = useMemo(
+    () => calculateMonthDifference(createdData),
+    [createdData],
+  );
   const handlePress = useCallback(() => {
     navigation.navigate({
       name: 'Content',
       params: {itemIndex},
     });
   }, [itemIndex, navigation]);
+
   return (
-    item.title && (
+    title && (
       <View>
         <TouchableOpacity onPress={handlePress}>
           <View style={styles.contentContainer}>
             <View style={styles.imageContainer}>
-              <Image
-                source={{uri: item.imageUri}}
-                style={styles.feedItemImage}
-              />
+              <Image source={{uri: imageUri}} style={styles.feedItemImage} />
             </View>
             <View style={styles.contentInfo}>
               <View style={styles.headerContent}>
-                <Text style={styles.headerFeedText}>{item.title}</Text>
+                <Text style={styles.headerFeedText}>{title}</Text>
                 <Text style={styles.aboutContentDate}>{diffMonths}m ago</Text>
               </View>
               <View style={styles.feedTextContainer}>
@@ -33,7 +35,7 @@ const FeedItem = ({item, itemIndex, navigation}) => {
                   style={styles.feedText}
                   numberOfLines={2}
                   ellipsizeMode="tail">
-                  {item.message}
+                  {message}
                 </Text>
               </View>
             </View>
@@ -45,9 +47,9 @@ const FeedItem = ({item, itemIndex, navigation}) => {
 };
 
 FeedItem.propTypes = {
-  item: PropTypes.object,
-  itemIndex: PropTypes.number,
-  navigation: PropTypes.object,
+  item: PropTypes.object.isRequired,
+  itemIndex: PropTypes.number.isRequired,
+  navigation: PropTypes.object.isRequired,
 };
 
-export default FeedItem;
+export default memo(FeedItem);

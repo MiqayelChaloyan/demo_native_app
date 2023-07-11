@@ -17,12 +17,15 @@ const Header = ({
   headerTextColor,
 }) => {
   const [isModalVisible, setModalVisible] = useState(false);
+
   const handleLogout = useCallback(() => {
     setModalVisible(true);
   }, []);
+
   const handleGoBack = useCallback(() => {
     navigation.navigate(back);
   }, []);
+
   const handleNavigationOrLogout = useCallback(() => {
     if (right === 'Logout') {
       handleLogout();
@@ -32,6 +35,7 @@ const Header = ({
       });
     }
   }, []);
+
   const getHeaderButtonStyle = useCallback(() => {
     const defaultColor = theme.colors.primary_green;
 
@@ -45,6 +49,7 @@ const Header = ({
   }, [headerTextColor]);
   const buttonStyle = getHeaderButtonStyle();
   const textStyle = getHeaderTextStyle();
+
   return (
     <>
       <View style={styles.headerContainer}>
@@ -65,10 +70,7 @@ const Header = ({
         </View>
       </View>
       <PermissionModal isModalVisible={isModalVisible}>
-        <LogoutModal
-          navigation={navigation}
-          setModalVisible={setModalVisible}
-        />
+        <LogoutModal setModalVisible={setModalVisible} />
       </PermissionModal>
     </>
   );
@@ -76,13 +78,23 @@ const Header = ({
 
 Header.propTypes = {
   screen: PropTypes.string,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
   back: PropTypes.string,
   continueTo: PropTypes.string,
   root: PropTypes.string,
   left: PropTypes.string,
   right: PropTypes.string,
   headerTextColor: PropTypes.string,
+};
+
+Header.defaultProps = {
+  screen: '',
+  back: '',
+  continueTo: '',
+  root: '',
+  left: '',
+  right: '',
+  headerTextColor: '',
 };
 
 export default memo(Header);

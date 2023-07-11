@@ -1,4 +1,4 @@
-import {memo, useEffect, useState} from 'react';
+import {memo, useEffect, useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {Keyboard, View} from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
@@ -21,28 +21,29 @@ const SwiperList = ({itemIndex, data}) => {
       hideSubscription.remove();
     };
   }, [keyboardStatus]);
+
+  const renderItem = useCallback(item => <ChangeSwiperItem item={item} />, []);
+
   return (
-    <>
-      {keyboardStatus && (
-        <View style={styles.swiperItemContainer}>
-          <SwiperFlatList
-            autoplay
-            autoplayDelay={3}
-            autoplayLoop
-            index={itemIndex}
-            showPagination
-            paginationStyle={styles.paginationStyle}
-            paginationStyleItemInactive={styles.dotStyle}
-            paginationStyleItemActive={[
-              styles.dotStyle,
-              {backgroundColor: theme.colors.primary_green},
-            ]}
-            data={data}
-            renderItem={({item}) => <ChangeSwiperItem item={item} />}
-          />
-        </View>
-      )}
-    </>
+    keyboardStatus && (
+      <View style={styles.swiperItemContainer}>
+        <SwiperFlatList
+          autoplay
+          autoplayDelay={3}
+          autoplayLoop
+          index={itemIndex}
+          showPagination
+          paginationStyle={styles.paginationStyle}
+          paginationStyleItemInactive={styles.dotStyle}
+          paginationStyleItemActive={[
+            styles.dotStyle,
+            {backgroundColor: theme.colors.primary_green},
+          ]}
+          data={data}
+          renderItem={renderItem}
+        />
+      </View>
+    )
   );
 };
 

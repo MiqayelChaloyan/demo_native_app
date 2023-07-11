@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
+import {memo} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import VideoIcon from '../../assets/icons/Video.svg';
 import {horizontalScale, verticalScale} from '../../assets/metrics/Metrics';
 import {theme} from '../../assets/theme/theme';
 import MarketItemList from './MarketItemList';
 import styles from './style';
-import {memo} from 'react';
 
 const Chapter = ({data, navigation, header}) => {
   return (
@@ -26,8 +26,8 @@ const Chapter = ({data, navigation, header}) => {
 };
 
 Chapter.propTypes = {
-  navigation: PropTypes.object,
-  data: PropTypes.array,
+  navigation: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
   header: PropTypes.string,
 };
 

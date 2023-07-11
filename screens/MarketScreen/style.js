@@ -64,6 +64,9 @@ const styles = StyleSheet.create({
     color: theme.colors.black,
     ...theme.textVariants.SemiBold,
   },
+  searchView: {
+    marginHorizontal: horizontalScale(16),
+  }
 });
 
 export default styles;

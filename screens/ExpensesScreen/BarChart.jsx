@@ -6,6 +6,7 @@ import useDataFromAPI from '../../customHooks/UseDataFromAPI';
 
 const BarChart = () => {
   const {data} = useDataFromAPI('expenses');
+
   return (
     <View style={styles.barChartContainer}>
       <View style={styles.itemsContainer}>

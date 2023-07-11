@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: horizontalScale(1),
   },
   userFullName: {
+    paddingHorizontal: horizontalScale(10),
     fontSize: moderateScale(30),
     color: theme.colors.black,
     textAlign: 'center',
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     width: horizontalScale(343),
   },
   containerProfileList: {
-    height:  verticalScale(340),
+    height:  verticalScale(280),
     width: '100%'
   }
 });
