@@ -1,15 +1,21 @@
+import {memo, useContext, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import {setDataStorage} from '../../../../utils/AsyncStorageApiUtils';
+import {GlobalDataContext} from '../../../../contexts/context';
 import styles from './style';
 
-const LogoutModal = ({navigation, setModalVisible}) => {
-  const handleLogout = async key => {
+const LogoutModal = ({setModalVisible}) => {
+  const {setLoggedIn} = useContext(GlobalDataContext);
+
+  const handleLogout = useCallback(async key => {
     setModalVisible(false);
     await setDataStorage(key, false);
     Alert.alert('Logout successful');
-    navigation.navigate('Auth', {screen: 'SignIn'});
-  };
+    setLoggedIn(false);
+  }, []);
+
+  const handleCloseModal = useCallback(() => setModalVisible(false), []);
 
   return (
     <View style={styles.root}>
@@ -21,9 +27,7 @@ const LogoutModal = ({navigation, setModalVisible}) => {
             onPress={() => handleLogout('loggedIn')}>
             <Text style={styles.text_1}>Yes</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button_2}
-            onPress={() => setModalVisible(false)}>
+          <TouchableOpacity style={styles.button_2} onPress={handleCloseModal}>
             <Text style={styles.text_2}>No</Text>
           </TouchableOpacity>
         </View>
@@ -33,8 +37,7 @@ const LogoutModal = ({navigation, setModalVisible}) => {
 };
 
 LogoutModal.propTypes = {
-  navigation: PropTypes.object,
   setModalVisible: PropTypes.func,
 };
 
-export default LogoutModal;
+export default memo(LogoutModal);

@@ -1,21 +1,25 @@
-import {useEffect, useState} from 'react';
+import {memo, useCallback, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import styles from './style';
 import CalendarComponent from './Calendar';
-import {getDataExpensesFromFile} from '../../utils/ApiUtils';
 import ListOfExpenses from '../ExpensesScreen/ListOfExpenses';
+import useDataFromAPI from '../../customHooks/UseDataFromAPI';
+import {GlobalDataContext} from '../../contexts/context';
+import {useFocusEffect} from '@react-navigation/native';
 
 const CalendarScreen = () => {
-  const [data, setData] = useState([]);
+  const {data} = useDataFromAPI('expenses');
+  const {setChangeStatusBar} = useContext(GlobalDataContext);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getDataExpensesFromFile();
-      setData(result);
-    };
-    fetchData();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      setChangeStatusBar(true);
+      return () => {
+        setChangeStatusBar(false);
+      };
+    }, []),
+  );
 
   return (
     <View style={styles.container}>
@@ -36,4 +40,4 @@ CalendarScreen.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default CalendarScreen;
+export default memo(CalendarScreen);

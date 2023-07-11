@@ -11,16 +11,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.primary_white,
   },
+  back: {
+    width: horizontalScale(60),
+    paddingHorizontal: verticalScale(10),
+  },
   root: {
     marginTop: verticalScale(20),
     marginBottom: verticalScale(20),
     justifyContent: 'center',
     flexDirection: 'row',
-    paddingHorizontal: verticalScale(16),
+    paddingHorizontal: verticalScale(25),
   },
   listUsers: {
     marginTop: verticalScale(5),
     marginBottom: verticalScale(180),
+    paddingHorizontal: verticalScale(16),
+
+  },
+  buttonContainer: {
+    marginBottom: verticalScale(32),
   },
   navigate: {
     textAlign: 'left',
@@ -106,18 +115,23 @@ const styles = StyleSheet.create({
   },
   swipeable: {
     height: verticalScale(75),
-    marginVertical: verticalScale(10),
+    marginVertical: verticalScale(5),
     backgroundColor: theme.colors.primary_white,
     justifyContent: 'center',
     paddingLeft: horizontalScale(10),
-    shadowColor: theme.colors.black,
+    shadowColor: theme.colors.light_grey,
     shadowOffset: {
       width: horizontalScale(0),
-      height: verticalScale(2),
+      height: verticalScale(1),
     },
     shadowOpacity: 0.25,
     shadowRadius: verticalScale(3.84),
     elevation: 1,
+  },
+  activeTime: {
+    position: 'absolute',
+    right: verticalScale(10),
+    bottom: verticalScale(26),
   },
 });
 

@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import {memo, useState} from 'react';
 import PropTypes from 'prop-types';
-import {Text, TextInput, TouchableOpacity, View, Alert} from 'react-native';
+import {Text, TouchableOpacity, View, Alert} from 'react-native';
 import Header from '../../components/Header/Header';
 import Share from 'react-native-share';
+import SupportMessage from './SupportMessage';
 import styles from './style';
 
 const SupportMessageScreen = ({navigation}) => {
   const [text, setText] = useState('');
+
   const share = async () => {
     const options = {
       message: text,
@@ -35,38 +37,28 @@ const SupportMessageScreen = ({navigation}) => {
     <View style={styles.supportScreenContainer}>
       <View style={styles.supportScreen}>
         <Header
-          // TODO: This part is will increase later.
           screen="Compose"
           navigation={navigation}
           back="Market"
-          continueTo="Market"
+          continueTo="Profile"
           left="Back"
           right="New"
         />
-
-        <View style={styles.inputContainer}>
-          <TextInput
-            multiline
-            style={styles.input}
-            onChangeText={setText}
-            value={text}
-            placeholder="Compose your message here..."
-          />
-        </View>
+        <SupportMessage setText={setText} />
       </View>
       <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={share}>
+        <TouchableOpacity onPress={share}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}>Send</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
 SupportMessageScreen.propTypes = {
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
-export default SupportMessageScreen;
+export default memo(SupportMessageScreen);

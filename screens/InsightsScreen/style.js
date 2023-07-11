@@ -23,15 +23,10 @@ const styles = StyleSheet.create({
     color: theme.colors.black,
     ...theme.textVariants.Medium,
   },
-  itemListContainer: {
-    flex: 1,
-    width: '100%',
-    marginBottom: verticalScale(90),
-  },
   progressCircle: {
     justifyContent: 'center',
     alignItems: 'center',
-    margin: verticalScale(32),
+    marginBottom: verticalScale(32),
   },
 });
 
